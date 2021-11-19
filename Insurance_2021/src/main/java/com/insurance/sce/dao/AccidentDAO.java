@@ -1,0 +1,16 @@
+package com.insurance.sce.dao;
+
+import java.util.ArrayList;
+
+import com.insurance.sce.model.contract.*;
+
+public interface AccidentDAO {
+	public boolean insert(Accident accident);
+	public boolean insertCompensationCause(Accident accident, String cause);
+	public ArrayList<Accident> select();
+	public ArrayList<Accident> selectByContractId(String contractId);
+	public Accident selectAccident(String accidentId);
+	public boolean updateCompensation(String accidentId, int compensation);
+	public boolean updateHandlingStatus(String accidentId, boolean handlingStatus);
+	public boolean delete(String accidentId);
+}

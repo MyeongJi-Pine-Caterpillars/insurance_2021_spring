@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
  * Handles requests for the application home page.
  */
 @Controller
+@RequestMapping(value = "/")
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -26,7 +27,7 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String home(Locale locale, Model model, HttpServletRequest request) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -40,12 +41,12 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(value="/next", method=RequestMethod.GET)
+	@RequestMapping(value="next", method=RequestMethod.GET)
 	public String response() {
 		return "response";
 	}
 
-	@RequestMapping(value = "/example.do")
+	@RequestMapping(value = "example.do")
 	public ModelAndView example(HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("example");

@@ -11,8 +11,8 @@
 
 <P>  The time on the server is ${serverTime}. </P>
 <div>
-	<form action="next">
-		<input type="submit" name="next">
+	<form action="SelectUserType">
+		<input type="submit" name="SelectUserType">
 	</form>
 </div>
 

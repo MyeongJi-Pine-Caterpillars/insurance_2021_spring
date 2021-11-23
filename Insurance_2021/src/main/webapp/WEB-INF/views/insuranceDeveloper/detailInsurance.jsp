@@ -386,94 +386,37 @@
 							<!-- Illustrations -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">보험 종류</h6>
+									<h6 class="m-0 font-weight-bold text-primary">보험 이름</h6>
 								</div>
-								<div class="card-body">
-									<div class="column">
-										<div class=form-check>
-											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="insuranceRadio1" checked>
-											<label class="form-check-label" for="insuranceRadio1">
-												운전자 보험 </label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="insuranceRadio2"> <label
-												class="form-check-label" for="insuranceRadio2"> 치아
-												보험 </label>
-										</div>
-										<div class=form-check>
-											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="insuranceRadio3"> <label
-												class="form-check-label" for="insuranceRadio3"> 화재
-												보험 </label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="insuranceRadio4"> <label
-												class="form-check-label" for="insuranceRadio4"> 암 보험
-											</label>
-										</div>
-										<div class=form-check>
-											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="insuranceRadio5"> <label
-												class="form-check-label" for="insuranceRadio5"> 실비
-												보험 </label>
-										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="insuranceRadio6"> <label
-												class="form-check-label" for="insuranceRadio6"> 여행자
-												보험 </label>
-										</div>
-									</div>
-								</div>
+								
 							</div>
 
 							<!-- Approach -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">가입 가능한 성별</h6>
+									<h6 class="m-0 font-weight-bold text-primary">보험 기본료</h6>
 								</div>
 								<div class="card-body">
-									<div class="column">
-										<form id="genderCheck" method="get">
-											<div class=form-check>
-												<input class="form-check-input" type="checkbox"
-													name="genderCheckbox" value="man" checked> <label
-													class="form-check-label" for="genderCheckbox1">남자</label>
-											</div>
-											<div class="form-check">
-												<input class="form-check-input" type="checkbox"
-													name="genderCheckbox" value="woman" checked> <label
-													class="form-check-label" for="genderCheckbox2">여자</label>
-											</div>
-											<input type="hidden" id="arrayParam" name="arrayParam" />
-										</form>
-									</div>
+									
 								</div>
 							</div>
 							<div class="col">
-								<form id="nextButton" method="get">
-									<button type="button" class="btn btn-secondary"
-										onclick="sendData()">해당 조건으로 보험 조회하기</button>
-									<button type="button" class="btn btn-primary" onclick="next()">다음 단계로</button>
-								</form>
+								<button type="button" class="btn btn-secondary" onclick="sendData()">해당 조건으로 보험 조회하기</button>
+								<button type="button" class="btn btn-primary">다음 단계로</button>
 							</div>
 							<script>
 							function sendData(){
+								var insuranceCategory = $('input:[name=insuranceRadio]').val();
+								alert(insuranceCategory);
 								var genderArray = new Array();
 								$('input:checkbox[name=genderCheckbox]:checked').each(function() {
-									genderArray.push(this.value);
+									genderArray.push(this.id);
 								})
-								alert(genderArray);
+								// alert(genderArray);
 								$("#arrayParam").val(genderArray);
 								$("#genderCheck").attr("action", "clickNextBtn");
 								$("#genderCheck").submit();
-							}
-							function next(){
-								$("#nextButton").attr("action", "detailInsurance");
-								$("#nextButton").submit();
+								
 							}
 							</script>
 						</div>

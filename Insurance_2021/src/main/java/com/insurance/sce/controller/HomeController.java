@@ -43,7 +43,7 @@ public class HomeController {
 	
 	@RequestMapping(value="next", method=RequestMethod.GET)
 	public String response() {
-		return "response";
+		return "login/selectUserType";
 	}
 
 	@RequestMapping(value = "example.do")

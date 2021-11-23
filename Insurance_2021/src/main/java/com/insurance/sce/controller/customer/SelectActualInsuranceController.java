@@ -32,7 +32,7 @@ public class SelectActualInsuranceController {
 		Customer customer = new Customer();
 		customer.setName("홍영석");
 
-		model.addAttribute("clientName", customer.getName() );
+		model.addAttribute("customerName", customer.getName() );
 		return "customer/selectActualInsurance";
 	}
 }

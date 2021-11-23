@@ -16,7 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.insurance.sce.dao.AccidentDAO;
 import com.insurance.sce.dao.AccidentDAOImpl;
+import com.insurance.sce.dao.GuaranteePlanDAO;
+import com.insurance.sce.dao.InsuranceDAO;
 import com.insurance.sce.model.customer.Customer;
+import com.insurance.sce.model.insurance.CancerInsurance;
+import com.insurance.sce.model.insurance.Insurance;
 
 /**
  * Handles requests for the application home page.
@@ -27,6 +31,9 @@ public class SelectCacnerInsuranceController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SelectCacnerInsuranceController.class);
 	
+//	@Autowired
+//	InsuranceDAO insuranceDAO;
+//	GuaranteePlanDAO guaranteePlanDAO;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -42,6 +49,8 @@ public class SelectCacnerInsuranceController {
 		session.setAttribute("loginCustomer", tmp);
 		
 		Customer customer = (Customer)session.getAttribute("loginCustomer");
+		
+//		Insurance insurance = new CancerInsurance();
 		
 
 		model.addAttribute("customerName", customer.getName() );

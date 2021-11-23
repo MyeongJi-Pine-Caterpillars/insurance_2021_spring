@@ -94,7 +94,7 @@
             <hr class="sidebar-divider my">
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="ActualInsurance">
+                <a class="nav-link" href="actualInsurance">
                     <i class="fas fa-fw fa-hospital"></i>
                     <span>실비보험</span></a>
             </li>
@@ -179,9 +179,9 @@
                         
                         
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            <a class="nav-link dropdown-toggle" href=# id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        		<button type="button" class="btn btn-outline-success">마이페이지</button>
+                        		<button type="button" class="btn btn-outline-success" onclick="location.href='myPage'" >마이페이지</button>
                         	</a>
 						</li>                        
                         <li class="nav-item dropdown no-arrow">
@@ -268,6 +268,7 @@
                             </div>
                         </div>
 
+					<br>
                     <!-- Content Row -->
                     <div class="row">
 
@@ -317,30 +318,62 @@
                         <div class="col-lg-6 mb-4">
 
                             <!-- Illustrations -->
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">보장내역</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="text-center">
-                                    </div>
-                                    <p>
-                                    여기에 보장내역 리스트를 넣어야합니다.
-                                    </p>
-                                    <br>
-                                    <p>
-                                    ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
-                                    ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
-                                    ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
-                                    ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
-                                    ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
-                                    ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
-                                    ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
-                                    ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+								<div class="card shadow mb-4">
+									<div class="card-header py-3">
+										<h6 class="m-0 font-weight-bold text-primary">보장내역</h6>
+									</div>
+									<div class="card-body">
+										기본계약
+										<ol class="list-group list-group-numbered">
+											<li
+												class="list-group-item d-flex justify-content-between align-items-start">
+												<div class="ms-2 me-auto">
+													<div class="fw-bold">갑상선암</div>
+													보장금액 : 10000000
+												</div>
+											</li>
+											<li
+												class="list-group-item d-flex justify-content-between align-items-start">
+												<div class="ms-2 me-auto">
+													<div class="fw-bold">폐암</div>
+													보장금액 : 10000000
+												</div>
+											</li>
+											<li
+												class="list-group-item d-flex justify-content-between align-items-start">
+												<div class="ms-2 me-auto">
+													<div class="fw-bold">난소암</div>
+													보장금액 : 15000000
+												</div>
+											</li>
+										</ol>
+										선택특약
+										<ol class="list-group list-group-numbered">
+											<li
+												class="list-group-item d-flex justify-content-between align-items-start">
+												<div class="ms-2 me-auto">
+													<div class="fw-bold">갑상선암</div>
+													보장금액 : 10000000
+												</div>
+											</li>
+											<li
+												class="list-group-item d-flex justify-content-between align-items-start">
+												<div class="ms-2 me-auto">
+													<div class="fw-bold">폐암</div>
+													보장금액 : 10000000
+												</div>
+											</li>
+											<li
+												class="list-group-item d-flex justify-content-between align-items-start">
+												<div class="ms-2 me-auto">
+													<div class="fw-bold">난소암</div>
+													보장금액 : 15000000
+												</div>
+											</li>
+										</ol>
+									</div>
+								</div>
+							</div>
                     </div>
 
                 </div>

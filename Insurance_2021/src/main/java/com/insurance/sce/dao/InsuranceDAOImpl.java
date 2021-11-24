@@ -472,13 +472,6 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 			boolean isOver = true;
 			boolean isContract = false;
 			ArrayList<Contract> tmpContract = new ArrayList<Contract>();
-			for (Contract contract: contractDAO.selectForTime()) {
-				if (insuranceId.equals(contract.getInsuranceId())) {
-					isContract = true;
-					tmpContract.add(contract);
-					break;
-				}
-			}
 			if (!isContract) {
 				sql = "DELETE FROM insurance WHERE del = true AND insuranceId = "+insuranceId+";";
 				super.execute(sql);

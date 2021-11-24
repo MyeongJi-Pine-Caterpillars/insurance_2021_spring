@@ -22,14 +22,9 @@ public class Contract {
 	private int unpaidPeriod;
 	private boolean[] payHistory = new boolean[12];
 	private ArrayList<Accident> accidentList;
-	
-	private ContractDAO contractDAO;
-	private AccidentDAO accidentDAO;
-	
 
 	// Constructor
 	public Contract(){
-		accidentDAO = new AccidentDAOImpl();
 	}
 	
 	// Getters&Setters
@@ -66,8 +61,6 @@ public class Contract {
 	public boolean[] getPayHistory() {return payHistory;}
 	public void setPayHistory(boolean[] payHistory) {this.payHistory = payHistory;}
 	
-	public void connectContractDAO(ContractDAO contractDAO) {this.contractDAO = contractDAO;}
-	
 	// public Method
 	public void joinInsurance(Insurance insurance, Insurant insurant){
 		this.insuranceId = insurance.getInsuranceId();
@@ -81,15 +74,6 @@ public class Contract {
 		accident.setContent(content);
 		accident.setDamageCost(damageCost);
 		accident.setHandlingStatus(handlingStatus);
-		this.accidentDAO.insert(accident);
-	}
-
-	public void payFee(Contract contract, int month) {
-		this.contractDAO.updatePayHistory(contract.getContractId(), month);
-	}
-
-	public void bringAccident() {
-		this.accidentList = this.accidentDAO.selectByContractId(this.contractId);
 	}
 
 //	public void reportAccident(String content, enum type){

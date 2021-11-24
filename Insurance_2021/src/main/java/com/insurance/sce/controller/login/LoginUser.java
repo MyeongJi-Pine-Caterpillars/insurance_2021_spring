@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.insurance.sce.dao.CustomerDAO;
 import com.insurance.sce.dao.CustomerDAOImpl;
 import com.insurance.sce.dao.DBConnector;
-import com.insurance.sce.dao.MyCustomerDAO;
 import com.insurance.sce.model.customer.Customer;
 import com.insurance.sce.service.CustomerService;
 

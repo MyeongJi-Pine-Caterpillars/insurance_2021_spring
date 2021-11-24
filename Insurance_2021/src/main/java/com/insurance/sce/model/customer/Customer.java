@@ -53,7 +53,7 @@ public class Customer {
 	}
 
 	public void createInsurant(Insurant insurant) {
-		this.insurantDAO.insert(insurant);
+		this.insurantDAO.insertInsurant(insurant);
 	}
 	
 	public void reviveContract(String contractId, ContractDAO contractDAO) {

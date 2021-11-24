@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="contractMapper">
+	
+	<!-- INSERT -->
+	<insert id="insert" parameterType="com.insurance.sce.model.contract.Contract">
+		INSERT INTO contract( contractId, insurantId, insuranceId, effectiveness, special, lifespan, fee, unpaidPeriod)
+		VALUES (#{contractId}, #{insurantId}, #{insuranceId}, #{effectiveness},
+				#{special}, #{lifespan}, #{fee}, #{unpaidPeriod})
+	</insert>
+
+	<!-- SELECT -->
+	<select id="selectAll" resultType="com.insurance.sce.model.contract.Contract">
+		SELECT * FROM contract
+	</select>
+	<select id="selectAllContractId" resultType="String">
+		SELECT contractId FROM contract
+	</select>
+	<select id="selectAllIds" resultType="com.insurance.sce.model.contract.Contract">
+		SELECT contractId, insuranceId, insurantId, effectiveness, unpaidPeriod, fee FROM contract
+	</select>
+	<select id="selectListByInsurant" resultType="com.insurance.sce.model.contract.Contract">
+		SELECT * FROM contract
+		WHERE insurantId = #{insurantId}
+	</select>
+	<select id="select" resultType="com.insurance.sce.model.contract.Contract">
+		SELECT * FROM contract
+		WHERE contractId = #{contractId}
+	</select>
+	<select id="selectUnpaidAndFee" resultType="com.insurance.sce.model.contract.Contract">
+		SELECT contractId, fee, unpaidPeriod FROM contract 
+		WHERE contractId = #{contractId}
+	</select>
+	
+	<!-- UPDATE -->
+	<update id="updateFee" parameterType="com.insurance.sce.model.contract.Contract">
+		UPDATE contract
+		SET fee = #{fee}
+		WHERE contractId = #{contractId}
+	</update>
+	<update id="updateEffectiveness" parameterType="com.insurance.sce.model.contract.Contract">
+		UPDATE contract
+		SET effectiveness = #{effectiveness}
+		WHERE contractId = #{contractId}
+	</update>
+	<update id="updateLifespan" parameterType="com.insurance.sce.model.contract.Contract">
+		UPDATE contract
+		SET lifespan = #{lifespan}
+		WHERE contractId = #{contractId}
+	</update>
+	<update id="updateUnpaidPeriod" parameterType="com.insurance.sce.model.contract.Contract">
+		UPDATE contract
+		SET unpaidPeriod = #{unpaidPeriod}
+		WHERE contractId = #{contractId}
+	</update>
+	<update id="updateSpecial" parameterType="com.insurance.sce.model.contract.Contract">
+		UPDATE contract
+		SET special = #{special}
+		WHERE contractId = #{contractId}
+	</update>
+	
+	<!-- DELETE -->
+	<delete id="delete" parameterType="String">
+		DELETE FROM contract
+		WHERE contractId = #{contractId}
+	</delete>
+
+
+
+</mapper>

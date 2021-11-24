@@ -39,7 +39,4 @@
 		DELETE FROM customer
 		WHERE customerId = #{customerId}
 	</delete>
-
-
-
 </mapper>

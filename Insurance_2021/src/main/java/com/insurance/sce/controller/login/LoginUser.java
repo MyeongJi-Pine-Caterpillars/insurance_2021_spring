@@ -43,7 +43,6 @@ public class LoginUser {
 			// 세션에 저장
 			HttpSession session = request.getSession(true);
 			session.setAttribute("loginCustomer", customer);
-			
 			return "customer/selectCancerInsurance";
 		}else return "login/selectUserType";
 	}

@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div style = "padding: 5%; width: 90%; height: 500px;">
-		<form action="loginUser" >
+		<form action="loginUser">
 			<input type="submit" value = "User" name="loginUser" style = "width: 100%; height: 250px;">
 		</form>
 		<form action="loginEmployee" style = "width: 100%; height: 250px;">

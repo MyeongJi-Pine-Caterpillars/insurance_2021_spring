@@ -7,17 +7,17 @@
 <mapper namespace="customerMapper">
 	
 	<!-- INSERT -->
-	<insert id="insertCustomer" parameterType="com.insurance.sce.model.customer.Customer">
-		INSERT INTO customer( customerId, password, name, address, phoneNumber)
+	<insert id="insert" parameterType="com.insurance.sce.model.customer.Customer">
+		INSERT INTO customer(customerId, password, name, address, phoneNumber)
 		VALUES (#{customerId}, #{password}, #{name}, #{address},
 				#{phoneNumber})
 	</insert>
 
 	<!-- SELECT -->
-	<select id="selectCustomerList" resultType="com.insurance.sce.model.customer.Customer">
+	<select id="selectAll" resultType="com.insurance.sce.model.customer.Customer">
 		SELECT * FROM customer
 	</select>
-	<select id="selectCustomer" resultType="com.insurance.sce.model.customer.Customer">
+	<select id="select" resultType="com.insurance.sce.model.customer.Customer">
 		SELECT * FROM customer
 		WHERE customerId = #{customerId}
 	</select>
@@ -35,7 +35,7 @@
 	</update>
 	
 	<!-- DELETE -->
-	<delete id="deleteCustomer" parameterType="String">
+	<delete id="delete" parameterType="String">
 		DELETE FROM customer
 		WHERE customerId = #{customerId}
 	</delete>

@@ -11,6 +11,6 @@ public class ContractManager extends Employee {
 	}
 
 	public void manageUnpaidContract(Contract contract){
-		this.contractDAO.updateEffectiveness(contract.getContractId(), false);
+//		this.contractDAO.updateEffectiveness(contract.getContractId(), false);
 	}
 }

@@ -12,8 +12,8 @@ public class UnderWriter extends Employee{
 	}
 
 	public void approveContract(Contract contract) {
-		contractDAO.updateEffectiveness(contract.getContractId(), true);
-		contractDAO.updateUnpaidPeriod(contract.getContractId(), 1);
+//		contractDAO.updateEffectiveness(contract.getContractId(), true);
+//		contractDAO.updateUnpaidPeriod(contract.getContractId(), 1);
 	}
 	
 	public void refuseContract(Contract contract) {

@@ -1,101 +1,46 @@
 package com.insurance.sce.dao;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
 import com.insurance.sce.model.contract.Accident;
 
+@Repository
 public class AccidentDAOImpl extends DBConnector implements AccidentDAO{
-	
-	public boolean insert(Accident accident) {
-		String sql = "INSERT INTO accident(accidentId, contractId, content, compensation, damageCost, handlingStatus) values('"
-					+accident.getAccidentId()+"', '"+accident.getContractId()+"', '"+accident.getContent()+"', "+accident.getCompensation()
-					+", "+accident.getDamageCost()+", false);";
-		return this.execute(sql);
-	}
-	
-	public boolean insertCompensationCause(Accident accident, String cause) {
-		String sql = "INSERT INTO compensationCause(accidentId, cause) values('" 
-				+ accident.getAccidentId() + "', '" + cause + "')";
-		return this.execute(sql);
-	}
-	
-	public ArrayList<Accident> select() {
-		ArrayList<Accident> accidentList = new ArrayList<Accident>();
+	@Inject
+	private SqlSession sqlSession;
 
-		String sql = "SELECT * FROM accident";
-		this.read(sql);
-		try {
-			while (rs.next()) {
-				Accident accident = new Accident();
-				accident.setAccidentId(rs.getString("accidentId"));
-				accident.setContractId(rs.getString("contractId"));
-				accident.setContent(rs.getString("content"));
-				accident.setCompensation(rs.getInt("compensation"));
-				accident.setDamageCost(rs.getInt("damageCost"));
-				accident.setHandlingStatus(rs.getBoolean("handlingStatus"));
-				accidentList.add(accident);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return accidentList;
-	}
-	
-	public ArrayList<Accident> selectByContractId(String contractId) {
-		ArrayList<Accident> accidentList = new ArrayList<Accident>();
-		
-		String sql = "SELECT * FROM accident WHERE contractId = '"+contractId+"';";
-		this.read(sql);
-		try {
-			while (rs.next()) {
-				Accident accident = new Accident();
-				accident.setAccidentId(rs.getString("accidentId"));
-				accident.setContractId(rs.getString("contractId"));
-				accident.setContent(rs.getString("content"));
-				accident.setCompensation(rs.getInt("compensation"));
-				accident.setDamageCost(rs.getInt("damageCost"));
-				accident.setHandlingStatus(rs.getBoolean("handlingStatus"));
-				accidentList.add(accident);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return accidentList;
-	}
+	private static final String Insert = "accidentMapper.insert";
+	private static final String SelectAll = "accidentMapper.selectAll";
+	private static final String SelectListByContractId = "accidentMapper.selectListByContractId";
+	private static final String SelectByAccidentId = "accidentMapper.selectByAccidentId";
+	private static final String UpdateCompensation = "accidentMapper.updateCompensation";
+	private static final String UpdateHandlingStatus= "accidentMapper.updateHandlingStatus";
+	private static final String Delete = "accidentMapper.delete";
 
-	public Accident selectAccident(String accidentId) {
-		String sql = "SELECT * FROM accident where accidentId = '"+accidentId+"';";
-		this.read(sql);
-		
-		Accident accident = new Accident();
-		try {
-			while (rs.next()) {
-				accident.setAccidentId(rs.getString("accidentId"));
-				accident.setContractId(rs.getString("contractId"));
-				accident.setContent(rs.getString("content"));
-				accident.setCompensation(rs.getInt("compensation"));
-				accident.setDamageCost(rs.getInt("damageCost"));
-				accident.setHandlingStatus(rs.getBoolean("handlingStatus"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return accident;
-	}
-	
-	public boolean updateCompensation(String accidentId, int compensation) {
-		String sql = "UPDATE accident SET compensation = "+compensation+" WHERE accidentId = '"+accidentId+"';";
-		return this.execute(sql);
-	}
+	// Insert
+	@Override
+	public int insert(Accident accident) {return sqlSession.insert(Insert, accident);}
 
-	public boolean updateHandlingStatus(String accidentId, boolean handlingStatus) {
-		String sql = "UPDATE accident SET handlingStatus = "+handlingStatus+" WHERE accidentId = '"+accidentId+"';";
-		return this.execute(sql);
-	}
+	// Select
+	@Override
+	public List<Accident> selectAll() {return sqlSession.selectList(SelectAll);}
+	@Override
+	public List<Accident> selectListByContractId(String contractId) {return sqlSession.selectList(SelectListByContractId, contractId);}
+	@Override
+	public Accident selectByAccidentId(String accidentId) {return sqlSession.selectOne(SelectByAccidentId, accidentId);}
 	
-	public boolean delete(String accidentId) {
-		String sql = "DELETE accident WHERE accidentId = '"+accidentId+"';";
-		return this.execute(sql);
-	}
+	// Update
+	@Override
+	public int updateCompensation(Accident accident) {return sqlSession.update(UpdateCompensation, accident);}
+	@Override
+	public int updateHandlingStatus(Accident accident) {return sqlSession.update(UpdateHandlingStatus, accident);}
+
+	// Delete
+	@Override
+	public int delete(String accidentId) {return sqlSession.delete(Delete, accidentId);}
 }

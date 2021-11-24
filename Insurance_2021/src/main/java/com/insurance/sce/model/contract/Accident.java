@@ -1,8 +1,5 @@
 package com.insurance.sce.model.contract;
 
-import com.insurance.sce.dao.AccidentDAO;
-import com.insurance.sce.dao.AccidentDAOImpl;
-
 public class Accident {
 	// Attributes
 	private String accidentId;
@@ -11,11 +8,9 @@ public class Accident {
 	private int compensation;
 	private int damageCost;
 	private boolean handlingStatus;
-	private AccidentDAO accidentDAO;
 	
 	// Constructor
 	public Accident(){
-		accidentDAO = new AccidentDAOImpl();
 	}
 
 	// Getters&Setters
@@ -38,12 +33,12 @@ public class Accident {
 	public void setDamageCost(int damageCost) {this.damageCost = damageCost;}
 
 	public void setCause(String cause) {
-		this.accidentDAO.insertCompensationCause(this, cause);
+//		this.accidentDAO.insertCompensationCause(this, cause);
 	}
 
 
 	public void confirmCompensation() {
-		this.accidentDAO.updateCompensation(this.accidentId, this.compensation);
-		this.accidentDAO.updateHandlingStatus(this.accidentId, this.handlingStatus);
+//		this.accidentDAO.updateCompensation(this.accidentId, this.compensation);
+//		this.accidentDAO.updateHandlingStatus(this.accidentId, this.handlingStatus);
 	}
 }

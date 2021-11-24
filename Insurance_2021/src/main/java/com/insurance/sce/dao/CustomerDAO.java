@@ -5,13 +5,13 @@ import java.util.List;
 import com.insurance.sce.model.customer.Customer;
 
 public interface CustomerDAO {
-	public int insertCustomer(Customer customer);
+	public int insert(Customer customer);
 	
-	public List<Customer> selectCustomerList();
-	public Customer selectCustomer(String customerId);
+	public List<Customer> selectAll();
+	public Customer select(String customerId);
 	
 	public int updateAddress(Customer customer);
 	public int updatePhoneNumber(Customer customer);
 	
-	public int deleteCustomer(String customerId);
+	public int delete(String customerId);
 }

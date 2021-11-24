@@ -26,12 +26,12 @@ public class CustomerDAOTest {
 		custoemr.setAddress("테스트시3");
 		custoemr.setPhoneNumber("010-1234-5678");
 		
-		customerDao.insertCustomer(custoemr);
+		customerDao.insert(custoemr);
 	}
 	
 	@Test
 	public void testSelectCustomerList() {
-		List<Customer> customerList = customerDao.selectCustomerList();
+		List<Customer> customerList = customerDao.selectAll();
 		for(Customer customer : customerList) {
 			System.out.println(customer.getName() + " / " + customer.getAddress());
 		}
@@ -39,7 +39,7 @@ public class CustomerDAOTest {
 	
 	@Test
 	public void testSelectCustomer() {
-		Customer customer = customerDao.selectCustomer("kim");
+		Customer customer = customerDao.select("kim");
 		System.out.println(customer.getName() + " / " + customer.getAddress());
 	}
 	
@@ -62,6 +62,6 @@ public class CustomerDAOTest {
 	
 	@Test
 	public void testDeleteCustomer() {
-		customerDao.deleteCustomer("test2");
+		customerDao.delete("test2");
 	}
 }

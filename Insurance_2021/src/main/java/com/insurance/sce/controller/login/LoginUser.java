@@ -25,12 +25,6 @@ public class LoginUser {
 		CustomerDAO customerDAO = new CustomerDAOImpl();
 		dbConnector.startDB();	
 		dbConnector.connect();
-		Customer customer = customerDAO.selectCustomer(id);
-		if(customer != null) {
-			if(customer.getPassword().matches(password)) {
-				return "customer/selectCancerInsurance";
-			}
-		}
 		return "customer/selectCancerInsurance";
 	}
 	@RequestMapping(value="/loginCheck", method=RequestMethod.GET)

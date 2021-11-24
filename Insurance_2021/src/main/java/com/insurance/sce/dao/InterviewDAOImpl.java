@@ -1,118 +1,40 @@
 package com.insurance.sce.dao;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
 
 import com.insurance.sce.model.interview.Interview;
 
 public class InterviewDAOImpl extends DBConnector implements InterviewDAO{
+	@Inject
+	private SqlSession sqlSession;
 
-	@Override
-	public boolean insert(Interview interview) {
-		String str = "INSERT INTO interview (interviewId, salespersonId, customerId, confirmedStatus, date, content, time)"
-				+ "values('" + interview.getInterviewId() + "'," + interview.getSalespersonId() + ",'" + interview.getCustomerId() + "',"
-				+ interview.isConfirmedStatus() + ",'" + interview.getDate() + "','" + interview.getContent() + "','" + interview.getTime() +
-				"');";
-		if (this.execute(str)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	@Override
-	public ArrayList<Interview> select() {
-		ArrayList<Interview> arrayList = new ArrayList<Interview>();
-		String sql = "SELECT * FROM interview";
-		this.read(sql);
-		try {
-			while (rs.next()) {
-				Interview interview = new Interview();
-				interview.setInterviewId(rs.getString("interviewId"));
-				interview.setSalespersonId(rs.getString("salespersonId"));
-				interview.setCustomerId(rs.getString("customerId"));
-				interview.setConfirmedStatus(rs.getBoolean("confirmedStatus"));
-				interview.setDate(rs.getString("date"));
-				interview.setTime(rs.getString("time"));
-				interview.setContent(rs.getString("content"));
-				arrayList.add(interview);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return arrayList;
-	}
-
-
-	@Override
-	public boolean delete(String interviewId) {
-		String str = "DELETE FROM interview WHERE interviewId = " + interviewId;
-		if(this.execute(str)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	@Override
-	public boolean updateConfirmedStatus(String interviewId, boolean confirmedStatus) {
-		String str = "UPDATE interview set confirmedStatus = " + confirmedStatus + " WHERE interviewId = " + interviewId;
-		if(this.execute(str)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	@Override
-	public boolean updateDate(String interviewId, String date) {
-		String str = "UPDATE interview set date = " + date + " WHERE interviewId = " + interviewId;
-		if(this.execute(str)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
-
-	@Override
-	public boolean updateContent(String interviewId, String content) {
-		String str = "UPDATE interview set content = '" + content + "' WHERE interviewId = " + interviewId;
-		if(this.execute(str)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+	private static final String Insert = "interviewMapper.insert";
+	private static final String SelectAll = "interviewMapper.selectAll";
+	private static final String Select = "interviewMapper.select";
+	private static final String UpdateConfirmedStatus = "interviewMapper.updateConfirmedStatus";
+	private static final String UpdateDate = "interviewMapper.updateDate";
+	private static final String UpdateContent = "interviewMapper.updateContent";
+	private static final String UpdateSalespersonId = "interviewMapper.updateSalespersonId";
+	private static final String Delete = "interviewMapper.delete";
 	
+	// Insert
+	public int insert(Interview interView) {return sqlSession.insert(Insert, interView);}
 
-	@Override
-	public boolean updateSalespersonId(String interviewId, String salespersonId) {
-		String str = "UPDATE interview set salespersonId = '" + salespersonId + "' WHERE interviewId = " + interviewId;
-		if(this.execute(str)) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+	// Select
+	public List<Interview> selectAll() {return sqlSession.selectList(SelectAll);}
+	public Interview select(String interviewId) {return sqlSession.selectOne(Select);}
 
-	@Override
-	public Interview selectInterview(String interviewId) {
-		Interview interview = new Interview();
-		String sql = "SELECT * FROM interview WHERE interviewId = '" + interviewId +"'";
-		this.read(sql);
-		try {
-			while (rs.next()) {
-				interview.setInterviewId(rs.getString("interviewId"));
-				interview.setCustomerId(rs.getString("customerId"));
-				interview.setSalespersonId(rs.getString("salespersonId"));
-				interview.setConfirmedStatus(rs.getBoolean("confirmedStatus"));
-				interview.setDate(rs.getString("date"));
-				interview.setTime(rs.getString("time"));
-				interview.setContent(rs.getString("content"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return interview;
-	}
+	// Update
+	public int updateConfirmedStatus(Interview interView) {return sqlSession.update(UpdateConfirmedStatus, interView);}
+	public int updateDate(Interview interView) {return sqlSession.update(UpdateDate, interView);}
+	public int updateContent(Interview interView) {return sqlSession.update(UpdateContent, interView);}
+	public int updateSalespersonId(Interview interView) {return sqlSession.update(UpdateSalespersonId, interView);}
+
+	// Delete
+	public int delete(String interviewId) {return sqlSession.delete(Delete);}
+
 }

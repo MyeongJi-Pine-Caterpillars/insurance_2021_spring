@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="accidentMapper">
+	
+	<!-- INSERT -->
+	<insert id="insert" parameterType="com.insurance.sce.model.contract.Accident">
+		INSERT INTO customer( accidentId, contractId, content, compensation, damageCost, handlingStatus)
+		VALUES (#{accidentId}, #{contractId}, #{content}, #{compensation},
+				#{damageCost}, #{handlingStatus})
+	</insert>
+
+	<!-- SELECT -->
+	<select id="selectAll" resultType="com.insurance.sce.model.contract.Accident">
+		SELECT * FROM accident
+	</select>
+	<select id="selectByAccidentId" resultType="com.insurance.sce.model.contract.Accident">
+		SELECT * FROM accident
+		WHERE accidentId = #{accidentId}
+	</select>
+	<select id="selectListByContractId" resultType="com.insurance.sce.model.contract.Accident">
+		SELECT * FROM customer
+		WHERE contractId = #{contractId}
+	</select>
+	
+	<!-- UPDATE -->
+	<update id="updateCompensation" parameterType="com.insurance.sce.model.contract.Accident">
+		UPDATE accident
+		SET compensation = #{compensation}
+		WHERE contractId = #{contractId}
+	</update>
+	<update id="updateHandlingStatus" parameterType="com.insurance.sce.model.contract.Accident">
+		UPDATE accident
+		SET hadlingStatus = #{hadlingStatus}
+		WHERE contractId = #{contractId}
+	</update>
+	
+	<!-- DELETE -->
+	<delete id="delete" parameterType="String">
+		DELETE FROM accident
+		WHERE accidentId = #{accidentId}
+	</delete>
+
+
+
+</mapper>

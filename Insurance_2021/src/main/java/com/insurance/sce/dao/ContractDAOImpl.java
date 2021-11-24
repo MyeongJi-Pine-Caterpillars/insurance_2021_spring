@@ -29,37 +29,24 @@ public class ContractDAOImpl extends DBConnector implements ContractDAO{
 	private static final String Delete = "contractMapper.delete";
 
 	// Insert
-	@Override
 	public int insert(Contract contract) {return sqlSession.insert(Insert, contract);}
 
 	// Select
-	@Override
 	public List<Contract> selectAll() {return sqlSession.selectList(SelectAll);}
-	@Override
 	public List<String> selectAllContractId() {return sqlSession.selectList(SelectAllContractId);}
-	@Override
 	public List<Contract> selectAllIds() {return sqlSession.selectList(SelectAllIds);}
-	@Override
 	public List<Contract> selectListByInsurant(String insurantId) {return sqlSession.selectList(SelectListByInsurant, insurantId);}
-	@Override
 	public Contract select(String contractId) {return (Contract) sqlSession.selectList(Select, contractId);}
-	@Override
 	public Contract selectUnpaidAndFee(String contractId) {return (Contract) sqlSession.selectList(SelectUnpaidAndFee, contractId);}
 
 	// Update
-	@Override
 	public int updateFee(Contract contract) {return sqlSession.update(UpdateFee, contract);}
-	@Override
 	public int updateEffectiveness(Contract contract) {return sqlSession.update(UpdateEffectiveness, contract);}
-	@Override
 	public int updateLifespan(Contract contract) {return sqlSession.update(UpdateLifespan, contract);}
-	@Override
 	public int updateUnpaidPeriod(Contract contract) {return sqlSession.update(UpdateUnpaidPeriod, contract);}
-	@Override
 	public int updateSpecial(Contract contract) {return sqlSession.update(UpdateSpecial, contract);}
 
 	// Delete
-	@Override
 	public int delete(String contractId) {return sqlSession.update(Delete, contractId);}
 	
 	

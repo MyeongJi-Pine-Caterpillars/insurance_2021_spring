@@ -169,7 +169,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        		<button type="button" class="btn btn-outline-dark">로그아웃</button>
+                        		<button type="button" class="btn btn-outline-dark" onclick="location.href='myPage/doLogout'">로그아웃</button>
                         	</a>
 						</li>                        
                         

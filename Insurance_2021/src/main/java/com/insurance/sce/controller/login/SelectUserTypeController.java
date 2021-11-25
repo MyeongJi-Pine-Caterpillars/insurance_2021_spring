@@ -5,13 +5,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@RequestMapping(value = "/")
 public class SelectUserTypeController {
-	@RequestMapping(value="/loginUser", method=RequestMethod.GET)
-	public String loginUser() {
-		return "login/loginUser";
-	}
-	@RequestMapping(value="/loginEmployee", method=RequestMethod.GET)
-	public String loginEmployee() {
-		return "login/loginEmployee";
+	@RequestMapping(value="next", method=RequestMethod.GET)
+	public String response() {
+		return "login/selectUserType";
 	}
 }

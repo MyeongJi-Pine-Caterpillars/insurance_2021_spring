@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+<title>보험사</title>
 </head>
 <body>
 	<div style = "padding: 5%; width: 90%; height: 500px;">

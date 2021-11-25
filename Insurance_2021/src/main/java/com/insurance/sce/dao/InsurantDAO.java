@@ -1,8 +1,12 @@
 package com.insurance.sce.dao;
 
 import java.util.List;
+
+import org.springframework.stereotype.Repository;
+
 import com.insurance.sce.model.customer.Insurant;
 
+@Repository
 public interface InsurantDAO {
 	public int insertInsurant(Insurant insurant);
 	

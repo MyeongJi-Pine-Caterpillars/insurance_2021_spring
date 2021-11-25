@@ -17,9 +17,9 @@
 	<select id="selectAll" resultType="com.insurance.sce.model.customer.Customer">
 		SELECT * FROM customer
 	</select>
-	<select id="select" resultType="com.insurance.sce.model.customer.Customer">
+	<select id="select" resultType="com.insurance.sce.model.customer.Customer" parameterType="string">
 		SELECT * FROM customer
-		WHERE customerId = #{customerId}
+		WHERE customerId = #{value}
 	</select>
 	
 	<!-- UPDATE -->
@@ -35,7 +35,7 @@
 	</update>
 	
 	<!-- DELETE -->
-	<delete id="delete" parameterType="String">
+	<delete id="delete" parameterType="string">
 		DELETE FROM customer
 		WHERE customerId = #{customerId}
 	</delete>

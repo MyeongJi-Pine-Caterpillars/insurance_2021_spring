@@ -15,6 +15,8 @@ public class CustomerService {
 		// 해당 Id를 가진 Customer 불러오기
 		Customer customer = customerDAO.select(id);
 		
+		if(customer == null) return null;
+		
 		// Id PW 대조
 		if(customer.getPassword().equals(pw)) return customer;
 		else return null;

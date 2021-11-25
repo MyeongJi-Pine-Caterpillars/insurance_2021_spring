@@ -1,22 +1,29 @@
 package com.insurance.sce.dao;
 
-import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
-public class CompensationCauseDAOImpl extends DBConnector implements CompensationCauseDAO{
-	public boolean insert(String accidentId, String cause) {
-		String sql = "INSERT INTO compensationCause(accidentId, cause) values('" + accidentId + "', '" + cause + "');";
-	return this.execute(sql);
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class CompensationCauseDAOImpl implements CompensationCauseDAO{
+	@Inject
+	private SqlSession sqlSession;
+
+	private static final String Insert = "compensationCauseMapper.insert";
+	private static final String Select = "compensationCauseMapper.select";
+	
+	// Insert
+	public int insert(String accidentId, String cause) {
+		Map<String, String> map = new HashMap<>();
+		map.put("accidentId", accidentId);
+		map.put("cause", cause);
+		return sqlSession.insert(Insert, map);
 	}
 
-	public String selectByAccidentId(String accidentId) {
-		String sql = "SELCT * FROM compensationCause WHERE contractId = '"+accidentId+"';";
-		this.read(sql);
-		try {
-			return rs.getString("cause");
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return null;
-	}
-
+	// Select
+	public String select(String accidentId) {return sqlSession.selectOne(Select, accidentId);}
 }

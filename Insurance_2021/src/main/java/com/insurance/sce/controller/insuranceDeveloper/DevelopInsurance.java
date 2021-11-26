@@ -30,7 +30,7 @@ public class DevelopInsurance {
 	 */
 	
 	@RequestMapping(value="developInsurance", method=RequestMethod.GET)
-	public String response4(Locale locale, Model model, HttpServletRequest request) {
+	public String responseDevelopInsurance(Locale locale, Model model, HttpServletRequest request) {
 
 		return "insuranceDeveloper/developInsurance";
 	}
@@ -49,7 +49,7 @@ public class DevelopInsurance {
 //		return "insuranceDeveloper/developInsurance";
 //	}
 	@RequestMapping(value="goToDetailInsurance", method=RequestMethod.GET)
-	public String response5(Locale locale, Model model, HttpServletRequest request) {
+	public String responseGoToDetailInsurance(Locale locale, Model model, HttpServletRequest request) {
 		String insuranceType = (String) request.getParameter("insuranceRadio");
 		String[] insuranceGender = request.getParameterValues("genderCheckbox");
 		if(insuranceGender == null) {

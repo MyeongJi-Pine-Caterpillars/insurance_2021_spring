@@ -28,7 +28,7 @@ public class DeveloperView {
 	 */
 	
 	@RequestMapping(value="developerView", method=RequestMethod.GET)
-	public String response(Locale locale, Model model, HttpServletRequest request) {
+	public String responseDeveloperView(Locale locale, Model model, HttpServletRequest request) {
 		return "insuranceDeveloper/developerView";
 	}
 }

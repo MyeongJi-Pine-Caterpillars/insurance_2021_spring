@@ -75,4 +75,13 @@ public class InsuranceDeveloperService {
 		((DriverInsurance)insurance).setRateOfAccidentHistory(accidentHistoryRate);
 		return insurance;
 	}
+	public Insurance setDentalRate(Insurance insurance, int annualCount) {
+		((DentalInsurance)insurance).setAnnualLimitCount(annualCount);
+		return insurance;
+	}
+	public Insurance setFireRate(Insurance insurance, double[] postedPrice, double[] usageOfStructure) {
+		((FireInsurance)insurance).setRateOfPostedPrice(postedPrice);
+		((FireInsurance)insurance).setRateOfStructureUsage(usageOfStructure);
+		return insurance;
+	}
 }

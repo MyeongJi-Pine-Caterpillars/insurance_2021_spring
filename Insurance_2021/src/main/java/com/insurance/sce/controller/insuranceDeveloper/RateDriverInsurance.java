@@ -32,7 +32,7 @@ public class RateDriverInsurance {
 	 */
 	
 	@RequestMapping(value="rateDriverInsurance", method=RequestMethod.GET)
-	public String response4(Locale locale, Model model, HttpServletRequest request) {
+	public String responseRateDriverInsurance(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		this.insurance = (Insurance) session.getAttribute("detailedInsurance");
 		for(eTypeOfCar e: eTypeOfCar.values()) {
@@ -47,7 +47,7 @@ public class RateDriverInsurance {
 		return "insuranceDeveloper/rateDriverInsurance";
 	}
 	@RequestMapping(value="guaranteeDriverInsurance", method=RequestMethod.GET)
-	public String responseGoToCancerRate(Locale locale, Model model, HttpServletRequest request) throws Exception{
+	public String responseGuaranteeDriverInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		String[] typeOfCar = {"busRate", "vanRate", "suvRate", "foreignRate", "etcRate"};
 		String[] rankOfCar = {"luxuryRate", "highRate", "middleRate", "lowRate"};
 		String[] accidentHistory = {"zeroCountRate", "oneCountRate", "twoThreeCountRate", "fourFiveCountRate", "sixSevenCountRate", "eightCountRate"};
@@ -71,22 +71,22 @@ public class RateDriverInsurance {
 		String nextViewUrl = "";
 		switch(this.insurance.getType()) {
 		case driverInsurance:
-			nextViewUrl = "redirect:/GuaranteeDriverInsurance";
+			nextViewUrl = "redirect:/guaranteeDriverInsurance";
 			break;
 		case fireInsurance:
-			nextViewUrl = "redirect:/GuaranteeFireInsurance";
+			nextViewUrl = "redirect:/guaranteeFireInsurance";
 			break;
 		case cancerInsurance:
-			nextViewUrl = "redirect:/GuaranteeCancerInsurance";
+			nextViewUrl = "redirect:/guaranteeCancerInsurance";
 			break;
 		case actualCostInsurance:
-			nextViewUrl = "redirect:/GuaranteeActualCostInsurance";
+			nextViewUrl = "redirect:/guaranteeActualCostInsurance";
 			break;
 		case tripInsurance:
-			nextViewUrl = "redirect:/GuaranteeTripInsurance";
+			nextViewUrl = "redirect:/guaranteeTripInsurance";
 			break;
 		case dentalInsurance:
-			nextViewUrl = "redirect:/GuaranteeDentalInsurance";
+			nextViewUrl = "redirect:/guaranteeDentalInsurance";
 			break;
 		default:
 			nextViewUrl = "redirect:/developInsurance";

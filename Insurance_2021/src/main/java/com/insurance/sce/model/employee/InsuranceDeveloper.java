@@ -5,15 +5,14 @@ import com.insurance.sce.global.Constants.eInsuranceType;
 import com.insurance.sce.model.insurance.*;
 
 public class InsuranceDeveloper extends Employee {
-	private InsuranceDAO insuranceDAO;
 	
 	public InsuranceDeveloper(InsuranceDAO insuranceDAO){
-		this.insuranceDAO = insuranceDAO;
 	}
 
 	
 	public boolean postManageInsurance(Insurance insurance, boolean del){
-		return insuranceDAO.updateDel(insurance.getInsuranceId(), del);
+//		return insuranceDAO.updateDel(insurance.getInsuranceId(), del);
+		return false;
 	}
 
 	public void readSurveyResult(){
@@ -36,6 +35,7 @@ public class InsuranceDeveloper extends Employee {
 	}
 	
 	public boolean finishInsurance(Insurance insurance) {
-		return this.insuranceDAO.insert(insurance);
+//		return this.insuranceDAO.insert(insurance);
+		return false;
 	}
 }

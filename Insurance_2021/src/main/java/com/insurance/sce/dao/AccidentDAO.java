@@ -1,16 +1,21 @@
 package com.insurance.sce.dao;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
 
 import com.insurance.sce.model.contract.*;
 
+@Repository
 public interface AccidentDAO {
-	public boolean insert(Accident accident);
-	public boolean insertCompensationCause(Accident accident, String cause);
-	public ArrayList<Accident> select();
-	public ArrayList<Accident> selectByContractId(String contractId);
-	public Accident selectAccident(String accidentId);
-	public boolean updateCompensation(String accidentId, int compensation);
-	public boolean updateHandlingStatus(String accidentId, boolean handlingStatus);
-	public boolean delete(String accidentId);
+	public int insert(Accident accident);
+	
+	public List<Accident> selectAll();
+	public List<Accident> selectListByContractId(String contractId);
+	public Accident selectByAccidentId(String accidentId);
+	
+	public int updateCompensation(Accident accident);
+	public int updateHandlingStatus(Accident accident);
+	
+	public int delete(String accidentId);
 }

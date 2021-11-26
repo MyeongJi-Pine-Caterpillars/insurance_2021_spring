@@ -1,10 +1,13 @@
 package com.insurance.sce.dao;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
 
 import com.insurance.sce.model.insurance.GuaranteePlan;
 
+@Repository
 public interface GuaranteePlanDAO {
-	public boolean insert(GuaranteePlan guaranteePlan);
-	public ArrayList<GuaranteePlan> selectById(String insuranceId);
+	public int insert(GuaranteePlan guaranteePlan);
+	public List<GuaranteePlan> selectByInsuranceId(String insuranceId);
 }

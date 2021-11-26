@@ -92,7 +92,7 @@ public abstract class Insurance {
 	abstract public Insurance newInstance();
 	
 	public void birngGuaranteePlan() {
-		this.guaranteePlanList = this.guaranteePlanDAO.selectById(this.insuranceId);
+//		this.guaranteePlanList = this.guaranteePlanDAO.selectById(this.insuranceId);
 	}
 	
 	public void addGuaranteePlan(String content, int compensation, boolean special, double rate) {

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="interviewMapper">
+	
+	<!-- INSERT -->
+	<insert id="insert" parameterType="com.insurance.sce.model.interview.Interview">
+		INSERT INTO interview (interviewId, salespersonId, customerId,
+								confirmedStatus, date, content, time)
+		VALUES (#{interviewId}, #{salespersonId}, #{customerId}, #{confirmedStatus}
+				#{date}, #{content}, #{time})
+	</insert>
+
+	<!-- SELECT -->
+	<select id="selectAll" resultType="com.insurance.sce.model.interview.Interview">
+		SELECT * FROM interview
+	</select>
+	<select id="select" resultType="com.insurance.sce.model.interview.Interview">
+		SELECT * FROM interview
+		WHERE interviewId = #{interviewId}
+	</select>
+	
+	<!-- UPDATE -->
+	<update id="updateConfirmedStatus" parameterType="com.insurance.sce.model.interview.Interview">
+		UPDATE interview
+		SET confirmedStatus = #{confirmedStatus}
+		WHERE interviewId = #{interviewId}
+	</update>
+	<update id="updateDate" parameterType="com.insurance.sce.model.interview.Interview">
+		UPDATE interview
+		SET date = #{date}
+		WHERE interviewId = #{interviewId}
+	</update>
+	<update id="updateContent" parameterType="com.insurance.sce.model.interview.Interview">
+		UPDATE interview
+		SET content = #{content}
+		WHERE interviewId = #{interviewId}
+	</update>
+	<update id="updateSalespersonId" parameterType="com.insurance.sce.model.interview.Interview">
+		UPDATE interview
+		SET salespersonId = #{salespersonId}
+		WHERE interviewId = #{interviewId}
+	</update>
+	
+	<!-- DELETE -->
+	<delete id="delete" parameterType="String">
+		DELETE FROM interview
+		WHERE interviewId = #{interviewId}
+	</delete>
+</mapper>

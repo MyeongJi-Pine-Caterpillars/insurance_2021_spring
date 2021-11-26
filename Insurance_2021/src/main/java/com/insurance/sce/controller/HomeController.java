@@ -40,11 +40,6 @@ public class HomeController {
 		
 		return "home";
 	}
-	
-	@RequestMapping(value="next", method=RequestMethod.GET)
-	public String response() {
-		return "insuranceDeveloper/developerView";
-	}
 
 	@RequestMapping(value = "example.do")
 	public ModelAndView example(HttpServletRequest request) throws Exception {

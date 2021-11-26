@@ -31,8 +31,8 @@ public class SelectActualInsuranceController {
 	public String response4(Locale locale, Model model, HttpServletRequest request) {
 		Customer customer = new Customer();
 		customer.setName("홍영석");
-		
-		model.addAttribute("clientName", customer.getName() );
+		model.addAttribute("customerName", customer.getName() );
+
 		return "customer/selectActualInsurance";
 	}
 }

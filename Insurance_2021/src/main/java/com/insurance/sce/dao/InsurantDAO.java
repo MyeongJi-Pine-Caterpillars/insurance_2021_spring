@@ -1,34 +1,35 @@
 package com.insurance.sce.dao;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
 
 import com.insurance.sce.model.customer.Insurant;
 
+@Repository
 public interface InsurantDAO {
-	public boolean insert(Insurant insurant);
-	public ArrayList<Insurant> select();
+	public int insertInsurant(Insurant insurant);
+	
+	public List<Insurant> selectInsurantList();
 	public Insurant selectInsurant(String InsurantId);
 	public Insurant selectByCustomerId(String customerId);
 	public String selectCustomerId(String insurantId);
 	
-	public boolean updateName(String insurantId, String name);
-	public boolean updateAddress(String insurantId, String address);
-	public boolean updatePhoneNumber(String insurantId, String phoneNumber);
-	public boolean updateAge(String insurantId, int age);
-	public boolean updateAccidentHistory(String insurantId, int accidentHistory);
-	public boolean updatePostedPriceOfStructure(String insurantId, long postedPriceOfStructure);
+	public int updateName(Insurant insurant);
+	public int updateAddress(Insurant insurant);
+	public int updatePhoneNumber(Insurant insurant);
+	public int updateAge(Insurant insurant);
+	public int updateAccidentHistory(Insurant insurant);
+	public int updatePostedPriceOfStructure(Insurant insurant);
+	public int updateUsageOfStructure(Insurant insurant);
+	public int updateGender(Insurant insurant);
+	public int updateJob(Insurant insurant);
+	public int updateTypeOfCar(Insurant insurant);
+	public int updateRankOfCar(Insurant insurant);
+	public int updateRiskOfTripCountry(Insurant insurant);
+	public int updateForRecontract(Insurant insurant);
+	public int updateFamilyMedicalRelationship(Insurant insurant);
+	public int updateFamilyMedicalDisease(Insurant insurant);
 	
-	public boolean updateUsageOfStructure(String insurantId, int usageOfStructure);
-	public boolean updateGender(String insurantId, int gender);
-	public boolean updateJob(String insurantId, int job);
-	public boolean updateTypeOfCar(String insurantId, int typeOfCar);
-	public boolean updateRankOfCar(String insurantId, int rankOfCar);
-	public boolean updateRiskOfTripCountry(String insurantId, int riskOfTripCountry);
-	public boolean updateForRecontract(Insurant insurant);
-	
-	public boolean delete(String insurantId);
-	public boolean updateFamilyMedicalRelationship(String insurantId, int familyMedicalRelationship);
-	public boolean updateFamilyMedicalDisease(String insurantId, int familyMedicalDisease);
-		
-		
+	public int delete(String insurantId);
 }

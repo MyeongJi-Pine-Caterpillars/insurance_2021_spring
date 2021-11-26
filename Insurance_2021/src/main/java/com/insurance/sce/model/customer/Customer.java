@@ -53,14 +53,14 @@ public class Customer {
 	}
 
 	public void createInsurant(Insurant insurant) {
-		this.insurantDAO.insert(insurant);
+		this.insurantDAO.insertInsurant(insurant);
 	}
 	
 	public void reviveContract(String contractId, ContractDAO contractDAO) {
-		contractDAO.updateUnpaidPeriod(contractId, 0);
-		for (int month = 0; month < Constants.thisMonth-1; month++) {
-			contractDAO.updatePayHistory(contractId, month);
-		}
+//		contractDAO.updateUnpaidPeriod(contractId, 0);
+//		for (int month = 0; month < Constants.thisMonth-1; month++) {
+//			contractDAO.updatePayHistory(contractId, month);
+//		}
 	}
 	
 }

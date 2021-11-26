@@ -388,7 +388,19 @@
 								<div class="card-header py-3">
 									<h6 class="m-0 font-weight-bold text-primary">보험 이름</h6>
 								</div>
-								
+								<div class="card-body">
+									<div class="column">
+										<div class=form-check>
+											<label for="genderCheckbox1">보험의 이름을 입력하세요.</label>
+										</div>
+										<form id="insuranceFee" method="get">
+											<div class=form-check>
+												<input type="text" name="insuranceName"> 
+											</div>
+											
+										</form>
+									</div>
+								</div>
 							</div>
 
 							<!-- Approach -->
@@ -397,28 +409,22 @@
 									<h6 class="m-0 font-weight-bold text-primary">보험 기본료</h6>
 								</div>
 								<div class="card-body">
-									
+									<div class="column">
+										<div class=form-check>
+											<label for="genderCheckbox1">기본 보험료를 입력하세요.</label>
+										</div>
+										<form id="insuranceFee" method="get">
+											<div class=form-check>
+												<input type="text" name="insuraneFee"> 
+											</div>
+											
+										</form>
+									</div>
 								</div>
 							</div>
 							<div class="col">
-								<button type="button" class="btn btn-secondary" onclick="sendData()">해당 조건으로 보험 조회하기</button>
 								<button type="button" class="btn btn-primary">다음 단계로</button>
 							</div>
-							<script>
-							function sendData(){
-								var insuranceCategory = $('input:[name=insuranceRadio]').val();
-								alert(insuranceCategory);
-								var genderArray = new Array();
-								$('input:checkbox[name=genderCheckbox]:checked').each(function() {
-									genderArray.push(this.id);
-								})
-								// alert(genderArray);
-								$("#arrayParam").val(genderArray);
-								$("#genderCheck").attr("action", "clickNextBtn");
-								$("#genderCheck").submit();
-								
-							}
-							</script>
 						</div>
 					</div>
 

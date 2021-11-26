@@ -382,7 +382,7 @@
 					<div class="row">
 
 						<div class="col-lg-6 mb-4">
-
+							<form id="form-insurance" action="clickNextBtn" method="get">
 							<!-- Illustrations -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
@@ -392,37 +392,37 @@
 									<div class="column">
 										<div class=form-check>
 											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="insuranceRadio1" checked>
+												name="insuranceRadio" value="Driver" checked>
 											<label class="form-check-label" for="insuranceRadio1">
 												운전자 보험 </label>
 										</div>
 										<div class="form-check">
 											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="insuranceRadio2"> <label
+												name="insuranceRadio" value="Dental"> <label
 												class="form-check-label" for="insuranceRadio2"> 치아
 												보험 </label>
 										</div>
 										<div class=form-check>
 											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="insuranceRadio3"> <label
+												name="insuranceRadio" value="Fire"> <label
 												class="form-check-label" for="insuranceRadio3"> 화재
 												보험 </label>
 										</div>
 										<div class="form-check">
 											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="insuranceRadio4"> <label
+												name="insuranceRadio" value="Cancer"> <label
 												class="form-check-label" for="insuranceRadio4"> 암 보험
 											</label>
 										</div>
 										<div class=form-check>
 											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="insuranceRadio5"> <label
+												name="insuranceRadio" value="ActualCost"> <label
 												class="form-check-label" for="insuranceRadio5"> 실비
 												보험 </label>
 										</div>
 										<div class="form-check">
 											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="insuranceRadio6"> <label
+												name="insuranceRadio" value="Trip"> <label
 												class="form-check-label" for="insuranceRadio6"> 여행자
 												보험 </label>
 										</div>
@@ -437,7 +437,6 @@
 								</div>
 								<div class="card-body">
 									<div class="column">
-										<form id="genderCheck" method="get">
 											<div class=form-check>
 												<input class="form-check-input" type="checkbox"
 													name="genderCheckbox" value="man" checked> <label
@@ -448,11 +447,10 @@
 													name="genderCheckbox" value="woman" checked> <label
 													class="form-check-label" for="genderCheckbox2">여자</label>
 											</div>
-											<input type="hidden" id="arrayParam" name="arrayParam" />
-										</form>
 									</div>
 								</div>
 							</div>
+							</form>
 							<div class="col">
 								<form id="nextButton" method="get">
 									<button type="button" class="btn btn-secondary"
@@ -472,8 +470,7 @@
 								$("#genderCheck").submit();
 							}
 							function next(){
-								$("#nextButton").attr("action", "detailInsurance");
-								$("#nextButton").submit();
+								$("#form-insurance").submit();
 							}
 							</script>
 						</div>

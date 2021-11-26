@@ -23,8 +23,6 @@ import com.insurance.sce.service.InsuranceDeveloperService;
 @RequestMapping(value = "/")
 public class DevelopInsurance {
 	
-	private static final Logger logger = LoggerFactory.getLogger(DevelopInsurance.class);
-	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */

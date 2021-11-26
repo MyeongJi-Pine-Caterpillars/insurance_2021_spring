@@ -84,4 +84,12 @@ public class InsuranceDeveloperService {
 		((FireInsurance)insurance).setRateOfStructureUsage(usageOfStructure);
 		return insurance;
 	}
+	public Insurance setTripRate(Insurance insurance, double[] riskOfTripCountry) {
+		((TripInsurance)insurance).setRateOfCountryRank(riskOfTripCountry);
+		return insurance;
+	}
+	public Insurance setActualCostRate(Insurance insurance, double selfBurden) {
+		((ActualCostInsurance)insurance).setSelfBurdenRate(selfBurden);
+		return insurance;
+	}
 }

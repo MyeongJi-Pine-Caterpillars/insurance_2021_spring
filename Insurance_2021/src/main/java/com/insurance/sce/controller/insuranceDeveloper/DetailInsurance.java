@@ -24,8 +24,6 @@ import com.insurance.sce.service.InsuranceDeveloperService;
 @Controller
 @RequestMapping(value = "/")
 public class DetailInsurance {
-	
-	private static final Logger logger = LoggerFactory.getLogger(DetailInsurance.class);
 	private Insurance insurance;
 	/**
 	 * Simply selects the home view to render by returning its name.

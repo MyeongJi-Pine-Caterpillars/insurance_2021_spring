@@ -23,7 +23,6 @@ import com.insurance.sce.service.InsuranceDeveloperService;
 @Controller
 @RequestMapping(value = "/")
 public class RateCancerInsurance {
-	private static final Logger logger = LoggerFactory.getLogger(DetailInsurance.class);
 	private Insurance insurance;
 	
 	/**

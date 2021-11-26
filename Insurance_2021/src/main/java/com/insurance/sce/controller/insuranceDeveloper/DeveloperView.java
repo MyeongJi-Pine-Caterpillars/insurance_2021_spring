@@ -21,8 +21,6 @@ import com.insurance.sce.model.customer.Customer;
 @RequestMapping(value = "/")
 public class DeveloperView {
 	
-	private static final Logger logger = LoggerFactory.getLogger(DeveloperView.class);
-	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */

@@ -5,9 +5,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
 import com.insurance.sce.model.insurance.*;
 
+@Repository
 public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	@Inject
 	private SqlSession sqlSession;
@@ -20,6 +22,12 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	private static final String InsertFireInsurance = "insuranceMapper.insertFireInsurance";
 	private static final String InsertTripInsurance = "insuranceMapper.insertTripInsurance";
 	private static final String SelectAll = "insuranceMapper.selectAll";
+	private static final String SelectAllActualCostInsurance = "insuranceMapper.selectAllActualCostInsurance";
+	private static final String SelectAllCancerInsurance = "insuranceMapper.selectAllCancerInsurance";
+	private static final String SelectAllDentalInsurance = "insuranceMapper.selectAllDentalInsurance";
+	private static final String SelectAllDriverInsurance = "insuranceMapper.selectAllDriverInsurance";
+	private static final String SelectAllFireInsurance = "insuranceMapper.selectAllFireInsurance";
+	private static final String SelectAllTripInsurance = "insuranceMapper.selectAllTripInsurance";
 	private static final String SelectForConfirm = "insuranceMapper.selectForConfirm";
 	private static final String SelectSimpleData = "insuranceMapper.selectSimpleData";
 	private static final String SelectInsuranceId = "insuranceMapper.selectInsuranceId";
@@ -47,6 +55,12 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 
 	// Select
 	public List<Insurance> selectAll() {return sqlSession.selectList(SelectAll);}
+	public List<ActualCostInsurance> selectAllActualCostInsurance() {return sqlSession.selectList(SelectAllActualCostInsurance);}
+	public List<CancerInsurance> selectAllCancerInsurance() {return sqlSession.selectList(SelectAllCancerInsurance);}
+	public List<DentalInsurance> selectAllDentalInsurance() {return sqlSession.selectList(SelectAllDentalInsurance);}
+	public List<DriverInsurance> selectAllDriverInsurance() {return sqlSession.selectList(SelectAllDriverInsurance);}
+	public List<FireInsurance> selectAllFireInsurance() {return sqlSession.selectList(SelectAllFireInsurance);}
+	public List<TripInsurance> selectAllTripInsurance() {return sqlSession.selectList(SelectAllTripInsurance);}
 	public List<Insurance> selectForConfirm() {return sqlSession.selectList(SelectForConfirm);}
 	public List<Insurance> selectSimpleData() {return sqlSession.selectList(SelectSimpleData);}
 	public List<String> selectInsuranceId() {return sqlSession.selectList(SelectInsuranceId);}

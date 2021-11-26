@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.insurance.sce.model.insurance.Insurance;
+import com.insurance.sce.model.insurance.*;
 
 @Repository
 public interface InsuranceDAO {
@@ -18,6 +18,12 @@ public interface InsuranceDAO {
 	public int insertTripInsurance(Insurance insurance);
 	
 	public List<Insurance> selectAll();
+	public List<ActualCostInsurance> selectAllActualCostInsurance();
+	public List<CancerInsurance> selectAllCancerInsurance();
+	public List<DentalInsurance> selectAllDentalInsurance();
+	public List<DriverInsurance> selectAllDriverInsurance();
+	public List<FireInsurance> selectAllFireInsurance();
+	public List<TripInsurance> selectAllTripInsurance();
 	public List<Insurance> selectForConfirm();
 	public List<Insurance> selectSimpleData();
 	public List<String> selectInsuranceId();

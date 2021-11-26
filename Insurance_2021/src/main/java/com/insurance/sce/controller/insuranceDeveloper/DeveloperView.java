@@ -1,4 +1,4 @@
-package com.insurance.sce.controller.customer;
+package com.insurance.sce.controller.insuranceDeveloper;
 
 import java.util.Locale;
 
@@ -19,20 +19,16 @@ import com.insurance.sce.model.customer.Customer;
  */
 @Controller
 @RequestMapping(value = "/")
-public class SelectActualInsuranceController {
+public class DeveloperView {
 	
-	private static final Logger logger = LoggerFactory.getLogger(SelectActualInsuranceController.class);
+	private static final Logger logger = LoggerFactory.getLogger(DeveloperView.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	
-	@RequestMapping(value="actualInsurance", method=RequestMethod.GET)
-	public String response4(Locale locale, Model model, HttpServletRequest request) {
-		Customer customer = new Customer();
-		customer.setName("홍영석");
-		model.addAttribute("customerName", customer.getName() );
-
-		return "customer/selectActualInsurance";
+	@RequestMapping(value="developerView", method=RequestMethod.GET)
+	public String response(Locale locale, Model model, HttpServletRequest request) {
+		return "insuranceDeveloper/developerView";
 	}
 }

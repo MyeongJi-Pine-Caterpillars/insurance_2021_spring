@@ -1,5 +1,6 @@
 package com.insurance.sce.controller.customer;
 
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,15 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.insurance.sce.dao.AccidentDAO;
-import com.insurance.sce.dao.AccidentDAOImpl;
-import com.insurance.sce.dao.GuaranteePlanDAO;
-import com.insurance.sce.dao.InsuranceDAO;
 import com.insurance.sce.model.customer.Customer;
 import com.insurance.sce.model.insurance.CancerInsurance;
 import com.insurance.sce.model.insurance.Insurance;
+import com.insurance.sce.service.InsuranceService;
 
 /**
  * Handles requests for the application home page.
@@ -31,7 +29,8 @@ public class SelectCacnerInsuranceController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SelectCacnerInsuranceController.class);
 	
-//	@Autowired
+	@Autowired
+	InsuranceService insuranceService;
 //	InsuranceDAO insuranceDAO;
 //	GuaranteePlanDAO guaranteePlanDAO;
 	
@@ -45,11 +44,17 @@ public class SelectCacnerInsuranceController {
 		
 		Customer customer = (Customer)session.getAttribute("loginCustomer");
 		
-//		Insurance insurance = new CancerInsurance();
 
 		model.addAttribute("customerName", customer.getName() );
 		return "customer/selectCancerInsurance";
 	}
+	
+	@RequestMapping(value="selectCancerInsurance/doSelectAll")
+	@ResponseBody
+	List<CancerInsurance> doSelectAll() {
+		return insuranceService.selectAll();
+	}
+	
 	@RequestMapping(value="selectCancerInsurance/doLogout")
 	public String doLogout(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);

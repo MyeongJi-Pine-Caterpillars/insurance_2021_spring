@@ -77,6 +77,30 @@
 	<select id="selectAll" resultType="com.insurance.sce.model.insurance.Insurance">
 		SELECT * FROM insurance
 	</select>
+	<select id="selectAllActualCostInsurance" resultType="com.insurance.sce.model.insurance.CancerInsurance">
+		SELECT * FROM insurance
+		WHERE type = 3
+	</select>
+	<select id="selectAllCancerInsurance" resultType="com.insurance.sce.model.insurance.CancerInsurance">
+		SELECT * FROM insurance
+		WHERE type = 5
+	</select>
+	<select id="selectAllDentalInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+		SELECT * FROM insurance
+		WHERE type = 2
+	</select>
+	<select id="selectAllDriverInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+		SELECT * FROM insurance
+		WHERE type = 1
+	</select>
+	<select id="selectAllFireInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+		SELECT * FROM insurance
+		WHERE type = 4
+	</select>
+	<select id="selectAllTripInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+		SELECT * FROM insurance
+		WHERE type = 6
+	</select>
 	<select id="selectInsuranceId" resultType="String">
 		SELECT insuranceId FROM insurance
 	</select>
@@ -94,7 +118,7 @@
 		SELECT * FROM actualCostInsurance
 		WHERE insuranceId = #{insuranceId}
 	</select>
-	<select id="selectCancerInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+	<select id="selectCancerInsurance" resultType="com.insurance.sce.model.insurance.CancerInsurance">
 		SELECT * FROM cancerInsurance
 		WHERE insuranceId = #{insuranceId}
 	</select>

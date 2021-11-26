@@ -34,7 +34,6 @@ public abstract class Insurance {
 
 	// Constructor
 	public Insurance() {
-		this.guaranteePlanDAO = new GuaranteePlanDAOImpl();
 		this.guaranteePlanList = new ArrayList<GuaranteePlan>();
 	}
 	

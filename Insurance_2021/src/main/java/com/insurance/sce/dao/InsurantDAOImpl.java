@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.insurance.sce.model.customer.Insurant;
+import com.insurance.sce.model.customer.InsurantDB;
 
 @Repository
 public class InsurantDAOImpl implements InsurantDAO {
@@ -41,12 +42,26 @@ public class InsurantDAOImpl implements InsurantDAO {
 	
 	private static final String Delete = "insurantMapper.delete";
 	
-	public int insertInsurant(Insurant insurant) {return sqlSession.insert(Insert, insurant);}
-
-	public List<Insurant> selectInsurantList() {
-		return sqlSession.selectList(SelectInsurantList);
+	public int insertInsurant(Insurant insurant) {
+		InsurantDB insurantDB = new InsurantDB(insurant);
+		return sqlSession.insert(Insert, insurantDB);
 	}
-	public Insurant selectInsurant(String InsurantId) {return sqlSession.selectOne(SelectInsurant, InsurantId);}
+
+	public ArrayList<Insurant> selectInsurantList() {
+		ArrayList<Insurant> insurantList = new ArrayList<Insurant>();
+		List<InsurantDB> insurantDBList = sqlSession.selectList(SelectInsurantList);
+		for(InsurantDB db : insurantDBList) {
+			db.setEnum();
+			insurantList.add((Insurant)db);
+		}
+		return insurantList;
+	}
+	public Insurant selectInsurant(String insurantId) {
+		InsurantDB insurantDB = sqlSession.selectOne(SelectInsurant, insurantId);
+		
+		insurantDB.setEnum();
+		return (Insurant)insurantDB;
+	}
 	public Insurant selectByCustomerId(String customerId) {return sqlSession.selectOne(SelectByCustomerId, customerId);}
 	public String selectCustomerId(String insurantId) {return sqlSession.selectOne(SelectCustomerId, insurantId);}
 	
@@ -56,15 +71,15 @@ public class InsurantDAOImpl implements InsurantDAO {
 	public int updateAge(Insurant insurant) {return sqlSession.update(UpdateAge, insurant);}
 	public int updateAccidentHistory(Insurant insurant) {return sqlSession.update(UpdateAccidentHistory, insurant);}
 	public int updatePostedPriceOfStructure(Insurant insurant) {return sqlSession.update(UpdatePostedPriceOfStructure, insurant);}
-	public int updateUsageOfStructure(Insurant insurant) {return sqlSession.update(UpdateUsageOfStructure, insurant);}
-	public int updateGender(Insurant insurant) {return sqlSession.update(UpdateGender, insurant);}
-	public int updateJob(Insurant insurant) {return sqlSession.update(UpdateJob, insurant);}
-	public int updateTypeOfCar(Insurant insurant) {return sqlSession.update(UpdateTypeOfCar, insurant);}
-	public int updateRankOfCar(Insurant insurant) {return sqlSession.update(UpdateRankOfCar, insurant);}
-	public int updateRiskOfTripCountry(Insurant insurant) {return sqlSession.update(UpdateRiskOfTripCountry, insurant);}
-	public int updateForRecontract(Insurant insurant) {return sqlSession.update(UpdateForRecontract, insurant);}
-	public int updateFamilyMedicalRelationship(Insurant insurant) {return sqlSession.update(UpdateFamilyMedicalRelationship, insurant);}
-	public int updateFamilyMedicalDisease(Insurant insurant) {return sqlSession.update(UpdateFamilyMedicalDisease, insurant);}
+	public int updateUsageOfStructure(InsurantDB insurant) {return sqlSession.update(UpdateUsageOfStructure, insurant);}
+	public int updateGender(InsurantDB insurant) {return sqlSession.update(UpdateGender, insurant);}
+	public int updateJob(InsurantDB insurant) {return sqlSession.update(UpdateJob, insurant);}
+	public int updateTypeOfCar(InsurantDB insurant) {return sqlSession.update(UpdateTypeOfCar, insurant);}
+	public int updateRankOfCar(InsurantDB insurant) {return sqlSession.update(UpdateRankOfCar, insurant);}
+	public int updateRiskOfTripCountry(InsurantDB insurant) {return sqlSession.update(UpdateRiskOfTripCountry, insurant);}
+	public int updateForRecontract(InsurantDB insurant) {return sqlSession.update(UpdateForRecontract, insurant);}
+	public int updateFamilyMedicalRelationship(InsurantDB insurant) {return sqlSession.update(UpdateFamilyMedicalRelationship, insurant);}
+	public int updateFamilyMedicalDisease(InsurantDB insurant) {return sqlSession.update(UpdateFamilyMedicalDisease, insurant);}
 
 	public int delete(String insurantId) {return sqlSession.delete(Delete, insurantId);}
 }

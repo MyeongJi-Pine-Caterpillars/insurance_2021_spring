@@ -1,6 +1,9 @@
 package com.insurance.sce.dao;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public interface CompensationCauseDAO {
-	public boolean insert(String accidentId, String cause);
-	public String selectByAccidentId(String contractId);
+	public int insert(String accidentId, String cause);
+	public String select(String accidentId);
 }

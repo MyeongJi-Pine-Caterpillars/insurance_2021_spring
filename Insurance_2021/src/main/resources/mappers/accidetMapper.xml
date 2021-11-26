@@ -39,9 +39,9 @@
 	</update>
 	
 	<!-- DELETE -->
-	<delete id="delete" parameterType="String">
+	<delete id="delete" parameterType="string">
 		DELETE FROM accident
-		WHERE accidentId = #{accidentId}
+		WHERE accidentId = #{value}
 	</delete>
 
 

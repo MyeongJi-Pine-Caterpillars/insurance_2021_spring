@@ -3,6 +3,7 @@ package com.insurance.sce.controller.customer;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,10 +30,17 @@ public class MyPageController {
 	
 	@RequestMapping(value="myPage", method=RequestMethod.GET)
 	public String response4(Locale locale, Model model, HttpServletRequest request) {
-		Customer customer = new Customer();
-		customer.setName("홍영석");
+		HttpSession session = request.getSession(true);
+		
+		Customer customer = (Customer) session.getAttribute("loginCustomer");
 
 		model.addAttribute("customerName", customer.getName() );
 		return "customer/myPage";
+	}
+	@RequestMapping(value="myPage/doLogout")
+	public String doLogout(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("loginCustomer");
+		return "redirect:/loginUser";
 	}
 }

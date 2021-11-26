@@ -390,15 +390,14 @@
 								</div>
 								<div class="card-body">
 									<div class="column">
-										<div class=form-check>
-											<label for="genderCheckbox1">보험의 이름을 입력하세요.</label>
-										</div>
-										<form id="insuranceFee" method="get">
+									<div class = "form-check">
+										<div class="row">
+											<label>보험의 이름을 입력하세요 : </label>
 											<div class=form-check>
 												<input type="text" name="insuranceName"> 
 											</div>
-											
-										</form>
+										</div>
+									</div>
 									</div>
 								</div>
 							</div>
@@ -410,15 +409,203 @@
 								</div>
 								<div class="card-body">
 									<div class="column">
-										<div class=form-check>
-											<label for="genderCheckbox1">기본 보험료를 입력하세요.</label>
-										</div>
-										<form id="insuranceFee" method="get">
+									<div class = "form-check">
+										<div class="row">
+											<label>기본 보험료를 입력하세요 : </label>
 											<div class=form-check>
-												<input type="text" name="insuraneFee"> 
+												<input type="text" name="insuranceFee"> 
 											</div>
-											
-										</form>
+										</div>
+									</div>
+									</div>
+								</div>
+							</div>
+							<div class="card shadow mb-4">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">특약 보험료</h6>
+								</div>
+								<div class="card-body">
+									<div class="column">
+									<div class = "form-check">
+										<div class="row">
+											<label>특약 보험료를 입력하세요 : </label>
+											<div class=form-check>
+												<input type="text" name="insuranceSpecialFee"> 
+											</div>
+										</div>
+									</div>
+									</div>
+								</div>
+							</div>
+							<div class="card shadow mb-4">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">보장 기간</h6>
+								</div>
+								<div class="card-body">
+									<div class="column">
+									<div class = "form-check">
+										<div class="row">
+											<label>보장기간을 입력하세요(연단위) : </label>
+											<div class=form-check>
+												<input type="text" name="insuranceWarrantyPeriod"> 
+											</div>
+										</div>
+									</div>
+									</div>
+								</div>
+							</div>
+							<div class="card shadow mb-4">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">나이별 요율</h6>
+								</div>
+								<div class="card-body">
+									<div class="column">
+									<div class = "form-check">
+										<div class="row">
+											<label>영유아 : </label>
+											<div class=form-check>
+												<input type="text" name="kidsRate"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>10대 : </label>
+											<div class=form-check>
+												<input type="text" name="teensRate"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>20대 : </label>
+											<div class=form-check>
+												<input type="text" name="twentiesRate"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>30대 : </label>
+											<div class=form-check>
+												<input type="text" name="thirtiesRate"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>40대 : </label>
+											<div class=form-check>
+												<input type="text" name="fourtiesRate"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>50대 : </label>
+											<div class=form-check>
+												<input type="text" name="fiftiesRate"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>60대 이상 : </label>
+											<div class=form-check>
+												<input type="text" name="oldersRate"> 
+											</div>
+										</div>
+									</div>
+									</div>
+								</div>
+							</div>
+							<div class="card shadow mb-4">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">성별별 요율</h6>
+								</div>
+								<div class="card-body">
+									<div class="column">
+									<div class = "form-check">
+										<div class="row">
+											<label>남자 : </label>
+											<div class=form-check>
+												<input type="text" name="maleRate"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>여자 : </label>
+											<div class=form-check>
+												<input type="text" name="femaleRate"> 
+											</div>
+										</div>
+									</div>
+									</div>
+								</div>
+							</div>
+							<div class="card shadow mb-4">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">직업별 요율</h6>
+								</div>
+								<div class="card-body">
+									<div class="column">
+									<div class = "form-check">
+										<div class="row">
+											<label>사무직 : </label>
+											<div class=form-check>
+												<input type="text" name="officeRate"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>운송업 : </label>
+											<div class=form-check>
+												<input type="text" name="driverRate"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>현장직 : </label>
+											<div class=form-check>
+												<input type="text" name="factoryRate"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>학생 : </label>
+											<div class=form-check>
+												<input type="text" name="studentRate"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>교육직 : </label>
+											<div class=form-check>
+												<input type="text" name="teacherRate"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>군인 : </label>
+											<div class=form-check>
+												<input type="text" name="soldierRate"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>기타 : </label>
+											<div class=form-check>
+												<input type="text" name="etcRate"> 
+											</div>
+										</div>
+									</div>
 									</div>
 								</div>
 							</div>

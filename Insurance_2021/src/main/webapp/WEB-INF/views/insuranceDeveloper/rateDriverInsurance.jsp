@@ -374,7 +374,7 @@
                     <!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">암 보험 요율 설정하기</h1>
+						<h1 class="h3 mb-0 text-gray-800">운전자 보험 요율 설정하기</h1>
 					</div>
 					
 					<!-- /.row -->
@@ -382,52 +382,52 @@
 					<div class="row">
 
 						<div class="col-lg-6 mb-4">
-						<form id="form-rateCancerInsurance" action="guaranteeCancerInsurance" method="get">
+						<form id="form-rateDriverInsurance" action="guaranteeDriverInsurance" method="get">
 							<!-- Illustrations -->
 							
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">가족 병력별 요율</h6>
+									<h6 class="m-0 font-weight-bold text-primary">자동차 종류별 요율</h6>
 								</div>
 								<div class="card-body">
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
-											<label>${"갑상선암"} : </label>
+											<label>${"버스"} : </label>
 											<div class=form-check>
-												<input type="number" name="thyroidRate" value="1.0" step="0.1"> 
+												<input type="number" name="busRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"고환암"} : </label>
+											<label>${"승합차"} : </label>
 											<div class=form-check>
-												<input type="number" name="testicularRate" value="1.0" step="0.1"> 
+												<input type="number" name="vanRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"난소암"} : </label>
+											<label>${"SUV"} : </label>
 											<div class=form-check>
-												<input type="number" name="ovarianRate" value="1.0" step="0.1"> 
+												<input type="number" name="suvRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"식도암"} : </label>
+											<label>${"외제차"} : </label>
 											<div class=form-check>
-												<input type="number" name="esophagealRate" value="1.0" step="0.1"> 
+												<input type="number" name="foreignRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"폐암"} : </label>
+											<label>${"기타"} : </label>
 											<div class=form-check>
-												<input type="number" name="lungRate" value="1.0" step="0.1"> 
+												<input type="number" name="etcRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -436,39 +436,96 @@
 							</div>
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">병력자와의 관계별 요율</h6>
+									<h6 class="m-0 font-weight-bold text-primary">자동차 등급별 요율</h6>
 								</div>
 								<div class="card-body">
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
-											<label>${"1촌"}</label>
+											<label>${"최고급"}</label>
 											<div class=form-check>
-												<input type="number" name="oneRelRate" value="1.0" step="0.1"> 
+												<input type="number" name="luxuryRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"2촌"} : </label>
+											<label>${"고급"} : </label>
 											<div class=form-check>
-												<input type="number" name="twoRelRate" value="1.0" step="0.1"> 
+												<input type="number" name="highRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"3촌"} : </label>
+											<label>${"보급형"} : </label>
 											<div class=form-check>
-												<input type="number" name="threeRelRate" value="1.0" step="0.1"> 
+												<input type="number" name="middleRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"4촌"} : </label>
+											<label>${"저가"} : </label>
 											<div class=form-check>
-												<input type="number" name="fourRelRate" value="1.0" step="0.1"> 
+												<input type="number" name="lowRate" value="1.0" step="0.1"> 
+											</div>
+										</div>
+									</div>
+									</div>
+								</div>
+							</div>
+							<div class="card shadow mb-4">
+								<div class="card-header py-3">
+									<h6 class="m-0 font-weight-bold text-primary">사고 횟수별 요율</h6>
+								</div>
+								<div class="card-body">
+									<div class="column">
+									<div class = "form-check">
+										<div class="row">
+											<label>${"0회"}</label>
+											<div class=form-check>
+												<input type="number" name="zeroCountRate" value="1.0" step="0.1"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>${"1회"} : </label>
+											<div class=form-check>
+												<input type="number" name="oneCountRate" value="1.0" step="0.1"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>${"2회~3회"} : </label>
+											<div class=form-check>
+												<input type="number" name="twoThreeCountRate" value="1.0" step="0.1"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>${"4회~5회"} : </label>
+											<div class=form-check>
+												<input type="number" name="fourFiveCountRate" value="1.0" step="0.1"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>${"6회~7회"} : </label>
+											<div class=form-check>
+												<input type="number" name="sixSevenCountRate" value="1.0" step="0.1"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>${"8회 이상"} : </label>
+											<div class=form-check>
+												<input type="number" name="eightCountRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -477,11 +534,11 @@
 							</div>
 							</form>
 							<div class="col">
-								<button type="button" class="btn btn-primary" onclick="nextBtn()">다음 단계로</button>
+								<button type="button" class="btn btn-primary" onclick="nextBtn()">보장 내역 설정하기</button>
 							</div>
 							<script>
 							function nextBtn(){
-								$("#form-rateCancerInsurance").submit();
+								$("#form-rateDriverInsurance").submit();
 							}
 							</script>
 						</div>

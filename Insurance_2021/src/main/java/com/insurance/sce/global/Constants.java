@@ -106,7 +106,7 @@ public class Constants {
 	
 	public static enum eRankOfCar {
 		none(0, "null"),
-		Luxury(1, "최고급"),
+		luxury(1, "최고급"),
 		high(2, "고급"),
 		middle(3, "보급형"),
 		low(4, "저가");
@@ -123,7 +123,7 @@ public class Constants {
 		public String getName() {return name;}
 	}
 	
-	public static String[] accidentHistory = {"0�쉶", "1�쉶", "2�쉶~3�쉶", "4�쉶~5�쉶", "6�쉶~7�쉶", "8�쉶 �씠�긽"};
+	public static String[] accidentHistory = {"0회", "1회", "2회~3회", "4회~5회", "6회~7회", "8회 이상"};
 	
 	public static enum eUsageOfStructure {
 		none(0, "null"),

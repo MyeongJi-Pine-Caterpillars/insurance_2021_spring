@@ -64,5 +64,15 @@ public class InsuranceDeveloperService {
 		insurance.setRateOfJob(job);
 		return insurance;
 	}
-
+	public Insurance setCancerRate(Insurance insurance, double[] familyMedical, double[] familyRelationship) {
+		((CancerInsurance)insurance).setRateOfFamilyMedicalDisease(familyMedical);
+		((CancerInsurance)insurance).setRateOfFamilyMedicalRelationship(familyRelationship);
+		return insurance;
+	}
+	public Insurance setDriverRate(Insurance insurance, double[] typeOfCar, double[] rankOfCar, double[] accidentHistoryRate) {
+		((DriverInsurance)insurance).setRateOfCarType(typeOfCar);
+		((DriverInsurance)insurance).setRateOfCarRank(rankOfCar);
+		((DriverInsurance)insurance).setRateOfAccidentHistory(accidentHistoryRate);
+		return insurance;
+	}
 }

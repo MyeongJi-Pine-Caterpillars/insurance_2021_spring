@@ -76,22 +76,22 @@ public class DetailInsurance {
 		String nextViewUrl = "";
 		switch(this.insurance.getType()) {
 		case driverInsurance:
-			nextViewUrl = "redirect:/RateDriverInsurance";
+			nextViewUrl = "redirect:/rateDriverInsurance";
 			break;
 		case fireInsurance:
-			nextViewUrl = "redirect:/RateFireInsurance";
+			nextViewUrl = "redirect:/rateFireInsurance";
 			break;
 		case cancerInsurance:
-			nextViewUrl = "redirect:/RateCancerInsurance";
+			nextViewUrl = "redirect:/rateCancerInsurance";
 			break;
 		case actualCostInsurance:
-			nextViewUrl = "redirect:/RateActualCostInsurance";
+			nextViewUrl = "redirect:/rateActualCostInsurance";
 			break;
 		case tripInsurance:
-			nextViewUrl = "redirect:/RateTripInsurance";
+			nextViewUrl = "redirect:/rateTripInsurance";
 			break;
 		case dentalInsurance:
-			nextViewUrl = "redirect:/RateDentalInsurance";
+			nextViewUrl = "redirect:/rateDentalInsurance";
 			break;
 		default:
 			nextViewUrl = "redirect:/developInsurance";

@@ -23,14 +23,12 @@ import com.insurance.sce.service.InsuranceDeveloperService;
 @RequestMapping(value = "/")
 public class DevelopInsurance {
 	
-	private static final Logger logger = LoggerFactory.getLogger(DevelopInsurance.class);
-	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	
 	@RequestMapping(value="developInsurance", method=RequestMethod.GET)
-	public String response4(Locale locale, Model model, HttpServletRequest request) {
+	public String responseDevelopInsurance(Locale locale, Model model, HttpServletRequest request) {
 
 		return "insuranceDeveloper/developInsurance";
 	}
@@ -48,8 +46,8 @@ public class DevelopInsurance {
 //		
 //		return "insuranceDeveloper/developInsurance";
 //	}
-	@RequestMapping(value="clickNextBtn", method=RequestMethod.GET)
-	public String response5(Locale locale, Model model, HttpServletRequest request) {
+	@RequestMapping(value="goToDetailInsurance", method=RequestMethod.GET)
+	public String responseGoToDetailInsurance(Locale locale, Model model, HttpServletRequest request) {
 		String insuranceType = (String) request.getParameter("insuranceRadio");
 		String[] insuranceGender = request.getParameterValues("genderCheckbox");
 		if(insuranceGender == null) {

@@ -8,13 +8,13 @@ public class Constants {
 	public static int thisMonth = 6;
 	
 	public static enum eAge {
-		kids(1, "�쁺�쑀�븘"),
-		teen(2, "10��"),
-		twenties(3, "20��"),
-		thirties(4, "30��"),
-		fourties(5, "40��"),
-		fifties(6, "50��"),
-		older(7, "�끂�뀈痢�");
+		kids(1, "영유아"),
+		teen(2, "10대"),
+		twenties(3, "20대"),
+		thirties(4, "30대"),
+		fourties(5, "40대"),
+		fifties(6, "50대"),
+		older(7, "노년층");
 
 		final private int num;
 		final private String name;
@@ -46,9 +46,9 @@ public class Constants {
 	}
 
 	public static enum eGender {
-		male(1, "�궓�꽦"),
-		female(2, "�뿬�꽦"),
-		both(3, "�궓�꽦/�뿬�꽦");
+		male(1, "남성"),
+		female(2, "여성"),
+		both(3, "남성/여성");
 
 		final private int num;
 		final private String name;
@@ -64,13 +64,13 @@ public class Constants {
 
 	public static enum eJob {
 		none(0, "none"),
-		officeWorker(1, "�궗臾댁쭅"),
-		driver(2, "�슫�넚�뾽"),
-		factoryWorker(3, "�쁽�옣吏�"),
-		student(4, "�븰�깮"),
-		teacher(5, "援먯쑁吏�"),
-		soldier(6, "援곗씤"),
-		etc(7, "湲고�");
+		officeWorker(1, "사무직"),
+		driver(2, "운송업"),
+		factoryWorker(3, "현장직"),
+		student(4, "학생"),
+		teacher(5, "교육직"),
+		soldier(6, "군인"),
+		etc(7, "기타");
 
 		final private int num;
 		final private String name;
@@ -86,11 +86,11 @@ public class Constants {
 
 	public static enum eTypeOfCar {
 		none(0, "null"),
-		bus(1, "踰꾩뒪"),
-		van(2, "�듅�빀李�"),
+		bus(1, "버스"),
+		van(2, "승합차"),
 		suv(3, "SUV"),
-		foreign(4, "�쇅�젣李�"),
-		etc(5, "湲고�");
+		foreign(4, "외제차"),
+		etc(5, "기타");
 
 		final private int num;
 		final private String name;
@@ -106,10 +106,10 @@ public class Constants {
 	
 	public static enum eRankOfCar {
 		none(0, "null"),
-		Luxury(1, "理쒓퀬湲�"),
-		high(2, "怨좉툒"),
-		middle(3, "蹂닿툒�삎"),
-		low(4, "��媛�");
+		luxury(1, "최고급"),
+		high(2, "고급"),
+		middle(3, "보급형"),
+		low(4, "저가");
 
 		final private int num;
 		final private String name;
@@ -123,16 +123,16 @@ public class Constants {
 		public String getName() {return name;}
 	}
 	
-	public static String[] accidentHistory = {"0�쉶", "1�쉶", "2�쉶~3�쉶", "4�쉶~5�쉶", "6�쉶~7�쉶", "8�쉶 �씠�긽"};
+	public static String[] accidentHistory = {"0회", "1회", "2회~3회", "4회~5회", "6회~7회", "8회 이상"};
 	
 	public static enum eUsageOfStructure {
 		none(0, "null"),
-		house(1,"二쇳깮"), 
-		study(2, "援먯쑁"), 
-		factory(3, "怨듭옣"), 
-		warehouse(4, "李쎄퀬"), 
-		office(5, "�궗臾�"), 
-		publicFacility(6, "怨듦났�떆�꽕");
+		house(1,"주택"), 
+		study(2, "교육"), 
+		factory(3, "공장"), 
+		warehouse(4, "창고"), 
+		office(5, "사무"), 
+		publicFacility(6, "공공시설");
 		
 		final private int num;
 		final private String name;
@@ -148,10 +148,10 @@ public class Constants {
 
 	public static enum eRiskOfTripCountry {
 		none(0, "null"),
-		safe(1, "�븞�쟾"), 
-		first(2, "1�떒怨�"), 
-		second(3, "2�떒怨�"), 
-		third(4, "3�떒怨�");
+		safe(1, "안전"), 
+		first(2, "1단계"), 
+		second(3, "2단계"), 
+		third(4, "3단계");
 
 		final private int num;
 		final private String name;
@@ -169,11 +169,11 @@ public class Constants {
 
 	}
 	
-	private static String[] driverGuarantee = {"�옄�룞李⑥궗怨좊쾶湲�(���씤)", "�옄�룞李⑥궗怨좊쾶湲�(��臾�)", "援먰넻�긽�빐遺��긽移섎즺鍮�", "�옄�룞李⑥궗怨좎옱�궛�뵾�빐"};
-	private static String[] dentalGuarantee = {"�젅吏�", "�겕�씪�슫", "���땲", "�엫�뵆���듃", "�뒪耳��씪留�", "諛쒖튂"};
-	private static String[] fireGuarantee = {"�솕�옱", "�닔�빐", "�룄�궃�넀�빐", "�긽�빐�썑�쑀�옣�븷", "怨좎옣�닔由�"};
-	private static String[] cancerGuarantee = {"媛먯긽�꽑�븫", "怨좏솚�븫", "�궃�냼�븫", "�떇�룄�븫", "�룓�븫", "媛꾩븫", "�쐞�븫", "痍뚯옣�븫"};
-	private static String[] tripGuarantee = {"�궗留�", "�긽�빐", "�빐�쇅�쓽猷뚮퉬", "�쑕���뭹�넀�빐", "諛곗긽梨낆엫", "�빆怨듦린�궔移�"};
+	private static String[] driverGuarantee = {"자동차사고벌금(대인)", "자동차사고벌금(대물)", "교통상해부상치료비", "자동차사고재산피해"};
+	private static String[] dentalGuarantee = {"레진", "크라운", "틀니", "임플란트", "스케일링", "발치"};
+	private static String[] fireGuarantee = {"화재", "수해", "도난손해", "상해후유장애", "고장수리"};
+	private static String[] cancerGuarantee = {"감상선암", "고환암", "난소암", "식도암", "폐암", "간암", "위암", "췌장암"};
+	private static String[] tripGuarantee = {"사망", "상해", "해외의료비", "휴대품손해", "배상책임", "항공기납치"};
 
 	public enum eInsuranceType {
 		driverInsurance(1, new DriverInsurance(), "driverInsurance", driverGuarantee),
@@ -203,11 +203,11 @@ public class Constants {
 
 	public static enum eFamilyMedicalDisease {
 		none(0, "null"),
-		thyroid(1, "媛묒긽�꽑�븫"), 
-		testicular(2, "怨좏솚�븫"), 
-		ovarian(3, "�궃�냼�븫"), 
-		esophageal(4, "�떇�룄�븫"), 
-		lung(5, "�룓�븫");
+		thyroid(1, "갑상선암"), 
+		testicular(2, "고환암"), 
+		ovarian(3, "난소암"), 
+		esophageal(4, "식도암"), 
+		lung(5, "폐암");
 		
 		final private int num;
 		final private String name;
@@ -223,10 +223,10 @@ public class Constants {
 	
 	public static enum eFamilyMedicalRelationship {
 		none(0, "null"),
-		one(1, "1珥�"),
-		two(2, "2珥�"),
-		three(3, "3珥�"),
-		four(4, "4珥�");
+		one(1, "1촌"),
+		two(2, "2촌"),
+		three(3, "3촌"),
+		four(4, "4촌");
 		
 		
 		final private int num;
@@ -241,16 +241,16 @@ public class Constants {
 		public String getName() {return this.name;}
 	}
 	
-	public static String[] postedPrice = {"(怨듭떆媛�)<=5泥쒕쭔�썝", "5泥쒕쭔�썝<(怨듭떆媛�)<=5�뼲", "5�뼲<(怨듭떆媛�)<=10�뼲", "10�뼲<(怨듭떆媛�)<=20�뼲", "20�뼲<(怨듭떆媛�)"};
+	public static String[] postedPrice = {"(공시가)<=5천만원", "5천만원<(공시가)<=5억", "5억<(공시가)<=10억", "10억<(공시가)<=20억", "20억<(공시가)"};
 	
 	public static enum eCancer {
-		thyroid(1,"媛묒긽�꽑�븫"), 
-		testicular(2, "怨좏솚�븫"), 
-		ovarian(3, "�궃�냼�븫"), 
-		esophageal(4, "�떇�룄�븫"), 
-		lung(5, "�룓�븫"),
-		liver(6, "媛꾩븫"),
-		colorectal(7, "���옣�븫");
+		thyroid(1,"갑상선암"), 
+		testicular(2, "고환암"), 
+		ovarian(3, "난소암"), 
+		esophageal(4, "식도암"), 
+		lung(5, "폐암"),
+		liver(6, "간암"),
+		colorectal(7, "대장암");
 		
 		final private int num;
 		final private String name;

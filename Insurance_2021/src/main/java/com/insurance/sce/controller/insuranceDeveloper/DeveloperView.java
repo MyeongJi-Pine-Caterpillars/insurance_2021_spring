@@ -21,14 +21,12 @@ import com.insurance.sce.model.customer.Customer;
 @RequestMapping(value = "/")
 public class DeveloperView {
 	
-	private static final Logger logger = LoggerFactory.getLogger(DeveloperView.class);
-	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	
 	@RequestMapping(value="developerView", method=RequestMethod.GET)
-	public String response(Locale locale, Model model, HttpServletRequest request) {
+	public String responseDeveloperView(Locale locale, Model model, HttpServletRequest request) {
 		return "insuranceDeveloper/developerView";
 	}
 }

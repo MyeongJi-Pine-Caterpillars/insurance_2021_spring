@@ -374,7 +374,7 @@
                     <!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">기본 정보 입력하기</h1>
+						<h1 class="h3 mb-0 text-gray-800">화재 보험 요율 설정하기</h1>
 					</div>
 					
 					<!-- /.row -->
@@ -382,93 +382,122 @@
 					<div class="row">
 
 						<div class="col-lg-6 mb-4">
-							<form id="form-insurance" action="goToDetailInsurance" method="get">
+						<form id="form-rateFireInsurance" action="guaranteeFireInsurance" method="get">
 							<!-- Illustrations -->
+							
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">보험 종류</h6>
+									<h6 class="m-0 font-weight-bold text-primary">공시 가격별 요율</h6>
 								</div>
 								<div class="card-body">
 									<div class="column">
-										<div class=form-check>
-											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="Driver" checked>
-											<label class="form-check-label" for="insuranceRadio1">
-												운전자 보험 </label>
+									<div class = "form-check">
+										<div class="row">
+											<label>${"(공시가)<=5천만원"} : </label>
+											<div class=form-check>
+												<input type="number" name="lDotFiveRate" value="1.0" step="0.1"> 
+											</div>
 										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="Dental"> <label
-												class="form-check-label" for="insuranceRadio2"> 치아
-												보험 </label>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>${"5천만원<(공시가)<=5억"} : </label>
+											<div class=form-check>
+												<input type="number" name="mDotFivelFiveRate" value="1.0" step="0.1"> 
+											</div>
 										</div>
-										<div class=form-check>
-											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="Fire"> <label
-												class="form-check-label" for="insuranceRadio3"> 화재
-												보험 </label>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>${"5억<(공시가)<=10억"} : </label>
+											<div class=form-check>
+												<input type="number" name="mFivelTenRate" value="1.0" step="0.1"> 
+											</div>
 										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="Cancer"> <label
-												class="form-check-label" for="insuranceRadio4"> 암 보험
-											</label>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>${"10억<(공시가)<=20억"} : </label>
+											<div class=form-check>
+												<input type="number" name="mTenlTwentyRate" value="1.0" step="0.1"> 
+											</div>
 										</div>
-										<div class=form-check>
-											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="ActualCost"> <label
-												class="form-check-label" for="insuranceRadio5"> 실비
-												보험 </label>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>${"20억<(공시가)"} : </label>
+											<div class=form-check>
+												<input type="number" name="mTwentyRate" value="1.0" step="0.1"> 
+											</div>
 										</div>
-										<div class="form-check">
-											<input class="form-check-input" type="radio"
-												name="insuranceRadio" value="Trip"> <label
-												class="form-check-label" for="insuranceRadio6"> 여행자
-												보험 </label>
-										</div>
+									</div>
 									</div>
 								</div>
 							</div>
-
-							<!-- Approach -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">가입 가능한 성별</h6>
+									<h6 class="m-0 font-weight-bold text-primary">건물 용도별 요율</h6>
 								</div>
 								<div class="card-body">
 									<div class="column">
+									<div class = "form-check">
+										<div class="row">
+											<label>${"주택"}</label>
 											<div class=form-check>
-												<input class="form-check-input" type="checkbox"
-													name="genderCheckbox" value="man" checked> <label
-													class="form-check-label" for="genderCheckbox1">남자</label>
+												<input type="number" name="houseRate" value="1.0" step="0.1"> 
 											</div>
-											<div class="form-check">
-												<input class="form-check-input" type="checkbox"
-													name="genderCheckbox" value="woman" checked> <label
-													class="form-check-label" for="genderCheckbox2">여자</label>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>${"교육"} : </label>
+											<div class=form-check>
+												<input type="number" name="studyRate" value="1.0" step="0.1"> 
 											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>${"공장"} : </label>
+											<div class=form-check>
+												<input type="number" name="factoryRate" value="1.0" step="0.1"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>${"창고"} : </label>
+											<div class=form-check>
+												<input type="number" name="warehouseRate" value="1.0" step="0.1"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>${"사무"} : </label>
+											<div class=form-check>
+												<input type="number" name="officeRate" value="1.0" step="0.1"> 
+											</div>
+										</div>
+									</div>
+									<div class = "form-check">
+										<div class="row">
+											<label>${"공공시설"} : </label>
+											<div class=form-check>
+												<input type="number" name="publicFacilityRate" value="1.0" step="0.1"> 
+											</div>
+										</div>
+									</div>
 									</div>
 								</div>
 							</div>
 							</form>
 							<div class="col">
-									<button type="button" class="btn btn-secondary"
-										onclick="sendData()">해당 조건으로 보험 조회하기</button>
-									<button type="button" class="btn btn-primary" onclick="next()">다음 단계로</button>
+								<button type="button" class="btn btn-primary" onclick="nextBtn()">보장 내역 설정하기</button>
 							</div>
 							<script>
-							/* function sendData(){
-								var genderArray = new Array();
-								$('input:checkbox[name=genderCheckbox]:checked').each(function() {
-									genderArray.push(this.value);
-								})
-								alert(genderArray);
-								$("#arrayParam").val(genderArray);
-								$("#genderCheck").attr("action", "clickNextBtn");
-								$("#genderCheck").submit();
-							} */
-							function next(){
-								$("#form-insurance").submit();
+							function nextBtn(){
+								$("#form-rateFireInsurance").submit();
 							}
 							</script>
 						</div>

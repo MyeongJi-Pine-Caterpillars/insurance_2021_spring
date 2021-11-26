@@ -48,7 +48,7 @@ public class DevelopInsurance {
 //		
 //		return "insuranceDeveloper/developInsurance";
 //	}
-	@RequestMapping(value="clickNextBtn", method=RequestMethod.GET)
+	@RequestMapping(value="goToDetailInsurance", method=RequestMethod.GET)
 	public String response5(Locale locale, Model model, HttpServletRequest request) {
 		String insuranceType = (String) request.getParameter("insuranceRadio");
 		String[] insuranceGender = request.getParameterValues("genderCheckbox");

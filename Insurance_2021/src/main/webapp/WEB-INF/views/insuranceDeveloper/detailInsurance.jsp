@@ -382,7 +382,7 @@
 					<div class="row">
 
 						<div class="col-lg-6 mb-4">
-
+						<form id="form-detailInsurance" action="goToSpecializeRate" method="get">
 							<!-- Illustrations -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
@@ -413,7 +413,7 @@
 										<div class="row">
 											<label>기본 보험료를 입력하세요 : </label>
 											<div class=form-check>
-												<input type="text" name="insuranceFee"> 
+												<input type="text" name="insuranceFee" value="0"> 
 											</div>
 										</div>
 									</div>
@@ -430,7 +430,7 @@
 										<div class="row">
 											<label>특약 보험료를 입력하세요 : </label>
 											<div class=form-check>
-												<input type="text" name="insuranceSpecialFee"> 
+												<input type="text" name="insuranceSpecialFee" value="0"> 
 											</div>
 										</div>
 									</div>
@@ -447,7 +447,7 @@
 										<div class="row">
 											<label>보장기간을 입력하세요(연단위) : </label>
 											<div class=form-check>
-												<input type="text" name="insuranceWarrantyPeriod"> 
+												<input type="text" name="insuranceWarrantyPeriod" value="0"> 
 											</div>
 										</div>
 									</div>
@@ -462,57 +462,57 @@
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
-											<label>영유아 : </label>
+											<label>${"영유아"} : </label>
 											<div class=form-check>
-												<input type="text" name="kidsRate"> 
+												<input type="number" name="kidsRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>10대 : </label>
+											<label>${"10대"} : </label>
 											<div class=form-check>
-												<input type="text" name="teensRate"> 
+												<input type="number" name="teensRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>20대 : </label>
+											<label>${"20대"} : </label>
 											<div class=form-check>
-												<input type="text" name="twentiesRate"> 
+												<input type="number" name="twentiesRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>30대 : </label>
+											<label>${"30대"} : </label>
 											<div class=form-check>
-												<input type="text" name="thirtiesRate"> 
+												<input type="number" name="thirtiesRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>40대 : </label>
+											<label>${"40대"} : </label>
 											<div class=form-check>
-												<input type="text" name="fourtiesRate"> 
+												<input type="number" name="fourtiesRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>50대 : </label>
+											<label>${"50대"} : </label>
 											<div class=form-check>
-												<input type="text" name="fiftiesRate"> 
+												<input type="number" name="fiftiesRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>60대 이상 : </label>
+											<label>${"노년층"} : </label>
 											<div class=form-check>
-												<input type="text" name="oldersRate"> 
+												<input type="number" name="oldersRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -527,17 +527,17 @@
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
-											<label>남자 : </label>
+											<label>${"남자"} : </label>
 											<div class=form-check>
-												<input type="text" name="maleRate"> 
+												<input type="number" name="maleRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>여자 : </label>
+											<label>${"여자"} : </label>
 											<div class=form-check>
-												<input type="text" name="femaleRate"> 
+												<input type="number" name="femaleRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -552,66 +552,72 @@
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
-											<label>사무직 : </label>
+											<label>${"사무직"} : </label>
 											<div class=form-check>
-												<input type="text" name="officeRate"> 
+												<input type="number" name="officeRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>운송업 : </label>
+											<label>${"운송업"} : </label>
 											<div class=form-check>
-												<input type="text" name="driverRate"> 
+												<input type="number" name="driverRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>현장직 : </label>
+											<label>${"현장직"} : </label>
 											<div class=form-check>
-												<input type="text" name="factoryRate"> 
+												<input type="number" name="factoryRate" value="1.0" step="0.1">
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>학생 : </label>
+											<label>${"학생"} : </label>
 											<div class=form-check>
-												<input type="text" name="studentRate"> 
+												<input type="number" name="studentRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>교육직 : </label>
+											<label>${"교육직"} : </label>
 											<div class=form-check>
-												<input type="text" name="teacherRate"> 
+												<input type="number" name="teacherRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>군인 : </label>
+											<label>${"군인"} : </label>
 											<div class=form-check>
-												<input type="text" name="soldierRate"> 
+												<input type="number" name="soldierRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>기타 : </label>
+											<label>${"기타"} : </label>
 											<div class=form-check>
-												<input type="text" name="etcRate"> 
+												<input type="number" name="etcRate" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
 									</div>
 								</div>
 							</div>
+							</form>
 							<div class="col">
-								<button type="button" class="btn btn-primary">다음 단계로</button>
+								<button type="button" class="btn btn-primary" onclick="nextBtn()">다음 단계로</button>
 							</div>
+							<script>
+							function nextBtn(){
+								$("#form-detailInsurance").submit();
+							}
+							</script>
 						</div>
 					</div>
 

@@ -35,38 +35,38 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-    $(function(){
-    	$('#test').css({'color' : 'blue'});
-    	
-    	var allInsurance = ["tt", "test2", "test3", "test4"];
-    	
-    	$.get(
-    		'/selectCancerInsurance/doSelectAll',
-    		{},
-    		function(data){
-    			alert(data);
-    		},
-    		'html'
-    	);
-    	
-    	$.each( allInsurance, function(index, value){
-    		$('#insuranceList').append($('<div class="col-xl-3 col-md-6 mb-4">' + 
-			'<div class="cardInsurance border-left-primary shadow h-100 py-2">' +
-			'<div class="card-body">' +
-				'<div class="row no-gutters align-items-center">' +
-					'<div class="col mr-2">' +
-						'<div class="h7 mb-0 font-weight-bold text-primary text-uppercase mb-0">' +
-							value +
-						'</div><div class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">' +
-							value +
-						'</div><div class="h6 mb-0 font-weight-bold text-gray-800">' +
-							value +
-						'</div><div class="h6 mb-0 font-weight-bold text-gray-800">' +
-							value +
-						'</div></div><div class="col-auto"></div></div></div></div></div>'));
-						
-    	});
-    });
+
+$(function(){
+	$.ajax({
+		url: "selectCancerInsurance/doSelectAll",
+		type: "POST", 
+				
+		success : function(data){
+			$(data).each(function(){
+				$('#insuranceList').append($('<div class="col-xl-3 col-md-6 mb-4">' + 
+						'<div class="cardInsurance border-left-primary shadow h-100 py-2">' +
+						'<div class="card-body">' +
+							'<div class="row no-gutters align-items-center">' +
+								'<div class="col mr-2">' +
+									'<div class="h7 mb-0 font-weight-bold text-primary text-uppercase mb-0">' +
+										this.insuranceId +
+									'</div><div class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">' +
+										this.name +
+									'</div><div class="h6 mb-0 font-weight-bold text-gray-800">' +
+										'기본보험료' +
+									'</div><div class="h6 mb-0 font-weight-bold text-gray-800">' +
+										this.basicFee +
+									'</div></div><div class="col-auto"></div></div></div></div></div>'));
+			
+			});
+			},
+		error :function(){
+			alert("request error!");
+			}
+		
+	});			
+});
+
     	
     </script>
 
@@ -246,7 +246,7 @@
 						class="d-sm-flex align-items-center justify-content-between mb-4">
 						<h1 class="h3 mb-0 text-gray-800">암보험</h1>
 					</div>
-
+					
 					<!-- Content Row -->
 					<div id="insuranceList" class="row">
 <!-- 

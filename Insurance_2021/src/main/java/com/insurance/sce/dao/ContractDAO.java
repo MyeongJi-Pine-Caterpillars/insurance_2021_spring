@@ -1,26 +1,27 @@
 package com.insurance.sce.dao;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
 
 import com.insurance.sce.model.contract.Contract;
 
+@Repository
 public interface ContractDAO {
-	public boolean insert(Contract contract);
-	public ArrayList<Contract> select();
-	public ArrayList<Contract> selectForTime();
-	public Contract selectContract(String contractId);
-	public ArrayList<Contract> selectByInsurant(String insurantId);
-	public ArrayList<Contract> selectIds();
+	public int insert(Contract contract);
+	
+	public List<Contract> selectAll();
+	public List<String> selectAllContractId();
+	public List<Contract> selectAllIds();
+	public List<Contract> selectListByInsurant(String insurantId);
+	public Contract select(String contractId);
 	public Contract selectUnpaidAndFee(String contractId);
-	public boolean[] selectPayHistory(String contractId);
-	public boolean updateFee(String contractId, int fee);
-	public boolean updateEffectiveness(String contractId, boolean effectiveness);
-	public boolean updatePayHistory(String contractId, int month);
-	public boolean updateAnnualPayHistory();
-	public boolean delete(String contractId);
-	public boolean updateLifespan(String contractId, int lifespan);
-	public boolean updateUnpaidPeriod(String contractId, int unpaidPeriod);
-	public boolean updateSpecial(String contractId, boolean special);
-	public ArrayList<String> selectContractId();
+	
+	public int updateFee(Contract contract);
+	public int updateEffectiveness(Contract contract);
+	public int updateLifespan(Contract contract);
+	public int updateUnpaidPeriod(Contract contract);
+	public int updateSpecial(Contract contract);
 
+	public int delete(String contractId);
 }

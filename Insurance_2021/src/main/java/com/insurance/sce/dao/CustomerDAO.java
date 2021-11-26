@@ -2,16 +2,19 @@ package com.insurance.sce.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.insurance.sce.model.customer.Customer;
 
+@Repository
 public interface CustomerDAO {
-	public int insertCustomer(Customer customer);
+	public int insert(Customer customer);
 	
-	public List<Customer> selectCustomerList();
-	public Customer selectCustomer(String customerId);
+	public List<Customer> selectAll();
+	public Customer select(String customerId);
 	
 	public int updateAddress(Customer customer);
 	public int updatePhoneNumber(Customer customer);
 	
-	public int deleteCustomer(String customerId);
+	public int delete(String customerId);
 }

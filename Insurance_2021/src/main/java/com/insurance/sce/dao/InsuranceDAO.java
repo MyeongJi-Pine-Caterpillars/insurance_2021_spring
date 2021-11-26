@@ -1,36 +1,39 @@
 package com.insurance.sce.dao;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Repository;
 
 import com.insurance.sce.model.insurance.Insurance;
 
+@Repository
 public interface InsuranceDAO {
 	
-	public boolean insert(Insurance insurance);
-	public boolean insertActualCostInsurance(Insurance insurance);
-	public boolean insertCancerInsurance(Insurance insurance);
-	public boolean insertDentalInsurance(Insurance insurance);
-	public boolean insertDriverInsurance(Insurance insurance);
-	public boolean insertFireInsurance(Insurance insurance);
-	public boolean insertTripInsurance(Insurance insurance);
+	public int insert(Insurance insurance);
+	public int insertActualCostInsurance(Insurance insurance);
+	public int insertCancerInsurance(Insurance insurance);
+	public int insertDentalInsurance(Insurance insurance);
+	public int insertDriverInsurance(Insurance insurance);
+	public int insertFireInsurance(Insurance insurance);
+	public int insertTripInsurance(Insurance insurance);
 	
-	public ArrayList<Insurance> select();
-	public ArrayList<Insurance> selectForConfirm();
-	public ArrayList<Insurance> selectSimpleData();
-	public ArrayList<String> selectInsuranceId();
-
-	public Insurance selectActualCostInsurance(Insurance insurance);
-	public Insurance selectCancerInsurance(Insurance insurance);
-	public Insurance selectDentalInsurance(Insurance insurance);
-	public Insurance selectDriverInsurance(Insurance insurance);
-	public Insurance selectFireInsurance(Insurance insurance);
-	public Insurance selectTripInsurance(Insurance insurance);
-	public Insurance selectInsurance(String insuranceId);
-	public boolean updateConfirmedStatus(String insuranceId, boolean confirmedStatus);
-	public boolean updateDel(String insuranceId, boolean del);
-	public boolean delete(String insuranceId);
-	public boolean deleteInsuranceByTime();
+	public List<Insurance> selectAll();
+	public List<Insurance> selectForConfirm();
+	public List<Insurance> selectSimpleData();
+	public List<String> selectInsuranceId();
+	public Insurance select(String insuranceId);
+	public Insurance selectActualCostInsurance(String insuranceId);
+	public Insurance selectCancerInsurance(String insuranceId);
+	public Insurance selectDentalInsurance(String insuranceId);
+	public Insurance selectDriverInsurance(String insuranceId);
+	public Insurance selectFireInsurance(String insuranceId);
+	public Insurance selectTripInsurance(String insuranceId);
 	
-	public Insurance selectTypeInsurance(Insurance insurance);
+	public int updateConfirmedStatus(Insurance insurance);
+	public int updateBasicFee(Insurance insurance);
+	public int updateSpeCialContractFee(Insurance insurance);
+	public int updateDel(Insurance insurance);
 	
+	
+	public int delete(String insuranceId);
 }

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="insuranceMapper">
+
+	<!-- INSERT -->
+	<insert id="insert" parameterType="com.insurance.sce.model.insurance.Insurance">
+		INSERT INTO insurance(insuranceId, NAME, TYPE,
+							gender,basicFee, specialContractFee,
+							warrantyPeriod, rateOfAge0, rateOfAge1,rateOfAge2, rateOfAge3,
+							rateOfAge4, rateOfAge5, rateOfAge6,rateOfGender0, rateOfGender1,
+							rateOfJob0, rateOfJob1, rateOfJob2,rateOfJob3, rateOfJob4,
+							rateOfJob5, rateOfJob6, confirmedStatus, specialContract)
+		VALUES (#{insuranceId},
+				#{NAME}, #{TYPE}, #{gender}, #{basicFee}, #{specialContractFee},
+				#{warrantyPeriod}, #{rateOfAge0}, #{rateOfAge1}, #{rateOfAge2},
+				#{rateOfAge3},#{rateOfAge4}, #{rateOfAge5}, #{rateOfAge6},
+				#{rateOfGender0}, #{rateOfGender1},#{rateOfJob0}, #{rateOfJob1},
+				#{rateOfJob2}, #{rateOfJob3}, #{rateOfJob4}, #{rateOfJob5},
+				#{rateOfJob6}, #{gender}, #{basicFee}, #{specialContractFee})
+	</insert>
+	<insert id="insertActualCostInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
+		INSERT INTO actualCostInsurance(insuranceId, selfBurdenRate)
+		VALUES (#{insuranceId}, #{selfBurdenRate})
+	</insert>
+	<insert id="insertCancerInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
+		INSERT INTO cancerInsurance(insuranceId,
+									rateOfFamilyMedicalDisease0, rateOfFamilyMedicalDisease1,
+									rateOfFamilyMedicalDisease2,rateOfFamilyMedicalDisease3,
+									rateOfFamilyMedicalDisease4, rateOfFamilyMedicalRelationship0,
+									rateOfFamilyMedicalRelationship1, rateOfFamilyMedicalRelationship2,
+									rateOfFamilyMedicalRelationship3)
+		VALUES (#{insuranceId}, #{rateOfFamilyMedicalDisease0}, #{rateOfFamilyMedicalDisease1},
+				#{rateOfFamilyMedicalDisease2}, #{rateOfFamilyMedicalDisease3},
+				#{rateOfFamilyMedicalDisease4}, #{rateOfFamilyMedicalRelationship0},
+				#{rateOfFamilyMedicalRelationship1}, #{rateOfFamilyMedicalRelationship2},
+				#{rateOfFamilyMedicalRelationship3})
+
+	</insert>
+	<insert id="insertDentalInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
+		INSERT INTO dentalInsurance(insuranceId, annualLimitCount)
+		VALUES (#{insuranceId}, #{annualLimitCount})
+	</insert>
+	<insert id="insertDriverInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
+		INSERT INTO driverInsurance(insuranceId, rateOfAccidentHistory0, rateOfAccidentHistory1,
+									rateOfAccidentHistory2, rateOfAccidentHistory3, rateOfAccidentHistory4, 
+									rateOfAccidentHistory5, rateOfCarType0, rateOfCarType1, rateOfCarType2,
+									rateOfCarType3, rateOfCarType4, rateOfCarRank0, rateOfCarRank1,
+									rateOfCarRank2, rateOfCarRank3)
+		VALUES (#{insuranceId}, #{rateOfAccidentHistory0}, #{rateOfAccidentHistory1},
+				#{rateOfAccidentHistory2}, #{rateOfAccidentHistory3}, #{rateOfAccidentHistory4},
+				#{rateOfAccidentHistory5}, #{rateOfCarType0}, #{rateOfCarType1}, #{rateOfCarType2},
+				#{rateOfCarType3}, #{rateOfCarType4}, #{rateOfCarRank0}, #{rateOfCarRank1},
+				#{rateOfCarRank2}, #{rateOfCarRank3})
+	</insert>
+	<insert id="insertFireInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
+		INSERT INTO fireInsurance(insuranceId, rateOfPostedPrice0, rateOfPostedPrice1, rateOfPostedPrice2,
+								rateOfPostedPrice3, rateOfPostedPrice4, rateOfStructureUsage0,
+								rateOfStructureUsage1, rateOfStructureUsage2, rateOfStructureUsage3,
+								rateOfStructureUsage4, rateOfStructureUsage5)
+		VALUES (#{insuranceId}, #{rateOfPostedPrice0}, #{rateOfPostedPrice1}, #{rateOfPostedPrice2},
+				#{rateOfPostedPrice3}, #{rateOfPostedPrice4}, #{rateOfStructureUsage0},
+				#{rateOfStructureUsage1}, #{rateOfStructureUsage2}, #{rateOfStructureUsage3},
+				#{rateOfStructureUsage4}, #{rateOfStructureUsage5})
+	</insert>
+	<insert id="insertTripInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
+		INSERT INTO tripInsurance(insuranceId, rateOfCountryRisk0, rateOfCountryRisk1,
+								rateOfCountryRisk2, rateOfCountryRisk3)
+		VALUES (#{insuranceId}, #{rateOfCountryRisk0}, #{rateOfCountryRisk1}, #{rateOfCountryRisk2},
+				#{rateOfCountryRisk3})
+	</insert>
+
+	<!-- SELECT -->
+	<select id="selectAll" resultType="com.insurance.sce.model.insurance.Insurance">
+		SELECT * FROM insurance
+	</select>
+	<select id="selectInsuranceId" resultType="String">
+		SELECT insuranceId FROM insurance
+	</select>
+	<select id="selectForConfirm" resultType="com.insurance.sce.model.insurance.Insurance">
+		SELECT insuranceId, confirmedStatus, del, type FROM insurance
+	</select>
+	<select id="selectSimpleData" resultType="com.insurance.sce.model.insurance.Insurance">
+		SELECT insuranceId, confirmedStatus, del, type, name, basicFee FROM insurance
+	</select>
+	<select id="select" resultType="com.insurance.sce.model.insurance.Insurance">
+		SELECT * FROM insurance
+		WHERE insuranceId = #{insuranceId}
+	</select>
+	<select id="selectActualCostInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+		SELECT * FROM actualCostInsurance
+		WHERE insuranceId = #{insuranceId}
+	</select>
+	<select id="selectCancerInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+		SELECT * FROM cancerInsurance
+		WHERE insuranceId = #{insuranceId}
+	</select>
+	<select id="selectDentalInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+		SELECT * FROM dentalInsurance
+		WHERE insuranceId = #{insuranceId}
+	</select>
+	<select id="selectDriverInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+		SELECT * FROM driverInsurance
+		WHERE insuranceId = #{insuranceId}
+	</select>
+	<select id="selectFireInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+		SELECT * FROM fireInsurance
+		WHERE insuranceId = #{insuranceId}
+	</select>
+	<select id="selectTripInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+		SELECT * FROM tripInsurance
+		WHERE insuranceId = #{insuranceId}
+	</select>
+
+	<!-- UPDATE -->
+	<update id="updateConfirmedStatus" parameterType="com.insurance.sce.model.contract.Accident">
+		UPDATE insurance
+		SET confirmedStatus = #{confirmedStatus}
+		WHERE insuranceId = #{insuranceId}
+	</update>
+	<update id="updateBasicFee" parameterType="com.insurance.sce.model.contract.Accident">
+		UPDATE insurance
+		SET basicFee = #{basicFee}
+		WHERE insuranceId = #{insuranceId}
+	</update>
+	<update id="updateSpeCialContractFee" parameterType="com.insurance.sce.model.contract.Accident">
+		UPDATE insurance
+		SET speCialContractFee = #{speCialContractFee}
+		WHERE insuranceId = #{insuranceId}
+	</update>
+	<update id="updateDel" parameterType="com.insurance.sce.model.contract.Accident">
+		UPDATE insurance
+		SET del = #{del}
+		WHERE insuranceId = #{insuranceId}
+	</update>
+
+	<!-- DELETE -->
+	<delete id="delete" parameterType="String">
+		DELETE FROM insurance
+		WHERE insuranceId = #{insuranceId}
+	</delete>
+
+</mapper>

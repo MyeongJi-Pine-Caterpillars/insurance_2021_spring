@@ -1,6 +1,5 @@
 package com.insurance.sce.dao;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -16,41 +15,31 @@ public class CustomerDAOImpl implements CustomerDAO{
 	@Inject
 	private SqlSession sqlSession;
 	
-	private static final String InsertCustomer = "customerMapper.insertCustomer";
-	private static final String SelectCustomer = "customerMapper.selectCustomer";
-	private static final String SelectCustomerList = "customerMapper.selectCustomerList";
+	private static final String Insert = "customerMapper.insert";
+	private static final String SelectAll= "customerMapper.selectAll";
+	private static final String Select = "customerMapper.select";
 	private static final String UpdateAddress= "customerMapper.updateAddress";
 	private static final String UpdatePhoneNumber= "customerMapper.updatePhoneNumber";
-	private static final String DeletePhoneNumber= "customerMapper.deleteCustomer";
+	private static final String Delete= "customerMapper.delete";
 
+	// Insert
 	@Override
-	public int insertCustomer(Customer customer) {
-		return sqlSession.insert(InsertCustomer, customer);
-	}
-	
-	@Override
-	public List<Customer> selectCustomerList() {
-		return sqlSession.selectList(SelectCustomerList);
-	}
+	public int insert(Customer customer) {return sqlSession.insert(Insert, customer);}
 
+	// Select
 	@Override
-	public Customer selectCustomer(String customerId) {
-		return (Customer)sqlSession.selectOne(SelectCustomer, customerId);
-	}
+	public List<Customer> selectAll() {return sqlSession.selectList(SelectAll);}
+	@Override
+	public Customer select(String customerId) {return (Customer)sqlSession.selectOne(Select, customerId);}
 
+	// Update
 	@Override
-	public int updateAddress(Customer customer) {
-		return sqlSession.update(UpdateAddress, customer);
-	}
+	public int updateAddress(Customer customer) {return sqlSession.update(UpdateAddress, customer);}
+	@Override
+	public int updatePhoneNumber(Customer customer) {return sqlSession.update(UpdatePhoneNumber, customer);}
 
+	// Delete
 	@Override
-	public int updatePhoneNumber(Customer customer) {
-		return sqlSession.update(UpdatePhoneNumber, customer);
-	}
-
-	@Override
-	public int deleteCustomer(String customerId) {
-		return sqlSession.delete(DeletePhoneNumber, customerId);
-	}
+	public int delete(String customerId) {return sqlSession.delete(Delete, customerId);}
 
 }

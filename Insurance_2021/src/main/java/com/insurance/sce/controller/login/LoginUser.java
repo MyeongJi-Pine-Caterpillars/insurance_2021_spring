@@ -15,27 +15,17 @@ import com.insurance.sce.model.customer.Customer;
 import com.insurance.sce.service.CustomerService;
 
 @Controller
+@RequestMapping(value="/")
 public class LoginUser {
 	@Autowired
 	CustomerService customerService;
 	
-	@RequestMapping(value="/userLogin", method=RequestMethod.GET)
-	public String userLogin(String id, String password) {
-		DBConnector dbConnector = new DBConnector();
-		CustomerDAO customerDAO = new CustomerDAOImpl();
-		dbConnector.startDB();	
-		dbConnector.connect();
-		Customer customer = customerDAO.selectCustomer(id);
-		if(customer != null) {
-			if(customer.getPassword().matches(password)) {
-				return "customer/selectCancerInsurance";
-			}
-		}
-		return "customer/selectCancerInsurance";
+	@RequestMapping(value="loginUser", method=RequestMethod.GET)
+	public String userLogin() {
+		return "login/loginUser";
 	}
-	@RequestMapping(value="/loginCheck", method=RequestMethod.GET)
+	@RequestMapping(value="doLogin", method=RequestMethod.GET)
 	public String loginCheck(String id, String password, HttpServletRequest request) {
-		
 		// 서비스를 통해 로그인
 		Customer customer = customerService.loginCustomer(id, password);
 		
@@ -43,7 +33,7 @@ public class LoginUser {
 			// 세션에 저장
 			HttpSession session = request.getSession(true);
 			session.setAttribute("loginCustomer", customer);
-			return "customer/selectCancerInsurance";
-		}else return "login/selectUserType";
+			return "redirect:/cancerInsurance";
+		}else return "login/loginUser";
 	}
 }

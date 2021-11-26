@@ -43,17 +43,17 @@ public class SelectCacnerInsuranceController {
 	public String response(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		
-		//임시방편
-		Customer tmp = new Customer();
-		tmp.setName("홍영석");
-		session.setAttribute("loginCustomer", tmp);
-		
 		Customer customer = (Customer)session.getAttribute("loginCustomer");
 		
 //		Insurance insurance = new CancerInsurance();
-		
 
 		model.addAttribute("customerName", customer.getName() );
 		return "customer/selectCancerInsurance";
+	}
+	@RequestMapping(value="selectCancerInsurance/doLogout")
+	public String doLogout(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("loginCustomer");
+		return "redirect:/loginUser";
 	}
 }

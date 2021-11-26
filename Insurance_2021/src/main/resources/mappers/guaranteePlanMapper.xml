@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="guaranteePlanMapper">
+	
+	<!-- INSERT -->
+	<insert id="insert" parameterType="com.insurance.sce.model.insurance.GuaranteePlan">
+		INSERT INTO guaranteePlan(insuranceId, content, compensation, rate, special)
+		VALUES (#{insuranceId}, #{content}, #{compensation}, #{rate}, #{special})
+	</insert>
+
+	<!-- SELECT -->
+	<select id="selectByInsuranceId" resultType="com.insurance.sce.model.insurance.GuaranteePlan">
+		SELECT * FROM guaranteePlan
+		WHERE insuranceId = #{insuranceId}
+	</select>
+</mapper>

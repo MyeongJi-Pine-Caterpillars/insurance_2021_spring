@@ -20,7 +20,7 @@
 				#{rateOfAge3},#{rateOfAge4}, #{rateOfAge5}, #{rateOfAge6},
 				#{rateOfGender0}, #{rateOfGender1},#{rateOfJob0}, #{rateOfJob1},
 				#{rateOfJob2}, #{rateOfJob3}, #{rateOfJob4}, #{rateOfJob5},
-				#{rateOfJob6}, #{gender}, #{basicFee}, #{specialContractFee})
+				#{rateOfJob6}, #{confirmedStatus}, #{specialContract})
 	</insert>
 	<insert id="insertActualCostInsurance" parameterType="com.insurance.sce.dao.InsuranceDB">
 		INSERT INTO actualCostInsurance(insuranceId, selfBurdenRate)

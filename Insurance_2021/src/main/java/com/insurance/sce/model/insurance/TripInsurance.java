@@ -38,14 +38,14 @@ public class TripInsurance extends Insurance {
 		}
 
 		// �꽦蹂꾩뿉 �뵲瑜� �슂�쑉 怨꾩궛
-		if (insurant.getGender() == eGender.male) {
+		if (insurant.getEGender() == eGender.male) {
 			fee *= this.getRateOfGender()[0];
-		} else if (insurant.getGender() == eGender.female) {
+		} else if (insurant.getEGender() == eGender.female) {
 			fee *= this.getRateOfGender()[1];
 		}
 
 		// 援�媛� �쐞�뿕�룄�뿉 �뵲瑜� �슂�쑉 怨꾩궛
-		switch(insurant.getRiskOfTripCountry()) {
+		switch(insurant.getERiskOfTripCountry()) {
 		case safe:
 			fee *= this.getRateOfCountryRank()[0];
 			break;

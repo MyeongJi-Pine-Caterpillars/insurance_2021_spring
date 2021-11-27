@@ -8,7 +8,7 @@ public class Employee {
 	private String password;
 	private String name;
 	private String phoneNumber;
-	private eEmployeeRole role;
+	private eEmployeeRole eRole;
 	private int saleHistory;
 	
 	// Constructor
@@ -28,8 +28,8 @@ public class Employee {
 	public String getPassword() {return password;}
 	public void setPassword(String password) {this.password = password;}
 
-	public eEmployeeRole getRole() {return role;}
-	public void setRole(int role) {this.role = eEmployeeRole.get(role);}
+	public eEmployeeRole getEmployeeRole() {return eRole;}
+	public void setEmployeeRole(eEmployeeRole role) {this.eRole = role;}
 	
 	public int getSaleHistory() {return saleHistory;}
 	public void setSaleHistory(int saleHistory) {this.saleHistory = saleHistory;}

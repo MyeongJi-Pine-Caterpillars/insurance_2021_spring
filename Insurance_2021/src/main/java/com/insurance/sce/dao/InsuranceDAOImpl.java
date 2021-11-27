@@ -8,6 +8,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.insurance.sce.global.Constants.eInsuranceType;
 import com.insurance.sce.model.insurance.*;
 
 @Repository
@@ -48,7 +49,23 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	// Insert
 	public int insert(Insurance insurance) {
 		InsuranceDB insuranceDB = new InsuranceDB(insurance);
-		return sqlSession.insert(Insert, insuranceDB);
+		int insuranceResult = sqlSession.insert(Insert, insuranceDB);
+		switch(insurance.getEType()) {
+		case cancerInsurance:
+			return this.insertCancerInsurance(insurance);
+		case dentalInsurance:
+			return this.insertDentalInsurance(insurance);
+		case actualCostInsurance:
+			return this.insertActualCostInsurance(insurance);
+		case fireInsurance:
+			return this.insertFireInsurance(insurance);
+		case driverInsurance:
+			return this.insertDriverInsurance(insurance);
+		case tripInsurance:
+			return this.insertTripInsurance(insurance);
+		default:
+			return insuranceResult;
+		}
 	}
 	public int insertActualCostInsurance(Insurance insurance) {
 		InsuranceDB insuranceDB = new InsuranceDB(insurance);
@@ -223,6 +240,4 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	
 	// Delete
 	public int delete(String insuranceId) {return sqlSession.delete(Delete, insuranceId);}
-	
-	
 }

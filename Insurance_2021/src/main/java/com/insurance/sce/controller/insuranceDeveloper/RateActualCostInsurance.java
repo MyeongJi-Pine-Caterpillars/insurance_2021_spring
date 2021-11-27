@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,8 @@ import com.insurance.sce.service.InsuranceDeveloperService;
 @Controller
 @RequestMapping(value = "/")
 public class RateActualCostInsurance {
+	@Autowired
+	InsuranceDeveloperService idService;
 	private Insurance insurance;
 	
 	/**
@@ -38,36 +41,9 @@ public class RateActualCostInsurance {
 	@RequestMapping(value="goToGuaranteeActualCostInsurance", method=RequestMethod.GET)
 	public String responseGoToGuaranteeActualCostInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		double selfBurdenRate = Double.parseDouble(request.getParameter("selfBurdenRate"));
-		
-		InsuranceDeveloperService idService = new InsuranceDeveloperService();
 		this.insurance = idService.setActualCostRate(insurance, selfBurdenRate);
-		HttpSession session = request.getSession(true);
-		session.setAttribute("ratedInsurance", this.insurance);
-		String nextViewUrl = "";
-		switch(this.insurance.getEType()) {
-		case driverInsurance:
-			nextViewUrl = "redirect:/guaranteeDriverInsurance";
-			break;
-		case fireInsurance:
-			nextViewUrl = "redirect:/guaranteeFireInsurance";
-			break;
-		case cancerInsurance:
-			nextViewUrl = "redirect:/guaranteeCancerInsurance";
-			break;
-		case actualCostInsurance:
-			nextViewUrl = "redirect:/guaranteeActualCostInsurance";
-			break;
-		case tripInsurance:
-			nextViewUrl = "redirect:/guaranteeTripInsurance";
-			break;
-		case dentalInsurance:
-			nextViewUrl = "redirect:/guaranteeDentalInsurance";
-			break;
-		default:
-			nextViewUrl = "redirect:/developInsurance";
-			break; 
-		}
-		return nextViewUrl;
+		idService.finishInsurance(this.insurance);
+		return "redirect:/developInsurance";
 	}
 
 }

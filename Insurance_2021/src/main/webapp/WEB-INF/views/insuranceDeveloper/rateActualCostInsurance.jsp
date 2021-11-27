@@ -403,11 +403,12 @@
 							</div>
 							</form>
 							<div class="col">
-								<button type="button" class="btn btn-primary" onclick="nextBtn()">보장 내역 설정하기</button>
+								<button type="button" class="btn btn-primary" onclick="nextBtn()">설계 완료하기</button>
 							</div>
 							<script>
 							function nextBtn(){
 								$("#form-rateActualCostInsurance").submit();
+								alert("보험 설계가 완료되었습니다.");
 							}
 							</script>
 						</div>

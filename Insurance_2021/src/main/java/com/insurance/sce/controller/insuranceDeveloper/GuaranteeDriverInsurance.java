@@ -20,7 +20,7 @@ import com.insurance.sce.service.InsuranceDeveloperService;
  */
 @Controller
 @RequestMapping(value = "/")
-public class GuaranteeCancerInsurance {
+public class GuaranteeDriverInsurance {
 	@Autowired
 	InsuranceDeveloperService idService;
 	private Insurance insurance;
@@ -29,31 +29,39 @@ public class GuaranteeCancerInsurance {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	
-	@RequestMapping(value="guaranteeCancerInsurance", method=RequestMethod.GET)
-	public String responseGuaranteeCancerInsurance(Locale locale, Model model, HttpServletRequest request) {
+	@RequestMapping(value="guaranteeDriverInsurance", method=RequestMethod.GET)
+	public String responseGuaranteeTripInsurance(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		this.insurance = (Insurance) session.getAttribute("ratedInsurance");
 		int i = 1;
-		for(String e: Constants.cancerGuarantee) {
-			model.addAttribute("cancerGuarantee"+i, e);
+		for(String e: Constants.driverGuarantee) {
+			model.addAttribute("driverGuarantee"+i, e);
 			i++;
 		}
-		return "insuranceDeveloper/guaranteeCancerInsurance";
+		return "insuranceDeveloper/guaranteeDriverInsurance";
 	}
-	@RequestMapping(value="checkCancerInsurance", method=RequestMethod.GET)
+	@RequestMapping(value="checkDriverInsurance", method=RequestMethod.GET)
 	public String responseCheck(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		String[] selectedGuarantee = request.getParameterValues("guaranteeCheckbox");
 		String[] selectedSpecial = request.getParameterValues("specialCheckbox");
 		if(selectedSpecial == null) selectedSpecial = new String[0];
 		String[] tmpCompensation = request.getParameterValues("compensation");
+		String[] tmpSelfBurden = request.getParameterValues("selfBurden");
 		int[] compensation = new int[selectedGuarantee.length];
+		double[] selfBurden = new double[selectedGuarantee.length];
 		int i = 0;
 		for(String comp: tmpCompensation) {
 			if(!comp.equals("")) {
 				compensation[i++] = Integer.parseInt(comp);
 			}
 		}
-		this.insurance = idService.setGuarantee(insurance, selectedGuarantee, selectedSpecial, compensation);
+		i = 0;
+		for(String comp: tmpCompensation) {
+			if(!comp.equals("")) {
+				selfBurden[i++] = Double.parseDouble(comp);
+			}
+		}
+		this.insurance = idService.setBurdenGuarantee(insurance, selectedGuarantee, selectedSpecial, compensation, selfBurden);
 		idService.finishInsurance(this.insurance);
 		return "redirect:/developInsurance";
 	}

@@ -5,8 +5,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +23,8 @@ import com.insurance.sce.service.InsuranceDeveloperService;
 @Controller
 @RequestMapping(value = "/")
 public class DetailInsurance {
+	@Autowired
+	InsuranceDeveloperService idService;
 	private Insurance insurance;
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -73,7 +74,6 @@ public class DetailInsurance {
 			jobRate[i] = Double.parseDouble(request.getParameter(job[i]));
 		}
 		
-		InsuranceDeveloperService idService = new InsuranceDeveloperService();
 		this.insurance = idService.detailInsurance(insurance, name, basicFee, specialFee, warrantyPeriod, ageRate, genderRate, jobRate);
 		HttpSession session = request.getSession(true);
 		session.setAttribute("detailedInsurance", this.insurance);

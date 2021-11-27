@@ -5,15 +5,13 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.insurance.sce.global.Constants;
-import com.insurance.sce.global.Constants.eRankOfCar;
 import com.insurance.sce.global.Constants.eUsageOfStructure;
 import com.insurance.sce.model.insurance.Insurance;
 import com.insurance.sce.service.InsuranceDeveloperService;
@@ -24,6 +22,8 @@ import com.insurance.sce.service.InsuranceDeveloperService;
 @Controller
 @RequestMapping(value = "/")
 public class RateFireInsurance {
+	@Autowired
+	InsuranceDeveloperService idService;
 	private Insurance insurance;
 	
 	/**
@@ -34,16 +34,20 @@ public class RateFireInsurance {
 	public String responseRateFireInsurance(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		this.insurance = (Insurance) session.getAttribute("detailedInsurance");
-		for(eUsageOfStructure e: eUsageOfStructure.values()) {
-			model.addAttribute(e.getName(), e.getName());
+		int i = 1;
+		for(int k = 1; k < eUsageOfStructure.values().length; k++) {
+			model.addAttribute("usageStructureRateName"+i, eUsageOfStructure.values()[k].getName());
+			i++;
 		}
+		i = 1;
 		for(String e: Constants.postedPrice) {
-			model.addAttribute(e, e);
+			model.addAttribute("postedPriceRateName"+i, e);
+			i++;
 		}
 		return "insuranceDeveloper/rateFireInsurance";
 	}
-	@RequestMapping(value="guaranteeFireInsurance", method=RequestMethod.GET)
-	public String responseGuaranteeFireInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
+	@RequestMapping(value="goToGuaranteeFireInsurance", method=RequestMethod.GET)
+	public String responseGoToGuaranteeFireInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		String[] postedPrice = {"lDotFiveRate", "mDotFivelFiveRate", "mFivelTenRate", "mTenlTwentyRate", "mTwentyRate"};
 		String[] usageOfStructure = {"houseRate", "studyRate", "factoryRate", "warehouseRate", "officeRate", "publicFacilityRate"};
 		double[] postedPriceRate = new double[postedPrice.length];
@@ -55,12 +59,11 @@ public class RateFireInsurance {
 			usageOfStructureRate[i] = Double.parseDouble(request.getParameter(usageOfStructure[i]));
 		}
 		
-		InsuranceDeveloperService idService = new InsuranceDeveloperService();
 		this.insurance = idService.setFireRate(insurance, postedPriceRate, usageOfStructureRate);
 		HttpSession session = request.getSession(true);
 		session.setAttribute("ratedInsurance", this.insurance);
 		String nextViewUrl = "";
-		switch(this.insurance.getType()) {
+		switch(this.insurance.getEType()) {
 		case driverInsurance:
 			nextViewUrl = "redirect:/guaranteeDriverInsurance";
 			break;

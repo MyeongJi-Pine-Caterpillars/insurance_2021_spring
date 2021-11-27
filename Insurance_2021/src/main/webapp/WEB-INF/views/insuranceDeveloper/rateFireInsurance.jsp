@@ -382,7 +382,7 @@
 					<div class="row">
 
 						<div class="col-lg-6 mb-4">
-						<form id="form-rateFireInsurance" action="guaranteeFireInsurance" method="get">
+						<form id="form-rateFireInsurance" action="goToGuaranteeFireInsurance" method="get">
 							<!-- Illustrations -->
 							
 							<div class="card shadow mb-4">
@@ -393,7 +393,7 @@
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
-											<label>${"(공시가)<=5천만원"} : </label>
+											<label><%= request.getAttribute("postedPriceRateName1") %> : </label>
 											<div class=form-check>
 												<input type="number" name="lDotFiveRate" value="1.0" step="0.1"> 
 											</div>
@@ -401,7 +401,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"5천만원<(공시가)<=5억"} : </label>
+											<label><%= request.getAttribute("postedPriceRateName2") %> : </label>
 											<div class=form-check>
 												<input type="number" name="mDotFivelFiveRate" value="1.0" step="0.1"> 
 											</div>
@@ -409,7 +409,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"5억<(공시가)<=10억"} : </label>
+											<label><%= request.getAttribute("postedPriceRateName3") %> : </label>
 											<div class=form-check>
 												<input type="number" name="mFivelTenRate" value="1.0" step="0.1"> 
 											</div>
@@ -417,7 +417,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"10억<(공시가)<=20억"} : </label>
+											<label><%= request.getAttribute("postedPriceRateName4") %> : </label>
 											<div class=form-check>
 												<input type="number" name="mTenlTwentyRate" value="1.0" step="0.1"> 
 											</div>
@@ -425,7 +425,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"20억<(공시가)"} : </label>
+											<label><%= request.getAttribute("postedPriceRateName5") %> : </label>
 											<div class=form-check>
 												<input type="number" name="mTwentyRate" value="1.0" step="0.1"> 
 											</div>
@@ -442,7 +442,7 @@
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
-											<label>${"주택"}</label>
+											<label><%= request.getAttribute("usageStructureRateName1") %></label>
 											<div class=form-check>
 												<input type="number" name="houseRate" value="1.0" step="0.1"> 
 											</div>
@@ -450,7 +450,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"교육"} : </label>
+											<label><%= request.getAttribute("usageStructureRateName2") %> : </label>
 											<div class=form-check>
 												<input type="number" name="studyRate" value="1.0" step="0.1"> 
 											</div>
@@ -458,7 +458,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"공장"} : </label>
+											<label><%= request.getAttribute("usageStructureRateName3") %> : </label>
 											<div class=form-check>
 												<input type="number" name="factoryRate" value="1.0" step="0.1"> 
 											</div>
@@ -466,7 +466,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"창고"} : </label>
+											<label><%= request.getAttribute("usageStructureRateName4") %> : </label>
 											<div class=form-check>
 												<input type="number" name="warehouseRate" value="1.0" step="0.1"> 
 											</div>
@@ -474,7 +474,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"사무"} : </label>
+											<label><%= request.getAttribute("usageStructureRateName5") %> : </label>
 											<div class=form-check>
 												<input type="number" name="officeRate" value="1.0" step="0.1"> 
 											</div>
@@ -482,7 +482,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"공공시설"} : </label>
+											<label><%= request.getAttribute("usageStructureRateName6") %> : </label>
 											<div class=form-check>
 												<input type="number" name="publicFacilityRate" value="1.0" step="0.1"> 
 											</div>

@@ -382,7 +382,7 @@
 					<div class="row">
 
 						<div class="col-lg-6 mb-4">
-						<form id="form-rateDriverInsurance" action="guaranteeDriverInsurance" method="get">
+						<form id="form-rateDriverInsurance" action="goToGuaranteeDriverInsurance" method="get">
 							<!-- Illustrations -->
 							
 							<div class="card shadow mb-4">
@@ -393,7 +393,7 @@
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
-											<label>${"버스"} : </label>
+											<label><%= request.getAttribute("typeOfCarRateName1") %> : </label>
 											<div class=form-check>
 												<input type="number" name="busRate" value="1.0" step="0.1"> 
 											</div>
@@ -401,7 +401,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"승합차"} : </label>
+											<label><%= request.getAttribute("typeOfCarRateName2") %> : </label>
 											<div class=form-check>
 												<input type="number" name="vanRate" value="1.0" step="0.1"> 
 											</div>
@@ -409,7 +409,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"SUV"} : </label>
+											<label><%= request.getAttribute("typeOfCarRateName3") %> : </label>
 											<div class=form-check>
 												<input type="number" name="suvRate" value="1.0" step="0.1"> 
 											</div>
@@ -417,7 +417,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"외제차"} : </label>
+											<label><%= request.getAttribute("typeOfCarRateName4") %> : </label>
 											<div class=form-check>
 												<input type="number" name="foreignRate" value="1.0" step="0.1"> 
 											</div>
@@ -425,7 +425,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"기타"} : </label>
+											<label><%= request.getAttribute("typeOfCarRateName5") %> : </label>
 											<div class=form-check>
 												<input type="number" name="etcRate" value="1.0" step="0.1"> 
 											</div>
@@ -442,7 +442,7 @@
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
-											<label>${"최고급"}</label>
+											<label><%= request.getAttribute("rankOfCarRateName1") %> : </label>
 											<div class=form-check>
 												<input type="number" name="luxuryRate" value="1.0" step="0.1"> 
 											</div>
@@ -450,7 +450,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"고급"} : </label>
+											<label><%= request.getAttribute("rankOfCarRateName2") %>  : </label>
 											<div class=form-check>
 												<input type="number" name="highRate" value="1.0" step="0.1"> 
 											</div>
@@ -458,7 +458,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"보급형"} : </label>
+											<label><%= request.getAttribute("rankOfCarRateName3") %>  : </label>
 											<div class=form-check>
 												<input type="number" name="middleRate" value="1.0" step="0.1"> 
 											</div>
@@ -466,7 +466,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"저가"} : </label>
+											<label><%= request.getAttribute("rankOfCarRateName4") %>  : </label>
 											<div class=form-check>
 												<input type="number" name="lowRate" value="1.0" step="0.1"> 
 											</div>
@@ -483,7 +483,7 @@
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
-											<label>${"0회"}</label>
+											<label><%= request.getAttribute("accidentHistoryRateName1") %> : </label>
 											<div class=form-check>
 												<input type="number" name="zeroCountRate" value="1.0" step="0.1"> 
 											</div>
@@ -491,7 +491,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"1회"} : </label>
+											<label><%= request.getAttribute("accidentHistoryRateName2") %> : </label>
 											<div class=form-check>
 												<input type="number" name="oneCountRate" value="1.0" step="0.1"> 
 											</div>
@@ -499,7 +499,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"2회~3회"} : </label>
+											<label><%= request.getAttribute("accidentHistoryRateName3") %> : </label>
 											<div class=form-check>
 												<input type="number" name="twoThreeCountRate" value="1.0" step="0.1"> 
 											</div>
@@ -507,7 +507,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"4회~5회"} : </label>
+											<label><%= request.getAttribute("accidentHistoryRateName4") %> : </label>
 											<div class=form-check>
 												<input type="number" name="fourFiveCountRate" value="1.0" step="0.1"> 
 											</div>
@@ -515,7 +515,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"6회~7회"} : </label>
+											<label><%= request.getAttribute("accidentHistoryRateName5") %> : </label>
 											<div class=form-check>
 												<input type="number" name="sixSevenCountRate" value="1.0" step="0.1"> 
 											</div>
@@ -523,7 +523,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"8회 이상"} : </label>
+											<label><%= request.getAttribute("accidentHistoryRateName6") %> : </label>
 											<div class=form-check>
 												<input type="number" name="eightCountRate" value="1.0" step="0.1"> 
 											</div>

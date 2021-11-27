@@ -382,7 +382,7 @@
 					<div class="row">
 
 						<div class="col-lg-6 mb-4">
-						<form id="form-rateActualCostInsurance" action="guaranteeActualCostInsurance" method="get">
+						<form id="form-rateActualCostInsurance" action="goToGuaranteeActualCostInsurance" method="get">
 							<!-- Illustrations -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3"> 
@@ -403,11 +403,12 @@
 							</div>
 							</form>
 							<div class="col">
-								<button type="button" class="btn btn-primary" onclick="nextBtn()">보장 내역 설정하기</button>
+								<button type="button" class="btn btn-primary" onclick="nextBtn()">설계 완료하기</button>
 							</div>
 							<script>
 							function nextBtn(){
 								$("#form-rateActualCostInsurance").submit();
+								alert("보험 설계가 완료되었습니다.");
 							}
 							</script>
 						</div>

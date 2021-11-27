@@ -77,7 +77,7 @@
 	<select id="selectAll" resultType="com.insurance.sce.model.insurance.Insurance">
 		SELECT * FROM insurance
 	</select>
-	<select id="selectAllActualCostInsurance" resultType="com.insurance.sce.model.insurance.CancerInsurance">
+	<select id="selectAllActualCostInsurance" resultType="com.insurance.sce.model.insurance.ActualCostInsurance">
 		SELECT * FROM insurance
 		WHERE type = 3
 	</select>
@@ -85,19 +85,19 @@
 		SELECT * FROM insurance
 		WHERE type = 5
 	</select>
-	<select id="selectAllDentalInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+	<select id="selectAllDentalInsurance" resultType="com.insurance.sce.model.insurance.DentalInsurance">
 		SELECT * FROM insurance
 		WHERE type = 2
 	</select>
-	<select id="selectAllDriverInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+	<select id="selectAllDriverInsurance" resultType="com.insurance.sce.model.insurance.DriverInsurance">
 		SELECT * FROM insurance
 		WHERE type = 1
 	</select>
-	<select id="selectAllFireInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+	<select id="selectAllFireInsurance" resultType="com.insurance.sce.model.insurance.FireInsurance">
 		SELECT * FROM insurance
 		WHERE type = 4
 	</select>
-	<select id="selectAllTripInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+	<select id="selectAllTripInsurance" resultType="com.insurance.sce.model.insurance.TripInsurance">
 		SELECT * FROM insurance
 		WHERE type = 6
 	</select>
@@ -114,7 +114,7 @@
 		SELECT * FROM insurance
 		WHERE insuranceId = #{insuranceId}
 	</select>
-	<select id="selectActualCostInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+	<select id="selectActualCostInsurance" resultType="com.insurance.sce.model.insurance.ActualCostInsurance">
 		SELECT * FROM actualCostInsurance
 		WHERE insuranceId = #{insuranceId}
 	</select>
@@ -122,19 +122,19 @@
 		SELECT * FROM cancerInsurance
 		WHERE insuranceId = #{insuranceId}
 	</select>
-	<select id="selectDentalInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+	<select id="selectDentalInsurance" resultType="com.insurance.sce.model.insurance.DentalInsurance">
 		SELECT * FROM dentalInsurance
 		WHERE insuranceId = #{insuranceId}
 	</select>
-	<select id="selectDriverInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+	<select id="selectDriverInsurance" resultType="com.insurance.sce.model.insurance.DriverInsurance">
 		SELECT * FROM driverInsurance
 		WHERE insuranceId = #{insuranceId}
 	</select>
-	<select id="selectFireInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+	<select id="selectFireInsurance" resultType="com.insurance.sce.model.insurance.FireInsurance">
 		SELECT * FROM fireInsurance
 		WHERE insuranceId = #{insuranceId}
 	</select>
-	<select id="selectTripInsurance" resultType="com.insurance.sce.model.insurance.Insurance">
+	<select id="selectTripInsurance" resultType="com.insurance.sce.model.insurance.TripInsurance">
 		SELECT * FROM tripInsurance
 		WHERE insuranceId = #{insuranceId}
 	</select>

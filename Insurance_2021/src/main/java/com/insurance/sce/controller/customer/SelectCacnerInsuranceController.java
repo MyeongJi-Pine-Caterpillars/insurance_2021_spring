@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.insurance.sce.model.customer.Customer;
 import com.insurance.sce.model.insurance.CancerInsurance;
-import com.insurance.sce.model.insurance.Insurance;
+import com.insurance.sce.model.insurance.GuaranteePlan;
 import com.insurance.sce.service.InsuranceService;
 
 /**
@@ -31,12 +31,6 @@ public class SelectCacnerInsuranceController {
 	
 	@Autowired
 	InsuranceService insuranceService;
-//	InsuranceDAO insuranceDAO;
-//	GuaranteePlanDAO guaranteePlanDAO;
-	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
 	
 	@RequestMapping(value="cancerInsurance", method=RequestMethod.GET)
 	public String response(Locale locale, Model model, HttpServletRequest request) {
@@ -44,15 +38,21 @@ public class SelectCacnerInsuranceController {
 		
 		Customer customer = (Customer)session.getAttribute("loginCustomer");
 		
-
+		model.addAttribute("insuranceList", insuranceService.selectAllCancerInsurance());
 		model.addAttribute("customerName", customer.getName() );
 		return "customer/selectCancerInsurance";
 	}
 	
-	@RequestMapping(value="selectCancerInsurance/doSelectAll")
+	@RequestMapping(value="selectCancerInsurance/doSelect")
 	@ResponseBody
-	List<CancerInsurance> doSelectAll() {
-		return insuranceService.selectAll();
+	CancerInsurance doSelect(String insuranceId) {
+		return insuranceService.selectCancerInsurance(insuranceId);
+	}
+	@RequestMapping(value="selectCancerInsurance/doSelectGuaranteePlan")
+	@ResponseBody
+	List<GuaranteePlan> doSelectGuaranteePlan(String insuranceId) {
+		System.out.println(insuranceId);
+		return insuranceService.selectGuaranteePlan(insuranceId);
 	}
 	
 	@RequestMapping(value="selectCancerInsurance/doLogout")

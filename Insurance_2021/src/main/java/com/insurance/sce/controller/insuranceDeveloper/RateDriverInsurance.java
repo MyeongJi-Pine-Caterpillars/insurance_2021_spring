@@ -34,19 +34,25 @@ public class RateDriverInsurance {
 	public String responseRateDriverInsurance(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		this.insurance = (Insurance) session.getAttribute("detailedInsurance");
-		for(eTypeOfCar e: eTypeOfCar.values()) {
-			model.addAttribute(e.getName(), e.getName());
+		int i = 1;
+		for(int k = 1; k < eTypeOfCar.values().length; k++) {
+			model.addAttribute("typeOfCarRateName"+i, eTypeOfCar.values()[k].getName());
+			i++;
 		}
-		for(eRankOfCar e: eRankOfCar.values()) {
-			model.addAttribute(e.getName(), e.getName());
+		i = 1;
+		for(int k = 1; k < eRankOfCar.values().length; k++) {
+			model.addAttribute("rankOfCarRateName"+i, eRankOfCar.values()[k].getName());
+			i++;
 		}
+		i = 1;
 		for(String e: Constants.accidentHistory) {
-			model.addAttribute(e, e);
+			model.addAttribute("accidentHistoryRateName"+i, e);
+			i++;
 		}
 		return "insuranceDeveloper/rateDriverInsurance";
 	}
-	@RequestMapping(value="guaranteeDriverInsurance", method=RequestMethod.GET)
-	public String responseGuaranteeDriverInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
+	@RequestMapping(value="goToGuaranteeDriverInsurance", method=RequestMethod.GET)
+	public String responseGoTOGuaranteeDriverInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		String[] typeOfCar = {"busRate", "vanRate", "suvRate", "foreignRate", "etcRate"};
 		String[] rankOfCar = {"luxuryRate", "highRate", "middleRate", "lowRate"};
 		String[] accidentHistory = {"zeroCountRate", "oneCountRate", "twoThreeCountRate", "fourFiveCountRate", "sixSevenCountRate", "eightCountRate"};

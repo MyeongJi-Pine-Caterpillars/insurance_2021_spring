@@ -1,7 +1,10 @@
 package com.insurance.sce.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.insurance.sce.dao.GuaranteePlanDAO;
+import com.insurance.sce.dao.InsuranceDAO;
 import com.insurance.sce.global.Constants.eGender;
 import com.insurance.sce.global.Constants.eInsuranceType;
 import com.insurance.sce.model.insurance.ActualCostInsurance;
@@ -9,11 +12,16 @@ import com.insurance.sce.model.insurance.CancerInsurance;
 import com.insurance.sce.model.insurance.DentalInsurance;
 import com.insurance.sce.model.insurance.DriverInsurance;
 import com.insurance.sce.model.insurance.FireInsurance;
+import com.insurance.sce.model.insurance.GuaranteePlan;
 import com.insurance.sce.model.insurance.Insurance;
 import com.insurance.sce.model.insurance.TripInsurance;
 
 @Repository
 public class InsuranceDeveloperService {
+	@Autowired
+	private InsuranceDAO insuranceDAO;
+	@Autowired
+	private GuaranteePlanDAO guaranteePlanDAO;
 	
 	public Insurance designInsurance(String insuranceType) {
 		Insurance insurance = null;
@@ -57,7 +65,10 @@ public class InsuranceDeveloperService {
 	public Insurance detailInsurance(Insurance insurance, String name, int basicFee, int specialFee, int warrantyPeriod, double[] age, double[] gender, double[] job) {
 		insurance.setName(name);
 		insurance.setBasicFee(basicFee);
-		insurance.setSpecialContractFee(specialFee);
+		if(specialFee != 0) {
+			insurance.setSpecialContract(true);
+			insurance.setSpecialContractFee(specialFee);
+		}
 		insurance.setWarrantyPeriod(warrantyPeriod);
 		insurance.setRateOfAge(age);
 		insurance.setRateOfGender(gender);
@@ -91,5 +102,23 @@ public class InsuranceDeveloperService {
 	public Insurance setActualCostRate(Insurance insurance, double selfBurden) {
 		((ActualCostInsurance)insurance).setSelfBurdenRate(selfBurden);
 		return insurance;
+	}
+	public Insurance setCancerGuarantee(Insurance insurance, String[] selected, String[] special, int[] compensation) {
+		for(int i = 0; i < selected.length; i++) {
+			String content = selected[i];
+			boolean isSpecial = false;
+			for(int j = 0; j < special.length; j++) {
+				if(content.equals(special[j])) isSpecial = true;
+			}
+			if(isSpecial) insurance.addGuaranteePlan(content, compensation[i], true, 1);
+			else insurance.addGuaranteePlan(content, compensation[i], false, 1);
+		}
+		return insurance;
+	}
+	public void finishInsurance(Insurance insurance) {
+		insuranceDAO.insert(insurance);
+		for(GuaranteePlan guaranteePlan: insurance.getGuaranteePlanList()) {
+			guaranteePlanDAO.insert(guaranteePlan);
+		}
 	}
 }

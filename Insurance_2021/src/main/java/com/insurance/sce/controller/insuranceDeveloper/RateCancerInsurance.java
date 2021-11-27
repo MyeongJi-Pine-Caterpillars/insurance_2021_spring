@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.insurance.sce.global.Constants.eFamilyMedicalDisease;
 import com.insurance.sce.global.Constants.eFamilyMedicalRelationship;
+import com.insurance.sce.global.Constants.eTypeOfCar;
 import com.insurance.sce.model.insurance.Insurance;
 import com.insurance.sce.service.InsuranceDeveloperService;
 
@@ -33,16 +34,20 @@ public class RateCancerInsurance {
 	public String responseRateCancerInsurance(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		this.insurance = (Insurance) session.getAttribute("detailedInsurance");
-		for(eFamilyMedicalDisease e: eFamilyMedicalDisease.values()) {
-			model.addAttribute(e.getName(), e.getName());
+		int i = 1;
+		for(int k = 1; k < eFamilyMedicalDisease.values().length; k++) {
+			model.addAttribute("familyDiseaseRateName"+i, eFamilyMedicalDisease.values()[k].getName());
+			i++;
 		}
-		for(eFamilyMedicalRelationship e: eFamilyMedicalRelationship.values()) {
-			model.addAttribute(e.getName(), e.getName());
+		i = 1;
+		for(int k = 1; k < eFamilyMedicalRelationship.values().length; k++) {
+			model.addAttribute("familyRelationRateName"+i, eFamilyMedicalRelationship.values()[k].getName());
+			i++;
 		}
 		return "insuranceDeveloper/rateCancerInsurance";
 	}
-	@RequestMapping(value="guaranteeCancerInsurance", method=RequestMethod.GET)
-	public String responseGuaranteeCancerInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
+	@RequestMapping(value="goToGuaranteeCancerInsurance", method=RequestMethod.GET)
+	public String responseGoToGuaranteeCancerInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		String[] familyMeical = {"thyroidRate", "testicularRate", "ovarianRate", "esophagealRate", "lungRate"};
 		String[] familyRelationship = {"oneRelRate", "twoRelRate", "threeRelRate", "fourRelRate"};
 		double[] familyMeicalRate = new double[familyMeical.length];

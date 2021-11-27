@@ -101,6 +101,5 @@ public abstract class Insurance {
 		guaranteePlan.setSpecial(special);
 		guaranteePlan.setContent(content);
 		guaranteePlan.setRate(rate);
-		this.guaranteePlanDAO.insert(guaranteePlan);
 	}
 }

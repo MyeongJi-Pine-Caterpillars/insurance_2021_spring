@@ -382,7 +382,7 @@
 					<div class="row">
 
 						<div class="col-lg-6 mb-4">
-						<form id="form-rateActualCostInsurance" action="guaranteeActualCostInsurance" method="get">
+						<form id="form-rateActualCostInsurance" action="goToGuaranteeActualCostInsurance" method="get">
 							<!-- Illustrations -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3"> 

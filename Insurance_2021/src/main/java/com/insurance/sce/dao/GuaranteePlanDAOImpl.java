@@ -5,9 +5,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
 import com.insurance.sce.model.insurance.GuaranteePlan;
 
+@Repository
 public class GuaranteePlanDAOImpl extends DBConnector implements GuaranteePlanDAO{
 	@Inject
 	private SqlSession sqlSession;
@@ -19,6 +21,6 @@ public class GuaranteePlanDAOImpl extends DBConnector implements GuaranteePlanDA
 	public int insert(GuaranteePlan guaranteePlan) {return sqlSession.insert(Insert, guaranteePlan);}
 
 	// Select
-	public List<GuaranteePlan> selectByInsuranceId(String insuranceId) {return sqlSession.selectOne(SelectByInsuranceId, insuranceId);}
+	public List<GuaranteePlan> selectByInsuranceId(String insuranceId) {return sqlSession.selectList(SelectByInsuranceId, insuranceId);}
 	
 }

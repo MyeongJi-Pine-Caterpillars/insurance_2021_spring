@@ -21,6 +21,6 @@ public class EmployeeDB extends Employee {
 	}
 	
 	public void setEnum() {
-		this.setEmployeeRole(eEmployeeRole.values()[role]);
+		this.setEmployeeRole(eEmployeeRole.values()[role - 1]);
 	}
 }

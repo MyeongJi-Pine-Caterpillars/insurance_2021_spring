@@ -26,7 +26,7 @@
 		SELECT * FROM employee
 		WHERE employeeId = #{employeeId}
 	</select>
-	<select id="selectByIdPw" resultType="com.insurance.sce.dao.EmployeeDB" parameterType="com.insurance.sce.model.employee.Employee">
+	<select id="selectByIdPw" resultType="com.insurance.sce.dao.EmployeeDB">
 		SELECT * FROM employee
 		WHERE employeeId = #{employeeId} AND password = #{password}
 	</select>

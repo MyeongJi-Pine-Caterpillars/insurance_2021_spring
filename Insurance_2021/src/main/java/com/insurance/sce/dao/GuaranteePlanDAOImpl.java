@@ -21,6 +21,6 @@ public class GuaranteePlanDAOImpl extends DBConnector implements GuaranteePlanDA
 	public int insert(GuaranteePlan guaranteePlan) {return sqlSession.insert(Insert, guaranteePlan);}
 
 	// Select
-	public List<GuaranteePlan> selectByInsuranceId(String insuranceId) {return sqlSession.selectOne(SelectByInsuranceId, insuranceId);}
+	public List<GuaranteePlan> selectByInsuranceId(String insuranceId) {return sqlSession.selectList(SelectByInsuranceId, insuranceId);}
 	
 }

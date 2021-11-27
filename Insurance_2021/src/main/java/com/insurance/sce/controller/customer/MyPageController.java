@@ -22,7 +22,7 @@ import com.insurance.sce.model.customer.Customer;
 @RequestMapping(value = "/")
 public class MyPageController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(SelectActualInsuranceController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MyPageController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.

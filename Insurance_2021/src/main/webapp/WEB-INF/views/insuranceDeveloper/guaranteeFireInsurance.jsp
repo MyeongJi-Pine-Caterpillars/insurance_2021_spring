@@ -540,6 +540,7 @@
 						</div>
 						<script>
 							function nextBtn(){
+								alert("보험 설계가 완료되었습니다.");
 								$("#form-guaranteeFireInsurance").submit();
 							}
 							function specialBtn(id){

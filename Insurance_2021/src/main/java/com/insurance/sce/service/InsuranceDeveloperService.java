@@ -109,7 +109,7 @@ public class InsuranceDeveloperService {
 		((ActualCostInsurance)insurance).setSelfBurdenRate(selfBurden);
 		return insurance;
 	}
-	public Insurance setCancerGuarantee(Insurance insurance, String[] selected, String[] special, int[] compensation) {
+	public Insurance setGuarantee(Insurance insurance, String[] selected, String[] special, int[] compensation) {
 		for(int i = 0; i < selected.length; i++) {
 			String content = selected[i];
 			boolean isSpecial = false;
@@ -122,9 +122,9 @@ public class InsuranceDeveloperService {
 		return insurance;
 	}
 	public void finishInsurance(Insurance insurance) {
-		insuranceDAO.insert(insurance);
-		for(GuaranteePlan guaranteePlan: insurance.getGuaranteePlanList()) {
-			guaranteePlanDAO.insert(guaranteePlan);
-		}
+//		insuranceDAO.insert(insurance);
+//		for(GuaranteePlan guaranteePlan: insurance.getGuaranteePlanList()) {
+//			guaranteePlanDAO.insert(guaranteePlan);
+//		}
 	}
 }

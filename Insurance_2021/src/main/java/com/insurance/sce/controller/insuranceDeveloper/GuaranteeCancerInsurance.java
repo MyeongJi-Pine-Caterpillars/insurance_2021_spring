@@ -44,6 +44,7 @@ public class GuaranteeCancerInsurance {
 	public String responseCheck(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		String[] selectedGuarantee = request.getParameterValues("guaranteeCheckbox");
 		String[] selectedSpecial = request.getParameterValues("specialCheckbox");
+		if(selectedSpecial == null) selectedSpecial = new String[0];
 		String[] tmpCompensation = request.getParameterValues("compensation");
 		int[] compensation = new int[selectedGuarantee.length];
 		int i = 0;
@@ -52,7 +53,7 @@ public class GuaranteeCancerInsurance {
 				compensation[i++] = Integer.parseInt(comp);
 			}
 		}
-		this.insurance = idService.setCancerGuarantee(insurance, selectedGuarantee, selectedSpecial, compensation);
+		this.insurance = idService.setGuarantee(insurance, selectedGuarantee, selectedSpecial, compensation);
 		idService.finishInsurance(this.insurance);
 		return "redirect:/developInsurance";
 	}

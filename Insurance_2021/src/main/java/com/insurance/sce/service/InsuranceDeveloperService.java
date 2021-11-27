@@ -121,6 +121,18 @@ public class InsuranceDeveloperService {
 		}
 		return insurance;
 	}
+	public Insurance setBurdenGuarantee(Insurance insurance, String[] selected, String[] special, int[] compensation, double[] selfBurden) {
+		for(int i = 0; i < selected.length; i++) {
+			String content = selected[i];
+			boolean isSpecial = false;
+			for(int j = 0; j < special.length; j++) {
+				if(content.equals(special[j])) isSpecial = true;
+			}
+			if(isSpecial) insurance.addGuaranteePlan(content, compensation[i], true, selfBurden[i]);
+			else insurance.addGuaranteePlan(content, compensation[i], false, selfBurden[i]);
+		}
+		return insurance;
+	}
 	public void finishInsurance(Insurance insurance) {
 //		insuranceDAO.insert(insurance);
 //		for(GuaranteePlan guaranteePlan: insurance.getGuaranteePlanList()) {

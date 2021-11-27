@@ -20,7 +20,7 @@ import com.insurance.sce.service.InsuranceDeveloperService;
  */
 @Controller
 @RequestMapping(value = "/")
-public class GuaranteeFireInsurance {
+public class GuaranteeDriverInsurance {
 	@Autowired
 	InsuranceDeveloperService idService;
 	private Insurance insurance;
@@ -29,18 +29,18 @@ public class GuaranteeFireInsurance {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	
-	@RequestMapping(value="guaranteeFireInsurance", method=RequestMethod.GET)
-	public String responseGuaranteeFireInsurance(Locale locale, Model model, HttpServletRequest request) {
+	@RequestMapping(value="guaranteeDriverInsurance", method=RequestMethod.GET)
+	public String responseGuaranteeTripInsurance(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		this.insurance = (Insurance) session.getAttribute("ratedInsurance");
 		int i = 1;
-		for(String e: Constants.fireGuarantee) {
-			model.addAttribute("fireGuarantee"+i, e);
+		for(String e: Constants.driverGuarantee) {
+			model.addAttribute("driverGuarantee"+i, e);
 			i++;
 		}
-		return "insuranceDeveloper/guaranteeFireInsurance";
+		return "insuranceDeveloper/guaranteeDriverInsurance";
 	}
-	@RequestMapping(value="checkFireInsurance", method=RequestMethod.GET)
+	@RequestMapping(value="checkDriverInsurance", method=RequestMethod.GET)
 	public String responseCheck(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		String[] selectedGuarantee = request.getParameterValues("guaranteeCheckbox");
 		String[] selectedSpecial = request.getParameterValues("specialCheckbox");

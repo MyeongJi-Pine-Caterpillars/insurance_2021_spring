@@ -373,7 +373,7 @@
 					</div>
 					<!-- /.row -->
 					<!-- Content Row -->
-					<form id="form-guaranteeFireInsurance" action="checkFireInsurance" method="get">
+					<form id="form-guaranteeDriverInsurance" action="checkDriverInsurance" method="get">
 					<div class="row">
 				
 						<!-- Earnings (Monthly) Card Example -->
@@ -385,7 +385,7 @@
 											<div
 												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 												보장 내역 1</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800"><%=request.getAttribute("fireGuarantee1")%></div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800"><%=request.getAttribute("driverGuarantee1")%></div>
 										<div class="col mr-2">
 										<button id="special1btn" type="button" class="btn btn-primary" onclick="specialBtn('special1')">일반</button>
 									</div>
@@ -399,11 +399,11 @@
 									<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="화재" checked>
+												name="guaranteeCheckbox" value="자동차사고재산피해" checked>
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
-												name="specialCheckbox" id="special1" value="화재">
+												name="specialCheckbox" id="special1" value="자동차사고재산피해">
 										</div>
 								</div>
 								
@@ -420,7 +420,7 @@
 											<div
 												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 												보장 내역 2</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800"><%=request.getAttribute("fireGuarantee2")%></div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800"><%=request.getAttribute("driverGuarantee2")%></div>
 										<div class="col mr-2">
 										<button id="special2btn" type="button" class="btn btn-primary" onclick="specialBtn('special2')">일반</button>
 									</div>
@@ -434,11 +434,11 @@
 									<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="수해" checked>
+												name="guaranteeCheckbox" value="자동차사고재산피해" checked>
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
-												name="specialCheckbox" id="special2" value="수해">
+												name="specialCheckbox" id="special2" value="자동차사고재산피해">
 										</div>
 								</div>
 								
@@ -456,7 +456,7 @@
 											<div
 												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 												보장 내역 3</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800"><%=request.getAttribute("fireGuarantee3")%></div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800"><%=request.getAttribute("driverGuarantee3")%></div>
 										<div class="col mr-2">
 										<button id="special3btn" type="button" class="btn btn-primary" onclick="specialBtn('special3')">일반</button>
 									</div>
@@ -470,11 +470,11 @@
 									<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="도난손해" checked>
+												name="guaranteeCheckbox" value="자동차사고재산피해" checked>
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
-												name="specialCheckbox" id="special3" value="도난손해">
+												name="specialCheckbox" id="special3" value="자동차사고재산피해">
 										</div>
 								</div>
 								
@@ -490,7 +490,7 @@
 											<div
 												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 												보장 내역 4</div>
-											<div class="h6 mb-0 font-weight-bold text-gray-800"><%=request.getAttribute("fireGuarantee4")%></div>
+											<div class="h5 mb-0 font-weight-bold text-gray-800"><%=request.getAttribute("driverGuarantee4")%></div>
 										<div class="col mr-2">
 										<button id="special4btn" type="button" class="btn btn-primary" onclick="specialBtn('special4')">일반</button>
 									</div>
@@ -504,50 +504,17 @@
 									<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="상해후유장애" checked>
+												name="guaranteeCheckbox" value="자동차사고재산피해" checked>
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
-												name="specialCheckbox" id="special4" value="상해후유장애">
+												name="specialCheckbox" id="special4" value="자동차사고재산피해">
 										</div>
 								</div>
 								
 							</div>
 						</div>
 					</div>
-					</div>
-					<div class="col-xl-3 col-md-6 mb-4">
-						<div class="card border-left-primary shadow h-100 py-2">
-							<div class="card-body">
-								<div class="row no-gutters align-items-center">
-									<div class="col mr-2">
-											<div
-												class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-												보장 내역 5</div>
-											<div class="h5 mb-0 font-weight-bold text-gray-800"><%=request.getAttribute("fireGuarantee5")%></div>
-										<div class="col mr-2">
-										<button id="special5btn" type="button" class="btn btn-primary" onclick="specialBtn('special5')">일반</button>
-									</div>
-										</div>
-									<div class="col mr-2"> 
-										<input placeholder="자기부담율" step="0.1" style="width:100px;"class="form-check-input" name="selfBurden" type="number">
-									</div>
-									<div class="col mr-2">
-										<input placeholder="배상금" style="width:100px;"class="form-check-input" name="compensation" type="number">
-									</div>
-									<div class="row no-gutters align-items-center">
-										
-											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="고장수리" checked>
-										</div>
-										<div class="row no-gutters align-items-center">
-											<input style="display:none" class="form-check-input" type="checkbox"
-												name="specialCheckbox" id="special5" value="고장수리">
-										</div>
-								</div>
-								
-							</div>
-						</div>
 					</div>
 					</form>
 						<div class="col">
@@ -555,7 +522,7 @@
 						</div>
 						<script>
 							function nextBtn(){
-								$("#form-guaranteeFireInsurance").submit();
+								$("#form-guaranteeDriverInsurance").submit();
 								alert("보험 설계가 완료되었습니다.");
 							}
 							function specialBtn(id){

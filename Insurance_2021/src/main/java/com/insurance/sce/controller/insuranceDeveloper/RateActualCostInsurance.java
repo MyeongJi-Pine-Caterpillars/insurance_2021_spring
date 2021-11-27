@@ -41,35 +41,9 @@ public class RateActualCostInsurance {
 	@RequestMapping(value="goToGuaranteeActualCostInsurance", method=RequestMethod.GET)
 	public String responseGoToGuaranteeActualCostInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		double selfBurdenRate = Double.parseDouble(request.getParameter("selfBurdenRate"));
-		
 		this.insurance = idService.setActualCostRate(insurance, selfBurdenRate);
-		HttpSession session = request.getSession(true);
-		session.setAttribute("ratedInsurance", this.insurance);
-		String nextViewUrl = "";
-		switch(this.insurance.getEType()) {
-		case driverInsurance:
-			nextViewUrl = "redirect:/guaranteeDriverInsurance";
-			break;
-		case fireInsurance:
-			nextViewUrl = "redirect:/guaranteeFireInsurance";
-			break;
-		case cancerInsurance:
-			nextViewUrl = "redirect:/guaranteeCancerInsurance";
-			break;
-		case actualCostInsurance:
-			nextViewUrl = "redirect:/guaranteeActualCostInsurance";
-			break;
-		case tripInsurance:
-			nextViewUrl = "redirect:/guaranteeTripInsurance";
-			break;
-		case dentalInsurance:
-			nextViewUrl = "redirect:/guaranteeDentalInsurance";
-			break;
-		default:
-			nextViewUrl = "redirect:/developInsurance";
-			break; 
-		}
-		return nextViewUrl;
+		idService.finishInsurance(this.insurance);
+		return "redirect:/developInsurance";
 	}
 
 }

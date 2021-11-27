@@ -373,8 +373,9 @@
 					</div>
 					<!-- /.row -->
 					<!-- Content Row -->
+					<form id="form-guaranteeCancerInsurance" action="checkInsurance" method="get">
 					<div class="row">
-
+				
 						<!-- Earnings (Monthly) Card Example -->
 						<div class="col-xl-3 col-md-6 mb-4">
 							<div class="card border-left-primary shadow h-100 py-2">
@@ -386,9 +387,20 @@
 												보장 내역 1</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800"><%= request.getAttribute("cancerGuarantee1") %></div>
 										</div>
-									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+										<button id="special1btn" type="button" class="btn btn-primary" onclick="specialBtn('special1')">일반</button>
+										</div>
+										<div class="col mr-2 align-items-center">
+										<input style="width:100px;"class="form-check-input" name="compensation" type="number">
+										</div>
+										<div class="row no-gutters align-items-center">
+										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="genderCheckbox" value="woman" checked>
+												name="guaranteeCheckbox" value="감상선암" checked>
+										</div>
+										<div class="row no-gutters align-items-center">
+											<input style="display:none" class="form-check-input" type="checkbox"
+												name="specialCheckbox" id="special1" value="감상선암">
 										</div>
 									</div>
 								</div>
@@ -406,9 +418,20 @@
 												보장 내역 2</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800"><%= request.getAttribute("cancerGuarantee2") %></div>
 										</div>
-									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+										<button id="special2btn" type="button" class="btn btn-primary" onclick="specialBtn('special2')">일반</button>
+										</div>
+										<div class="col mr-2 align-items-center">
+										<input style="width:100px;"class="form-check-input" name="compensation" type="number">
+										</div>
+										<div class="row no-gutters align-items-center">
+										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="genderCheckbox" value="woman" checked>
+												name="guaranteeCheckbox" value="고환암" checked>
+										</div>
+										<div class="row no-gutters align-items-center">
+											<input style="display:none" class="form-check-input" type="checkbox"
+												name="specialCheckbox" id="special2" value="고환암">
 										</div>
 									</div>
 								</div>
@@ -427,9 +450,20 @@
 												보장 내역 3</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800"><%= request.getAttribute("cancerGuarantee3") %></div>
 										</div>
+										<div class="col mr-2">
+										<button id="special3btn" type="button" class="btn btn-primary" onclick="specialBtn('special3')">일반</button>
+										</div>
+										<div class="col mr-2 align-items-center">
+										<input style="width:100px;"class="form-check-input" name="compensation" type="number">
+										</div>
 										<div class="row no-gutters align-items-center">
+										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="genderCheckbox" value="woman" checked>
+												name="guaranteeCheckbox" value="난소암" checked>
+										</div>
+										<div class="row no-gutters align-items-center">
+											<input style="display:none" class="form-check-input" type="checkbox"
+												name="specialCheckbox" id="special3" value="난소암">
 										</div>
 									</div>
 								</div>
@@ -446,9 +480,20 @@
 												보장 내역 4</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800"><%=request.getAttribute("cancerGuarantee4")%></div>
 										</div>
+										<div class="col mr-2">
+										<button id="special4btn" type="button" class="btn btn-primary" onclick="specialBtn('special4')">일반</button>
+										</div>
+										<div class="col mr-2 align-items-center">
+										<input style="width:100px;"class="form-check-input" name="compensation" type="number">
+										</div>
 										<div class="row no-gutters align-items-center">
+										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="genderCheckbox" value="woman" checked>
+												name="guaranteeCheckbox" value="식도암" checked>
+										</div>
+										<div class="row no-gutters align-items-center">
+											<input style="display:none" class="form-check-input" type="checkbox"
+												name="specialCheckbox" id="special4" value="식도암">
 										</div>
 									</div>
 								</div>
@@ -468,9 +513,20 @@
 												보장 내역 5</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800"><%= request.getAttribute("cancerGuarantee5") %></div>
 										</div>
+										<div class="col mr-2">
+										<button id="special5btn" type="button" class="btn btn-primary" onclick="specialBtn('special5')">일반</button>
+										</div>
+										<div class="col mr-2 align-items-center">
+										<input style="width:100px;"class="form-check-input" name="compensation" type="number">
+										</div>
 										<div class="row no-gutters align-items-center">
+										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="genderCheckbox" value="woman" checked>
+												name="guaranteeCheckbox" value="폐암" checked>
+										</div>
+										<div class="row no-gutters align-items-center">
+											<input style="display:none" class="form-check-input" type="checkbox"
+												name="specialCheckbox" id="special5" value="폐암">
 										</div>
 									</div>
 								</div>
@@ -487,9 +543,20 @@
 												보장 내역 6</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800"><%= request.getAttribute("cancerGuarantee6") %></div>
 										</div>
+										<div class="col mr-2">
+										<button id="special6btn" type="button" class="btn btn-primary" onclick="specialBtn('special6')">일반</button>
+										</div>
+										<div class="col mr-2 align-items-center">
+										<input style="width:100px;"class="form-check-input" name="compensation" type="number">
+										</div>
 										<div class="row no-gutters align-items-center">
+										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="genderCheckbox" value="woman" checked>
+												name="guaranteeCheckbox" value="간암" checked>
+										</div>
+										<div class="row no-gutters align-items-center">
+											<input style="display:none" class="form-check-input" type="checkbox"
+												name="specialCheckbox" id="special6" value="간암">
 										</div>
 									</div>
 								</div>
@@ -509,9 +576,20 @@
 												보장 내역 7</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800"><%= request.getAttribute("cancerGuarantee7") %></div>
 										</div>
+										<div class="col mr-2">
+										<button id="special7btn" type="button" class="btn btn-primary" onclick="specialBtn('special7')">일반</button>
+										</div>
+										<div class="col mr-2 align-items-center">
+										<input style="width:100px;"class="form-check-input" name="compensation" type="number">
+										</div>
 										<div class="row no-gutters align-items-center">
+										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="genderCheckbox" value="woman" checked>
+												name="guaranteeCheckbox" value="위암" checked>
+										</div>
+										<div class="row no-gutters align-items-center">
+											<input style="display:none" class="form-check-input" type="checkbox"
+												name="specialCheckbox" id="special7" value="위암">
 										</div>
 									</div>
 								</div>
@@ -528,24 +606,45 @@
 												보장 내역 8</div>
 											<div class="h5 mb-0 font-weight-bold text-gray-800"><%= request.getAttribute("cancerGuarantee8") %></div>
 										</div>
+										<div class="col mr-2">
+										<button id="special8btn" type="button" class="btn btn-primary" onclick="specialBtn('special8')">일반</button>
+										</div>
+										<div class="col mr-2 align-items-center">
+										<input style="width:100px;"class="form-check-input" name="compensation" type="number">
+										</div>
 										<div class="row no-gutters align-items-center">
+										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="genderCheckbox" value="woman" checked>
+												name="guaranteeCheckbox" value="췌장암" checked>
+										</div>
+										<div class="row no-gutters align-items-center">
+											<input style="display:none" class="form-check-input" type="checkbox"
+												name="specialCheckbox" id="special8" value="췌장암">
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-						
 					</div>
+					</form>
 						<div class="col">
-							<button type="button" class="btn btn-primary" onclick="nextBtn()">다음
-								단계로</button>
+							<button type="button" class="btn btn-primary" onclick="nextBtn()">설계 완료하기</button>
 						</div>
 						<script>
 							function nextBtn(){
-								alert("asd");
-								$("#form-rateCancerInsurance").submit();
+								$("#form-guaranteeCancerInsurance").submit();
+							}
+							function specialBtn(id){
+								var isChecked = $('input[id='+id+']').attr('checked');
+								if(isChecked){
+									$('#'+id+'btn').css({ background:"#4e73df"});
+									$('#'+id+'btn').html('일반')
+									$('input[id='+id+']').attr('checked', false)
+								} else {
+									$('#'+id+'btn').css({ background:"#36b9cc"});
+									$('#'+id+'btn').html('특약')
+									$('input[id='+id+']').attr('checked', true)
+								}
 							}
 							</script>
 

@@ -5,9 +5,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Repository;
 
 import com.insurance.sce.model.insurance.*;
 
+@Repository
 public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	@Inject
 	private SqlSession sqlSession;

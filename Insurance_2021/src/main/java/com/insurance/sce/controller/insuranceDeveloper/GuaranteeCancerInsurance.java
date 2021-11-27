@@ -40,46 +40,20 @@ public class GuaranteeCancerInsurance {
 	}
 	@RequestMapping(value="checkInsurance", method=RequestMethod.GET)
 	public String responseCheck(Locale locale, Model model, HttpServletRequest request) throws Exception{
-		String[] familyMeical = {"thyroidRate", "testicularRate", "ovarianRate", "esophagealRate", "lungRate"};
-		String[] familyRelationship = {"oneRelRate", "twoRelRate", "threeRelRate", "fourRelRate"};
-		double[] familyMeicalRate = new double[familyMeical.length];
-		double[] familyRelationshipRate = new double[familyRelationship.length];
-		for(int i = 0; i < familyMeical.length; i++) {
-			familyMeicalRate[i] = Double.parseDouble(request.getParameter(familyMeical[i]));
+		String[] selectedGuarantee = request.getParameterValues("guaranteeCheckbox");
+		String[] selectedSpecial = request.getParameterValues("specialCheckbox");
+		String[] tmpCompensation = request.getParameterValues("compensation");
+		int[] compensation = new int[selectedGuarantee.length];
+		int i = 0;
+		for(String comp: tmpCompensation) {
+			if(!comp.equals("")) {
+				compensation[i++] = Integer.parseInt(comp);
+			}
 		}
-		for(int i = 0; i < familyRelationship.length; i++) {
-			familyRelationshipRate[i] = Double.parseDouble(request.getParameter(familyRelationship[i]));
-		}
-		
 		InsuranceDeveloperService idService = new InsuranceDeveloperService();
-		this.insurance = idService.setCancerRate(this.insurance, familyMeicalRate, familyRelationshipRate);
-		HttpSession session = request.getSession(true);
-		session.setAttribute("ratedInsurance", this.insurance);
-		String nextViewUrl = "";
-		switch(this.insurance.getType()) {
-		case driverInsurance:
-			nextViewUrl = "redirect:/guaranteeDriverInsurance";
-			break;
-		case fireInsurance:
-			nextViewUrl = "redirect:/guaranteeFireInsurance";
-			break;
-		case cancerInsurance:
-			nextViewUrl = "redirect:/guaranteeCancerInsurance";
-			break;
-		case actualCostInsurance:
-			nextViewUrl = "redirect:/guaranteeActualCostInsurance";
-			break;
-		case tripInsurance:
-			nextViewUrl = "redirect:/guaranteeTripInsurance";
-			break;
-		case dentalInsurance:
-			nextViewUrl = "redirect:/guaranteeDentalInsurance";
-			break;
-		default:
-			nextViewUrl = "redirect:/developInsurance";
-			break; 
-		}
-		return nextViewUrl;
+		this.insurance = idService.setCancerGuarantee(insurance, selectedGuarantee, selectedSpecial, compensation);
+		idService.finishInsurance(this.insurance);
+		return "redirect:/developInsurance";
 	}
 
 }

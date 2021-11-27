@@ -243,27 +243,6 @@ public class Constants {
 	
 	public static String[] postedPrice = {"(공시가)<=5천만원", "5천만원<(공시가)<=5억", "5억<(공시가)<=10억", "10억<(공시가)<=20억", "20억<(공시가)"};
 	
-	public static enum eCancer {
-		thyroid(1,"갑상선암"), 
-		testicular(2, "고환암"), 
-		ovarian(3, "난소암"), 
-		esophageal(4, "식도암"), 
-		lung(5, "폐암"),
-		liver(6, "간암"),
-		colorectal(7, "대장암");
-		
-		final private int num;
-		final private String name;
-		
-		private eCancer(int num, String name) {
-			this.num = num;
-			this.name = name;
-		}
-
-		public int getNum() {return num;}
-		public String getName() {return this.name;}
-	}
-
 	public static enum eEmployeeRole {
 		insuranceDeveloper(1), insuranceConfirmer(2), salesperson(3), contractManager(4), compensationHandler(5), underWriter(6);
 		

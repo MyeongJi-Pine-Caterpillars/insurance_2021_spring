@@ -60,6 +60,13 @@ public class Constants {
 
 		public int getNum() {return num;}
 		public String getName() {return this.name;}
+		
+		public static eGender get(int n) {
+			for(eGender tmp : eGender.values()) {
+				if(tmp.getNum() == n) return tmp;
+			}
+			return null;
+		}
 	}
 
 	public static enum eJob {
@@ -199,6 +206,13 @@ public class Constants {
 		public Insurance getSelectedInsurance() {return this.selectedInsurance;}
 		public String getName() {return this.name;}
 		public String[] getGuaranteePlan() {return this.GuaranteePlan;}
+		
+		public static eInsuranceType get(int n) {
+			for(eInsuranceType tmp : eInsuranceType.values()) {
+				if(tmp.getNum() == n) return tmp;
+			}
+			return null;
+		}
 	}
 
 	public static enum eFamilyMedicalDisease {
@@ -274,6 +288,13 @@ public class Constants {
 		}
 
 		public int getNum() {return num;}
+
+		public static eEmployeeRole get(int n) {
+			for(eEmployeeRole tmp : eEmployeeRole.values()) {
+				if(tmp.getNum() == n) return tmp;
+			}
+			return null;
+		}
 	}
 
 }

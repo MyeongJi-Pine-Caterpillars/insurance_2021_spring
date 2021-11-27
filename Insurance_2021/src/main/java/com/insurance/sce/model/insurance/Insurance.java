@@ -47,8 +47,8 @@ public abstract class Insurance {
 	public String getInsuranceId() {return insuranceId;}
 	public void setInsuranceId(String insuranceId) {this.insuranceId = insuranceId;}
 
-	public String getName() {return name;}
-	public void setName(String name) {this.name = name;}
+	public String getNAME() {return name;}
+	public void setNAME(String name) {this.name = name;}
 
 	public eInsuranceType getEType() {return eType;}
 	public void setEType(eInsuranceType type) {this.eType = type;}
@@ -91,7 +91,7 @@ public abstract class Insurance {
 	abstract public Insurance newInstance();
 	
 	public void birngGuaranteePlan() {
-//		this.guaranteePlanList = this.guaranteePlanDAO.selectById(this.insuranceId);
+		//this.guaranteePlanList = this.guaranteePlanDAO.selectById(this.insuranceId);
 	}
 	
 	public void addGuaranteePlan(String content, int compensation, boolean special, double rate) {

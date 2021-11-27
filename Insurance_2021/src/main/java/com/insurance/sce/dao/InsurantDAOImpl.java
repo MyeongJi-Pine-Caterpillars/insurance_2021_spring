@@ -13,6 +13,7 @@ import com.insurance.sce.model.customer.Insurant;
 @Repository
 public class InsurantDAOImpl implements InsurantDAO {
 	
+
 	@Inject
 	private SqlSession sqlSession;
 	
@@ -41,30 +42,113 @@ public class InsurantDAOImpl implements InsurantDAO {
 	
 	private static final String Delete = "insurantMapper.delete";
 	
-	public int insertInsurant(Insurant insurant) {return sqlSession.insert(Insert, insurant);}
+	public int insertInsurant(Insurant insurant) {
+		InsurantDB insurantDB = new InsurantDB(insurant);
+		return sqlSession.insert(Insert, insurantDB);
+	}
 
 	public List<Insurant> selectInsurantList() {
-		return sqlSession.selectList(SelectInsurantList);
+		ArrayList<Insurant> insurantList = new ArrayList<Insurant>();
+		List<InsurantDB> insurantDB = sqlSession.selectList(SelectInsurantList);
+		for(InsurantDB insurant : insurantDB) {
+			insurant.setEnum();
+			insurantList.add(insurant);
+		}
+		return insurantList;
 	}
-	public Insurant selectInsurant(String InsurantId) {return sqlSession.selectOne(SelectInsurant, InsurantId);}
-	public Insurant selectByCustomerId(String customerId) {return sqlSession.selectOne(SelectByCustomerId, customerId);}
-	public String selectCustomerId(String insurantId) {return sqlSession.selectOne(SelectCustomerId, insurantId);}
-	
-	public int updateName(Insurant insurant) {return sqlSession.update(UpdateName, insurant);}
-	public int updateAddress(Insurant insurant) {return sqlSession.update(UpdateAddress, insurant);}
-	public int updatePhoneNumber(Insurant insurant) {return sqlSession.update(UpdatePhoneNumber, insurant);}
-	public int updateAge(Insurant insurant) {return sqlSession.update(UpdateAge, insurant);}
-	public int updateAccidentHistory(Insurant insurant) {return sqlSession.update(UpdateAccidentHistory, insurant);}
-	public int updatePostedPriceOfStructure(Insurant insurant) {return sqlSession.update(UpdatePostedPriceOfStructure, insurant);}
-	public int updateUsageOfStructure(Insurant insurant) {return sqlSession.update(UpdateUsageOfStructure, insurant);}
-	public int updateGender(Insurant insurant) {return sqlSession.update(UpdateGender, insurant);}
-	public int updateJob(Insurant insurant) {return sqlSession.update(UpdateJob, insurant);}
-	public int updateTypeOfCar(Insurant insurant) {return sqlSession.update(UpdateTypeOfCar, insurant);}
-	public int updateRankOfCar(Insurant insurant) {return sqlSession.update(UpdateRankOfCar, insurant);}
-	public int updateRiskOfTripCountry(Insurant insurant) {return sqlSession.update(UpdateRiskOfTripCountry, insurant);}
-	public int updateForRecontract(Insurant insurant) {return sqlSession.update(UpdateForRecontract, insurant);}
-	public int updateFamilyMedicalRelationship(Insurant insurant) {return sqlSession.update(UpdateFamilyMedicalRelationship, insurant);}
-	public int updateFamilyMedicalDisease(Insurant insurant) {return sqlSession.update(UpdateFamilyMedicalDisease, insurant);}
+	public Insurant selectInsurant(String InsurantId) {
+		InsurantDB insurantDB = sqlSession.selectOne(SelectInsurant, InsurantId);
+		insurantDB.setEnum();
+		return (Insurant)insurantDB;
+	}
 
-	public int delete(String insurantId) {return sqlSession.delete(Delete, insurantId);}
+	public Insurant selectByCustomerId(String customerId) {
+		return sqlSession.selectOne(SelectByCustomerId, customerId);
+	}
+
+	public String selectCustomerId(String insurantId) {
+		return sqlSession.selectOne(SelectCustomerId, insurantId);
+	}
+
+	public int updateName(Insurant insurant) {
+		return sqlSession.update(UpdateName, insurant);
+	}
+
+	public int updateAddress(Insurant insurant) {
+		return sqlSession.update(UpdateAddress, insurant);
+	}
+
+	public int updatePhoneNumber(Insurant insurant) {
+		return sqlSession.update(UpdatePhoneNumber, insurant);
+	}
+
+	public int updateAge(Insurant insurant) {
+		return sqlSession.update(UpdateAge, insurant);
+	}
+
+	public int updateAccidentHistory(Insurant insurant) {
+		return sqlSession.update(UpdateAccidentHistory, insurant);
+	}
+
+	public int updatePostedPriceOfStructure(Insurant insurant) {
+		return sqlSession.update(UpdatePostedPriceOfStructure, insurant);
+	}
+
+	public int updateUsageOfStructure(Insurant insurant) {
+		InsurantDB insurantDB = new InsurantDB(insurant);
+		return sqlSession.update(UpdateUsageOfStructure, insurantDB);
+	}
+
+	public int updateGender(Insurant insurant) {
+		InsurantDB insurantDB = new InsurantDB(insurant);
+		insurantDB.setEnum();
+		return sqlSession.update(UpdateGender, insurantDB);
+	}
+
+	public int updateJob(Insurant insurant) {
+		InsurantDB insurantDB = new InsurantDB(insurant);
+		insurantDB.setEnum();
+		return sqlSession.update(UpdateJob, insurantDB);
+	}
+
+	public int updateTypeOfCar(Insurant insurant) {
+		InsurantDB insurantDB = new InsurantDB(insurant);
+		insurantDB.setEnum();
+		return sqlSession.update(UpdateTypeOfCar, insurantDB);
+	}
+
+	public int updateRankOfCar(Insurant insurant) {
+		InsurantDB insurantDB = new InsurantDB(insurant);
+		insurantDB.setEnum();
+		return sqlSession.update(UpdateRankOfCar, insurantDB);
+	}
+
+	public int updateRiskOfTripCountry(Insurant insurant) {
+		InsurantDB insurantDB = new InsurantDB(insurant);
+		insurantDB.setEnum();
+		return sqlSession.update(UpdateRiskOfTripCountry, insurantDB);
+	}
+
+	public int updateForRecontract(Insurant insurant) {
+		InsurantDB insurantDB = new InsurantDB(insurant);
+		insurantDB.setEnum();
+		return sqlSession.update(UpdateForRecontract, insurantDB);
+	}
+
+	public int updateFamilyMedicalRelationship(Insurant insurant) {
+		InsurantDB insurantDB = new InsurantDB(insurant);
+		insurantDB.setEnum();
+		return sqlSession.update(UpdateFamilyMedicalRelationship, insurantDB);
+	}
+
+	public int updateFamilyMedicalDisease(Insurant insurant) {
+		InsurantDB insurantDB = new InsurantDB(insurant);
+		insurantDB.setEnum();
+		return sqlSession.update(UpdateFamilyMedicalDisease, insurantDB);
+	}
+
+	public int delete(String insurantId) {
+		return sqlSession.delete(Delete, insurantId);
+		
+	}
 }

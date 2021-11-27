@@ -1,5 +1,6 @@
 package com.insurance.sce.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -45,32 +46,174 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	private static final String Delete = "insuranceMapper.delete";
 
 	// Insert
-	public int insert(Insurance insurance) {return sqlSession.insert(Insert, insurance);}
-	public int insertActualCostInsurance(Insurance insurance) {return sqlSession.insert(InsertActualCostInsurance, insurance);}
-	public int insertCancerInsurance(Insurance insurance) {return sqlSession.insert(InsertCancerInsurance, insurance);}
-	public int insertDentalInsurance(Insurance insurance) {return sqlSession.insert(InsertDentalInsurance, insurance);}
-	public int insertDriverInsurance(Insurance insurance) {return sqlSession.insert(InsertDriverInsurance, insurance);}
-	public int insertFireInsurance(Insurance insurance) {return sqlSession.insert(InsertFireInsurance, insurance);}
-	public int insertTripInsurance(Insurance insurance) {return sqlSession.insert(InsertTripInsurance, insurance);}
+	public int insert(Insurance insurance) {
+		InsuranceDB insuranceDB = new InsuranceDB(insurance);
+		return sqlSession.insert(Insert, insuranceDB);
+	}
+	public int insertActualCostInsurance(Insurance insurance) {
+		InsuranceDB insuranceDB = new InsuranceDB(insurance);
+		return sqlSession.insert(InsertActualCostInsurance, insuranceDB);
+	}
+	public int insertCancerInsurance(Insurance insurance) {
+		InsuranceDB insuranceDB = new InsuranceDB(insurance);
+		return sqlSession.insert(InsertCancerInsurance, insuranceDB);
+	}
+	public int insertDentalInsurance(Insurance insurance) {
+		InsuranceDB insuranceDB = new InsuranceDB(insurance);
+		return sqlSession.insert(InsertDentalInsurance, insuranceDB);
+	}
+	public int insertDriverInsurance(Insurance insurance) {
+		InsuranceDB insuranceDB = new InsuranceDB(insurance);
+		return sqlSession.insert(InsertDriverInsurance, insuranceDB);
+	}
+	public int insertFireInsurance(Insurance insurance) {
+		InsuranceDB insuranceDB = new InsuranceDB(insurance);
+		return sqlSession.insert(InsertFireInsurance, insuranceDB);
+	}
+	public int insertTripInsurance(Insurance insurance) {
+		InsuranceDB insuranceDB = new InsuranceDB(insurance);
+		return sqlSession.insert(InsertTripInsurance, insuranceDB);
+	}
 
 	// Select
-	public List<Insurance> selectAll() {return sqlSession.selectList(SelectAll);}
-	public List<ActualCostInsurance> selectAllActualCostInsurance() {return sqlSession.selectList(SelectAllActualCostInsurance);}
-	public List<CancerInsurance> selectAllCancerInsurance() {return sqlSession.selectList(SelectAllCancerInsurance);}
-	public List<DentalInsurance> selectAllDentalInsurance() {return sqlSession.selectList(SelectAllDentalInsurance);}
-	public List<DriverInsurance> selectAllDriverInsurance() {return sqlSession.selectList(SelectAllDriverInsurance);}
-	public List<FireInsurance> selectAllFireInsurance() {return sqlSession.selectList(SelectAllFireInsurance);}
-	public List<TripInsurance> selectAllTripInsurance() {return sqlSession.selectList(SelectAllTripInsurance);}
-	public List<Insurance> selectForConfirm() {return sqlSession.selectList(SelectForConfirm);}
-	public List<Insurance> selectSimpleData() {return sqlSession.selectList(SelectSimpleData);}
-	public List<String> selectInsuranceId() {return sqlSession.selectList(SelectInsuranceId);}
-	public Insurance select(String insuranceId) {return sqlSession.selectOne(Select, insuranceId);}
-	public Insurance selectActualCostInsurance(String insuranceId) {return sqlSession.selectOne(SelectActualCostInsurance, insuranceId);}
-	public Insurance selectCancerInsurance(String insuranceId) {return sqlSession.selectOne(SelectCancerInsurance, insuranceId);}
-	public Insurance selectDentalInsurance(String insuranceId) {return sqlSession.selectOne(SelectDentalInsurance, insuranceId);}
-	public Insurance selectDriverInsurance(String insuranceId) {return sqlSession.selectOne(SelectDriverInsurance, insuranceId);}
-	public Insurance selectFireInsurance(String insuranceId) {return sqlSession.selectOne(SelectFireInsurance, insuranceId);}
-	public Insurance selectTripInsurance(String insuranceId) {return sqlSession.selectOne(SelectTripInsurance, insuranceId);}
+	public List<Insurance> selectAll() {
+		ArrayList<Insurance> insuranceList = new ArrayList<Insurance>();
+		List<InsuranceDB> insuranceDB = sqlSession.selectList(SelectAll);
+		for(InsuranceDB insurance : insuranceDB) {
+			insurance.setEnum();
+			insuranceList.add(insurance.getInsurance());
+		}
+		return insuranceList;
+	}
+	public List<ActualCostInsurance> selectAllActualCostInsurance() {
+		ArrayList<ActualCostInsurance> insuranceList = new ArrayList<ActualCostInsurance>();
+		List<InsuranceDB> insuranceDBList = sqlSession.selectList(SelectAllActualCostInsurance);
+		for(InsuranceDB insuranceDB : insuranceDBList) {
+			insuranceDB.setEnum();
+			Insurance insurance = insuranceDB.getInsurance();
+			insuranceList.add((ActualCostInsurance) insurance);
+		}
+		return insuranceList;
+	}
+	public List<CancerInsurance> selectAllCancerInsurance() {
+		ArrayList<CancerInsurance> insuranceList = new ArrayList<CancerInsurance>();
+		List<InsuranceDB> insuranceDBList = sqlSession.selectList(SelectAllCancerInsurance);
+		for(InsuranceDB insuranceDB : insuranceDBList) {
+			insuranceDB.setEnum();
+			Insurance insurance = insuranceDB.getInsurance();
+			insuranceList.add((CancerInsurance) insurance);
+		}
+		return insuranceList;
+	}
+	public List<DentalInsurance> selectAllDentalInsurance() {
+		ArrayList<DentalInsurance> insuranceList = new ArrayList<DentalInsurance>();
+		List<InsuranceDB> insuranceDBList = sqlSession.selectList(SelectAllDentalInsurance);
+		for(InsuranceDB insuranceDB : insuranceDBList) {
+			insuranceDB.setEnum();
+			Insurance insurance = insuranceDB.getInsurance();
+			insuranceList.add((DentalInsurance) insurance);
+		}
+		return insuranceList;
+	}
+
+	public List<DriverInsurance> selectAllDriverInsurance() {
+		ArrayList<DriverInsurance> insuranceList = new ArrayList<DriverInsurance>();
+		List<InsuranceDB> insuranceDBList = sqlSession.selectList(SelectAllDriverInsurance);
+		for(InsuranceDB insuranceDB : insuranceDBList) {
+			insuranceDB.setEnum();
+			Insurance insurance = insuranceDB.getInsurance();
+			insuranceList.add((DriverInsurance) insurance);
+		}
+		return insuranceList;
+	}
+
+	public List<FireInsurance> selectAllFireInsurance() {
+		ArrayList<FireInsurance> insuranceList = new ArrayList<FireInsurance>();
+		List<InsuranceDB> insuranceDBList = sqlSession.selectList(SelectAllFireInsurance);
+		for(InsuranceDB insuranceDB : insuranceDBList) {
+			insuranceDB.setEnum();
+			Insurance insurance = insuranceDB.getInsurance();
+			insuranceList.add((FireInsurance) insurance);
+		}
+		return insuranceList;
+	}
+
+	public List<TripInsurance> selectAllTripInsurance() {
+		ArrayList<TripInsurance> insuranceList = new ArrayList<TripInsurance>();
+		List<InsuranceDB> insuranceDBList = sqlSession.selectList(SelectAllTripInsurance);
+		for(InsuranceDB insuranceDB : insuranceDBList) {
+			insuranceDB.setEnum();
+			Insurance insurance = insuranceDB.getInsurance();
+			insuranceList.add((TripInsurance) insurance);
+		}
+		return insuranceList;
+	}
+
+	public List<Insurance> selectForConfirm() {
+		ArrayList<Insurance> insuranceList = new ArrayList<Insurance>();
+		List<InsuranceDB> insuranceDB = sqlSession.selectList(SelectForConfirm);
+		for(InsuranceDB insurance : insuranceDB) {
+			insurance.setEnum();
+			insuranceList.add(insurance.getInsurance());
+		}
+		return insuranceList;
+	}
+
+	public List<Insurance> selectSimpleData() {
+		ArrayList<Insurance> insuranceList = new ArrayList<Insurance>();
+		List<InsuranceDB> insuranceDB = sqlSession.selectList(SelectSimpleData);
+		for(InsuranceDB insurance : insuranceDB) {
+			insurance.setEnum();
+			insuranceList.add(insurance.getInsurance());
+		}
+		return insuranceList;
+	}
+
+	public List<String> selectInsuranceId() {
+		return sqlSession.selectList(SelectInsuranceId);
+	}
+
+	public Insurance select(String insuranceId) {
+		InsuranceDB insuranceDB = sqlSession.selectOne(Select, insuranceId);
+		insuranceDB.setEnum();
+		return insuranceDB.getInsurance();
+	}
+
+	public Insurance selectActualCostInsurance(String insuranceId) {
+		InsuranceDB insuranceDB = sqlSession.selectOne(SelectActualCostInsurance, insuranceId);
+		insuranceDB.setEnum();
+		return insuranceDB.getInsurance();
+	}
+
+	public Insurance selectCancerInsurance(String insuranceId) {
+		InsuranceDB insuranceDB = sqlSession.selectOne(SelectCancerInsurance, insuranceId);
+		insuranceDB.setEnum();
+		return insuranceDB.getInsurance();
+	}
+
+	public Insurance selectDentalInsurance(String insuranceId) {
+		InsuranceDB insuranceDB = sqlSession.selectOne(SelectDentalInsurance, insuranceId);
+		insuranceDB.setEnum();
+		return insuranceDB.getInsurance();
+	}
+
+	public Insurance selectDriverInsurance(String insuranceId) {
+		InsuranceDB insuranceDB = sqlSession.selectOne(SelectDriverInsurance, insuranceId);
+		insuranceDB.setEnum();
+		return insuranceDB.getInsurance();
+	}
+
+	public Insurance selectFireInsurance(String insuranceId) {
+		InsuranceDB insuranceDB = sqlSession.selectOne(SelectFireInsurance, insuranceId);
+		insuranceDB.setEnum();
+		return insuranceDB.getInsurance();
+	}
+
+	public Insurance selectTripInsurance(String insuranceId) {
+		InsuranceDB insuranceDB = sqlSession.selectOne(SelectTripInsurance, insuranceId);
+		insuranceDB.setEnum();
+		return insuranceDB.getInsurance();
+	}
 
 	// Update
 	public int updateConfirmedStatus(Insurance insurance) {return sqlSession.update(UpdateConfirmedStatus, insurance);}

@@ -20,37 +20,37 @@ public class InsuranceDeveloperService {
 		switch(insuranceType) {
 		case "Driver":
 			insurance = new DriverInsurance();
-			insurance.setType(eInsuranceType.driverInsurance);
+			insurance.setEType(eInsuranceType.driverInsurance);
 			break;
 		case "Dental":
 			insurance = new DentalInsurance();
-			insurance.setType(eInsuranceType.dentalInsurance);
+			insurance.setEType(eInsuranceType.dentalInsurance);
 			break;
 		case "ActualCost":
 			insurance = new ActualCostInsurance();
-			insurance.setType(eInsuranceType.actualCostInsurance);
+			insurance.setEType(eInsuranceType.actualCostInsurance);
 			break;
 		case "Fire":
 			insurance = new FireInsurance();
-			insurance.setType(eInsuranceType.fireInsurance);
+			insurance.setEType(eInsuranceType.fireInsurance);
 			break;
 		case "Cancer":
 			insurance = new CancerInsurance();
-			insurance.setType(eInsuranceType.cancerInsurance);
+			insurance.setEType(eInsuranceType.cancerInsurance);
 			break;
 		case "Trip":
 			insurance = new TripInsurance();
-			insurance.setType(eInsuranceType.tripInsurance);
+			insurance.setEType(eInsuranceType.tripInsurance);
 			break;
 		}
 		return insurance;
 	}
 	public Insurance setGender(Insurance insurance, String[] insuranceGender) {
 		if(insuranceGender.length == 2) {
-			insurance.setGender(eGender.both);
+			insurance.setEGender(eGender.both);
 		} else {
-			if(insuranceGender[0].equals("man")) insurance.setGender(eGender.male);
-			else insurance.setGender(eGender.female);
+			if(insuranceGender[0].equals("man")) insurance.setEGender(eGender.male);
+			else insurance.setEGender(eGender.female);
 		}
 		return insurance;
 	}

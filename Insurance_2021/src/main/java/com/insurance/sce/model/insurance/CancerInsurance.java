@@ -42,14 +42,14 @@ public class CancerInsurance extends Insurance {
 		}
 		
 		// �꽦蹂꾩뿉 �뵲瑜� �슂�쑉 怨꾩궛
-		if (insurant.getGender() == eGender.male) {
+		if (insurant.getEGender() == eGender.male) {
 			fee *= this.getRateOfGender()[0];
-		} else if (insurant.getGender() == eGender.female){
+		} else if (insurant.getEGender() == eGender.female){
 			fee *= this.getRateOfGender()[1];
 		}
 		
 		// 吏곸뾽�뿉 �뵲瑜� �슂�쑉 怨꾩궛
-		switch (insurant.getJob()) {
+		switch (insurant.getEJob()) {
 		case officeWorker:
 			fee *= this.getRateOfJob()[0];
 			break;
@@ -76,7 +76,7 @@ public class CancerInsurance extends Insurance {
 		}
 		
 		// 媛�議깅퀝�젰�뿉 �뵲瑜� �슂�쑉 怨꾩궛
-		switch (insurant.getFamilyMedicalRelationship()) {
+		switch (insurant.getEFamilyMedicalRelationship()) {
 		case one:
 			fee *= rateOfFamilyMedicalRelationship[0];
 			break;
@@ -93,7 +93,7 @@ public class CancerInsurance extends Insurance {
 			break;
 		}
 		
-		switch (insurant.getFamilyMedicalDisease()) {
+		switch (insurant.getEFamilyMedicalDisease()) {
 		case thyroid:
 			fee *= rateOfFamilyMedicalDisease[0];
 			break;

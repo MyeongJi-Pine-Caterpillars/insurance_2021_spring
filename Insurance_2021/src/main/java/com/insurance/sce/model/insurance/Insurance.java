@@ -12,8 +12,8 @@ public abstract class Insurance {
 	// Attributes
 	private String insuranceId;
 	private String name;
-	private eInsuranceType type;
-	private eGender gender;
+	private eInsuranceType eType;
+	private eGender eGender;
 	private int basicFee;
 	private double[] rateOfAge = {1.1, 1.0, 1.0, 1.1, 1.2, 1.3, 1.4}; // index[0 : �쁺�쑀�븘/ 1 : 10��/ 2 : 20��/ 3 : 30��/ 4 : 40��/ 5 : 50��/ 6 : �끂�뀈痢�]
 	private double[] rateOfGender = {1.0, 1.1}; // index[0 : �궓�꽦/ 1 : �뿬�꽦]
@@ -50,8 +50,8 @@ public abstract class Insurance {
 	public String getName() {return name;}
 	public void setName(String name) {this.name = name;}
 
-	public eInsuranceType getType() {return type;}
-	public void setType(int type) {this.type = eInsuranceType.get(type);}
+	public eInsuranceType getEType() {return eType;}
+	public void setEType(eInsuranceType type) {this.eType = type;}
 	
 	public double[] getRateOfAge() {return rateOfAge;}
 	public void setRateOfAge(double[] rateOfAge) {this.rateOfAge = rateOfAge;}
@@ -68,8 +68,8 @@ public abstract class Insurance {
 	public int getWarrantyPeriod() {return warrantyPeriod;}
 	public void setWarrantyPeriod(int warrantyPeriod) {this.warrantyPeriod = warrantyPeriod;}
 
-	public eGender getGender() {return gender;}
-	public void setGender(int gender) {this.gender = eGender.get(gender);}
+	public eGender getEGender() {return eGender;}
+	public void setEGender(eGender gender) {this.eGender = gender;}
 	
 	public boolean isSpecialContract() {return specialContract;}
 	public void setSpecialContract(boolean specialContract) {this.specialContract = specialContract;}

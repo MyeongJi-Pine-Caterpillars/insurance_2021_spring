@@ -26,7 +26,7 @@ public class EmployeeService {
 		if(employee == null) return null;
 		else {
 			String employeeRole = "redirect:/";
-			switch(employee.getRole()) {
+			switch(employee.getEmployeeRole()) {
 			case insuranceDeveloper: employeeRole += "developerView";
 			default:
 				break;

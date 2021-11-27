@@ -1,5 +1,7 @@
 package com.insurance.sce.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -51,6 +53,10 @@ public class InsuranceDeveloperService {
 			insurance.setEType(eInsuranceType.tripInsurance);
 			break;
 		}
+		ArrayList<String> ids = (ArrayList<String>) insuranceDAO.selectInsuranceId();
+		int maxId = 0;
+		for(String id: ids) maxId = Math.max(maxId, Integer.parseInt(id));
+		insurance.setInsuranceId(Integer.toString(maxId+1));
 		return insurance;
 	}
 	public Insurance setGender(Insurance insurance, String[] insuranceGender) {

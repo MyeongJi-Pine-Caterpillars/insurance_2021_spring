@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.insurance.sce.global.Constants;
-import com.insurance.sce.global.Constants.eFamilyMedicalRelationship;
 import com.insurance.sce.model.insurance.Insurance;
 import com.insurance.sce.service.InsuranceDeveloperService;
 

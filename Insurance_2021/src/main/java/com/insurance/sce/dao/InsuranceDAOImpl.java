@@ -223,6 +223,4 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	
 	// Delete
 	public int delete(String insuranceId) {return sqlSession.delete(Delete, insuranceId);}
-	
-	
 }

@@ -19,9 +19,9 @@ import com.insurance.sce.model.insurance.TripInsurance;
 @Repository
 public class InsuranceDeveloperService {
 	@Autowired
-	private InsuranceDAO insuranceDAO;
+	InsuranceDAO insuranceDAO;
 	@Autowired
-	private GuaranteePlanDAO guaranteePlanDAO;
+	GuaranteePlanDAO guaranteePlanDAO;
 	
 	public Insurance designInsurance(String insuranceType) {
 		Insurance insurance = null;

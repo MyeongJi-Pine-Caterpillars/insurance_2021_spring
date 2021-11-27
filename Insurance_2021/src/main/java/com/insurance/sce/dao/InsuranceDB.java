@@ -366,7 +366,7 @@ public class InsuranceDB{
 
 	public InsuranceDB(Insurance insurance) {
 		this.setInsuranceId(insurance.getInsuranceId());
-		this.setNAME(insurance.getNAME());
+		this.setNAME(insurance.getName());
 		this.TYPE = insurance.getEType().getNum();
 		this.gender = insurance.getEGender().getNum();
 		this.setBasicFee(insurance.getBasicFee());
@@ -383,14 +383,14 @@ public class InsuranceDB{
 	
 	
 	public void setEnum() {
-		this.eType = (eInsuranceType.values()[TYPE]);
+		this.eType = (eInsuranceType.values()[TYPE - 1]);
 		this.eGender = (com.insurance.sce.global.Constants.eGender.values()[gender - 1]);
 	}
 
 	public Insurance getInsurance() {
 		Insurance insurance = eType.getSelectedInsurance().newInstance();
 		insurance.setInsuranceId(getInsuranceId());
-		insurance.setNAME(getNAME());
+		insurance.setName(getNAME());
 		this.eType = (eInsuranceType.values()[TYPE]);
 		this.eGender = (com.insurance.sce.global.Constants.eGender.values()[gender - 1]);
 		insurance.setBasicFee(getBasicFee());

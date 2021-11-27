@@ -36,8 +36,8 @@ public class RateDentalInsurance {
 		this.insurance = (Insurance) session.getAttribute("detailedInsurance");
 		return "insuranceDeveloper/rateDentalInsurance";
 	}
-	@RequestMapping(value="guaranteeDentalInsurance", method=RequestMethod.GET)
-	public String responseGuaranteeDentalInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
+	@RequestMapping(value="goToGuaranteeDentalInsurance", method=RequestMethod.GET)
+	public String responseGoToGuaranteeDentalInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		int annualCount = Integer.parseInt(request.getParameter("annualCount"));
 		InsuranceDeveloperService idService = new InsuranceDeveloperService();
 		this.insurance = idService.setDentalRate(insurance, annualCount);

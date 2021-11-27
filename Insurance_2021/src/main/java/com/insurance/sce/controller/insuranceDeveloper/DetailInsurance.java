@@ -34,14 +34,20 @@ public class DetailInsurance {
 		HttpSession session = request.getSession(true);
 		Insurance insurance = (Insurance) session.getAttribute("designedInsurance");
 		this.insurance = insurance;
+		int i = 1;
 		for(eAge e: eAge.values()) {
-			model.addAttribute(e.getName(), e.getName());
+			model.addAttribute("ageRateName"+i, e.getName());
+			i++;
 		}
+		i = 1;
 		for(eGender e: eGender.values()) {
-			model.addAttribute(e.getName(), e.getName());
+			model.addAttribute("genderRateName"+i, e.getName());
+			i++;
 		}
-		for(eJob e: eJob.values()) {
-			model.addAttribute(e.getName(), e.getName());
+		i = 1;
+		for(int k = 1; k < eJob.values().length; k++) {
+			model.addAttribute("jobRateName"+i, eJob.values()[k].getName());
+			i++;
 		}
 		return "insuranceDeveloper/detailInsurance";
 	}

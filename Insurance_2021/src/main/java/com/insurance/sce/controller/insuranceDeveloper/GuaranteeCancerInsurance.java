@@ -5,16 +5,13 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.insurance.sce.global.Constants.eFamilyMedicalDisease;
+import com.insurance.sce.global.Constants;
 import com.insurance.sce.global.Constants.eFamilyMedicalRelationship;
-import com.insurance.sce.global.Constants.eTypeOfCar;
 import com.insurance.sce.model.insurance.Insurance;
 import com.insurance.sce.service.InsuranceDeveloperService;
 
@@ -23,31 +20,26 @@ import com.insurance.sce.service.InsuranceDeveloperService;
  */
 @Controller
 @RequestMapping(value = "/")
-public class RateCancerInsurance {
+public class GuaranteeCancerInsurance {
 	private Insurance insurance;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	
-	@RequestMapping(value="rateCancerInsurance", method=RequestMethod.GET)
-	public String responseRateCancerInsurance(Locale locale, Model model, HttpServletRequest request) {
+	@RequestMapping(value="guaranteeCancerInsurance", method=RequestMethod.GET)
+	public String responseGuaranteeCancerInsurance(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
-		this.insurance = (Insurance) session.getAttribute("detailedInsurance");
+		this.insurance = (Insurance) session.getAttribute("ratedInsurance");
 		int i = 1;
-		for(int k = 1; k < eFamilyMedicalDisease.values().length; k++) {
-			model.addAttribute("familyDiseaseRateName"+i, eFamilyMedicalDisease.values()[k].getName());
+		for(String e: Constants.cancerGuarantee) {
+			model.addAttribute("cancerGuarantee"+i, e);
 			i++;
 		}
-		i = 1;
-		for(int k = 1; k < eFamilyMedicalRelationship.values().length; k++) {
-			model.addAttribute("familyRelationRateName"+i, eFamilyMedicalRelationship.values()[k].getName());
-			i++;
-		}
-		return "insuranceDeveloper/rateCancerInsurance";
+		return "insuranceDeveloper/guaranteeCancerInsurance";
 	}
-	@RequestMapping(value="goToGuaranteeCancerInsurance", method=RequestMethod.GET)
-	public String responseGoToGuaranteeCancerInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
+	@RequestMapping(value="checkInsurance", method=RequestMethod.GET)
+	public String responseCheck(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		String[] familyMeical = {"thyroidRate", "testicularRate", "ovarianRate", "esophagealRate", "lungRate"};
 		String[] familyRelationship = {"oneRelRate", "twoRelRate", "threeRelRate", "fourRelRate"};
 		double[] familyMeicalRate = new double[familyMeical.length];

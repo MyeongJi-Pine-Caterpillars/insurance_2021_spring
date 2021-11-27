@@ -35,8 +35,8 @@ public class RateActualCostInsurance {
 		this.insurance = (Insurance) session.getAttribute("detailedInsurance");
 		return "insuranceDeveloper/rateActualCostInsurance";
 	}
-	@RequestMapping(value="guaranteeActualCostInsurance", method=RequestMethod.GET)
-	public String responseGuaranteeActualCostInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
+	@RequestMapping(value="goToGuaranteeActualCostInsurance", method=RequestMethod.GET)
+	public String responseGoToGuaranteeActualCostInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		double selfBurdenRate = Double.parseDouble(request.getParameter("selfBurdenRate"));
 		
 		InsuranceDeveloperService idService = new InsuranceDeveloperService();

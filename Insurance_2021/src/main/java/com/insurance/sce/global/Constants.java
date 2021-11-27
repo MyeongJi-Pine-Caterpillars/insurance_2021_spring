@@ -169,11 +169,11 @@ public class Constants {
 
 	}
 	
-	private static String[] driverGuarantee = {"자동차사고벌금(대인)", "자동차사고벌금(대물)", "교통상해부상치료비", "자동차사고재산피해"};
-	private static String[] dentalGuarantee = {"레진", "크라운", "틀니", "임플란트", "스케일링", "발치"};
-	private static String[] fireGuarantee = {"화재", "수해", "도난손해", "상해후유장애", "고장수리"};
-	private static String[] cancerGuarantee = {"감상선암", "고환암", "난소암", "식도암", "폐암", "간암", "위암", "췌장암"};
-	private static String[] tripGuarantee = {"사망", "상해", "해외의료비", "휴대품손해", "배상책임", "항공기납치"};
+	public static String[] driverGuarantee = {"자동차사고벌금(대인)", "자동차사고벌금(대물)", "교통상해부상치료비", "자동차사고재산피해"};
+	public static String[] dentalGuarantee = {"레진", "크라운", "틀니", "임플란트", "스케일링", "발치"};
+	public static String[] fireGuarantee = {"화재", "수해", "도난손해", "상해후유장애", "고장수리"};
+	public static String[] cancerGuarantee = {"감상선암", "고환암", "난소암", "식도암", "폐암", "간암", "위암", "췌장암"};
+	public static String[] tripGuarantee = {"사망", "상해", "해외의료비", "휴대품손해", "배상책임", "항공기납치"};
 
 	public enum eInsuranceType {
 		driverInsurance(1, new DriverInsurance(), "driverInsurance", driverGuarantee),

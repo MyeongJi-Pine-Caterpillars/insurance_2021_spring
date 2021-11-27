@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.insurance.sce.global.Constants;
 import com.insurance.sce.global.Constants.eRankOfCar;
+import com.insurance.sce.global.Constants.eTypeOfCar;
 import com.insurance.sce.global.Constants.eUsageOfStructure;
 import com.insurance.sce.model.insurance.Insurance;
 import com.insurance.sce.service.InsuranceDeveloperService;
@@ -34,16 +35,20 @@ public class RateFireInsurance {
 	public String responseRateFireInsurance(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		this.insurance = (Insurance) session.getAttribute("detailedInsurance");
-		for(eUsageOfStructure e: eUsageOfStructure.values()) {
-			model.addAttribute(e.getName(), e.getName());
+		int i = 1;
+		for(int k = 1; k < eUsageOfStructure.values().length; k++) {
+			model.addAttribute("usageStructureRateName"+i, eUsageOfStructure.values()[k].getName());
+			i++;
 		}
+		i = 1;
 		for(String e: Constants.postedPrice) {
-			model.addAttribute(e, e);
+			model.addAttribute("postedPriceRateName"+i, e);
+			i++;
 		}
 		return "insuranceDeveloper/rateFireInsurance";
 	}
-	@RequestMapping(value="guaranteeFireInsurance", method=RequestMethod.GET)
-	public String responseGuaranteeFireInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
+	@RequestMapping(value="goToGuaranteeFireInsurance", method=RequestMethod.GET)
+	public String responseGoToGuaranteeFireInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		String[] postedPrice = {"lDotFiveRate", "mDotFivelFiveRate", "mFivelTenRate", "mTenlTwentyRate", "mTwentyRate"};
 		String[] usageOfStructure = {"houseRate", "studyRate", "factoryRate", "warehouseRate", "officeRate", "publicFacilityRate"};
 		double[] postedPriceRate = new double[postedPrice.length];

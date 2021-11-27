@@ -382,7 +382,7 @@
 					<div class="row">
 
 						<div class="col-lg-6 mb-4">
-						<form id="form-rateCancerInsurance" action="guaranteeCancerInsurance" method="get">
+						<form id="form-rateCancerInsurance" action="goToGuaranteeCancerInsurance" method="get">
 							<!-- Illustrations -->
 							
 							<div class="card shadow mb-4">
@@ -393,7 +393,7 @@
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
-											<label>${"갑상선암"} : </label>
+											<label><%= request.getAttribute("familyDiseaseRateName1") %> : </label>
 											<div class=form-check>
 												<input type="number" name="thyroidRate" value="1.0" step="0.1"> 
 											</div>
@@ -401,7 +401,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"고환암"} : </label>
+											<label><%= request.getAttribute("familyDiseaseRateName2") %> </label>
 											<div class=form-check>
 												<input type="number" name="testicularRate" value="1.0" step="0.1"> 
 											</div>
@@ -409,7 +409,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"난소암"} : </label>
+											<label><%= request.getAttribute("familyDiseaseRateName3") %> </label>
 											<div class=form-check>
 												<input type="number" name="ovarianRate" value="1.0" step="0.1"> 
 											</div>
@@ -417,7 +417,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"식도암"} : </label>
+											<label><%= request.getAttribute("familyDiseaseRateName4") %> </label>
 											<div class=form-check>
 												<input type="number" name="esophagealRate" value="1.0" step="0.1"> 
 											</div>
@@ -425,7 +425,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"폐암"} : </label>
+											<label><%= request.getAttribute("familyDiseaseRateName5") %> : </label>
 											<div class=form-check>
 												<input type="number" name="lungRate" value="1.0" step="0.1"> 
 											</div>
@@ -442,7 +442,7 @@
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
-											<label>${"1촌"}</label>
+											<label><%= request.getAttribute("familyRelationRateName1") %></label>
 											<div class=form-check>
 												<input type="number" name="oneRelRate" value="1.0" step="0.1"> 
 											</div>
@@ -450,7 +450,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"2촌"} : </label>
+											<label><%= request.getAttribute("familyRelationRateName2") %> : </label>
 											<div class=form-check>
 												<input type="number" name="twoRelRate" value="1.0" step="0.1"> 
 											</div>
@@ -458,7 +458,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"3촌"} : </label>
+											<label><%= request.getAttribute("familyRelationRateName3") %> : </label>
 											<div class=form-check>
 												<input type="number" name="threeRelRate" value="1.0" step="0.1"> 
 											</div>
@@ -466,7 +466,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"4촌"} : </label>
+											<label><%= request.getAttribute("familyRelationRateName4") %> : </label>
 											<div class=form-check>
 												<input type="number" name="fourRelRate" value="1.0" step="0.1"> 
 											</div>

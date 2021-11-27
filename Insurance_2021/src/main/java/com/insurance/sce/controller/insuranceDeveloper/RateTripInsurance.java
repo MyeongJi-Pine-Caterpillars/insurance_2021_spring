@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.insurance.sce.global.Constants;
 import com.insurance.sce.global.Constants.eRiskOfTripCountry;
+import com.insurance.sce.global.Constants.eUsageOfStructure;
 import com.insurance.sce.model.insurance.Insurance;
 import com.insurance.sce.service.InsuranceDeveloperService;
 
@@ -33,13 +34,15 @@ public class RateTripInsurance {
 	public String responseRateTripInsurance(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		this.insurance = (Insurance) session.getAttribute("detailedInsurance");
-		for(eRiskOfTripCountry e: eRiskOfTripCountry.values()) {
-			model.addAttribute(e.getName(), e.getName());
+		int i = 1;
+		for(int k = 1; k < eRiskOfTripCountry.values().length; k++) {
+			model.addAttribute("riskRateName"+i, eRiskOfTripCountry.values()[k].getName());
+			i++;
 		}
 		return "insuranceDeveloper/rateTripInsurance";
 	}
-	@RequestMapping(value="guaranteeTripInsurance", method=RequestMethod.GET)
-	public String responseGuaranteeTripInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
+	@RequestMapping(value="goToGuaranteeTripInsurance", method=RequestMethod.GET)
+	public String responseGoToGuaranteeTripInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		String[] riskOfTripCountry = {"safeRate", "firstRate", "secondRate", "thirdRate"};
 		double[] riskOfTripCountryRate = new double[riskOfTripCountry.length];
 		for(int i = 0; i < riskOfTripCountry.length; i++) {

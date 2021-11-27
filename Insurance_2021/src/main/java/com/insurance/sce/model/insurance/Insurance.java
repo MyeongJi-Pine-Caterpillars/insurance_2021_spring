@@ -34,7 +34,6 @@ public abstract class Insurance {
 
 	// Constructor
 	public Insurance() {
-		this.guaranteePlanDAO = new GuaranteePlanDAOImpl();
 		this.guaranteePlanList = new ArrayList<GuaranteePlan>();
 	}
 	
@@ -52,7 +51,7 @@ public abstract class Insurance {
 	public void setName(String name) {this.name = name;}
 
 	public eInsuranceType getType() {return type;}
-	public void setType(eInsuranceType type) {this.type = type;}
+	public void setType(int type) {this.type = eInsuranceType.get(type);}
 	
 	public double[] getRateOfAge() {return rateOfAge;}
 	public void setRateOfAge(double[] rateOfAge) {this.rateOfAge = rateOfAge;}
@@ -70,7 +69,7 @@ public abstract class Insurance {
 	public void setWarrantyPeriod(int warrantyPeriod) {this.warrantyPeriod = warrantyPeriod;}
 
 	public eGender getGender() {return gender;}
-	public void setGender(eGender gender) {this.gender = gender;}
+	public void setGender(int gender) {this.gender = eGender.get(gender);}
 	
 	public boolean isSpecialContract() {return specialContract;}
 	public void setSpecialContract(boolean specialContract) {this.specialContract = specialContract;}

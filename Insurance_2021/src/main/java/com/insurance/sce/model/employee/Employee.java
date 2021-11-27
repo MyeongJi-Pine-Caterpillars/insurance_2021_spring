@@ -28,8 +28,8 @@ public class Employee {
 	public String getPassword() {return password;}
 	public void setPassword(String password) {this.password = password;}
 
-	public eEmployeeRole getEmployeeRole() {return role;}
-	public void setEmployeeRole(eEmployeeRole role) {this.role = role;}
+	public eEmployeeRole getRole() {return role;}
+	public void setRole(int role) {this.role = eEmployeeRole.get(role);}
 	
 	public int getSaleHistory() {return saleHistory;}
 	public void setSaleHistory(int saleHistory) {this.saleHistory = saleHistory;}

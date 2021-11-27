@@ -24,7 +24,7 @@ public class LoginUser {
 	public String userLogin() {
 		return "login/loginUser";
 	}
-	@RequestMapping(value="doLogin", method=RequestMethod.GET)
+	@RequestMapping(value="loginUser/doLogin", method=RequestMethod.GET)
 	public String loginCheck(String id, String password, HttpServletRequest request) {
 		// 서비스를 통해 로그인
 		Customer customer = customerService.loginCustomer(id, password);

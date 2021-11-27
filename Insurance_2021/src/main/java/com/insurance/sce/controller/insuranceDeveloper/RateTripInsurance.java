@@ -51,31 +51,7 @@ public class RateTripInsurance {
 		this.insurance = idService.setTripRate(insurance, riskOfTripCountryRate);
 		HttpSession session = request.getSession(true);
 		session.setAttribute("ratedInsurance", this.insurance);
-		String nextViewUrl = "";
-		switch(this.insurance.getEType()) {
-		case driverInsurance:
-			nextViewUrl = "redirect:/guaranteeDriverInsurance";
-			break;
-		case fireInsurance:
-			nextViewUrl = "redirect:/guaranteeFireInsurance";
-			break;
-		case cancerInsurance:
-			nextViewUrl = "redirect:/guaranteeCancerInsurance";
-			break;
-		case actualCostInsurance:
-			nextViewUrl = "redirect:/guaranteeActualCostInsurance";
-			break;
-		case tripInsurance:
-			nextViewUrl = "redirect:/guaranteeTripInsurance";
-			break;
-		case dentalInsurance:
-			nextViewUrl = "redirect:/guaranteeDentalInsurance";
-			break;
-		default:
-			nextViewUrl = "redirect:/developInsurance";
-			break; 
-		}
-		return nextViewUrl;
+		return "redirect:/guaranteeTripInsurance";
 	}
 
 }

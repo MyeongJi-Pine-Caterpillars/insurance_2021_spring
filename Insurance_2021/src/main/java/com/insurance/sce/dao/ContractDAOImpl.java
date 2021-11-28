@@ -5,11 +5,12 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.insurance.sce.model.contract.Contract;
 
-@Repository
+@Component
 public class ContractDAOImpl extends DBConnector implements ContractDAO{
 	@Inject
 	private SqlSession sqlSession;

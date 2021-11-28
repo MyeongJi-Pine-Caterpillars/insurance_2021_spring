@@ -6,9 +6,10 @@ import java.util.Map;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-@Repository
+@Component
 public class CompensationCauseDAOImpl implements CompensationCauseDAO{
 	@Inject
 	private SqlSession sqlSession;

@@ -5,11 +5,12 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import com.insurance.sce.model.insurance.GuaranteePlan;
 
-@Repository
+@Component
 public class GuaranteePlanDAOImpl extends DBConnector implements GuaranteePlanDAO{
 	@Inject
 	private SqlSession sqlSession;

@@ -4,9 +4,9 @@
 <%@ page session="false"%>
 
 <%@ page import="java.util.List"%>
-<%@ page import="com.insurance.sce.model.insurance.CancerInsurance"%>
+<%@ page import="com.insurance.sce.model.insurance.ActualCostInsurance"%>
 <%
-	List<CancerInsurance> insuranceList = (List<CancerInsurance>)request.getAttribute("insuranceList");
+	List<ActualCostInsurance> insuranceList = (List<ActualCostInsurance>)request.getAttribute("insuranceList");
 %>
 
 <!DOCTYPE html>
@@ -202,7 +202,7 @@
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false">
 								<button type="button"
-									onclick="location.href='selectCancerInsurance/doLogout'"
+									onclick="location.href='selectActualCostInsurance/doLogout'"
 									class="btn btn-outline-dark">로그아웃</button>
 						</a></li>
 
@@ -224,7 +224,7 @@
 					<!-- Content Row -->
 					<div class="row">
 					
-					<%for(CancerInsurance insurance : insuranceList){ %>					
+					<%for(ActualCostInsurance insurance : insuranceList){ %>					
 						<div class="col-xl-3 col-md-6 mb-4" onclick="selectInsurance();" id=<%=insurance.getInsuranceId() %>>
 							<div class="cardInsurance border-left-primary shadow h-100 py-2">
 								<div class="card-body">
@@ -285,11 +285,8 @@
 									<div class="card-header py-3">
 										<h6 class="m-0 font-weight-bold text-primary">보장내역</h6>
 									</div>
-									<div class="card-body">
-										기본계약
-										<ol class="list-group list-group-numbered" id="guaranteePlan"></ol>
-										선택특약
-										<ol class="list-group list-group-numbered" id="guaranteePlanSpecial"></ol>
+									<div class="card-body" >
+										<div class="list-group list-group-numbered" id="guaranteePlan"></div>
 									</div>
 								</div>
 							</div>
@@ -356,14 +353,12 @@
 			var ages = ["영유아", "10대", "20대", "30대", "40대", "50대", "노년층"];
 			var jobs = ["사무직", "운송업", "현장직", "학생", "교육직", "군인", "기타"];
 			var gender = ["남성", "야성"];
-			var familyMedicalDisease = ["갑상선암", "고환암", "난소암", "식도암", "폐암"];
-			var familyMedicalRelationship = ["1촌", "2촌", "3촌", "4촌"];
 
 			$('.col-xl-3').click(function(){
 				var insuranceId = {"insuranceId" : $(this).attr('id')};
 				
 				$.ajax({
-					url: "selectCancerInsurance/doSelect",
+					url: "selectActualCostInsurance/doSelect",
 					type: "GET",
 					data: insuranceId,
 							
@@ -392,61 +387,10 @@
 										'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 							);
 						});
-						$('#rateOfFamilyMedicalDisease').html('<div class="col mb-3" id="rateOfGender"><h4 class="small font-weight-bold">--가족병력 요율표--</h4></div>');
-						$.each(data.rateOfFamilyMedicalDisease, function(index, item){
-							$('#rateOfFamilyMedicalDisease').append(
-									'<h4 class="small font-weight-bold">'+ familyMedicalDisease[index] +'<span class="float-right">' +
-										item +
-										'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
-							);
-						});
-						$('#rateOfFamilyMedicalRelationship').html('<div class="col mb-3" id="rateOfGender"><h4 class="small font-weight-bold">--병력 가족 관계 요율표--</h4></div>');
-						$.each(data.rateOfFamilyMedicalRelationship, function(index, item){
-							$('#rateOfFamilyMedicalRelationship').append(
-									'<h4 class="small font-weight-bold">'+ familyMedicalRelationship[index] +'<span class="float-right">' +
-										item +
-										'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
-							);
-						});
-					},error:function(request,status,error){
-					    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);}
-				});
-				
-				$.ajax({
-					url: "selectCancerInsurance/doSelectGuaranteePlan",
-					type: "GET",
-					data: insuranceId,
-							
-					success : function(data){
-						$('#guaranteePlan').html('<ol class="list-group list-group-numbered" id="guaranteePlan"></ol>');
-						$.each(data, function(index, item){
-							if(!item.special){
-								$('#guaranteePlan').append(
-									'<li class="list-group-item d-flex justify-content-between align-items-start">' +
-										'<div class="ms-2 me-auto"><div class="fw-bold">' +
-											item.content +
-										'</div>보장금액 : ' +
-											item.compensation +
-										'원</li>'
-								);
-							}
-						});
-						$('#guaranteePlanSpecial').html('<ol class="list-group list-group-numbered" id="guaranteePlanSpecial"></ol>');
-						$.each(data, function(index, item){
-							if(item.special){
-								$('#guaranteePlanSpecial').append(
-									'<li class="list-group-item d-flex justify-content-between align-items-start">' +
-										'<div class="ms-2 me-auto"><div class="fw-bold">' +
-											item.content +
-										'</div>보장금액 : ' +
-											item.compensation +
-										'원</li>'
-								);
-							}
-						});
+						$('#guaranteePlan').html('<div class="list-group list-group-numbered" id="guaranteePlan">병ㆍ의원 및 약국에서 실제로 지출한 의료비의 '+(1-data.selfBurdenRate)*100+'%</div>');
 					},
 					error :function(){
-						alert("request error in guaranteePlan!");
+						alert("request error!");
 					}
 				});
 			});

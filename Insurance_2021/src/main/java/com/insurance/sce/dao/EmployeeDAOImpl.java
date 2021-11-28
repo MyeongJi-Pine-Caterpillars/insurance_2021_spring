@@ -23,44 +23,25 @@ public class EmployeeDAOImpl extends DBConnector implements EmployeeDAO{
 	
 	// Insert
 	public int insert(Employee employee) {
-		EmployeeDB employeeDB = new EmployeeDB(employee);
-		return sqlSession.insert(Insert, employeeDB);
+		return sqlSession.insert(Insert, employee);
 	}
 
 	// Select
 	public List<Employee> selectAll() {
-		List<EmployeeDB> employeeDBList = sqlSession.selectList(SelectAll);
-		ArrayList<Employee> employeeList = new ArrayList<Employee>();
-		for(EmployeeDB employee : employeeDBList) {
-			employee.setEnum();
-			employeeList.add(employee);
-		}
-		return employeeList;
+		return sqlSession.selectList(SelectAll);
 	}
 
 	public List<Employee> selectAllSlaesPerson() {
-		List<EmployeeDB> employeeDBList = sqlSession.selectList(SelectAllSlaesPerson);
-		ArrayList<Employee> employeeList = new ArrayList<Employee>();
-		for(EmployeeDB employee : employeeDBList) {
-			employee.setEnum();
-			employeeList.add(employee);
-		}
-		return employeeList;
+		return sqlSession.selectList(SelectAllSlaesPerson);
 	}
 	public Employee select(String employeeId) {
-		EmployeeDB employeeDB = sqlSession.selectOne(Select, employeeId);
-		employeeDB.setEnum();
-		return (Employee) employeeDB;
+		return sqlSession.selectOne(Select, employeeId);
 	}
 	public Employee selectByIdPw(Employee employee) {
-		EmployeeDB employeeDB = sqlSession.selectOne(SelectByIdPw, employee);
-		employeeDB.setEnum();
-		return (Employee) employeeDB;
+		return sqlSession.selectOne(SelectByIdPw, employee);
 	}
 	public Employee selectSlaesPerson(String employeeId) {
-		EmployeeDB employeeDB = sqlSession.selectOne(SelectSlaesPerson, employeeId);
-		employeeDB.setEnum();
-		return (Employee) employeeDB;
+		return sqlSession.selectOne(SelectSlaesPerson, employeeId);
 	}
 
 	// Update
@@ -68,5 +49,6 @@ public class EmployeeDAOImpl extends DBConnector implements EmployeeDAO{
 
 	// Delete
 	public int delete(String employeeId) {return sqlSession.delete(Delete, employeeId);}
+
 
 }

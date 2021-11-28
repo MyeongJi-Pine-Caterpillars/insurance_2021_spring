@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.insurance.sce.model.contract.Contract;
 
-@Repository
 public interface ContractDAO {
 	public int insert(Contract contract);
 	

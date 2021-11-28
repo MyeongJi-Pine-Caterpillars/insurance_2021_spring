@@ -3,12 +3,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 
-<%@ page import="java.util.List"%>
-<%@ page import="com.insurance.sce.model.insurance.CancerInsurance"%>
-<%
-	List<CancerInsurance> insuranceList = (List<CancerInsurance>)request.getAttribute("insuranceList");
-%>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -224,26 +218,7 @@
 					<!-- Content Row -->
 					<div class="row">
 					
-					<%for(CancerInsurance insurance : insuranceList){ %>					
-						<div class="col-xl-3 col-md-6 mb-4" onclick="selectInsurance();" id=<%=insurance.getInsuranceId() %>>
-							<div class="cardInsurance border-left-primary shadow h-100 py-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div class="h7 mb-0 font-weight-bold text-primary text-uppercase mb-0">
-												ID. <%=insurance.getInsuranceId() %></div>
-											<div class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">
-												<%=insurance.getName() %></div>
-											<div class="h6 mb-0 font-weight-bold text-gray-800">
-												기본 보험료</div>
-											<div class="h6 mb-0 font-weight-bold text-gray-800"><%=insurance.getBasicFee() %>원</div>
-										</div>
-										<div class="col-auto"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					<%}; %>
+					
 
 					</div>
 
@@ -353,103 +328,7 @@
 		</div>
 		
 		<script>
-			var ages = ["영유아", "10대", "20대", "30대", "40대", "50대", "노년층"];
-			var jobs = ["사무직", "운송업", "현장직", "학생", "교육직", "군인", "기타"];
-			var gender = ["남성", "야성"];
-			var familyMedicalDisease = ["갑상선암", "고환암", "난소암", "식도암", "폐암"];
-			var familyMedicalRelationship = ["1촌", "2촌", "3촌", "4촌"];
-
-			$('.col-xl-3').click(function(){
-				var insuranceId = {"insuranceId" : $(this).attr('id')};
-				
-				$.ajax({
-					url: "selectCancerInsurance/doSelect",
-					type: "GET",
-					data: insuranceId,
-							
-					success : function(data){
-						$('#rateOfAge').html('<div class="col mb-3" id="rateOfAge"><h4 class="small font-weight-bold">--나이 요율표--</h4></div>');
-						$.each(data.rateOfAge, function(index, item){
-							$('#rateOfAge').append(
-									'<h4 class="small font-weight-bold">'+ ages[index] +'<span class="float-right">' +
-										item +
-										'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
-							);
-						});
-						$('#rateOfJob').html('<div class="col mb-3" id="rateOfJob"><h4 class="small font-weight-bold">--직업 요율표--</h4></div>');
-						$.each(data.rateOfJob, function(index, item){
-							$('#rateOfJob').append(
-									'<h4 class="small font-weight-bold">'+ jobs[index] +'<span class="float-right">' +
-										item +
-										'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
-							);
-						});
-						$('#rateOfGender').html('<div class="col mb-3" id="rateOfGender"><h4 class="small font-weight-bold">--성별 요율표--</h4></div>');
-						$.each(data.rateOfGender, function(index, item){
-							$('#rateOfGender').append(
-									'<h4 class="small font-weight-bold">'+ gender[index] +'<span class="float-right">' +
-										item +
-										'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
-							);
-						});
-						$('#rateOfFamilyMedicalDisease').html('<div class="col mb-3" id="rateOfGender"><h4 class="small font-weight-bold">--가족병력 요율표--</h4></div>');
-						$.each(data.rateOfFamilyMedicalDisease, function(index, item){
-							$('#rateOfFamilyMedicalDisease').append(
-									'<h4 class="small font-weight-bold">'+ familyMedicalDisease[index] +'<span class="float-right">' +
-										item +
-										'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
-							);
-						});
-						$('#rateOfFamilyMedicalRelationship').html('<div class="col mb-3" id="rateOfGender"><h4 class="small font-weight-bold">--병력 가족 관계 요율표--</h4></div>');
-						$.each(data.rateOfFamilyMedicalRelationship, function(index, item){
-							$('#rateOfFamilyMedicalRelationship').append(
-									'<h4 class="small font-weight-bold">'+ familyMedicalRelationship[index] +'<span class="float-right">' +
-										item +
-										'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
-							);
-						});
-					},error:function(request,status,error){
-					    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);}
-				});
-				
-				$.ajax({
-					url: "selectCancerInsurance/doSelectGuaranteePlan",
-					type: "GET",
-					data: insuranceId,
-							
-					success : function(data){
-						$('#guaranteePlan').html('<ol class="list-group list-group-numbered" id="guaranteePlan"></ol>');
-						$.each(data, function(index, item){
-							if(!item.special){
-								$('#guaranteePlan').append(
-									'<li class="list-group-item d-flex justify-content-between align-items-start">' +
-										'<div class="ms-2 me-auto"><div class="fw-bold">' +
-											item.content +
-										'</div>보장금액 : ' +
-											item.compensation +
-										'원</li>'
-								);
-							}
-						});
-						$('#guaranteePlanSpecial').html('<ol class="list-group list-group-numbered" id="guaranteePlanSpecial"></ol>');
-						$.each(data, function(index, item){
-							if(item.special){
-								$('#guaranteePlanSpecial').append(
-									'<li class="list-group-item d-flex justify-content-between align-items-start">' +
-										'<div class="ms-2 me-auto"><div class="fw-bold">' +
-											item.content +
-										'</div>보장금액 : ' +
-											item.compensation +
-										'원</li>'
-								);
-							}
-						});
-					},
-					error :function(){
-						alert("request error in guaranteePlan!");
-					}
-				});
-			});
+			
 		</script>
 
 		<!-- Bootstrap core JavaScript-->

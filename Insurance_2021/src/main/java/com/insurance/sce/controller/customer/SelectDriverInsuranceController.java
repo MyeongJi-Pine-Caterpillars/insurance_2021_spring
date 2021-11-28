@@ -20,6 +20,7 @@ import com.insurance.sce.model.customer.Customer;
 import com.insurance.sce.model.insurance.DriverInsurance;
 import com.insurance.sce.model.insurance.GuaranteePlan;
 import com.insurance.sce.service.InsuranceService;
+import com.insurance.sce.service.InsuranceServiceImpl;
 
 @Controller
 @RequestMapping(value = "/")
@@ -28,7 +29,7 @@ public class SelectDriverInsuranceController {
 	private static final Logger logger = LoggerFactory.getLogger(SelectDriverInsuranceController.class);
 	
 	@Autowired
-	InsuranceService insuranceService;
+	InsuranceServiceImpl insuranceService;
 	
 	@RequestMapping(value="driverInsurance", method=RequestMethod.GET)
 	public String response5(Locale locale, Model model, HttpServletRequest request) {

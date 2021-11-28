@@ -7,7 +7,7 @@
 <mapper namespace="insuranceMapper">
 
 	<!-- INSERT -->
-	<insert id="insert" parameterType="com.insurance.sce.dao.InsuranceDB">
+	<insert id="insert" parameterType="com.insurance.sce.model.insurance.Insurance">
 		INSERT INTO insurance(insuranceId, NAME, TYPE,
 							gender,basicFee, specialContractFee,
 							warrantyPeriod, rateOfAge0, rateOfAge1,rateOfAge2, rateOfAge3,
@@ -22,12 +22,40 @@
 				#{rateOfJob2}, #{rateOfJob3}, #{rateOfJob4}, #{rateOfJob5},
 				#{rateOfJob6}, #{confirmedStatus}, #{specialContract})
 	</insert>
-	<insert id="insertActualCostInsurance" parameterType="com.insurance.sce.dao.InsuranceDB">
-		INSERT INTO actualCostInsurance(insuranceId, selfBurdenRate)
+	<insert id="insertActualCostInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
+		INSERT ALL
+		INTO insurance(insuranceId, NAME, TYPE,
+							gender,basicFee, specialContractFee,
+							warrantyPeriod, rateOfAge0, rateOfAge1,rateOfAge2, rateOfAge3,
+							rateOfAge4, rateOfAge5, rateOfAge6,rateOfGender0, rateOfGender1,
+							rateOfJob0, rateOfJob1, rateOfJob2,rateOfJob3, rateOfJob4,
+							rateOfJob5, rateOfJob6, confirmedStatus, specialContract)
+		VALUES (#{insuranceId},
+				#{NAME}, #{TYPE}, #{gender}, #{basicFee}, #{specialContractFee},
+				#{warrantyPeriod}, #{rateOfAge0}, #{rateOfAge1}, #{rateOfAge2},
+				#{rateOfAge3},#{rateOfAge4}, #{rateOfAge5}, #{rateOfAge6},
+				#{rateOfGender0}, #{rateOfGender1},#{rateOfJob0}, #{rateOfJob1},
+				#{rateOfJob2}, #{rateOfJob3}, #{rateOfJob4}, #{rateOfJob5},
+				#{rateOfJob6}, #{confirmedStatus}, #{specialContract})
+		INTO actualCostInsurance(insuranceId, selfBurdenRate)
 		VALUES (#{insuranceId}, #{selfBurdenRate})
 	</insert>
-	<insert id="insertCancerInsurance" parameterType="com.insurance.sce.dao.InsuranceDB">
-		INSERT INTO cancerInsurance(insuranceId,
+	<insert id="insertCancerInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
+		INSERT ALL
+		INTO insurance(insuranceId, NAME, TYPE,
+							gender,basicFee, specialContractFee,
+							warrantyPeriod, rateOfAge0, rateOfAge1,rateOfAge2, rateOfAge3,
+							rateOfAge4, rateOfAge5, rateOfAge6,rateOfGender0, rateOfGender1,
+							rateOfJob0, rateOfJob1, rateOfJob2,rateOfJob3, rateOfJob4,
+							rateOfJob5, rateOfJob6, confirmedStatus, specialContract)
+		VALUES (#{insuranceId},
+				#{NAME}, #{TYPE}, #{gender}, #{basicFee}, #{specialContractFee},
+				#{warrantyPeriod}, #{rateOfAge0}, #{rateOfAge1}, #{rateOfAge2},
+				#{rateOfAge3},#{rateOfAge4}, #{rateOfAge5}, #{rateOfAge6},
+				#{rateOfGender0}, #{rateOfGender1},#{rateOfJob0}, #{rateOfJob1},
+				#{rateOfJob2}, #{rateOfJob3}, #{rateOfJob4}, #{rateOfJob5},
+				#{rateOfJob6}, #{confirmedStatus}, #{specialContract})
+		INTO cancerInsurance(insuranceId,
 									rateOfFamilyMedicalDisease0, rateOfFamilyMedicalDisease1,
 									rateOfFamilyMedicalDisease2,rateOfFamilyMedicalDisease3,
 									rateOfFamilyMedicalDisease4, rateOfFamilyMedicalRelationship0,
@@ -40,12 +68,40 @@
 				#{rateOfFamilyMedicalRelationship3})
 
 	</insert>
-	<insert id="insertDentalInsurance" parameterType="com.insurance.sce.dao.InsuranceDB">
-		INSERT INTO dentalInsurance(insuranceId, annualLimitCount)
+	<insert id="insertDentalInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
+		INSERT ALL
+		INTO insurance(insuranceId, NAME, TYPE,
+							gender,basicFee, specialContractFee,
+							warrantyPeriod, rateOfAge0, rateOfAge1,rateOfAge2, rateOfAge3,
+							rateOfAge4, rateOfAge5, rateOfAge6,rateOfGender0, rateOfGender1,
+							rateOfJob0, rateOfJob1, rateOfJob2,rateOfJob3, rateOfJob4,
+							rateOfJob5, rateOfJob6, confirmedStatus, specialContract)
+		VALUES (#{insuranceId},
+				#{NAME}, #{TYPE}, #{gender}, #{basicFee}, #{specialContractFee},
+				#{warrantyPeriod}, #{rateOfAge0}, #{rateOfAge1}, #{rateOfAge2},
+				#{rateOfAge3},#{rateOfAge4}, #{rateOfAge5}, #{rateOfAge6},
+				#{rateOfGender0}, #{rateOfGender1},#{rateOfJob0}, #{rateOfJob1},
+				#{rateOfJob2}, #{rateOfJob3}, #{rateOfJob4}, #{rateOfJob5},
+				#{rateOfJob6}, #{confirmedStatus}, #{specialContract})
+		INTO dentalInsurance(insuranceId, annualLimitCount)
 		VALUES (#{insuranceId}, #{annualLimitCount})
 	</insert>
-	<insert id="insertDriverInsurance" parameterType="com.insurance.sce.dao.InsuranceDB">
-		INSERT INTO driverInsurance(insuranceId, rateOfAccidentHistory0, rateOfAccidentHistory1,
+	<insert id="insertDriverInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
+		INSERT ALL
+		INTO insurance(insuranceId, NAME, TYPE,
+							gender,basicFee, specialContractFee,
+							warrantyPeriod, rateOfAge0, rateOfAge1,rateOfAge2, rateOfAge3,
+							rateOfAge4, rateOfAge5, rateOfAge6,rateOfGender0, rateOfGender1,
+							rateOfJob0, rateOfJob1, rateOfJob2,rateOfJob3, rateOfJob4,
+							rateOfJob5, rateOfJob6, confirmedStatus, specialContract)
+		VALUES (#{insuranceId},
+				#{NAME}, #{TYPE}, #{gender}, #{basicFee}, #{specialContractFee},
+				#{warrantyPeriod}, #{rateOfAge0}, #{rateOfAge1}, #{rateOfAge2},
+				#{rateOfAge3},#{rateOfAge4}, #{rateOfAge5}, #{rateOfAge6},
+				#{rateOfGender0}, #{rateOfGender1},#{rateOfJob0}, #{rateOfJob1},
+				#{rateOfJob2}, #{rateOfJob3}, #{rateOfJob4}, #{rateOfJob5},
+				#{rateOfJob6}, #{confirmedStatus}, #{specialContract})
+		INTO driverInsurance(insuranceId, rateOfAccidentHistory0, rateOfAccidentHistory1,
 									rateOfAccidentHistory2, rateOfAccidentHistory3, rateOfAccidentHistory4, 
 									rateOfAccidentHistory5, rateOfCarType0, rateOfCarType1, rateOfCarType2,
 									rateOfCarType3, rateOfCarType4, rateOfCarRank0, rateOfCarRank1,
@@ -56,8 +112,22 @@
 				#{rateOfCarType3}, #{rateOfCarType4}, #{rateOfCarRank0}, #{rateOfCarRank1},
 				#{rateOfCarRank2}, #{rateOfCarRank3})
 	</insert>
-	<insert id="insertFireInsurance" parameterType="com.insurance.sce.dao.InsuranceDB">
-		INSERT INTO fireInsurance(insuranceId, rateOfPostedPrice0, rateOfPostedPrice1, rateOfPostedPrice2,
+	<insert id="insertFireInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
+		INSERT ALL
+		INTO insurance(insuranceId, NAME, TYPE,
+							gender,basicFee, specialContractFee,
+							warrantyPeriod, rateOfAge0, rateOfAge1,rateOfAge2, rateOfAge3,
+							rateOfAge4, rateOfAge5, rateOfAge6,rateOfGender0, rateOfGender1,
+							rateOfJob0, rateOfJob1, rateOfJob2,rateOfJob3, rateOfJob4,
+							rateOfJob5, rateOfJob6, confirmedStatus, specialContract)
+		VALUES (#{insuranceId},
+				#{NAME}, #{TYPE}, #{gender}, #{basicFee}, #{specialContractFee},
+				#{warrantyPeriod}, #{rateOfAge0}, #{rateOfAge1}, #{rateOfAge2},
+				#{rateOfAge3},#{rateOfAge4}, #{rateOfAge5}, #{rateOfAge6},
+				#{rateOfGender0}, #{rateOfGender1},#{rateOfJob0}, #{rateOfJob1},
+				#{rateOfJob2}, #{rateOfJob3}, #{rateOfJob4}, #{rateOfJob5},
+				#{rateOfJob6}, #{confirmedStatus}, #{specialContract})
+		INTO fireInsurance(insuranceId, rateOfPostedPrice0, rateOfPostedPrice1, rateOfPostedPrice2,
 								rateOfPostedPrice3, rateOfPostedPrice4, rateOfStructureUsage0,
 								rateOfStructureUsage1, rateOfStructureUsage2, rateOfStructureUsage3,
 								rateOfStructureUsage4, rateOfStructureUsage5)
@@ -66,77 +136,127 @@
 				#{rateOfStructureUsage1}, #{rateOfStructureUsage2}, #{rateOfStructureUsage3},
 				#{rateOfStructureUsage4}, #{rateOfStructureUsage5})
 	</insert>
-	<insert id="insertTripInsurance" parameterType="com.insurance.sce.dao.InsuranceDB">
-		INSERT INTO tripInsurance(insuranceId, rateOfCountryRisk0, rateOfCountryRisk1,
+	<insert id="insertTripInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
+		INSERT ALL
+		INTO insurance(insuranceId, NAME, TYPE,
+							gender,basicFee, specialContractFee,
+							warrantyPeriod, rateOfAge0, rateOfAge1,rateOfAge2, rateOfAge3,
+							rateOfAge4, rateOfAge5, rateOfAge6,rateOfGender0, rateOfGender1,
+							rateOfJob0, rateOfJob1, rateOfJob2,rateOfJob3, rateOfJob4,
+							rateOfJob5, rateOfJob6, confirmedStatus, specialContract)
+		VALUES (#{insuranceId},
+				#{NAME}, #{TYPE}, #{gender}, #{basicFee}, #{specialContractFee},
+				#{warrantyPeriod}, #{rateOfAge0}, #{rateOfAge1}, #{rateOfAge2},
+				#{rateOfAge3},#{rateOfAge4}, #{rateOfAge5}, #{rateOfAge6},
+				#{rateOfGender0}, #{rateOfGender1},#{rateOfJob0}, #{rateOfJob1},
+				#{rateOfJob2}, #{rateOfJob3}, #{rateOfJob4}, #{rateOfJob5},
+				#{rateOfJob6}, #{confirmedStatus}, #{specialContract})
+		INTO tripInsurance(insuranceId, rateOfCountryRisk0, rateOfCountryRisk1,
 								rateOfCountryRisk2, rateOfCountryRisk3)
 		VALUES (#{insuranceId}, #{rateOfCountryRisk0}, #{rateOfCountryRisk1}, #{rateOfCountryRisk2},
 				#{rateOfCountryRisk3})
 	</insert>
 
 	<!-- SELECT -->
-	<select id="selectAll" resultType="com.insurance.sce.dao.InsuranceDB">
+	<select id="selectAll" resultType="com.insurance.sce.model.insurance.Insurance">
 		SELECT * FROM insurance
 	</select>
-	<select id="selectAllActualCostInsurance" resultType="com.insurance.sce.dao.InsuranceDB">
-		SELECT * FROM insurance
-		WHERE type = 3
+	<select id="selectAllActualCostInsurance" resultType="com.insurance.sce.model.insurance.ActualCostInsurance">
+		SELECT *
+		FROM insurance T1
+		LEFT OUTER JOIN actualCostInsurance T2
+		ON(T1.insuranceId = T2.insuranceId)
+		WHERE T1.type = 3
 	</select>
-	<select id="selectAllCancerInsurance" resultType="com.insurance.sce.dao.InsuranceDB">
-		SELECT * FROM insurance
-		WHERE type = 5
+	<select id="selectAllCancerInsurance" resultType="com.insurance.sce.model.insurance.CancerInsurance">
+		SELECT *
+		FROM insurance T1
+		LEFT OUTER JOIN cancerInsurance T2
+		ON(T1.insuranceId = T2.insuranceId)
+		WHERE T1.type = 5
 	</select>
-	<select id="selectAllDentalInsurance" resultType="com.insurance.sce.dao.InsuranceDB">
-		SELECT * FROM insurance
-		WHERE type = 2
+	<select id="selectAllDentalInsurance" resultType="com.insurance.sce.model.insurance.DentalInsurance">
+		SELECT *
+		FROM insurance T1
+		LEFT OUTER JOIN dentalInsurance T2
+		ON(T1.insuranceId = T2.insuranceId)
+		WHERE T1.type = 2
 	</select>
-	<select id="selectAllDriverInsurance" resultType="com.insurance.sce.dao.InsuranceDB">
-		SELECT * FROM insurance
-		WHERE type = 1
+	<select id="selectAllDriverInsurance" resultType="com.insurance.sce.model.insurance.DriverInsurance">
+		SELECT *
+		FROM insurance T1
+		LEFT OUTER JOIN driverInsurance T2
+		ON(T1.insuranceId = T2.insuranceId)
+		WHERE T1.type = 1
 	</select>
-	<select id="selectAllFireInsurance" resultType="com.insurance.sce.dao.InsuranceDB">
-		SELECT * FROM insurance
-		WHERE type = 4
+	<select id="selectAllFireInsurance" resultType="com.insurance.sce.model.insurance.FireInsurance">
+		SELECT *
+		FROM insurance T1
+		LEFT OUTER JOIN fireInsurance T2
+		ON(T1.insuranceId = T2.insuranceId)
+		WHERE T1.type = 4
 	</select>
-	<select id="selectAllTripInsurance" resultType="com.insurance.sce.dao.InsuranceDB">
-		SELECT * FROM insurance
-		WHERE type = 6
+	<select id="selectAllTripInsurance" resultType="com.insurance.sce.model.insurance.TripInsurance">
+		SELECT *
+		FROM insurance T1
+		LEFT OUTER JOIN tripInsurance T2
+		ON(T1.insuranceId = T2.insuranceId)
+		WHERE T1.type = 6
 	</select>
 	<select id="selectInsuranceId" resultType="String">
 		SELECT insuranceId FROM insurance
 	</select>
-	<select id="selectForConfirm" resultType="com.insurance.sce.dao.InsuranceDB">
+	<select id="selectForConfirm" resultType="com.insurance.sce.model.insurance.Insurance">
 		SELECT insuranceId, confirmedStatus, del, type FROM insurance
 	</select>
-	<select id="selectSimpleData" resultType="com.insurance.sce.dao.InsuranceDB">
+	<select id="selectSimpleData" resultType="com.insurance.sce.model.insurance.Insurance">
 		SELECT insuranceId, confirmedStatus, del, type, name, basicFee FROM insurance
 	</select>
-	<select id="select" resultType="com.insurance.sce.dao.InsuranceDB">
+	<select id="select" resultType="com.insurance.sce.model.insurance.Insurance">
 		SELECT * FROM insurance
 		WHERE insuranceId = #{insuranceId}
 	</select>
-	<select id="selectActualCostInsurance" resultType="com.insurance.sce.dao.InsuranceDB">
-		SELECT * FROM actualCostInsurance
-		WHERE insuranceId = #{insuranceId}
+	<select id="selectActualCostInsurance" resultType="com.insurance.sce.model.insurance.ActualCostInsurance">
+		SELECT *
+		FROM insurance T1
+		LEFT OUTER JOIN actualCostInsurance T2
+		ON(T1.insuranceId = T2.insuranceId)
+		WHERE T1.insuranceId = #{insuranceId}
 	</select>
-	<select id="selectCancerInsurance" resultType="com.insurance.sce.dao.InsuranceDB">
-		SELECT * FROM cancerInsurance
-		WHERE insuranceId = #{insuranceId}
+	<select id="selectCancerInsurance" resultType="com.insurance.sce.model.insurance.CancerInsurance">
+		SELECT *
+		FROM insurance T1
+		LEFT OUTER JOIN cancerInsurance T2
+		ON(T1.insuranceId = T2.insuranceId)
+		WHERE T1.insuranceId = #{insuranceId}
 	</select>
-	<select id="selectDentalInsurance" resultType="com.insurance.sce.dao.InsuranceDB">
-		SELECT * FROM dentalInsurance
-		WHERE insuranceId = #{insuranceId}
+	<select id="selectDentalInsurance" resultType="com.insurance.sce.model.insurance.DentalInsurance">
+		SELECT *
+		FROM insurance T1
+		LEFT OUTER JOIN dentalInsurance T2
+		ON(T1.insuranceId = T2.insuranceId)
+		WHERE T1.insuranceId = #{insuranceId}
 	</select>
-	<select id="selectDriverInsurance" resultType="com.insurance.sce.dao.InsuranceDB">
-		SELECT * FROM driverInsurance
-		WHERE insuranceId = #{insuranceId}
+	<select id="selectDriverInsurance" resultType="com.insurance.sce.model.insurance.DriverInsurance">
+		SELECT *
+		FROM insurance T1
+		LEFT OUTER JOIN driverInsurance T2
+		ON(T1.insuranceId = T2.insuranceId)
+		WHERE T1.insuranceId = #{insuranceId}
 	</select>
-	<select id="selectFireInsurance" resultType="com.insurance.sce.dao.InsuranceDB">
-		SELECT * FROM fireInsurance
-		WHERE insuranceId = #{insuranceId}
+	<select id="selectFireInsurance" resultType="com.insurance.sce.model.insurance.FireInsurance">
+		SELECT *
+		FROM insurance T1
+		LEFT OUTER JOIN fireInsurance T2
+		ON(T1.insuranceId = T2.insuranceId)
+		WHERE T1.insuranceId = #{insuranceId}
 	</select>
-	<select id="selectTripInsurance" resultType="com.insurance.sce.dao.InsuranceDB">
-		SELECT * FROM tripInsurance
-		WHERE insuranceId = #{insuranceId}
+	<select id="selectTripInsurance" resultType="com.insurance.sce.model.insurance.TripInsurance">
+		SELECT *
+		FROM insurance T1
+		LEFT OUTER JOIN tripInsurance T2
+		ON(T1.insuranceId = T2.insuranceId)
+		WHERE T1.insuranceId = #{insuranceId}
 	</select>
 
 	<!-- UPDATE -->

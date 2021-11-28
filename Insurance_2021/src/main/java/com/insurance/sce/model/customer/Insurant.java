@@ -75,4 +75,29 @@ public class Insurant {
 	public int getFamilyMedicalRelationship() {return familyMedicalRelationship.getNum();}
 	public void setFamilyMedicalRelationship(int familyMedicalRelationship) {this.familyMedicalRelationship = eFamilyMedicalRelationship.get(familyMedicalRelationship);}
 
+	
+	public eGender getEGender() {return gender;}
+	public void setEGender(eGender gender) {this.gender = gender;}
+	
+	public eUsageOfStructure getEUsageOfStructure() {return usageOfStructure;}
+	public void setEUsageOfStructure(eUsageOfStructure usageOfStructure) {this.usageOfStructure = usageOfStructure;}
+	
+	public eJob getEJob() {return job;}
+	public void setEJob(eJob job) {this.job = job;}
+	
+	public eTypeOfCar getETypeOfCar() {return typeOfCar;}
+	public void setETypeOfCar(eTypeOfCar typeOfCar) {this.typeOfCar = typeOfCar;}
+	
+	public eRankOfCar getERankOfCar() {return rankOfCar;}
+	public void setERankOfCar(eRankOfCar rankOfCar) {this.rankOfCar = rankOfCar;}
+	
+	public eRiskOfTripCountry getERiskOfTripCountry() {return riskOfTripCountry;}
+	public void setERiskOfTripCountry(eRiskOfTripCountry riskOfTripCountry) {this.riskOfTripCountry = riskOfTripCountry;}
+
+	public eFamilyMedicalDisease getEFamilyMedicalDisease() {return familyMedicalDisease;}
+	public void setEFamilyMedicalDisease(eFamilyMedicalDisease familyMedicalDisease) {this.familyMedicalDisease = familyMedicalDisease;}
+
+	public eFamilyMedicalRelationship getEFamilyMedicalRelationship() {return familyMedicalRelationship;}
+	public void setEFamilyMedicalRelationship(eFamilyMedicalRelationship familyMedicalRelationship) {this.familyMedicalRelationship = familyMedicalRelationship;}
+
 }

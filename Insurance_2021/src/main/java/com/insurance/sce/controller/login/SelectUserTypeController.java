@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping(value = "/")
 public class SelectUserTypeController {
-	@RequestMapping(value="next", method=RequestMethod.GET)
+	@RequestMapping(value="selectUserType", method=RequestMethod.GET)
 	public String response() {
 		return "login/selectUserType";
 	}

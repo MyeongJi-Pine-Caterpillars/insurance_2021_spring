@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.insurance.sce.model.customer.Customer;
 
-@Repository
 public interface CustomerDAO {
 	public int insert(Customer customer);
 	

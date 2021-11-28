@@ -17,44 +17,44 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.insurance.sce.model.customer.Customer;
-import com.insurance.sce.model.insurance.TripInsurance;
+import com.insurance.sce.model.insurance.ActualCostInsurance;
 import com.insurance.sce.model.insurance.GuaranteePlan;
 import com.insurance.sce.service.InsuranceService;
 import com.insurance.sce.service.InsuranceServiceImpl;
 
 @Controller
 @RequestMapping(value = "/")
-public class SelectTripInsuranceController {
+public class SelectActualCostInsuranceController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(SelectTripInsuranceController.class);
+	private static final Logger logger = LoggerFactory.getLogger(SelectActualCostInsuranceController.class);
 	
 	@Autowired
 	InsuranceServiceImpl insuranceService;
 	
-	@RequestMapping(value="tripInsurance", method=RequestMethod.GET)
+	@RequestMapping(value="actualCostInsurance", method=RequestMethod.GET)
 	public String response5(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		
 		Customer customer = (Customer)session.getAttribute("loginCustomer");
 
-		model.addAttribute("insuranceList", insuranceService.selectAllTripInsurance());
+		model.addAttribute("insuranceList", insuranceService.selectAllActualCostInsurance());
 		model.addAttribute("clientName", customer.getName() );
-		return "customer/selectTripInsurance";
+		return "customer/selectActualCostInsurance";
 	}
 
-	@RequestMapping(value="selectTripInsurance/doSelect")
+	@RequestMapping(value="selectActualCostInsurance/doSelect")
 	@ResponseBody
-	TripInsurance doSelect(String insuranceId) {
-		return insuranceService.selectTripInsurance(insuranceId);
+	ActualCostInsurance doSelect(String insuranceId) {
+		return insuranceService.selectActualCostInsurance(insuranceId);
 	}
-	@RequestMapping(value="selectTripInsurance/doSelectGuaranteePlan")
+	@RequestMapping(value="selectActualCostInsurance/doSelectGuaranteePlan")
 	@ResponseBody
 	List<GuaranteePlan> doSelectGuaranteePlan(String insuranceId) {
 		System.out.println(insuranceId);
 		return insuranceService.selectGuaranteePlan(insuranceId);
 	}
 
-	@RequestMapping(value="selectTripInsurance/doLogout")
+	@RequestMapping(value="selectActualCostInsurance/doLogout")
 	public String doLogout(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("loginCustomer");

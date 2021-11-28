@@ -5,7 +5,6 @@ import org.springframework.stereotype.Repository;
 import com.insurance.sce.model.insurance.Insurance;
 
 public interface InsuranceDeveloperService {
-	
 	public Insurance designInsurance(String insuranceType);
 	public Insurance setGender(Insurance insurance, String[] insuranceGender);
 	public Insurance detailInsurance(Insurance insurance, String name, int basicFee, int specialFee, int warrantyPeriod, double[] age, double[] gender, double[] job);

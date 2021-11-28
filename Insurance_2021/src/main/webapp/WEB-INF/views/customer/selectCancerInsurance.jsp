@@ -297,7 +297,7 @@
 						
 						<div class="row">
 							<div class="col-lg-6 mb-4">
-								<button type="button" class="btn btn-primary btn-lg">가입 신청하기</button>
+								<button type="button" class="btn btn-primary btn-lg" onClick="signUpInsurant();">가입 신청하기</button>
 							</div>
 						</div>
 
@@ -358,9 +358,10 @@
 			var gender = ["남성", "야성"];
 			var familyMedicalDisease = ["갑상선암", "고환암", "난소암", "식도암", "폐암"];
 			var familyMedicalRelationship = ["1촌", "2촌", "3촌", "4촌"];
-
+			var insuranceId = "";
+			
 			$('.col-xl-3').click(function(){
-				var insuranceId = {"insuranceId" : $(this).attr('id')};
+				insuranceId = {"insuranceId" : $(this).attr('id')};
 				
 				$.ajax({
 					url: "selectCancerInsurance/doSelect",
@@ -450,6 +451,14 @@
 					}
 				});
 			});
+			
+			function signUpInsurant(){
+				if(insuranceId == ""){
+					alert("보험을 선택해주세요")
+				}else{
+					location.href="signUpInsurant?insuranceId="+insuranceId["insuranceId"];
+				}
+			}
 		</script>
 
 		<!-- Bootstrap core JavaScript-->

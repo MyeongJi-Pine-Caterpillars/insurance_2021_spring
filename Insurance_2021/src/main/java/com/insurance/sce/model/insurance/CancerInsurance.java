@@ -20,6 +20,25 @@ public class CancerInsurance extends Insurance {
 	public double[] getRateOfFamilyMedicalRelationship() {return rateOfFamilyMedicalRelationship;}
 	public void setRateOfFamilyMedicalRelationship(double[] rateOfFamilyMedicalRelationship) {this.rateOfFamilyMedicalRelationship = rateOfFamilyMedicalRelationship;}
 
+	public double getRateOfFamilyMedicalDisease0() {return rateOfFamilyMedicalDisease[0];}
+	public double getRateOfFamilyMedicalDisease1() {return rateOfFamilyMedicalDisease[1];}
+	public double getRateOfFamilyMedicalDisease2() {return rateOfFamilyMedicalDisease[2];}
+	public double getRateOfFamilyMedicalDisease3() {return rateOfFamilyMedicalDisease[3];}
+	public double getRateOfFamilyMedicalDisease4() {return rateOfFamilyMedicalDisease[4];}
+	public double getRateOfFamilyMedicalRelationship0() {return rateOfFamilyMedicalRelationship[0];}
+	public double getRateOfFamilyMedicalRelationship1() {return rateOfFamilyMedicalRelationship[1];}
+	public double getRateOfFamilyMedicalRelationship2() {return rateOfFamilyMedicalRelationship[2];}
+	public double getRateOfFamilyMedicalRelationship3() {return rateOfFamilyMedicalRelationship[3];}
+
+	public void setRateOfFamilyMedicalDisease0(double x) {this.rateOfFamilyMedicalDisease[0] = x;}
+	public void setRateOfFamilyMedicalDisease1(double x) {this.rateOfFamilyMedicalDisease[1] = x;}
+	public void setRateOfFamilyMedicalDisease2(double x) {this.rateOfFamilyMedicalDisease[2] = x;}
+	public void setRateOfFamilyMedicalDisease3(double x) {this.rateOfFamilyMedicalDisease[3] = x;}
+	public void setRateOfFamilyMedicalDisease4(double x) {this.rateOfFamilyMedicalDisease[4] = x;}
+	public void setRateOfFamilyMedicalRelationship0(double x) {this.rateOfFamilyMedicalRelationship[0] = x;}
+	public void setRateOfFamilyMedicalRelationship1(double x) {this.rateOfFamilyMedicalRelationship[1] = x;}
+	public void setRateOfFamilyMedicalRelationship2(double x) {this.rateOfFamilyMedicalRelationship[2] = x;}
+	public void setRateOfFamilyMedicalRelationship3(double x) {this.rateOfFamilyMedicalRelationship[3] = x;}
 	// public Methods
 	public int calculateFee(Insurant insurant){
 		double fee = this.getBasicFee();

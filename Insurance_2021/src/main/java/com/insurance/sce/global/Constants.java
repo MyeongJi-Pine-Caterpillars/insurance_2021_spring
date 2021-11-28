@@ -26,6 +26,7 @@ public class Constants {
 
 		public int getNum() {return num;}
 		public String getName() {return this.name;}
+		public static eAge get(int n) {return eAge.values()[n - 1];}
 	}
 	
 	public static enum eAccidentType {
@@ -43,6 +44,7 @@ public class Constants {
 		}
 
 		public int getNum() {return num;}
+		public static eAccidentType get(int n) {return eAccidentType.values()[n - 1];}
 	}
 
 	public static enum eGender {
@@ -61,12 +63,7 @@ public class Constants {
 		public int getNum() {return num;}
 		public String getName() {return this.name;}
 		
-		public static eGender get(int n) {
-			for(eGender tmp : eGender.values()) {
-				if(tmp.getNum() == n) return tmp;
-			}
-			return null;
-		}
+		public static eGender get(int n) {return eGender.values()[n - 1];}
 	}
 
 	public static enum eJob {
@@ -90,9 +87,7 @@ public class Constants {
 		public int getNum() {return num;}
 		public String getName() {return this.name;}
 
-		public static eJob get(int job) {
-			return eJob.values()[job];
-		}
+		public static eJob get(int job) {return eJob.values()[job];}
 	}
 
 	public static enum eTypeOfCar {
@@ -164,12 +159,7 @@ public class Constants {
 		public int getNum() {return num;}
 		public String getName() {return name;}
 
-		public static eUsageOfStructure get(int n) {
-			for(eUsageOfStructure tmp : eUsageOfStructure.values()) {
-				if(tmp.getNum() == n) return tmp;
-			}
-			return null;
-		}
+		public static eUsageOfStructure get(int n) {return eUsageOfStructure.values()[n];}
 	}
 
 	public static enum eRiskOfTripCountry {
@@ -230,12 +220,8 @@ public class Constants {
 		public String getName() {return this.name;}
 		public String[] getGuaranteePlan() {return this.GuaranteePlan;}
 		
-		public static eInsuranceType get(int n) {
-			for(eInsuranceType tmp : eInsuranceType.values()) {
-				if(tmp.getNum() == n) return tmp;
-			}
-			return null;
-		}
+		public static eInsuranceType get(int n) {return eInsuranceType.values()[n - 1];}
+		
 	}
 
 	public static enum eFamilyMedicalDisease {
@@ -289,7 +275,12 @@ public class Constants {
 	public static String[] postedPrice = {"(공시가)<=5천만원", "5천만원<(공시가)<=5억", "5억<(공시가)<=10억", "10억<(공시가)<=20억", "20억<(공시가)"};
 	
 	public static enum eEmployeeRole {
-		insuranceDeveloper(1), insuranceConfirmer(2), salesperson(3), contractManager(4), compensationHandler(5), underWriter(6);
+		insuranceDeveloper(1),
+		insuranceConfirmer(2),
+		salesperson(3),
+		contractManager(4),
+		compensationHandler(5),
+		underWriter(6);
 		
 		final private int num;
 		
@@ -298,13 +289,9 @@ public class Constants {
 		}
 
 		public int getNum() {return num;}
+		
+		public static eEmployeeRole get(int n) {return eEmployeeRole.values()[n - 1];}
 
-		public static eEmployeeRole get(int n) {
-			for(eEmployeeRole tmp : eEmployeeRole.values()) {
-				if(tmp.getNum() == n) return tmp;
-			}
-			return null;
-		}
 	}
 
 }

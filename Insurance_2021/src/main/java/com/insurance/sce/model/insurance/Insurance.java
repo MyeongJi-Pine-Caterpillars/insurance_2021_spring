@@ -3,7 +3,6 @@ package com.insurance.sce.model.insurance;
 import java.util.ArrayList;
 
 import com.insurance.sce.dao.GuaranteePlanDAO;
-import com.insurance.sce.dao.GuaranteePlanDAOImpl;
 import com.insurance.sce.global.Constants.*;
 import com.insurance.sce.model.customer.Insurant;
 
@@ -50,10 +49,10 @@ public abstract class Insurance {
 	public String getName() {return name;}
 	public void setName(String name) {this.name = name;}
 
-	public eInsuranceType getType() {return type;}
+	public int getType() {return type.getNum();}
 	public void setType(int type) {this.type = eInsuranceType.get(type);}
 	
-	public eGender getGender() {return gender;}
+	public int getGender() {return gender.getNum();}
 	public void setGender(int gender) {this.gender = eGender.get(gender);}
 	
 	public double[] getRateOfAge() {return rateOfAge;}
@@ -85,6 +84,40 @@ public abstract class Insurance {
 	
 	public boolean isDel() {return del;}
 	public void setDel(boolean del) {this.del = del;}
+	
+
+	public double getRateOfAge0() {return rateOfAge[0];}
+	public double getRateOfAge1() {return rateOfAge[1];}
+	public double getRateOfAge2() {return rateOfAge[2];}
+	public double getRateOfAge3() {return rateOfAge[3];}
+	public double getRateOfAge4() {return rateOfAge[4];}
+	public double getRateOfAge5() {return rateOfAge[5];}
+	public double getRateOfAge6() {return rateOfAge[6];}
+	public double getRateOfGender0() {return rateOfGender[0];}
+	public double getRateOfGender1() {return rateOfGender[1];}
+	public double getRateOfJob0() {return rateOfJob[0];}
+	public double getRateOfJob1() {return rateOfJob[1];}
+	public double getRateOfJob2() {return rateOfJob[2];}
+	public double getRateOfJob3() {return rateOfJob[3];}
+	public double getRateOfJob4() {return rateOfJob[4];}
+	public double getRateOfJob5() {return rateOfJob[5];}
+	public double getRateOfJob6() {return rateOfJob[6];}
+
+	public void setRateOfAge0(double x) {this.rateOfAge[0] = x;}
+	public void setRateOfAge1(double x) {this.rateOfAge[1] = x;}
+	public void setRateOfAge2(double x) {this.rateOfAge[2] = x;}
+	public void setRateOfAge3(double x) {this.rateOfAge[3] = x;}
+	public void setRateOfAge4(double x) {this.rateOfAge[4] = x;}
+	public void setRateOfAge5(double x) {this.rateOfAge[5] = x;}
+	public void setRateOfGender0(double x) {this.rateOfGender[0] = x;}
+	public void setRateOfGender1(double x) {this.rateOfGender[1] = x;}
+	public void setRateOfJob0(double x) {this.rateOfJob[0] = x;}
+	public void setRateOfJob1(double x) {this.rateOfJob[1] = x;}
+	public void setRateOfJob2(double x) {this.rateOfJob[2] = x;}
+	public void setRateOfJob3(double x) {this.rateOfJob[3] = x;}
+	public void setRateOfJob4(double x) {this.rateOfJob[4] = x;}
+	public void setRateOfJob5(double x) {this.rateOfJob[5] = x;}
+	public void setRateOfJob6(double x) {this.rateOfJob[6] = x;}
 
 	// Public Methods
 	abstract public int calculateFee(Insurant Insurnat);

@@ -28,7 +28,7 @@ public class Employee {
 	public String getPassword() {return password;}
 	public void setPassword(String password) {this.password = password;}
 
-	public eEmployeeRole getRole() {return role;}
+	public int getRole() {return role.getNum();}
 	public void setRole(int role) {this.role = eEmployeeRole.get(role);}
 	
 	public int getSaleHistory() {return saleHistory;}

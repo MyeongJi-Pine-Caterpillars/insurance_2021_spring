@@ -26,6 +26,39 @@ public class DriverInsurance extends Insurance {
 	public double[] getRateOfCarRank() {return rateOfCarRank;}	
 	public void setRateOfCarRank(double[] rateOfCarRank) {this.rateOfCarRank = rateOfCarRank;}
 	
+
+	public double getRateOfAccidentHistory0() {return rateOfAccidentHistory[0];}
+	public double getRateOfAccidentHistory1() {return rateOfAccidentHistory[1];}
+	public double getRateOfAccidentHistory2() {return rateOfAccidentHistory[2];}
+	public double getRateOfAccidentHistory3() {return rateOfAccidentHistory[3];}
+	public double getRateOfAccidentHistory4() {return rateOfAccidentHistory[4];}
+	public double getRateOfAccidentHistory5() {return rateOfAccidentHistory[5];}
+	public double getRateOfCarType0() {return rateOfCarType[0];}
+	public double getRateOfCarType1() {return rateOfCarType[1];}
+	public double getRateOfCarType2() {return rateOfCarType[2];}
+	public double getRateOfCarType3() {return rateOfCarType[3];}
+	public double getRateOfCarType4() {return rateOfCarType[4];}
+	public double getRateOfCarRank0() {return rateOfCarRank[0];}
+	public double getRateOfCarRank1() {return rateOfCarRank[1];}
+	public double getRateOfCarRank2() {return rateOfCarRank[2];}
+	public double getRateOfCarRank3() {return rateOfCarRank[3];}
+
+	public void setRateOfAccidentHistory0(double x) {this.rateOfAccidentHistory[0] = x;}
+	public void setRateOfAccidentHistory1(double x) {this.rateOfAccidentHistory[1] = x;}
+	public void setRateOfAccidentHistory2(double x) {this.rateOfAccidentHistory[2] = x;}
+	public void setRateOfAccidentHistory3(double x) {this.rateOfAccidentHistory[3] = x;}
+	public void setRateOfAccidentHistory4(double x) {this.rateOfAccidentHistory[4] = x;}
+	public void setRateOfAccidentHistory5(double x) {this.rateOfAccidentHistory[5] = x;}
+	public void setRateOfCarType0(double x) {this.rateOfCarType[0] = x;}
+	public void setRateOfCarType1(double x) {this.rateOfCarType[1] = x;}
+	public void setRateOfCarType2(double x) {this.rateOfCarType[2] = x;}
+	public void setRateOfCarType3(double x) {this.rateOfCarType[3] = x;}
+	public void setRateOfCarType4(double x) {this.rateOfCarType[4] = x;}
+	public void setRateOfCarRank0(double x) {this.rateOfCarRank[0] = x;}
+	public void setRateOfCarRank1(double x) {this.rateOfCarRank[1] = x;}
+	public void setRateOfCarRank2(double x) {this.rateOfCarRank[2] = x;}
+	public void setRateOfCarRank3(double x) {this.rateOfCarRank[3] = x;}
+	
 	// Methods
 	public int calculateFee(Insurant insurant){
 		double fee = this.getBasicFee();

@@ -18,6 +18,30 @@ public class FireInsurance extends Insurance {
 
 	public double[] getRateOfStructureUsage() {return rateOfStructureUsage;}
 	public void setRateOfStructureUsage(double[] rateOfStructureUsage) {this.rateOfStructureUsage = rateOfStructureUsage;}
+	
+	public double getRateOfPostedPrice0() {return rateOfPostedPrice[0];}
+	public double getRateOfPostedPrice1() {return rateOfPostedPrice[1];}
+	public double getRateOfPostedPrice2() {return rateOfPostedPrice[2];}
+	public double getRateOfPostedPrice3() {return rateOfPostedPrice[3];}
+	public double getRateOfPostedPrice4() {return rateOfPostedPrice[4];}
+	public double getRateOfStructureUsage0() {return rateOfStructureUsage[0];}
+	public double getRateOfStructureUsage1() {return rateOfStructureUsage[1];}
+	public double getRateOfStructureUsage2() {return rateOfStructureUsage[2];}
+	public double getRateOfStructureUsage3() {return rateOfStructureUsage[3];}
+	public double getRateOfStructureUsage4() {return rateOfStructureUsage[4];}
+	public double getRateOfStructureUsage5() {return rateOfStructureUsage[5];}
+
+	public void setRateOfPostedPrice0(double x) {this.rateOfPostedPrice[0] = x;}
+	public void setRateOfPostedPrice1(double x) {this.rateOfPostedPrice[1] = x;}
+	public void setRateOfPostedPrice2(double x) {this.rateOfPostedPrice[2] = x;}
+	public void setRateOfPostedPrice3(double x) {this.rateOfPostedPrice[3] = x;}
+	public void setRateOfPostedPrice4(double x) {this.rateOfPostedPrice[4] = x;}
+	public void setRateOfStructureUsage0(double x) {this.rateOfStructureUsage[0] = x;}
+	public void setRateOfStructureUsage1(double x) {this.rateOfStructureUsage[1] = x;}
+	public void setRateOfStructureUsage2(double x) {this.rateOfStructureUsage[2] = x;}
+	public void setRateOfStructureUsage3(double x) {this.rateOfStructureUsage[3] = x;}
+	public void setRateOfStructureUsage4(double x) {this.rateOfStructureUsage[4] = x;}
+	public void setRateOfStructureUsage5(double x) {this.rateOfStructureUsage[5] = x;}
 		
 	// Methods
 	public int calculateFee(Insurant insurant){

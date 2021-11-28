@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import com.insurance.sce.model.employee.Employee;
 
-@Repository
+@Component
 public class EmployeeDAOImpl extends DBConnector implements EmployeeDAO{
 	@Inject
 	private SqlSession sqlSession;

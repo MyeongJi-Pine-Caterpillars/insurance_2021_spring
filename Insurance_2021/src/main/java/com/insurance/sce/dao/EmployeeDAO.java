@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.insurance.sce.model.employee.Employee;
 
-@Repository
 public interface EmployeeDAO {
 	public int insert(Employee employee);
 	

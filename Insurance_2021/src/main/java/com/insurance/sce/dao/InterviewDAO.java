@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import com.insurance.sce.model.interview.Interview;
 
-@Repository
 public interface InterviewDAO {
 	public int insert(Interview interView);
 	

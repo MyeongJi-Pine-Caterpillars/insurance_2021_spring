@@ -5,7 +5,7 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="insurantMapper">
 	<!-- INSERT -->
-	<insert id = "insertInsurant" parameterType="com.insurance.sce.dao.InsurantDB">
+	<insert id = "insertInsurant" parameterType="com.insurance.sce.model.customer.Insurant">
 		INSERT INTO insurant (insurantId, customerId, name, address, phoneNumber, age, accidentHistory, postedPriceOfStructure,
 		usageOfStructure, gender, job, typeOfCar, rankOfCar, riskOfTripCountry, familyMedicalDisease, familyMedicalRelationship)
 		VALUES (#{insurantId}, #{customerId}, #{name}, #{address}, #{phoneNumber}, #{age}, #{accidentHistory}, #{postedPriceOfStructure},
@@ -13,10 +13,10 @@
 	</insert>
 	
 	<!-- SELECT -->
-	<select id = "selectInsurantList" resultType = "com.insurance.sce.dao.InsurantDB">
+	<select id = "selectInsurantList" resultType = "com.insurance.sce.model.customer.Insurant">
 		SELECT * FROM insurant
 	</select>
-	<select id = "selectInsurant" resultType = "com.insurance.sce.dao.InsurantDB">
+	<select id = "selectInsurant" resultType = "com.insurance.sce.model.customer.Insurant">
 		SELECT * FROM insurant
 		WHERE insurantId = #{insurantId}
 	</select>
@@ -60,49 +60,49 @@
 		SET postedPriceOfStructure = #{postedPriceOfStructure}
 		WHERE insurantId = #{insurantId}
 	</update>
-	<update id = "updateUsageOfStructure" parameterType = "com.insurance.sce.dao.InsurantDB">
+	<update id = "updateUsageOfStructure" parameterType = "com.insurance.sce.model.customer.Insurant">
 		UPDATE insurant
 		SET usageOfStructure = #{usageOfStructure}
 		WHERE insurantId = #{insurantId}
 	</update>
-	<update id = "updateGender" parameterType = "com.insurance.sce.dao.InsurantDB">
+	<update id = "updateGender" parameterType = "com.insurance.sce.model.customer.Insurant">
 		UPDATE insurant
 		SET gender = #{gender}
 		WHERE insurantId = #{insurantId}
 	</update>
-	<update id = "updateJob" parameterType = "com.insurance.sce.dao.InsurantDB">
+	<update id = "updateJob" parameterType = "com.insurance.sce.model.customer.Insurant">
 		UPDATE insurant
 		SET job = #{job}
 		WHERE insurantId = #{insurantId}
 	</update>
-	<update id = "updateTypeOfCar" parameterType = "com.insurance.sce.dao.InsurantDB">
+	<update id = "updateTypeOfCar" parameterType = "com.insurance.sce.model.customer.Insurant">
 		UPDATE insurant
 		SET typeOfCar = #{typeOfCar}
 		WHERE insurantId = #{insurantId}
 	</update>
-	<update id = "updateRankOfCar" parameterType = "com.insurance.sce.dao.InsurantDB">
+	<update id = "updateRankOfCar" parameterType = "com.insurance.sce.model.customer.Insurant">
 		UPDATE insurant
 		SET rankOfCar = #{rankOfCar}
 		WHERE insurantId = #{insurantId}
 	</update>
-	<update id = "updateRiskOfTripCountry" parameterType = "com.insurance.sce.dao.InsurantDB">
+	<update id = "updateRiskOfTripCountry" parameterType = "com.insurance.sce.model.customer.Insurant">
 		UPDATE insurant
 		SET riskOfTripCountry = #{riskOfTripCountry}
 		WHERE insurantId = #{insurantId}
 	</update>
-	<update id = "updateForRecontract" parameterType = "com.insurance.sce.dao.InsurantDB">
+	<update id = "updateForRecontract" parameterType = "com.insurance.sce.model.customer.Insurant">
 		UPDATE insurant
 		SET customerId = #{customerId}, name = #{name}, address = #{address}, age= #{age}, accidentHistory= #{accidentHistory}
 		, postedPriceOfStructure= #{postedPriceOfStructure}, usageOfStructure= #{usageOfStructure}, gender= #{gender}, job= #{job}, typeOfCar= #{typeOfCar}
 		, rankOfCar= #{rankOfCar}, riskOfTripCountry= #{riskOfTripCountry}, familyMedicalDisease= #{familyMedicalDisease}, familyMedicalRelationship= #{familyMedicalRelationship}, phoneNumber= #{phoneNumber}
 		WHERE insurantId = #{insurantId}
 	</update>
-	<update id = "updateFamilyMedicalRelationship" parameterType = "com.insurance.sce.dao.InsurantDB">
+	<update id = "updateFamilyMedicalRelationship" parameterType = "com.insurance.sce.model.customer.Insurant">
 		UPDATE insurant
 		SET familyMedicalDisease = #{familyMedicalDisease}
 		WHERE insurantId = #{insurantId}
 	</update>
-	<update id = "updateFamilyMedicalDisease" parameterType = "com.insurance.sce.dao.InsurantDB">
+	<update id = "updateFamilyMedicalDisease" parameterType = "com.insurance.sce.model.customer.Insurant">
 		UPDATE insurant
 		SET familyMedicalRelationship = #{familyMedicalRelationship}
 		WHERE insurantId = #{insurantId}

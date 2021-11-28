@@ -89,6 +89,10 @@ public class Constants {
 
 		public int getNum() {return num;}
 		public String getName() {return this.name;}
+
+		public static eJob get(int job) {
+			return eJob.values()[job];
+		}
 	}
 
 	public static enum eTypeOfCar {
@@ -109,6 +113,10 @@ public class Constants {
 
 		public int getNum() {return num;}
 		public String getName() {return name;}
+
+		public static eTypeOfCar get(int typeOfCar) {
+			return eTypeOfCar.values()[typeOfCar];
+		}
 	}
 	
 	public static enum eRankOfCar {
@@ -128,6 +136,10 @@ public class Constants {
 
 		public int getNum() {return num;}
 		public String getName() {return name;}
+
+		public static eRankOfCar get(int rankOfCar) {
+			return eRankOfCar.values()[rankOfCar];
+		}
 	}
 	
 	public static String[] accidentHistory = {"0회", "1회", "2회~3회", "4회~5회", "6회~7회", "8회 이상"};
@@ -151,6 +163,13 @@ public class Constants {
 
 		public int getNum() {return num;}
 		public String getName() {return name;}
+
+		public static eUsageOfStructure get(int n) {
+			for(eUsageOfStructure tmp : eUsageOfStructure.values()) {
+				if(tmp.getNum() == n) return tmp;
+			}
+			return null;
+		}
 	}
 
 	public static enum eRiskOfTripCountry {
@@ -170,6 +189,10 @@ public class Constants {
 
 		public int getNum() {return num;}
 		public String getName() {return name;}
+
+		public static eRiskOfTripCountry get(int riskOfTripCountry) {
+			return eRiskOfTripCountry.values()[riskOfTripCountry];
+		}
 	}
 
 	public static enum eGuaranteePlanGuaranteeItem {
@@ -233,6 +256,10 @@ public class Constants {
 		
 		public int getNum() {return num;}
 		public String getName() {return this.name;}
+
+		public static eFamilyMedicalDisease get(int familyMedicalDisease) {
+			return eFamilyMedicalDisease.values()[familyMedicalDisease];
+		}
 	}
 	
 	public static enum eFamilyMedicalRelationship {
@@ -253,6 +280,10 @@ public class Constants {
 		
 		public int getNum() {return num;}
 		public String getName() {return this.name;}
+
+		public static eFamilyMedicalRelationship get(int familyMedicalRelationship) {
+			return eFamilyMedicalRelationship.values()[familyMedicalRelationship];
+		}
 	}
 	
 	public static String[] postedPrice = {"(공시가)<=5천만원", "5천만원<(공시가)<=5억", "5억<(공시가)<=10억", "10억<(공시가)<=20억", "20억<(공시가)"};

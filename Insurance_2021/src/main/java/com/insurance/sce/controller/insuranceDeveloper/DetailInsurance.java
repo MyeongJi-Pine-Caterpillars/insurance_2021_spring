@@ -78,7 +78,7 @@ public class DetailInsurance {
 		HttpSession session = request.getSession(true);
 		session.setAttribute("detailedInsurance", this.insurance);
 		String nextViewUrl = "";
-		switch(this.insurance.getEType()) {
+		switch(this.insurance.getType()) {
 		case driverInsurance:
 			nextViewUrl = "redirect:/rateDriverInsurance";
 			break;

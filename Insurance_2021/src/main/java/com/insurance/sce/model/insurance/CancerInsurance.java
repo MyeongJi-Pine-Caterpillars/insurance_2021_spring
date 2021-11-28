@@ -6,7 +6,7 @@ import com.insurance.sce.model.customer.Insurant;
 public class CancerInsurance extends Insurance {
 	// Attributes
 	private double[] rateOfFamilyMedicalDisease = {1.6, 1.5, 1.4, 1.3, 1.2}; // index[0: thyroid/ 1: testicular/ 2: ovarian/ 3: esophageal/ 4: lung]
-	private double[] rateOfFamilyMedicalRelationship = {1.4, 1.3, 1.2, 1.1}; // index[0: 1珥�/ 1: 2珥�/ 2: 3珥�/ 3: 4珥�]
+	private double[] rateOfFamilyMedicalRelationship = {1.4, 1.3, 1.2, 1.1}; // index[0: 1�룯占�/ 1: 2�룯占�/ 2: 3�룯占�/ 3: 4�룯占�]
 		
 	// Constructor
 	public CancerInsurance() {
@@ -24,7 +24,7 @@ public class CancerInsurance extends Insurance {
 	public int calculateFee(Insurant insurant){
 		double fee = this.getBasicFee();
 
-		// �굹�씠�뿉 �뵲瑜� �슂�쑉 怨꾩궛
+		// 占쎄돌占쎌뵠占쎈퓠 占쎈뎡�몴占� 占쎌뒄占쎌몛 �④쑴沅�
 		if (insurant.getAge() >= 10 && insurant.getAge() < 20) {
 			fee *= this.getRateOfAge()[0];
 		} else if (insurant.getAge() >= 20 && insurant.getAge() < 30) {
@@ -41,15 +41,15 @@ public class CancerInsurance extends Insurance {
 			fee *= this.getRateOfAge()[6];
 		}
 		
-		// �꽦蹂꾩뿉 �뵲瑜� �슂�쑉 怨꾩궛
-		if (insurant.getEGender() == eGender.male) {
+		// 占쎄쉐癰귢쑴肉� 占쎈뎡�몴占� 占쎌뒄占쎌몛 �④쑴沅�
+		if (insurant.getGender() == eGender.male) {
 			fee *= this.getRateOfGender()[0];
-		} else if (insurant.getEGender() == eGender.female){
+		} else if (insurant.getGender() == eGender.female){
 			fee *= this.getRateOfGender()[1];
 		}
 		
-		// 吏곸뾽�뿉 �뵲瑜� �슂�쑉 怨꾩궛
-		switch (insurant.getEJob()) {
+		// 筌욊낯毓쏙옙肉� 占쎈뎡�몴占� 占쎌뒄占쎌몛 �④쑴沅�
+		switch (insurant.getJob()) {
 		case officeWorker:
 			fee *= this.getRateOfJob()[0];
 			break;
@@ -75,8 +75,8 @@ public class CancerInsurance extends Insurance {
 			break;
 		}
 		
-		// 媛�議깅퀝�젰�뿉 �뵲瑜� �슂�쑉 怨꾩궛
-		switch (insurant.getEFamilyMedicalRelationship()) {
+		// 揶쏉옙鈺곌퉭�앾옙�젾占쎈퓠 占쎈뎡�몴占� 占쎌뒄占쎌몛 �④쑴沅�
+		switch (insurant.getFamilyMedicalRelationship()) {
 		case one:
 			fee *= rateOfFamilyMedicalRelationship[0];
 			break;
@@ -93,7 +93,7 @@ public class CancerInsurance extends Insurance {
 			break;
 		}
 		
-		switch (insurant.getEFamilyMedicalDisease()) {
+		switch (insurant.getFamilyMedicalDisease()) {
 		case thyroid:
 			fee *= rateOfFamilyMedicalDisease[0];
 			break;

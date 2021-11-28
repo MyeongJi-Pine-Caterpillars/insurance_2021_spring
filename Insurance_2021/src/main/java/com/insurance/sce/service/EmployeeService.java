@@ -17,7 +17,7 @@ public class EmployeeService {
 	public Map<String, Object> loginEmployee(String id, String pw) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		// 해당 Id를 가진 Employee 불러오기
+		// �빐�떦 Id瑜� 媛�吏� Employee 遺덈윭�삤湲�
 		Employee tmp = new Employee();
 		tmp.setEmployeeId(id);
 		tmp.setPassword(pw);
@@ -26,7 +26,7 @@ public class EmployeeService {
 		if(employee == null) return null;
 		else {
 			String employeeRole = "redirect:/";
-			switch(employee.getEmployeeRole()) {
+			switch(employee.getRole()) {
 			case insuranceDeveloper: employeeRole += "developerView";
 			default:
 				break;

@@ -12,12 +12,12 @@ public abstract class Insurance {
 	// Attributes
 	private String insuranceId;
 	private String name;
-	private eInsuranceType eType;
-	private eGender eGender;
+	private eInsuranceType type;
+	private eGender gender;
 	private int basicFee;
-	private double[] rateOfAge = {1.1, 1.0, 1.0, 1.1, 1.2, 1.3, 1.4}; // index[0 : �쁺�쑀�븘/ 1 : 10��/ 2 : 20��/ 3 : 30��/ 4 : 40��/ 5 : 50��/ 6 : �끂�뀈痢�]
-	private double[] rateOfGender = {1.0, 1.1}; // index[0 : �궓�꽦/ 1 : �뿬�꽦]
-	private double[] rateOfJob = {1.0, 1.2, 1.3, 1.0, 1.0, 1.2, 1.1}; // index[0 : �궗臾댁쭅/ 1 : �슫�넚�뾽/ 2 : �쁽�옣吏�/ 3 : �븰�깮/ 4 : 援먯궗(�닔)吏�/ 5 : 援곗씤/ 6 : 湲고�]
+	private double[] rateOfAge = {1.1, 1.0, 1.0, 1.1, 1.2, 1.3, 1.4}; // index[0 : 占쎌겫占쎌�占쎈툡/ 1 : 10占쏙옙/ 2 : 20占쏙옙/ 3 : 30占쏙옙/ 4 : 40占쏙옙/ 5 : 50占쏙옙/ 6 : 占쎈걗占쎈�덌㎘占�]
+	private double[] rateOfGender = {1.0, 1.1}; // index[0 : 占쎄텚占쎄쉐/ 1 : 占쎈연占쎄쉐]
+	private double[] rateOfJob = {1.0, 1.2, 1.3, 1.0, 1.0, 1.2, 1.1}; // index[0 : 占쎄텢�눧�똻彛�/ 1 : 占쎌뒲占쎈꽊占쎈씜/ 2 : 占쎌겱占쎌삢筌욑옙/ 3 : 占쎈린占쎄문/ 4 : �뤃癒�沅�(占쎈땾)筌욑옙/ 5 : �뤃怨쀬뵥/ 6 : 疫꿸퀬占�]
 	private int specialContractFee;
 	private int warrantyPeriod;
 	private boolean confirmedStatus = false;
@@ -50,8 +50,11 @@ public abstract class Insurance {
 	public String getName() {return name;}
 	public void setName(String name) {this.name = name;}
 
-	public eInsuranceType getEType() {return eType;}
-	public void setEType(eInsuranceType type) {this.eType = type;}
+	public eInsuranceType getType() {return type;}
+	public void setType(int type) {this.type = eInsuranceType.get(type);}
+	
+	public eGender getGender() {return gender;}
+	public void setGender(int gender) {this.gender = eGender.get(gender);}
 	
 	public double[] getRateOfAge() {return rateOfAge;}
 	public void setRateOfAge(double[] rateOfAge) {this.rateOfAge = rateOfAge;}
@@ -68,9 +71,6 @@ public abstract class Insurance {
 	public int getWarrantyPeriod() {return warrantyPeriod;}
 	public void setWarrantyPeriod(int warrantyPeriod) {this.warrantyPeriod = warrantyPeriod;}
 
-	public eGender getEGender() {return eGender;}
-	public void setEGender(eGender gender) {this.eGender = gender;}
-	
 	public boolean isSpecialContract() {return specialContract;}
 	public void setSpecialContract(boolean specialContract) {this.specialContract = specialContract;}
 	

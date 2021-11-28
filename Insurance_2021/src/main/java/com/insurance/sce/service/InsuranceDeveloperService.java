@@ -30,27 +30,27 @@ public class InsuranceDeveloperService {
 		switch(insuranceType) {
 		case "Driver":
 			insurance = new DriverInsurance();
-			insurance.setEType(eInsuranceType.driverInsurance);
+			insurance.setType(eInsuranceType.driverInsurance.getNum());
 			break;
 		case "Dental":
 			insurance = new DentalInsurance();
-			insurance.setEType(eInsuranceType.dentalInsurance);
+			insurance.setType(eInsuranceType.dentalInsurance.getNum());
 			break;
 		case "ActualCost":
 			insurance = new ActualCostInsurance();
-			insurance.setEType(eInsuranceType.actualCostInsurance);
+			insurance.setType(eInsuranceType.actualCostInsurance.getNum());
 			break;
 		case "Fire":
 			insurance = new FireInsurance();
-			insurance.setEType(eInsuranceType.fireInsurance);
+			insurance.setType(eInsuranceType.fireInsurance.getNum());
 			break;
 		case "Cancer":
 			insurance = new CancerInsurance();
-			insurance.setEType(eInsuranceType.cancerInsurance);
+			insurance.setType(eInsuranceType.cancerInsurance.getNum());
 			break;
 		case "Trip":
 			insurance = new TripInsurance();
-			insurance.setEType(eInsuranceType.tripInsurance);
+			insurance.setType(eInsuranceType.tripInsurance.getNum());
 			break;
 		}
 		ArrayList<String> ids = (ArrayList<String>) insuranceDAO.selectInsuranceId();
@@ -61,15 +61,15 @@ public class InsuranceDeveloperService {
 	}
 	public Insurance setGender(Insurance insurance, String[] insuranceGender) {
 		if(insuranceGender.length == 2) {
-			insurance.setEGender(eGender.both);
+			insurance.setGender(eGender.both.getNum());
 		} else {
-			if(insuranceGender[0].equals("man")) insurance.setEGender(eGender.male);
-			else insurance.setEGender(eGender.female);
+			if(insuranceGender[0].equals("man")) insurance.setGender(eGender.male.getNum());
+			else insurance.setGender(eGender.female.getNum());
 		}
 		return insurance;
 	}
 	public Insurance detailInsurance(Insurance insurance, String name, int basicFee, int specialFee, int warrantyPeriod, double[] age, double[] gender, double[] job) {
-		insurance.setNAME(name);
+		insurance.setName(name);
 		insurance.setBasicFee(basicFee);
 		if(specialFee != 0) {
 			insurance.setSpecialContract(true);

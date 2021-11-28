@@ -21,7 +21,7 @@ public class ActualCostInsurance extends Insurance {
 	public int calculateFee(Insurant insurant){
 		double fee = this.getBasicFee();
 		
-		// �굹�씠�뿉 �뵲瑜� �슂�쑉 怨꾩궛
+		// 占쎄돌占쎌뵠占쎈퓠 占쎈뎡�몴占� 占쎌뒄占쎌몛 �④쑴沅�
 		if (insurant.getAge() >= 10 && insurant.getAge() < 20) {
 			fee *= this.getRateOfAge()[0];
 		} else if (insurant.getAge() >= 20 && insurant.getAge() < 30) {
@@ -38,15 +38,15 @@ public class ActualCostInsurance extends Insurance {
 			fee = this.getBasicFee()*this.getRateOfAge()[6];
 		}
 				
-		// �꽦蹂꾩뿉 �뵲瑜� �슂�쑉 怨꾩궛
-		if (insurant.getEGender() == eGender.male) {
+		// 占쎄쉐癰귢쑴肉� 占쎈뎡�몴占� 占쎌뒄占쎌몛 �④쑴沅�
+		if (insurant.getGender() == eGender.male) {
 			fee *= this.getRateOfGender()[0];
-		} else if (insurant.getEGender() == eGender.female){
+		} else if (insurant.getGender() == eGender.female){
 			fee *= this.getRateOfGender()[1];
 		}
 		
-		// 吏곸뾽�뿉 �뵲瑜� �슂�쑉 怨꾩궛
-		switch (insurant.getEJob()) {
+		// 筌욊낯毓쏙옙肉� 占쎈뎡�몴占� 占쎌뒄占쎌몛 �④쑴沅�
+		switch (insurant.getJob()) {
 		case officeWorker:
 			fee *= this.getRateOfJob()[0];
 			break;

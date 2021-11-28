@@ -51,9 +51,15 @@ public abstract class Insurance {
 
 	public int getType() {return type.getNum();}
 	public void setType(int type) {this.type = eInsuranceType.get(type);}
+
+	public eInsuranceType getEType() {return type;}
+	public void setEType(eInsuranceType type) {this.type = type;}
 	
 	public int getGender() {return gender.getNum();}
 	public void setGender(int gender) {this.gender = eGender.get(gender);}
+
+	public eGender getEGender() {return gender;}
+	public void setEGender(eGender gender) {this.gender = gender;}
 	
 	public double[] getRateOfAge() {return rateOfAge;}
 	public void setRateOfAge(double[] rateOfAge) {this.rateOfAge = rateOfAge;}

@@ -30,6 +30,9 @@ public class Employee {
 
 	public int getRole() {return role.getNum();}
 	public void setRole(int role) {this.role = eEmployeeRole.get(role);}
+
+	public eEmployeeRole getERole() {return role;}
+	public void setERole(eEmployeeRole role) {this.role = role;}
 	
 	public int getSaleHistory() {return saleHistory;}
 	public void setSaleHistory(int saleHistory) {this.saleHistory = saleHistory;}

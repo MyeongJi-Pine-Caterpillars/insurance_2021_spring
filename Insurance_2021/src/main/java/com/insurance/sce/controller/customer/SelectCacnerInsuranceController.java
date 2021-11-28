@@ -19,6 +19,7 @@ import com.insurance.sce.model.customer.Customer;
 import com.insurance.sce.model.insurance.CancerInsurance;
 import com.insurance.sce.model.insurance.GuaranteePlan;
 import com.insurance.sce.service.InsuranceService;
+import com.insurance.sce.service.InsuranceServiceImpl;
 
 /**
  * Handles requests for the application home page.
@@ -30,7 +31,7 @@ public class SelectCacnerInsuranceController {
 	private static final Logger logger = LoggerFactory.getLogger(SelectCacnerInsuranceController.class);
 	
 	@Autowired
-	InsuranceService insuranceService;
+	InsuranceServiceImpl insuranceService;
 	
 	@RequestMapping(value="cancerInsurance", method=RequestMethod.GET)
 	public String response(Locale locale, Model model, HttpServletRequest request) {

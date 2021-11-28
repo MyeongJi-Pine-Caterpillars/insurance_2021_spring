@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.insurance.sce.service.InsuranceService;
+import com.insurance.sce.service.InsuranceServiceImpl;
 
 @Controller
 @RequestMapping(value = "/")
@@ -22,7 +23,7 @@ public class SignUpInsurant {
 	private static final Logger logger = LoggerFactory.getLogger(SelectTripInsuranceController.class);
 	
 	@Autowired
-	InsuranceService insuranceService;
+	InsuranceServiceImpl insuranceService;
 	
 	@RequestMapping(value="signUpInsurant", method=RequestMethod.GET)
 	public String response5(Locale locale, Model model, HttpServletRequest request) {

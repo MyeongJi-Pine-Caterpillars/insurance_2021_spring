@@ -8,14 +8,14 @@
 
 	<!-- INSERT -->
 	<insert id="insert" parameterType="com.insurance.sce.model.insurance.Insurance">
-		INSERT INTO insurance(insuranceId, NAME, TYPE,
+		INSERT INTO insurance(insuranceId, name, type,
 							gender,basicFee, specialContractFee,
 							warrantyPeriod, rateOfAge0, rateOfAge1,rateOfAge2, rateOfAge3,
 							rateOfAge4, rateOfAge5, rateOfAge6,rateOfGender0, rateOfGender1,
 							rateOfJob0, rateOfJob1, rateOfJob2,rateOfJob3, rateOfJob4,
 							rateOfJob5, rateOfJob6, confirmedStatus, specialContract)
 		VALUES (#{insuranceId},
-				#{NAME}, #{TYPE}, #{gender}, #{basicFee}, #{specialContractFee},
+				#{name}, #{type}, #{gender}, #{basicFee}, #{specialContractFee},
 				#{warrantyPeriod}, #{rateOfAge0}, #{rateOfAge1}, #{rateOfAge2},
 				#{rateOfAge3},#{rateOfAge4}, #{rateOfAge5}, #{rateOfAge6},
 				#{rateOfGender0}, #{rateOfGender1},#{rateOfJob0}, #{rateOfJob1},
@@ -23,39 +23,11 @@
 				#{rateOfJob6}, #{confirmedStatus}, #{specialContract})
 	</insert>
 	<insert id="insertActualCostInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
-		INSERT ALL
-		INTO insurance(insuranceId, NAME, TYPE,
-							gender,basicFee, specialContractFee,
-							warrantyPeriod, rateOfAge0, rateOfAge1,rateOfAge2, rateOfAge3,
-							rateOfAge4, rateOfAge5, rateOfAge6,rateOfGender0, rateOfGender1,
-							rateOfJob0, rateOfJob1, rateOfJob2,rateOfJob3, rateOfJob4,
-							rateOfJob5, rateOfJob6, confirmedStatus, specialContract)
-		VALUES (#{insuranceId},
-				#{NAME}, #{TYPE}, #{gender}, #{basicFee}, #{specialContractFee},
-				#{warrantyPeriod}, #{rateOfAge0}, #{rateOfAge1}, #{rateOfAge2},
-				#{rateOfAge3},#{rateOfAge4}, #{rateOfAge5}, #{rateOfAge6},
-				#{rateOfGender0}, #{rateOfGender1},#{rateOfJob0}, #{rateOfJob1},
-				#{rateOfJob2}, #{rateOfJob3}, #{rateOfJob4}, #{rateOfJob5},
-				#{rateOfJob6}, #{confirmedStatus}, #{specialContract})
-		INTO actualCostInsurance(insuranceId, selfBurdenRate)
+		INSERT INTO actualCostInsurance(insuranceId, selfBurdenRate)
 		VALUES (#{insuranceId}, #{selfBurdenRate})
 	</insert>
-	<insert id="insertCancerInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
-		INSERT ALL
-		INTO insurance(insuranceId, NAME, TYPE,
-							gender,basicFee, specialContractFee,
-							warrantyPeriod, rateOfAge0, rateOfAge1,rateOfAge2, rateOfAge3,
-							rateOfAge4, rateOfAge5, rateOfAge6,rateOfGender0, rateOfGender1,
-							rateOfJob0, rateOfJob1, rateOfJob2,rateOfJob3, rateOfJob4,
-							rateOfJob5, rateOfJob6, confirmedStatus, specialContract)
-		VALUES (#{insuranceId},
-				#{NAME}, #{TYPE}, #{gender}, #{basicFee}, #{specialContractFee},
-				#{warrantyPeriod}, #{rateOfAge0}, #{rateOfAge1}, #{rateOfAge2},
-				#{rateOfAge3},#{rateOfAge4}, #{rateOfAge5}, #{rateOfAge6},
-				#{rateOfGender0}, #{rateOfGender1},#{rateOfJob0}, #{rateOfJob1},
-				#{rateOfJob2}, #{rateOfJob3}, #{rateOfJob4}, #{rateOfJob5},
-				#{rateOfJob6}, #{confirmedStatus}, #{specialContract})
-		INTO cancerInsurance(insuranceId,
+	<insert id="insertCancerInsurance" parameterType="com.insurance.sce.model.insurance.CancerInsurance">
+		INSERT INTO cancerInsurance(insuranceId,
 									rateOfFamilyMedicalDisease0, rateOfFamilyMedicalDisease1,
 									rateOfFamilyMedicalDisease2,rateOfFamilyMedicalDisease3,
 									rateOfFamilyMedicalDisease4, rateOfFamilyMedicalRelationship0,
@@ -69,38 +41,11 @@
 
 	</insert>
 	<insert id="insertDentalInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
-		INSERT ALL
-		INTO insurance(insuranceId, NAME, TYPE,
-							gender,basicFee, specialContractFee,
-							warrantyPeriod, rateOfAge0, rateOfAge1,rateOfAge2, rateOfAge3,
-							rateOfAge4, rateOfAge5, rateOfAge6,rateOfGender0, rateOfGender1,
-							rateOfJob0, rateOfJob1, rateOfJob2,rateOfJob3, rateOfJob4,
-							rateOfJob5, rateOfJob6, confirmedStatus, specialContract)
-		VALUES (#{insuranceId},
-				#{NAME}, #{TYPE}, #{gender}, #{basicFee}, #{specialContractFee},
-				#{warrantyPeriod}, #{rateOfAge0}, #{rateOfAge1}, #{rateOfAge2},
-				#{rateOfAge3},#{rateOfAge4}, #{rateOfAge5}, #{rateOfAge6},
-				#{rateOfGender0}, #{rateOfGender1},#{rateOfJob0}, #{rateOfJob1},
-				#{rateOfJob2}, #{rateOfJob3}, #{rateOfJob4}, #{rateOfJob5},
-				#{rateOfJob6}, #{confirmedStatus}, #{specialContract})
-		INTO dentalInsurance(insuranceId, annualLimitCount)
+		INSERT INTO dentalInsurance(insuranceId, annualLimitCount)
 		VALUES (#{insuranceId}, #{annualLimitCount})
 	</insert>
 	<insert id="insertDriverInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
-		INSERT ALL
-		INTO insurance(insuranceId, NAME, TYPE,
-							gender,basicFee, specialContractFee,
-							warrantyPeriod, rateOfAge0, rateOfAge1,rateOfAge2, rateOfAge3,
-							rateOfAge4, rateOfAge5, rateOfAge6,rateOfGender0, rateOfGender1,
-							rateOfJob0, rateOfJob1, rateOfJob2,rateOfJob3, rateOfJob4,
-							rateOfJob5, rateOfJob6, confirmedStatus, specialContract)
-		VALUES (#{insuranceId},
-				#{NAME}, #{TYPE}, #{gender}, #{basicFee}, #{specialContractFee},
-				#{warrantyPeriod}, #{rateOfAge0}, #{rateOfAge1}, #{rateOfAge2},
-				#{rateOfAge3},#{rateOfAge4}, #{rateOfAge5}, #{rateOfAge6},
-				#{rateOfGender0}, #{rateOfGender1},#{rateOfJob0}, #{rateOfJob1},
-				#{rateOfJob2}, #{rateOfJob3}, #{rateOfJob4}, #{rateOfJob5},
-				#{rateOfJob6}, #{confirmedStatus}, #{specialContract})
+		INSERT
 		INTO driverInsurance(insuranceId, rateOfAccidentHistory0, rateOfAccidentHistory1,
 									rateOfAccidentHistory2, rateOfAccidentHistory3, rateOfAccidentHistory4, 
 									rateOfAccidentHistory5, rateOfCarType0, rateOfCarType1, rateOfCarType2,
@@ -113,20 +58,7 @@
 				#{rateOfCarRank2}, #{rateOfCarRank3})
 	</insert>
 	<insert id="insertFireInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
-		INSERT ALL
-		INTO insurance(insuranceId, NAME, TYPE,
-							gender,basicFee, specialContractFee,
-							warrantyPeriod, rateOfAge0, rateOfAge1,rateOfAge2, rateOfAge3,
-							rateOfAge4, rateOfAge5, rateOfAge6,rateOfGender0, rateOfGender1,
-							rateOfJob0, rateOfJob1, rateOfJob2,rateOfJob3, rateOfJob4,
-							rateOfJob5, rateOfJob6, confirmedStatus, specialContract)
-		VALUES (#{insuranceId},
-				#{NAME}, #{TYPE}, #{gender}, #{basicFee}, #{specialContractFee},
-				#{warrantyPeriod}, #{rateOfAge0}, #{rateOfAge1}, #{rateOfAge2},
-				#{rateOfAge3},#{rateOfAge4}, #{rateOfAge5}, #{rateOfAge6},
-				#{rateOfGender0}, #{rateOfGender1},#{rateOfJob0}, #{rateOfJob1},
-				#{rateOfJob2}, #{rateOfJob3}, #{rateOfJob4}, #{rateOfJob5},
-				#{rateOfJob6}, #{confirmedStatus}, #{specialContract})
+		INSERT
 		INTO fireInsurance(insuranceId, rateOfPostedPrice0, rateOfPostedPrice1, rateOfPostedPrice2,
 								rateOfPostedPrice3, rateOfPostedPrice4, rateOfStructureUsage0,
 								rateOfStructureUsage1, rateOfStructureUsage2, rateOfStructureUsage3,
@@ -137,20 +69,7 @@
 				#{rateOfStructureUsage4}, #{rateOfStructureUsage5})
 	</insert>
 	<insert id="insertTripInsurance" parameterType="com.insurance.sce.model.insurance.Insurance">
-		INSERT ALL
-		INTO insurance(insuranceId, NAME, TYPE,
-							gender,basicFee, specialContractFee,
-							warrantyPeriod, rateOfAge0, rateOfAge1,rateOfAge2, rateOfAge3,
-							rateOfAge4, rateOfAge5, rateOfAge6,rateOfGender0, rateOfGender1,
-							rateOfJob0, rateOfJob1, rateOfJob2,rateOfJob3, rateOfJob4,
-							rateOfJob5, rateOfJob6, confirmedStatus, specialContract)
-		VALUES (#{insuranceId},
-				#{NAME}, #{TYPE}, #{gender}, #{basicFee}, #{specialContractFee},
-				#{warrantyPeriod}, #{rateOfAge0}, #{rateOfAge1}, #{rateOfAge2},
-				#{rateOfAge3},#{rateOfAge4}, #{rateOfAge5}, #{rateOfAge6},
-				#{rateOfGender0}, #{rateOfGender1},#{rateOfJob0}, #{rateOfJob1},
-				#{rateOfJob2}, #{rateOfJob3}, #{rateOfJob4}, #{rateOfJob5},
-				#{rateOfJob6}, #{confirmedStatus}, #{specialContract})
+		INSERT
 		INTO tripInsurance(insuranceId, rateOfCountryRisk0, rateOfCountryRisk1,
 								rateOfCountryRisk2, rateOfCountryRisk3)
 		VALUES (#{insuranceId}, #{rateOfCountryRisk0}, #{rateOfCountryRisk1}, #{rateOfCountryRisk2},

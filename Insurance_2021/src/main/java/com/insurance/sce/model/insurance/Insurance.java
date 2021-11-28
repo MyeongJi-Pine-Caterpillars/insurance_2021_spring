@@ -132,13 +132,4 @@ public abstract class Insurance {
 	public void birngGuaranteePlan() {
 		//this.guaranteePlanList = this.guaranteePlanDAO.selectById(this.insuranceId);
 	}
-	
-	public void addGuaranteePlan(String content, int compensation, boolean special, double rate) {
-		GuaranteePlan guaranteePlan = new GuaranteePlan();
-		guaranteePlan.setInsuranceId(this.insuranceId);
-		guaranteePlan.setCompensation(compensation);
-		guaranteePlan.setSpecial(special);
-		guaranteePlan.setContent(content);
-		guaranteePlan.setRate(rate);
-	}
 }

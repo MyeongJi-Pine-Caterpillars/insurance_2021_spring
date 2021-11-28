@@ -16,11 +16,11 @@ public class EmployeeDB extends Employee {
 		this.setPassword(employee.getPassword());
 		this.setName(employee.getName());
 		this.setPhoneNumber(employee.getPhoneNumber());
-		this.role = employee.getEmployeeRole().getNum();
+		this.role = employee.getERole().getNum();
 		this.setSaleHistory(employee.getSaleHistory());
 	}
 	
 	public void setEnum() {
-		this.setEmployeeRole(eEmployeeRole.values()[role - 1]);
+		this.setERole(eEmployeeRole.values()[role - 1]);
 	}
 }

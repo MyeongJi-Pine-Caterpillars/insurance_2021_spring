@@ -39,14 +39,14 @@ public class ActualCostInsurance extends Insurance {
 		}
 				
 		// 占쎄쉐癰귢쑴肉� 占쎈뎡�몴占� 占쎌뒄占쎌몛 �④쑴沅�
-		if (insurant.getGender() == eGender.male) {
+		if (insurant.getEGender() == eGender.male) {
 			fee *= this.getRateOfGender()[0];
-		} else if (insurant.getGender() == eGender.female){
+		} else if (insurant.getEGender() == eGender.female){
 			fee *= this.getRateOfGender()[1];
 		}
 		
 		// 筌욊낯毓쏙옙肉� 占쎈뎡�몴占� 占쎌뒄占쎌몛 �④쑴沅�
-		switch (insurant.getJob()) {
+		switch (insurant.getEJob()) {
 		case officeWorker:
 			fee *= this.getRateOfJob()[0];
 			break;

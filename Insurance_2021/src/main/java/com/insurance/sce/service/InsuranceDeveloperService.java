@@ -14,7 +14,7 @@ public interface InsuranceDeveloperService {
 	public Insurance setFireRate(Insurance insurance, double[] postedPrice, double[] usageOfStructure);
 	public Insurance setTripRate(Insurance insurance, double[] riskOfTripCountry);
 	public Insurance setActualCostRate(Insurance insurance, double selfBurden);
-	public Insurance setGuarantee(Insurance insurance, String[] selected, String[] special, int[] compensation);
-	public Insurance setBurdenGuarantee(Insurance insurance, String[] selected, String[] special, int[] compensation, double[] selfBurden);
-	public void finishInsurance(Insurance insurance);
+	public void finishInsurance(Insurance insurance, String[] selected, String[] special, int[] compensation);
+	public void finishInsurance(Insurance insurance, String[] selected, String[] special, int[] compensation, double[] selfBurden);
+	public void insertInsurance(Insurance insurance);
 }

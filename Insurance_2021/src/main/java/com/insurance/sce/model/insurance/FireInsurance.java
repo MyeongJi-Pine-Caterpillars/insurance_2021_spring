@@ -60,7 +60,7 @@ public class FireInsurance extends Insurance {
 		}
 		
 		// 占쎌삺占쎄텦占쎌벥 占쎄텢占쎌뒠 占쎌뒠占쎈즲占쎈퓠 占쎈뎡�몴占� 占쎌뒄占쎌몛 �④쑴沅�
-		switch(insurant.getUsageOfStructure()) {
+		switch(insurant.getEUsageOfStructure()) {
 		case house:
 			fee *= this.getRateOfStructureUsage()[0];
 			break;

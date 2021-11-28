@@ -42,7 +42,7 @@ public class RateActualCostInsurance {
 	public String responseGoToGuaranteeActualCostInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		double selfBurdenRate = Double.parseDouble(request.getParameter("selfBurdenRate"));
 		this.insurance = idService.setActualCostRate(insurance, selfBurdenRate);
-		idService.finishInsurance(this.insurance);
+		idService.insertInsurance(this.insurance);
 		return "redirect:/developInsurance";
 	}
 

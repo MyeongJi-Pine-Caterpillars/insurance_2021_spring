@@ -45,13 +45,25 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	private static final String Delete = "insuranceMapper.delete";
 
 	// Insert
-	public int insert(Insurance insurance) {return sqlSession.insert(Insert, insurance);}
-	public int insertActualCostInsurance(Insurance insurance) {return sqlSession.insert(InsertActualCostInsurance, insurance);}
-	public int insertCancerInsurance(Insurance insurance) {return sqlSession.insert(InsertCancerInsurance, insurance);}
-	public int insertDentalInsurance(Insurance insurance) {return sqlSession.insert(InsertDentalInsurance, insurance);}
-	public int insertDriverInsurance(Insurance insurance) {return sqlSession.insert(InsertDriverInsurance, insurance);}
-	public int insertFireInsurance(Insurance insurance) {return sqlSession.insert(InsertFireInsurance, insurance);}
-	public int insertTripInsurance(Insurance insurance) {return sqlSession.insert(InsertTripInsurance, insurance);}
+	public int insert(Insurance insurance) {
+		sqlSession.insert(Insert, insurance);
+		switch(insurance.getEType()) {
+		case cancerInsurance:
+			return sqlSession.insert(InsertCancerInsurance, (CancerInsurance)insurance);
+		case dentalInsurance:
+			return sqlSession.insert(InsertDentalInsurance, insurance);
+		case tripInsurance:
+			return sqlSession.insert(InsertTripInsurance, insurance);
+		case actualCostInsurance:
+			return sqlSession.insert(InsertActualCostInsurance, insurance);
+		case driverInsurance:
+			return sqlSession.insert(InsertDriverInsurance, insurance);
+		case fireInsurance:
+			return sqlSession.insert(InsertFireInsurance, insurance);
+		default:
+			return 0;
+		}
+	}
 
 	// Select
 	public List<Insurance> selectAll() {return sqlSession.selectList(SelectAll);}

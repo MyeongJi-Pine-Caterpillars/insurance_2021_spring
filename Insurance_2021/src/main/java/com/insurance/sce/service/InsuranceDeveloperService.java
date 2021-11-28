@@ -69,7 +69,7 @@ public class InsuranceDeveloperService {
 		return insurance;
 	}
 	public Insurance detailInsurance(Insurance insurance, String name, int basicFee, int specialFee, int warrantyPeriod, double[] age, double[] gender, double[] job) {
-		insurance.setNAME(name);
+		insurance.setName(name);
 		insurance.setBasicFee(basicFee);
 		if(specialFee != 0) {
 			insurance.setSpecialContract(true);

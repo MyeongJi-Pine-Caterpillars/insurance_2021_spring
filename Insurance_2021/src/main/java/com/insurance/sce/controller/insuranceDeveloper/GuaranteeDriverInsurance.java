@@ -56,7 +56,7 @@ public class GuaranteeDriverInsurance {
 			}
 		}
 		i = 0;
-		for(String comp: tmpCompensation) {
+		for(String comp: tmpSelfBurden) {
 			if(!comp.equals("")) {
 				selfBurden[i++] = Double.parseDouble(comp);
 			}

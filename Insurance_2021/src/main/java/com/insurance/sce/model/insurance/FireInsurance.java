@@ -5,8 +5,8 @@ import com.insurance.sce.model.customer.Insurant;
 public class FireInsurance extends Insurance {
 
 	// Attributes
-	private double[] rateOfPostedPrice = {0.9, 1.0, 1.1, 1.2, 1.3}; // index[0: ~5泥쒕쭔�썝/ 1: ~5�뼲/ 2: ~10�뼲/ 3: ~20�뼲/ 4: 洹� �씠�긽]
-	private double[] rateOfStructureUsage = {1.0, 0.9, 1.2, 1.2, 1.1, 1.1}; // index[0: 二쇳깮/ 1: 援먯쑁/ 2: 怨듭옣/ 3: 李쎄퀬/ 4: �궗臾�/ 5: 怨듦났�떆�꽕]
+	private double[] rateOfPostedPrice = {0.9, 1.0, 1.1, 1.2, 1.3}; // index[0: ~5筌ｌ뮆彛뷂옙�뜚/ 1: ~5占쎈섣/ 2: ~10占쎈섣/ 3: ~20占쎈섣/ 4: 域뱄옙 占쎌뵠占쎄맒]
+	private double[] rateOfStructureUsage = {1.0, 0.9, 1.2, 1.2, 1.1, 1.1}; // index[0: 雅뚯눛源�/ 1: �뤃癒��몓/ 2: �⑤벊�삢/ 3: 筌≪럡��/ 4: 占쎄텢�눧占�/ 5: �⑤벀�궗占쎈뻻占쎄퐬]
 
 	// Constructor
 	public FireInsurance(){
@@ -22,7 +22,7 @@ public class FireInsurance extends Insurance {
 	// Methods
 	public int calculateFee(Insurant insurant){
 		double fee = this.getBasicFee();
-		// �옱�궛 洹쒕え�뿉 �뵲瑜� �슂�쑉 怨꾩궛
+		// 占쎌삺占쎄텦 域뱀뮆�걟占쎈퓠 占쎈뎡�몴占� 占쎌뒄占쎌몛 �④쑴沅�
 		if (insurant.getPostedPriceOfStructure() > 0 && insurant.getPostedPriceOfStructure() <= 50000000) {
 			fee *= this.getRateOfPostedPrice()[0];
 		} else if (insurant.getPostedPriceOfStructure() > 50000000 && insurant.getPostedPriceOfStructure() <= 500000000) {
@@ -35,8 +35,8 @@ public class FireInsurance extends Insurance {
 			fee *= this.getRateOfPostedPrice()[4];
 		}
 		
-		// �옱�궛�쓽 �궗�슜 �슜�룄�뿉 �뵲瑜� �슂�쑉 怨꾩궛
-		switch(insurant.getEUsageOfStructure()) {
+		// 占쎌삺占쎄텦占쎌벥 占쎄텢占쎌뒠 占쎌뒠占쎈즲占쎈퓠 占쎈뎡�몴占� 占쎌뒄占쎌몛 �④쑴沅�
+		switch(insurant.getUsageOfStructure()) {
 		case house:
 			fee *= this.getRateOfStructureUsage()[0];
 			break;

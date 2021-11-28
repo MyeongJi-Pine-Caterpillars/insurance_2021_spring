@@ -28,17 +28,6 @@ public class InsurantDAOTest {
 	
 	@Test
 	public void testSelectInsurantList() {
-		Insurance insurance = new ActualCostInsurance();
-		insurance.setInsuranceId("2000");
-		insurance.setNAME("test");
-		insurance.setEType(eInsuranceType.actualCostInsurance);
-		insurance.setEGender(eGender.female);
-		insurance.setBasicFee(1);
-		insurance.setSpecialContractFee(0);
-		insurance.setWarrantyPeriod(0);
-		insurance.setSpecialContract(false);
-		insurance.setDel(false);
-		insurance.setClone(true);
-		InsuranceDAO.insert(insurance);
+		
 	}
 }

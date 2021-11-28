@@ -61,8 +61,7 @@ public class GuaranteeFireInsurance {
 				selfBurden[i++] = Double.parseDouble(comp);
 			}
 		}
-		this.insurance = idService.setBurdenGuarantee(insurance, selectedGuarantee, selectedSpecial, compensation, selfBurden);
-		idService.finishInsurance(this.insurance);
+		idService.finishInsurance(insurance, selectedGuarantee, selectedSpecial, compensation, selfBurden);
 		return "redirect:/developInsurance";
 	}
 

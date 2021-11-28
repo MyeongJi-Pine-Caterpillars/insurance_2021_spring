@@ -81,14 +81,14 @@ public class DriverInsurance extends Insurance {
 		}
 				
 		// �뜝�럡�뎽�솻洹��뫒�굢占� �뜝�럥�렊占쎈ご�뜝占� �뜝�럩�뭵�뜝�럩紐� 占썩몿�뫒亦낉옙
-		if (insurant.getGender() == eGender.male) {
+		if (insurant.getEGender() == eGender.male) {
 			fee *= this.getRateOfGender()[0];
-		} else if (insurant.getGender() == eGender.female){
+		} else if (insurant.getEGender() == eGender.female){
 			fee *= this.getRateOfGender()[1];
 		}
 		
 		//�뜝�럩�겱�뜝�럥吏쀧춯�댙�삕 �뜝�럥苡사뼨��留⑵굢占� �뜝�럥�렊占쎈ご�뜝占� �뜝�럩�뭵�뜝�럩紐� 占썩몿�뫒亦낉옙
-		switch(insurant.getTypeOfCar()) {
+		switch(insurant.getETypeOfCar()) {
 		case bus :
 			fee *= this.rateOfCarType[0];
 			break;
@@ -121,7 +121,7 @@ public class DriverInsurance extends Insurance {
 			fee *= this.rateOfAccidentHistory[5];
 		}
 
-		switch (insurant.getRankOfCar()) {
+		switch (insurant.getERankOfCar()) {
 		case luxury:
 			fee *= this.rateOfCarRank[0];
 			break;

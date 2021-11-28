@@ -14,6 +14,7 @@ import com.insurance.sce.model.insurance.CancerInsurance;
 import com.insurance.sce.model.insurance.DentalInsurance;
 import com.insurance.sce.model.insurance.DriverInsurance;
 import com.insurance.sce.model.insurance.FireInsurance;
+import com.insurance.sce.model.insurance.GuaranteePlan;
 import com.insurance.sce.model.insurance.Insurance;
 import com.insurance.sce.model.insurance.TripInsurance;
 
@@ -108,34 +109,43 @@ public class InsuranceDeveloperServiceImpl implements InsuranceDeveloperService{
 		((ActualCostInsurance)insurance).setSelfBurdenRate(selfBurden);
 		return insurance;
 	}
-	public Insurance setGuarantee(Insurance insurance, String[] selected, String[] special, int[] compensation) {
+	public void finishInsurance(Insurance insurance, String[] selected, String[] special, int[] compensation) {
+		this.insertInsurance(insurance);
 		for(int i = 0; i < selected.length; i++) {
 			String content = selected[i];
 			boolean isSpecial = false;
 			for(int j = 0; j < special.length; j++) {
 				if(content.equals(special[j])) isSpecial = true;
 			}
-			if(isSpecial) insurance.addGuaranteePlan(content, compensation[i], true, 1);
-			else insurance.addGuaranteePlan(content, compensation[i], false, 1);
+			GuaranteePlan guaranteePlan = new GuaranteePlan();
+			guaranteePlan.setInsuranceId(insurance.getInsuranceId());
+			guaranteePlan.setCompensation(compensation[i]);
+			if(isSpecial) guaranteePlan.setSpecial(true);
+			else guaranteePlan.setSpecial(false);
+			guaranteePlan.setContent(content);
+			guaranteePlan.setRate(1);
+			guaranteePlanDAO.insert(guaranteePlan);
 		}
-		return insurance;
 	}
-	public Insurance setBurdenGuarantee(Insurance insurance, String[] selected, String[] special, int[] compensation, double[] selfBurden) {
+	public void finishInsurance(Insurance insurance, String[] selected, String[] special, int[] compensation, double[] selfBurden) {
+		this.insertInsurance(insurance);;
 		for(int i = 0; i < selected.length; i++) {
 			String content = selected[i];
 			boolean isSpecial = false;
 			for(int j = 0; j < special.length; j++) {
 				if(content.equals(special[j])) isSpecial = true;
 			}
-			if(isSpecial) insurance.addGuaranteePlan(content, compensation[i], true, selfBurden[i]);
-			else insurance.addGuaranteePlan(content, compensation[i], false, selfBurden[i]);
+			GuaranteePlan guaranteePlan = new GuaranteePlan();
+			guaranteePlan.setInsuranceId(insurance.getInsuranceId());
+			guaranteePlan.setCompensation(compensation[i]);
+			if(isSpecial) guaranteePlan.setSpecial(true);
+			else guaranteePlan.setSpecial(false);
+			guaranteePlan.setContent(content);
+			guaranteePlan.setRate(selfBurden[i]);
+			guaranteePlanDAO.insert(guaranteePlan);
 		}
-		return insurance;
 	}
-	public void finishInsurance(Insurance insurance) {
-//		insuranceDAO.insert(insurance);
-//		for(GuaranteePlan guaranteePlan: insurance.getGuaranteePlanList()) {
-//			guaranteePlanDAO.insert(guaranteePlan);
-//		}
+	public void insertInsurance(Insurance insurance) {
+		insuranceDAO.insert(insurance);
 	}
 }

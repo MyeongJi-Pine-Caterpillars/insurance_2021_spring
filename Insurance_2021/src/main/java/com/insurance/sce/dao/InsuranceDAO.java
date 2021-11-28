@@ -2,19 +2,17 @@ package com.insurance.sce.dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
-
-import com.insurance.sce.model.insurance.*;
+import com.insurance.sce.model.insurance.ActualCostInsurance;
+import com.insurance.sce.model.insurance.CancerInsurance;
+import com.insurance.sce.model.insurance.DentalInsurance;
+import com.insurance.sce.model.insurance.DriverInsurance;
+import com.insurance.sce.model.insurance.FireInsurance;
+import com.insurance.sce.model.insurance.Insurance;
+import com.insurance.sce.model.insurance.TripInsurance;
 
 public interface InsuranceDAO {
 	
 	public int insert(Insurance insurance);
-	public int insertActualCostInsurance(Insurance insurance);
-	public int insertCancerInsurance(Insurance insurance);
-	public int insertDentalInsurance(Insurance insurance);
-	public int insertDriverInsurance(Insurance insurance);
-	public int insertFireInsurance(Insurance insurance);
-	public int insertTripInsurance(Insurance insurance);
 	
 	public List<Insurance> selectAll();
 	public List<ActualCostInsurance> selectAllActualCostInsurance();

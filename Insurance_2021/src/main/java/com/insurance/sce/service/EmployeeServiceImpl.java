@@ -26,8 +26,11 @@ public class EmployeeServiceImpl implements EmployeeService{
 		if(employee == null) return null;
 		else {
 			String employeeRole = "redirect:/";
-			switch(employee.getRole()) {
+			switch(employee.getERole()) {
 			case insuranceDeveloper: employeeRole += "developerView";
+				break;
+			case insuranceConfirmer: employeeRole += "confirmerView";
+			break;
 			default:
 				break;
 			}

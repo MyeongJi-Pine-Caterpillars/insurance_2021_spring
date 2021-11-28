@@ -40,9 +40,9 @@ public class DentalInsurance extends Insurance {
 		}
 
 		// 占쎄쉐癰귢쑴肉� 占쎈뎡�몴占� 占쎌뒄占쎌몛 �④쑴沅�
-		if (insurant.getGender() == eGender.male) {
+		if (insurant.getEGender() == eGender.male) {
 			fee *= this.getRateOfGender()[0];
-		} else if (insurant.getGender() == eGender.female) {
+		} else if (insurant.getEGender() == eGender.female) {
 			fee *= this.getRateOfGender()[1];
 		}
 		return (int) fee;

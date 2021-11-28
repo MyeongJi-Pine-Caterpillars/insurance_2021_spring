@@ -53,8 +53,7 @@ public class GuaranteeCancerInsurance {
 				compensation[i++] = Integer.parseInt(comp);
 			}
 		}
-		this.insurance = idService.setGuarantee(insurance, selectedGuarantee, selectedSpecial, compensation);
-		idService.finishInsurance(this.insurance);
+		idService.finishInsurance(this.insurance, selectedGuarantee, selectedSpecial, compensation);
 		return "redirect:/developInsurance";
 	}
 

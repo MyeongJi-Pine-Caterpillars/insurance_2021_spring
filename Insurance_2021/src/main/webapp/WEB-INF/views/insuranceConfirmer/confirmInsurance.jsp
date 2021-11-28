@@ -379,16 +379,14 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">보험 리스트</h1>
+						<h1 class="h3 mb-0 text-gray-800">치과보험</h1>
 					</div>
 					
 					<!-- Content Row -->
-				<div class="row">
-					
-					<div class="col-lg-6 mb-4">
+					<div class="row">
 					
 					<%for(Insurance insurance : insuranceList){ %>					
-						<div class="col-xl-3 col-md-6 mb-4" id=<%=insurance.getInsuranceId() %>>
+						<div class="col-xl-3 col-md-6 mb-4" onclick="selectInsurance();" id=<%=insurance.getInsuranceId() %>>
 							<div class="cardInsurance border-left-primary shadow h-100 py-2">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
@@ -410,8 +408,9 @@
 
 					</div>
 
+						<br>
 						<!-- Content Row -->
-						<div class="col">
+						<div class="row">
 
 							<!-- Content Column -->
 							<div class="col-lg-6 mb-4">
@@ -424,36 +423,9 @@
 									<div class="card-body">
 									<div class="row">
 										<div class="col mb-3" id="rateOfAge"></div>
-										<div class="col" id="rateOfJob"></div>
-									</div>
-									<div class="row">
 										<div class="col mb-3" id="rateOfGender"></div>
-										<div class="col"></div>
 									</div>
-									<div class="row">
-										<div class="col" id="rateOfFamilyMedicalDisease"></div>
-										<div class="col" id="rateOfFamilyMedicalRelationship"></div>
-									</div>
-									<div class="row">
-										<div class="col" id="rateOfCountryRisk"></div>
-										<div class="col"></div>
-									</div>
-									<div class="row">
-										<div class="col" id="annualLimitCount"></div>
-										<div class="col"></div>
-									</div>
-									<div class="row">
-										<div class="col" id="rateOfAccidentHistory"></div>
-										<div class="col"></div>
-									</div>
-									<div class="row">
-										<div class="col" id="rateOfCarType"></div>
-										<div class="col" id="rateOfCarRank"></div>
-									</div>
-									<div class="row">
-										<div class="col" id="rateOfPostedPrice"></div>
-										<div class="col" id="rateOfStructureUsage"></div>
-									</div>
+										
 									</div>
 								</div>
 							</div>
@@ -475,7 +447,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+						
 						<div class="row">
 							<div class="col-lg-6 mb-4">
 								<button type="button" class="btn btn-primary btn-lg">가입 신청하기</button>
@@ -487,7 +459,49 @@
 
             </div>
             <!-- End of Main Content -->
-			<script>
+			
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2021</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
 			/* var ages = ["영유아", "10대", "20대", "30대", "40대", "50대", "노년층"];
 			var jobs = ["사무직", "운송업", "현장직", "학생", "교육직", "군인", "기타"];
 			var gender = ["남성", "여성"];
@@ -503,6 +517,7 @@
 			
 			$('.col-xl-3').click(function(){
 				alert("asd");
+			});
 				/*var insuranceId = {"insuranceId" : $(this).attr('id')};
 				
 				$.ajax({
@@ -661,48 +676,8 @@
 						alert("request error in guaranteePlan!");
 					}
 				}); */
-			});
+			
 		</script>
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
-                    </div>
-                </div>
-            </footer>
-            <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="<c:url value="resources/vendor/jquery/jquery.min.js" />"></script>
@@ -724,3 +699,37 @@
 </body>
 
 </html>
+<!-- <div class="card-body">
+									<div class="row">
+										<div class="col mb-3" id="rateOfAge"></div>
+										<div class="col" id="rateOfJob"></div>
+									</div>
+									<div class="row">
+										<div class="col mb-3" id="rateOfGender"></div>
+										<div class="col"></div>
+									</div>
+									<div class="row">
+										<div class="col" id="rateOfFamilyMedicalDisease"></div>
+										<div class="col" id="rateOfFamilyMedicalRelationship"></div>
+									</div>
+									<div class="row">
+										<div class="col" id="rateOfCountryRisk"></div>
+										<div class="col"></div>
+									</div>
+									<div class="row">
+										<div class="col" id="annualLimitCount"></div>
+										<div class="col"></div>
+									</div>
+									<div class="row">
+										<div class="col" id="rateOfAccidentHistory"></div>
+										<div class="col"></div>
+									</div>
+									<div class="row">
+										<div class="col" id="rateOfCarType"></div>
+										<div class="col" id="rateOfCarRank"></div>
+									</div>
+									<div class="row">
+										<div class="col" id="rateOfPostedPrice"></div>
+										<div class="col" id="rateOfStructureUsage"></div>
+									</div>
+									</div> -->

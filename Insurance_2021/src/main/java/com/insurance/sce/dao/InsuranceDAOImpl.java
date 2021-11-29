@@ -7,7 +7,13 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.insurance.sce.model.insurance.*;
+import com.insurance.sce.model.insurance.ActualCostInsurance;
+import com.insurance.sce.model.insurance.CancerInsurance;
+import com.insurance.sce.model.insurance.DentalInsurance;
+import com.insurance.sce.model.insurance.DriverInsurance;
+import com.insurance.sce.model.insurance.FireInsurance;
+import com.insurance.sce.model.insurance.Insurance;
+import com.insurance.sce.model.insurance.TripInsurance;
 
 @Repository
 public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
@@ -31,6 +37,7 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	private static final String SelectForConfirm = "insuranceMapper.selectForConfirm";
 	private static final String SelectSimpleData = "insuranceMapper.selectSimpleData";
 	private static final String SelectInsuranceId = "insuranceMapper.selectInsuranceId";
+	private static final String SelectInsuranceType = "insuranceMapper.selectInsuranceType";
 	private static final String Select = "insuranceMapper.select";
 	private static final String SelectActualCostInsurance = "insuranceMapper.selectActualCostInsurance";
 	private static final String SelectCancerInsurance = "insuranceMapper.selectCancerInsurance";
@@ -76,7 +83,9 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	public List<Insurance> selectForConfirm() {return sqlSession.selectList(SelectForConfirm);}
 	public List<Insurance> selectSimpleData() {return sqlSession.selectList(SelectSimpleData);}
 	public List<String> selectInsuranceId() {return sqlSession.selectList(SelectInsuranceId);}
+	public Integer selectInsuranceType(String insuranceId) {return sqlSession.selectOne(SelectInsuranceType, insuranceId);}
 	public Insurance select(String insuranceId) {return sqlSession.selectOne(Select, insuranceId);}
+
 	public Insurance selectActualCostInsurance(String insuranceId) {return sqlSession.selectOne(SelectActualCostInsurance, insuranceId);}
 	public Insurance selectCancerInsurance(String insuranceId) {return sqlSession.selectOne(SelectCancerInsurance, insuranceId);}
 	public Insurance selectDentalInsurance(String insuranceId) {return sqlSession.selectOne(SelectDentalInsurance, insuranceId);}
@@ -85,7 +94,7 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	public Insurance selectTripInsurance(String insuranceId) {return sqlSession.selectOne(SelectTripInsurance, insuranceId);}
 
 	// Update
-	public int updateConfirmedStatus(Insurance insurance) {return sqlSession.update(UpdateConfirmedStatus, insurance);}
+	public int updateConfirmedStatus(String insuranceId) {return sqlSession.update(UpdateConfirmedStatus, insuranceId);}
 	public int updateBasicFee(Insurance insurance) {return sqlSession.update(UpdateBasicFee, insurance);}
 	public int updateSpeCialContractFee(Insurance insurance) {return sqlSession.update(UpdateSpeCialContractFee, insurance);}
 	public int updateDel(Insurance insurance) {return sqlSession.update(UpdateDel, insurance);}

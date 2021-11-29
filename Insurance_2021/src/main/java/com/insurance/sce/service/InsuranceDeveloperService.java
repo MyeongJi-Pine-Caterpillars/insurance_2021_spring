@@ -1,7 +1,5 @@
 package com.insurance.sce.service;
 
-import org.springframework.stereotype.Repository;
-
 import com.insurance.sce.model.insurance.Insurance;
 
 public interface InsuranceDeveloperService {

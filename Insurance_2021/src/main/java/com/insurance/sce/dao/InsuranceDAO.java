@@ -24,6 +24,7 @@ public interface InsuranceDAO {
 	public List<Insurance> selectForConfirm();
 	public List<Insurance> selectSimpleData();
 	public List<String> selectInsuranceId();
+	public Integer selectInsuranceType(String insuranceId);
 	public Insurance select(String insuranceId);
 	public Insurance selectActualCostInsurance(String insuranceId);
 	public Insurance selectCancerInsurance(String insuranceId);
@@ -32,7 +33,7 @@ public interface InsuranceDAO {
 	public Insurance selectFireInsurance(String insuranceId);
 	public Insurance selectTripInsurance(String insuranceId);
 	
-	public int updateConfirmedStatus(Insurance insurance);
+	public int updateConfirmedStatus(String insuranceId);
 	public int updateBasicFee(Insurance insurance);
 	public int updateSpeCialContractFee(Insurance insurance);
 	public int updateDel(Insurance insurance);

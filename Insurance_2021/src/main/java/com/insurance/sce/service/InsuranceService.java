@@ -5,6 +5,7 @@ import java.util.List;
 import com.insurance.sce.model.insurance.*;
 
 public interface InsuranceService {
+	public List<Insurance> selectAllInsurance();
 	public List<CancerInsurance> selectAllCancerInsurance();
 	public List<DentalInsurance> selectAllDentalInsurance();
 	public List<DriverInsurance> selectAllDriverInsurance();

@@ -131,6 +131,9 @@
 	<select id="selectSimpleData" resultType="com.insurance.sce.model.insurance.Insurance">
 		SELECT insuranceId, confirmedStatus, del, type, name, basicFee FROM insurance
 	</select>
+	<select id="selectInsuranceType" resultType="Integer">
+		SELECT type FROM insurance WHERE insuranceId = #{insuranceId}
+	</select>
 	<select id="select" resultType="com.insurance.sce.model.insurance.Insurance">
 		SELECT * FROM insurance
 		WHERE insuranceId = #{insuranceId}
@@ -181,7 +184,7 @@
 	<!-- UPDATE -->
 	<update id="updateConfirmedStatus" parameterType="com.insurance.sce.model.contract.Accident">
 		UPDATE insurance
-		SET confirmedStatus = #{confirmedStatus}
+		SET confirmedStatus = true
 		WHERE insuranceId = #{insuranceId}
 	</update>
 	<update id="updateBasicFee" parameterType="com.insurance.sce.model.contract.Accident">

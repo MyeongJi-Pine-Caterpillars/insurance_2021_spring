@@ -123,7 +123,7 @@ public class InsuranceDeveloperServiceImpl implements InsuranceDeveloperService{
 			if(isSpecial) guaranteePlan.setSpecial(true);
 			else guaranteePlan.setSpecial(false);
 			guaranteePlan.setContent(content);
-			guaranteePlan.setRate(1);
+			guaranteePlan.setRate(0);
 			guaranteePlanDAO.insert(guaranteePlan);
 		}
 	}

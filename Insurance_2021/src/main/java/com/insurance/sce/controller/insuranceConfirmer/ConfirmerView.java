@@ -28,26 +28,32 @@ public class ConfirmerView {
 	@Autowired
 	InsuranceService insuranceService;
 	
-	@RequestMapping(value="confirmInsurance", method=RequestMethod.GET)
+	@RequestMapping(value="confirmerView", method=RequestMethod.GET)
+	public String responseConfirmerView(Locale locale, Model model, HttpServletRequest request) {
+		model.addAttribute("insuranceList", insuranceService.selectAllInsurance());
+		return "insuranceConfirmer/confirmerView";
+	}
+	@RequestMapping(value="confirmerView/confirmInsurance", method=RequestMethod.GET)
 	public String responseConfirmInsurance(Locale locale, Model model, HttpServletRequest request) {
-		model.addAttribute("insuranceList", insuranceService.selectAllCancerInsurance());
-		return "insuranceConfirmer/confirmInsurance";
+		String insuranceId = (String)request.getParameter("confirmInsuranceId");
+		insuranceConfirmerService.confirmInsurance(insuranceId);
+		return "redirect:/confirmerView";
 	}
 	
-	@RequestMapping(value="confirmInsurance/doSelect")
+	@RequestMapping(value="confirmerView/doSelect")
 	@ResponseBody
 	Insurance doSelect(String insuranceId) {
 		return insuranceConfirmerService.selectInsurance(insuranceId);
 	}
-	@RequestMapping(value="confirmInsurance/doSelectGuaranteePlan")
+	@RequestMapping(value="confirmerView/doSelectGuaranteePlan")
 	@ResponseBody
 	List<GuaranteePlan> doSelectGuaranteePlan(String insuranceId) {
-		System.out.println(insuranceId);
 		return insuranceService.selectGuaranteePlan(insuranceId);
 	}
 	
-	@RequestMapping(value="confirmInsurance/doLogout")
+	@RequestMapping(value="confirmerView/doLogout")
 	public String doLogout(HttpServletRequest request) {
 		return "redirect:/loginEmployee";
 	}
 }
+/*  */

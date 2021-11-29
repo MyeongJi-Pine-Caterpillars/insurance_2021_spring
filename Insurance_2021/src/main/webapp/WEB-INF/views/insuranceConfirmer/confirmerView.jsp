@@ -483,7 +483,7 @@
 
 					<div class="col">
 						<div class="col-lg-6 mb-4">
-							<button type="button" class="btn btn-primary btn-lg">보험 확정하기</button>
+							<button type="button" class="btn btn-primary btn-lg" onclick="confirm()">보험 d확정하기</button>
 						</div>
 					</div>
 
@@ -553,17 +553,21 @@
 		var insuranceId = 0;
 		function confirm(){
 			$('#confirmInsuranceId').val(insuranceId);
-			if(insuranceId == 0) alert("보험을 선택해주세요.");
-			else $("#form-confirmerView").submit();
+			if(insuranceId == 0) alert("확정할 보험을 선택해주세요.");
+			else {
+				alert("보험이 확정되었습니다.")
+				$("#form-confirmerView").submit();
+			}
 		}
 		$('.col-xl-3').click(function(){
-			insurance = {"insuranceId" : $(this).attr('id')};
+			insuranceId = {"insuranceId" : $(this).attr('id')};
 			$.ajax({
 			url: "confirmerView/doSelect",
 			type: "GET",
 			data: insuranceId,
 					
 			success : function(data){
+				insuranceId = data.insuranceId;
 				$('#rateOfAge').html('<div class="col mb-3" id="rateOfAge"><h4 class="small font-weight-bold">--나이 요율표--</h4></div>');
 				$.each(data.rateOfAge, function(index, item){
 					$('#rateOfAge').append(
@@ -588,7 +592,7 @@
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 					);
 				});
-				if(data.getEType == 0) {
+				if(data.type == 1) {
 					$('#rateOfAccidentHistory').html('<div class="col mb-3" id="rateOfAccidentHistory"><h4 class="small font-weight-bold">--사고 횟수 요율표--</h4></div>');
 					$.each(data.rateOfAccidentHistory, function(index, item){
 						$('#rateOfAccidentHistory').append(
@@ -613,15 +617,15 @@
 									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 						);
 					});
-				} else if(data.getEType == 1){
+				} else if(data.type == 2){
 					$('#annualLimitCount').append(
 							'<h4 class="small font-weight-bold">'+ annualLimitCount +'<span class="float-right">' +
 								data.annualLimitCount +
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 					);
-				} else if(data.getEType == 2){
+				} else if(data.type == 3){
 					
-				} else if(data.getEType == 3){
+				} else if(data.type == 4){
 					$('#rateOfPostedPrice').html('<div class="col mb-3" id="rateOfPostedPrice"><h4 class="small font-weight-bold">--공시 가격 요율표--</h4></div>');
 					$.each(data.rateOfPostedPrice, function(index, item){
 						$('#rateOfPostedPrice').append(
@@ -639,7 +643,7 @@
 						);
 					});
 					
-				} else if(data.getEType == 4){
+				} else if(data.type == 5){
 					$('#rateOfFamilyMedicalDisease').html('<div class="col mb-3" id="rateOfFamilyMedicalDisease"><h4 class="small font-weight-bold">--가족병력 요율표--</h4></div>');
 					$.each(data.rateOfFamilyMedicalDisease, function(index, item){
 						$('#rateOfFamilyMedicalDisease').append(
@@ -687,7 +691,7 @@
 								'<div class="ms-2 me-auto"><div class="fw-bold">' +
 									item.content +
 									'</div>보장금액 : ' +
-									item.compensation +'원 ' + 
+									item.compensation +'원\n' + 
 									'자기부담률 : ' +
 									item.rate +
 								'</li>'
@@ -702,7 +706,7 @@
 								'<div class="ms-2 me-auto"><div class="fw-bold">' +
 									item.content +
 									'</div>보장금액 : ' +
-									item.compensation +'원 ' + 
+									item.compensation +'원]' + 
 									'자기부담률 : ' +
 									item.rate +
 								'</li>'

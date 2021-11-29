@@ -1,5 +1,6 @@
 package com.insurance.sce.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,14 @@ import org.springframework.stereotype.Service;
 
 import com.insurance.sce.dao.GuaranteePlanDAO;
 import com.insurance.sce.dao.InsuranceDAO;
-import com.insurance.sce.model.insurance.*;
+import com.insurance.sce.model.insurance.ActualCostInsurance;
+import com.insurance.sce.model.insurance.CancerInsurance;
+import com.insurance.sce.model.insurance.DentalInsurance;
+import com.insurance.sce.model.insurance.DriverInsurance;
+import com.insurance.sce.model.insurance.FireInsurance;
+import com.insurance.sce.model.insurance.GuaranteePlan;
+import com.insurance.sce.model.insurance.Insurance;
+import com.insurance.sce.model.insurance.TripInsurance;
 
 @Service
 public class InsuranceServiceImpl implements InsuranceService{
@@ -17,6 +25,16 @@ public class InsuranceServiceImpl implements InsuranceService{
 	@Autowired
 	GuaranteePlanDAO guaranteePlanDAO;
 	
+	public List<Insurance> selectAllInsurance(){
+		ArrayList<Insurance> insuranceList = new ArrayList<Insurance>();
+		insuranceList.addAll(this.selectAllCancerInsurance());
+		insuranceList.addAll(this.selectAllDentalInsurance());
+		insuranceList.addAll(this.selectAllDriverInsurance());
+		insuranceList.addAll(this.selectAllActualCostInsurance());
+		insuranceList.addAll(this.selectAllTripInsurance());
+		insuranceList.addAll(this.selectAllFireInsurance());
+		return insuranceList;
+	}
 	public List<CancerInsurance> selectAllCancerInsurance() {
 		return insuranceDAO.selectAllCancerInsurance();
 	}

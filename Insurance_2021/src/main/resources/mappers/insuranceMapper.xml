@@ -184,7 +184,7 @@
 	<!-- UPDATE -->
 	<update id="updateConfirmedStatus" parameterType="com.insurance.sce.model.contract.Accident">
 		UPDATE insurance
-		SET confirmedStatus = #{confirmedStatus}
+		SET confirmedStatus = true
 		WHERE insuranceId = #{insuranceId}
 	</update>
 	<update id="updateBasicFee" parameterType="com.insurance.sce.model.contract.Accident">

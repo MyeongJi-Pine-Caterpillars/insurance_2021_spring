@@ -94,7 +94,7 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	public Insurance selectTripInsurance(String insuranceId) {return sqlSession.selectOne(SelectTripInsurance, insuranceId);}
 
 	// Update
-	public int updateConfirmedStatus(Insurance insurance) {return sqlSession.update(UpdateConfirmedStatus, insurance);}
+	public int updateConfirmedStatus(String insuranceId) {return sqlSession.update(UpdateConfirmedStatus, insuranceId);}
 	public int updateBasicFee(Insurance insurance) {return sqlSession.update(UpdateBasicFee, insurance);}
 	public int updateSpeCialContractFee(Insurance insurance) {return sqlSession.update(UpdateSpeCialContractFee, insurance);}
 	public int updateDel(Insurance insurance) {return sqlSession.update(UpdateDel, insurance);}

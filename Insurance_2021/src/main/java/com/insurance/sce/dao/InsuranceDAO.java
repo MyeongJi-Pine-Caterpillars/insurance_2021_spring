@@ -33,7 +33,7 @@ public interface InsuranceDAO {
 	public Insurance selectFireInsurance(String insuranceId);
 	public Insurance selectTripInsurance(String insuranceId);
 	
-	public int updateConfirmedStatus(Insurance insurance);
+	public int updateConfirmedStatus(String insuranceId);
 	public int updateBasicFee(Insurance insurance);
 	public int updateSpeCialContractFee(Insurance insurance);
 	public int updateDel(Insurance insurance);

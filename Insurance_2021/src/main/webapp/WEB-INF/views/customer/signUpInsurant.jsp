@@ -31,11 +31,11 @@
 	rel="stylesheet">
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-
-    	
+	
 </script>
 
 </head>
@@ -57,7 +57,8 @@
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
 				</div>
-				<div class="sidebar-brand-text mx-3" id="test" onclick="selectInsurance();">
+				<div class="sidebar-brand-text mx-3" id="test"
+					onclick="selectInsurance();">
 					<h3>송충이들</h3>
 				</div>
 			</a>
@@ -102,8 +103,8 @@
 			<hr class="sidebar-divider my">
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active"><a class="nav-link"
-				href="actualCostInsurance"> <i class="fas fa-fw fa-hospital"></i> <span>실비보험</span></a>
-			</li>
+				href="actualCostInsurance"> <i class="fas fa-fw fa-hospital"></i>
+					<span>실비보험</span></a></li>
 
 			<!-- Divider -->
 			<hr class="sidebar-divider">
@@ -212,144 +213,255 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">암보험</h1>
+						<h1 class="h3 mb-0 text-gray-800">기본 정보 입력하기</h1>
 					</div>
-					
+
+					<!-- /.row -->
 					<!-- Content Row -->
 					<div class="row">
-					
-					
 
-					</div>
-
-						<br>
-						<!-- Content Row -->
-						<div class="row">
-
-							<!-- Content Column -->
-							<div class="col-lg-6 mb-4">
-
-								<!-- Project Card Example -->
-								<div class="card shadow mb-4">
-									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary">요율</h6>
-									</div>
-									<div class="card-body">
-									<div class="row">
-										<div class="col mb-3" id="rateOfAge"></div>
-										<div class="col" id="rateOfJob"></div>
-									</div>
-									<div class="row">
-										<div class="col mb-3" id="rateOfGender"></div>
-										<div class="col"></div>
-									</div>
-									<div class="row">
-										<div class="col" id="rateOfFamilyMedicalDisease"></div>
-										<div class="col" id="rateOfFamilyMedicalRelationship"></div>
-									</div>
-										
-									</div>
-								</div>
-							</div>
-							
-
-							<div class="col-lg-6 mb-4">
-
+						<div class="col-lg-6 mb-4">
+							<form id="form-detailInsurance" action="goToSpecializeRate"
+								method="get">
 								<!-- Illustrations -->
 								<div class="card shadow mb-4">
 									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary">보장내역</h6>
+										<h6 class="m-0 font-weight-bold text-primary">이름</h6>
 									</div>
 									<div class="card-body">
-										기본계약
-										<ol class="list-group list-group-numbered" id="guaranteePlan"></ol>
-										선택특약
-										<ol class="list-group list-group-numbered" id="guaranteePlanSpecial"></ol>
+										<div class="column">
+											<div class="form-check">
+												<div class="row">
+													<label>가입자의 이름을 입력하세요 : </label>
+													<div class="col-4">
+														<input type="text" class="form-control" id="inputName"
+															maxlength='10'>
+													</div>
+												</div>
+											</div>
+										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-						
-						<div class="row">
-							<div class="col-lg-6 mb-4">
-								<button type="button" class="btn btn-primary btn-lg">가입 신청하기</button>
-							</div>
-						</div>
 
+								<!-- Approach -->
+								<div class="card shadow mb-4">
+									<div class="card-header py-3">
+										<h6 class="m-0 font-weight-bold text-primary">나이</h6>
+									</div>
+									<div class="card-body">
+										<div class="column">
+											<div class="form-check">
+												<div class="row">
+													<label>가입자의 나이를 입력하세요 : </label>
+													<div class="col-2">
+														<input type="number" class="form-control" id="inputAge"
+															maxlength='4' min='0'>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="card shadow mb-4">
+									<div class="card-header py-3">
+										<h6 class="m-0 font-weight-bold text-primary">주소</h6>
+									</div>
+									<div class="card-body">
+										<div class="column">
+											<div class="form-check">
+												<div class="row">
+													<label>가입자의 거주지 주소를 입력하세요</label>
+													<div class="col-10">
+														<input type="text" class="form-control" id="inputAddress"
+															placeholder="ex) xx도 oo시 / xx시 oo구">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="card shadow mb-4">
+									<div class="card-header py-3">
+										<h6 class="m-0 font-weight-bold text-primary">전화번호</h6>
+									</div>
+									<div class="card-body">
+										<div class="column">
+											<div class="form-check">
+												<div class="col">
+													<label>가입자의 전화번호를 입력하세요 (010-xxxx-xxxx)</label>
+													<div class="row">
+
+														<div class="col-2">
+															<input type="tel" class="form-control"
+																id="inputPhoneNumber1" maxlength='3' pattern="[0-9]{3}">
+														</div>
+														<p>-</p>
+														<div class="col-2">
+															<input type="tel" class="form-control"
+																id="inputPhoneNumber2" maxlength='4'>
+														</div>
+														<p>-</p>
+														<div class="col-2">
+															<input type="tel" class="form-control"
+																id="inputPhoneNumber3" maxlength='4'>
+														</div>
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="card shadow mb-4">
+									<div class="card-header py-3">
+										<h6 class="m-0 font-weight-bold text-primary">직업</h6>
+									</div>
+									<div class="card-body">
+										<div class="column">
+											<div class="form-check">
+												<div class="col">
+													<label>가입자의 직업을 선택해주세요</label>
+													<div class="col">
+														<div class="row">
+															<div class=form-check>
+																<input class="form-check-input" type="radio"
+																	name="jobRadio" value="Officer" checked> <label
+																	class="form-check-label" for="insuranceRadio1">
+																	사무직&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="jobRadio" value=Driver> <label
+																	class="form-check-label" for="insuranceRadio2">
+																	운전자&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class=form-check>
+																<input class="form-check-input" type="radio"
+																	name="jobRadio" value="Worker"> <label
+																	class="form-check-label" for="insuranceRadio3">
+																	현장직&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="insuranceRadio" value="Student"> <label
+																	class="form-check-label" for="insuranceRadio4">
+																	학생&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+														</div>
+														<div class="row">
+															<div class=form-check>
+																<input class="form-check-input" type="radio"
+																	name="jobRadio" value="Teacher" checked> <label
+																	class="form-check-label" for="insuranceRadio1">
+																	교사&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="jobRadio" value="Soldier"> <label
+																	class="form-check-label" for="insuranceRadio2">
+																	군인&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class=form-check>
+																<input class="form-check-input" type="radio"
+																	name="jobRadio" value="Etc"> <label
+																	class="form-check-label" for="insuranceRadio3">
+																	기타&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+														</div>
+
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+							</form>
+							<div class="col">
+								<button type="button" class="btn btn-primary"
+									onclick="nextBtn()">다음 단계로</button>
+							</div>
+							<script>
+								function nextBtn() {
+									$("#form-detailInsurance").submit();
+								}
+							</script>
+						</div>
 					</div>
-					<!-- /.container-fluid -->
 
 				</div>
-				<!-- End of Main Content -->
-
-				<!-- Footer -->
-				<footer class="sticky-footer bg-white">
-					<div class="container my-auto">
-						<div class="copyright text-center my-auto">
-							<span>Copyright &copy; Your Website 2021</span>
-						</div>
-					</div>
-				</footer>
-				<!-- End of Footer -->
 
 			</div>
-			<!-- End of Content Wrapper -->
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<footer class="sticky-footer bg-white">
+				<div class="container my-auto">
+					<div class="copyright text-center my-auto">
+						<span>Copyright &copy; Your Website 2021</span>
+					</div>
+				</div>
+			</footer>
+			<!-- End of Footer -->
 
 		</div>
-		<!-- End of Page Wrapper -->
+		<!-- End of Content Wrapper -->
 
-		<!-- Scroll to Top Button-->
-		<a class="scroll-to-top rounded" href="#page-top"> <i
-			class="fas fa-angle-up"></i>
-		</a>
+	</div>
+	<!-- End of Page Wrapper -->
 
-		<!-- Logout Modal-->
-		<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Ready to
-							Leave?</h5>
-						<button class="close" type="button" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">×</span>
-						</button>
-					</div>
-					<div class="modal-body">Select "Logout" below if you are
-						ready to end your current session.</div>
-					<div class="modal-footer">
-						<button class="btn btn-secondary" type="button"
-							data-dismiss="modal">Cancel</button>
-						<a classl="btn btn-primary" href="login.html">Logout</a>
-					</div>
+	<!-- Scroll to Top Button-->
+	<a class="scroll-to-top rounded" href="#page-top"> <i
+		class="fas fa-angle-up"></i>
+	</a>
+
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+					<button class="close" type="button" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Select "Logout" below if you are ready
+					to end your current session.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button"
+						data-dismiss="modal">Cancel</button>
+					<a classl="btn btn-primary" href="login.html">Logout</a>
 				</div>
 			</div>
 		</div>
+	</div>
+
+	<script>
 		
-		<script>
-			
-		</script>
+	</script>
 
-		<!-- Bootstrap core JavaScript-->
-		<script src="<c:url value="resources/vendor/jquery/jquery.min.js" />"></script>
-		<script
-			src="<c:url value="resources/vendor/bootstrap/js/bootstrap.bundle.min.js" />"></script>
+	<!-- Bootstrap core JavaScript-->
+	<script src="<c:url value="resources/vendor/jquery/jquery.min.js" />"></script>
+	<script
+		src="<c:url value="resources/vendor/bootstrap/js/bootstrap.bundle.min.js" />"></script>
 
-		<!-- Core plugin JavaScript-->
-		<script
-			src="<c:url value="resources/vendor/jquery-easing/jquery.easing.min.js" />"></script>
+	<!-- Core plugin JavaScript-->
+	<script
+		src="<c:url value="resources/vendor/jquery-easing/jquery.easing.min.js" />"></script>
 
-		<!-- Custom scripts for all pages-->
-		<script src="<c:url value="resources/js/sb-admin-2.min.js" />"></script>
+	<!-- Custom scripts for all pages-->
+	<script src="<c:url value="resources/js/sb-admin-2.min.js" />"></script>
 
-		<!-- Page level plugins -->
-		<script src="<c:url value="resources/vendor/chart.js/Chart.min.js" />"></script>
+	<!-- Page level plugins -->
+	<script src="<c:url value="resources/vendor/chart.js/Chart.min.js" />"></script>
 
-		<!-- Page level custom scripts -->
-		<script src="<c:url value="resources/js/demo/chart-area-demo.js" />"></script>
-		<script src="<c:url value="resources/js/demo/chart-pie-demo.js" />"></script>
-		
+	<!-- Page level custom scripts -->
+	<script src="<c:url value="resources/js/demo/chart-area-demo.js" />"></script>
+	<script src="<c:url value="resources/js/demo/chart-pie-demo.js" />"></script>
+
 </body>
 
 </html>

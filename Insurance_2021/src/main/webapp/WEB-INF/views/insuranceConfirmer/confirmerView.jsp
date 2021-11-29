@@ -408,6 +408,10 @@
 					}; %>
 
 					</div>
+					<form id="form-confirmerView" action="confirmerView/confirmInsurance" method="get">
+						<input style="display:none" class="form-check-input" type="text"
+												name="confirmInsuranceId" id="confirmInsuranceId">
+					</form>
 
 					<br>
 					<!-- Content Row -->
@@ -477,10 +481,9 @@
 						</div>
 					</div>
 
-					<div class="row">
+					<div class="col">
 						<div class="col-lg-6 mb-4">
-							<button type="button" class="btn btn-primary btn-lg">가입
-								신청하기</button>
+							<button type="button" class="btn btn-primary btn-lg">보험 확정하기</button>
 						</div>
 					</div>
 
@@ -547,9 +550,14 @@
 		var usageOfStructure = ["주택", "교육", "공장", "창고", "사무", "공공시설"];
 		var riskOfCountry = ["안전", "1단계", "2단계", "3단계"];
 		var annualLimitCount = "연간 한도 횟수";
+		var insuranceId = 0;
+		function confirm(){
+			$('#confirmInsuranceId').val(insuranceId);
+			if(insuranceId == 0) alert("보험을 선택해주세요.");
+			else $("#form-confirmerView").submit();
+		}
 		$('.col-xl-3').click(function(){
-		var insuranceId = {"insuranceId" : $(this).attr('id')};
-
+			insurance = {"insuranceId" : $(this).attr('id')};
 			$.ajax({
 			url: "confirmerView/doSelect",
 			type: "GET",

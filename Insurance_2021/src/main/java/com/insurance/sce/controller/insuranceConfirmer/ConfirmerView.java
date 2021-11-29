@@ -29,9 +29,14 @@ public class ConfirmerView {
 	InsuranceService insuranceService;
 	
 	@RequestMapping(value="confirmerView", method=RequestMethod.GET)
-	public String responseConfirmInsurance(Locale locale, Model model, HttpServletRequest request) {
+	public String responseConfirmerView(Locale locale, Model model, HttpServletRequest request) {
 		model.addAttribute("insuranceList", insuranceService.selectAllCancerInsurance());
 		return "insuranceConfirmer/confirmerView";
+	}
+	@RequestMapping(value="confirmerView/confirmInsurance", method=RequestMethod.GET)
+	public String responseConfirmInsurance(Locale locale, Model model, HttpServletRequest request) {
+		model.addAttribute("insuranceList", insuranceService.selectAllCancerInsurance());
+		return "redirect:/insuranceConfirmer/confirmerView";
 	}
 	
 	@RequestMapping(value="confirmerView/doSelect")

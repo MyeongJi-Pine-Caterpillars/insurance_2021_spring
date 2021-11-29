@@ -14,7 +14,7 @@ public abstract class Insurance {
 	private eInsuranceType type;
 	private eGender gender;
 	private int basicFee;
-	private double[] rateOfAge = {1.1, 1.0, 1.0, 1.1, 1.2, 1.3, 1.4}; // index[0 : 占쎌겫占쎌�占쎈툡/ 1 : 10占쏙옙/ 2 : 20占쏙옙/ 3 : 30占쏙옙/ 4 : 40占쏙옙/ 5 : 50占쏙옙/ 6 : 占쎈걗占쎈�덌㎘占�]
+	private double[] rateOfAge = {1.1, 1.0, 1.0, 1.1, 1.2, 1.3, 2.0}; // index[0 : 占쎌겫占쎌�占쎈툡/ 1 : 10占쏙옙/ 2 : 20占쏙옙/ 3 : 30占쏙옙/ 4 : 40占쏙옙/ 5 : 50占쏙옙/ 6 : 占쎈걗占쎈�덌㎘占�]
 	private double[] rateOfGender = {1.0, 1.1}; // index[0 : 占쎄텚占쎄쉐/ 1 : 占쎈연占쎄쉐]
 	private double[] rateOfJob = {1.0, 1.2, 1.3, 1.0, 1.0, 1.2, 1.1}; // index[0 : 占쎄텢�눧�똻彛�/ 1 : 占쎌뒲占쎈꽊占쎈씜/ 2 : 占쎌겱占쎌삢筌욑옙/ 3 : 占쎈린占쎄문/ 4 : �뤃癒�沅�(占쎈땾)筌욑옙/ 5 : �뤃怨쀬뵥/ 6 : 疫꿸퀬占�]
 	private int specialContractFee;
@@ -115,6 +115,7 @@ public abstract class Insurance {
 	public void setRateOfAge3(double x) {this.rateOfAge[3] = x;}
 	public void setRateOfAge4(double x) {this.rateOfAge[4] = x;}
 	public void setRateOfAge5(double x) {this.rateOfAge[5] = x;}
+	public void setRateOfAge6(double x) {this.rateOfAge[6] = x;}
 	public void setRateOfGender0(double x) {this.rateOfGender[0] = x;}
 	public void setRateOfGender1(double x) {this.rateOfGender[1] = x;}
 	public void setRateOfJob0(double x) {this.rateOfJob[0] = x;}

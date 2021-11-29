@@ -12,24 +12,25 @@ public class InsuranceConfirmerService {
 	InsuranceDAO insuranceDAO;
 
 	public Insurance selectInsurance(String insuranceId) {
-		Insurance insurance = insuranceDAO.select(insuranceId);
-		switch(insurance.getEType()) {
-		case driverInsurance:
+		int type = insuranceDAO.selectInsuranceType(insuranceId);
+		Insurance insurance = null;
+		switch(type) {
+		case 1:
 			insurance = insuranceDAO.selectDriverInsurance(insuranceId);
 			break;
-		case dentalInsurance:
+		case 2:
 			insurance = insuranceDAO.selectDentalInsurance(insuranceId);
 			break;
-		case actualCostInsurance:
+		case 3:
 			insurance = insuranceDAO.selectActualCostInsurance(insuranceId);
 			break;
-		case fireInsurance:
+		case 4:
 			insurance = insuranceDAO.selectFireInsurance(insuranceId);
 			break;
-		case cancerInsurance:
+		case 5:
 			insurance = insuranceDAO.selectCancerInsurance(insuranceId);
 			break;
-		case tripInsurance:
+		case 6:
 			insurance = insuranceDAO.selectTripInsurance(insuranceId);
 			break;
 		}

@@ -1,5 +1,6 @@
 package com.insurance.sce.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -7,7 +8,13 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.insurance.sce.model.insurance.*;
+import com.insurance.sce.model.insurance.ActualCostInsurance;
+import com.insurance.sce.model.insurance.CancerInsurance;
+import com.insurance.sce.model.insurance.DentalInsurance;
+import com.insurance.sce.model.insurance.DriverInsurance;
+import com.insurance.sce.model.insurance.FireInsurance;
+import com.insurance.sce.model.insurance.Insurance;
+import com.insurance.sce.model.insurance.TripInsurance;
 
 @Repository
 public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
@@ -66,7 +73,15 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	}
 
 	// Select
-	public List<Insurance> selectAll() {return sqlSession.selectList(SelectAll);}
+	public List<Insurance> selectAll() {
+		List<Insurance> insuranceList = new ArrayList<Insurance>();
+		List<InsuranceDB> tmpList = sqlSession.selectList(SelectAll);
+		for(InsuranceDB tmp: tmpList) {
+			Insurance insurance = this.specializeInsurance(tmp);
+			insuranceList.add(this.convertInsurance(insurance, tmp));
+		}
+		return insuranceList;
+	}
 	public List<ActualCostInsurance> selectAllActualCostInsurance() {return sqlSession.selectList(SelectAllActualCostInsurance);}
 	public List<CancerInsurance> selectAllCancerInsurance() {return sqlSession.selectList(SelectAllCancerInsurance);}
 	public List<DentalInsurance> selectAllDentalInsurance() {return sqlSession.selectList(SelectAllDentalInsurance);}
@@ -76,7 +91,14 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	public List<Insurance> selectForConfirm() {return sqlSession.selectList(SelectForConfirm);}
 	public List<Insurance> selectSimpleData() {return sqlSession.selectList(SelectSimpleData);}
 	public List<String> selectInsuranceId() {return sqlSession.selectList(SelectInsuranceId);}
-	public Insurance select(String insuranceId) {return sqlSession.selectOne(Select, insuranceId);}
+	public Insurance select(String insuranceId) {
+		InsuranceDB tmpInsurance = sqlSession.selectOne(Select, insuranceId);
+		Insurance insurance = null;
+		insurance = this.specializeInsurance(tmpInsurance);
+		insurance = this.convertInsurance(insurance, tmpInsurance);
+		return insurance;
+	}
+
 	public Insurance selectActualCostInsurance(String insuranceId) {return sqlSession.selectOne(SelectActualCostInsurance, insuranceId);}
 	public Insurance selectCancerInsurance(String insuranceId) {return sqlSession.selectOne(SelectCancerInsurance, insuranceId);}
 	public Insurance selectDentalInsurance(String insuranceId) {return sqlSession.selectOne(SelectDentalInsurance, insuranceId);}
@@ -92,4 +114,65 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	
 	// Delete
 	public int delete(String insuranceId) {return sqlSession.delete(Delete, insuranceId);}
+	
+	private Insurance specializeInsurance(InsuranceDB tmp) {
+		Insurance insurance = null;
+		switch(tmp.getTYPE()) {
+		case 0:
+			insurance = new DriverInsurance();
+			break;
+		case 1:
+			insurance = new DentalInsurance();
+			break;
+		case 2:
+			insurance = new ActualCostInsurance();
+			break;
+		case 3:
+			insurance = new FireInsurance();
+			break;
+		case 4:
+			insurance = new CancerInsurance();
+			break;
+		case 5:
+			insurance = new TripInsurance();
+			break;
+		}
+		return insurance;
+	}
+	private Insurance convertInsurance(Insurance insurance, InsuranceDB tmp) {
+		insurance.setInsuranceId(tmp.getInsuranceId());
+		insurance.setName(tmp.getNAME());
+		insurance.setEType(tmp.geteType());
+		insurance.setGender(tmp.getGender());
+		insurance.setBasicFee(tmp.getBasicFee());
+		double[] rateOfAge = new double[7]; 
+		rateOfAge[0] = tmp.getRateOfAge0();
+		rateOfAge[1] = tmp.getRateOfAge1();
+		rateOfAge[2] = tmp.getRateOfAge2();
+		rateOfAge[3] = tmp.getRateOfAge3();
+		rateOfAge[4] = tmp.getRateOfAge4();
+		rateOfAge[5] = tmp.getRateOfAge5();
+		rateOfAge[6] = tmp.getRateOfAge6();
+		double[] rateOfGender = new double[2]; 
+		rateOfGender[0] = tmp.getRateOfGender0();
+		rateOfGender[1] = tmp.getRateOfGender1();
+		double[] rateOfJob = new double[7]; 
+		rateOfJob[0] = tmp.getRateOfJob0();
+		rateOfJob[1] = tmp.getRateOfJob1();
+		rateOfJob[2] = tmp.getRateOfJob2();
+		rateOfJob[3] = tmp.getRateOfJob3();
+		rateOfJob[4] = tmp.getRateOfJob4();
+		rateOfJob[5] = tmp.getRateOfJob5();
+		rateOfJob[6] = tmp.getRateOfJob6();
+		insurance.setRateOfAge(rateOfAge);
+		insurance.setRateOfGender(rateOfGender);
+		insurance.setRateOfJob(rateOfJob);
+		insurance.setSpecialContractFee(tmp.getSpecialContractFee());
+		insurance.setWarrantyPeriod(tmp.getWarrantyPeriod());
+		insurance.setConfirmedStatus(tmp.isConfirmedStatus());
+		insurance.setSpecialContract(tmp.isSpecialContract());
+		insurance.setDel(tmp.isDel());
+		insurance.setClone(tmp.isClone());
+		return insurance;
+	}
 }

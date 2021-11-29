@@ -131,7 +131,7 @@
 	<select id="selectSimpleData" resultType="com.insurance.sce.model.insurance.Insurance">
 		SELECT insuranceId, confirmedStatus, del, type, name, basicFee FROM insurance
 	</select>
-	<select id="select" resultType="com.insurance.sce.model.insurance.Insurance">
+	<select id="select" resultType="com.insurance.sce.dao.InsuranceDB">
 		SELECT * FROM insurance
 		WHERE insuranceId = #{insuranceId}
 	</select>

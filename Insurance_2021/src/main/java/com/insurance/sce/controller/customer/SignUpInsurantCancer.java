@@ -28,7 +28,7 @@ public class SignUpInsurantCancer {
 	@Autowired
 	InsuranceServiceImpl insuranceService;
 	
-	@RequestMapping(value="signUpInsurant", method=RequestMethod.GET)
+	@RequestMapping(value="signUpInsurantCancer", method=RequestMethod.GET)
 	public String response(Locale locale, Model model, HttpServletRequest request, String insuranceId, String insuranceType) {
 		HttpSession session = request.getSession(true);
 		Customer customer = (Customer) session.getAttribute("loginCustomer");

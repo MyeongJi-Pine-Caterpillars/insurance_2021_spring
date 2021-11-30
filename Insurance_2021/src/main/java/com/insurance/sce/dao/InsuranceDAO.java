@@ -36,7 +36,7 @@ public interface InsuranceDAO {
 	public int updateConfirmedStatus(String insuranceId);
 	public int updateBasicFee(Insurance insurance);
 	public int updateSpeCialContractFee(Insurance insurance);
-	public int updateDel(Insurance insurance);
+	public int updateDel(String insuranceId);
 	
 	
 	public int delete(String insuranceId);

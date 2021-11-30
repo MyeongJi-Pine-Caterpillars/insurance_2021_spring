@@ -148,4 +148,7 @@ public class InsuranceDeveloperServiceImpl implements InsuranceDeveloperService{
 	public void insertInsurance(Insurance insurance) {
 		insuranceDAO.insert(insurance);
 	}
+	public int deleteInsurance(String insuranceId) {
+		return insuranceDAO.updateDel(insuranceId);
+	}
 }

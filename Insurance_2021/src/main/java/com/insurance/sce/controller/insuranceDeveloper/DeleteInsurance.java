@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.insurance.sce.model.insurance.GuaranteePlan;
 import com.insurance.sce.model.insurance.Insurance;
-import com.insurance.sce.service.InsuranceConfirmerService;
+import com.insurance.sce.service.InsuranceDeveloperService;
 import com.insurance.sce.service.InsuranceService;
 
 /**
@@ -24,7 +24,7 @@ import com.insurance.sce.service.InsuranceService;
 @RequestMapping(value = "/")
 public class DeleteInsurance {
 	@Autowired
-	InsuranceConfirmerService insuranceConfirmerService;
+	InsuranceDeveloperService insuranceDeveloperService;
 	@Autowired
 	InsuranceService insuranceService;
 	
@@ -34,10 +34,10 @@ public class DeleteInsurance {
 		return "insuranceDeveloper/deleteInsurance";
 	}
 	@RequestMapping(value="deleteInsurance/delete", method=RequestMethod.GET)
-	public String responseConfirmInsurance(Locale locale, Model model, HttpServletRequest request) {
-		String insuranceId = (String)request.getParameter("confirmInsuranceId");
-		insuranceConfirmerService.confirmInsurance(insuranceId);
-		return "redirect:/confirmerView";
+	public String responseDelete(Locale locale, Model model, HttpServletRequest request) {
+		String insuranceId = (String)request.getParameter("deleteInsuranceId");
+		insuranceDeveloperService.deleteInsurance(insuranceId);
+		return "redirect:/deleteInsurance";
 	}
 	
 	@RequestMapping(value="deleteInsurance/doSelect")

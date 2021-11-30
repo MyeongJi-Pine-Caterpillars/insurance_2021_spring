@@ -66,12 +66,13 @@
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item active"><a class="nav-link"
-				href="developInsurance"> <i class="fas fa-fw fa-tachometer-alt"></i>
-					<span>보험 확정하기</span></a>
-			</li>
-			 <li class="nav-item active">
-               	 <a class="nav-link" href="deleteInsurance">
+			<li class="nav-item active">
+               	 <a class="nav-link" href="developInsurance.do">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>보험 설계하기</span></a>
+            </li>
+             <li class="nav-item active">
+               	 <a class="nav-link" href="deleteInsurance.do">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>보험 사후관리하기</span></a>
             </li>
@@ -379,7 +380,7 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">확정할 보험 리스트</h1>
+						<h1 class="h3 mb-0 text-gray-800">삭제 가능한 보험 리스트</h1>
 					</div>
 
 					<!-- Content Row -->
@@ -488,7 +489,7 @@
 
 					<div class="col">
 						<div class="col-lg-6 mb-4">
-							<button type="button" class="btn btn-primary btn-lg" onclick="confirm()">보험 d확정하기</button>
+							<button type="button" class="btn btn-primary btn-lg" onclick="confirm()">보험 삭제하기</button>
 						</div>
 					</div>
 
@@ -558,9 +559,9 @@
 		var insuranceId = 0;
 		function confirm(){
 			$('#deleteInsuranceId').val(insuranceId);
-			if(insuranceId == 0) alert("확정할 보험을 선택해주세요.");
+			if(insuranceId == 0) alert("삭제할 보험을 선택해주세요.");
 			else {
-				alert("보험이 확정되었습니다.")
+				alert("보험 삭제가 요청되었습니다.")
 				$("#form-deleteInsurance").submit();
 			}
 		}

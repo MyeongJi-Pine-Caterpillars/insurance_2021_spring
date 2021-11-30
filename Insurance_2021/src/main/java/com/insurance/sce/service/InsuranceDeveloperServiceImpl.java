@@ -151,4 +151,7 @@ public class InsuranceDeveloperServiceImpl implements InsuranceDeveloperService{
 	public int deleteInsurance(String insuranceId) {
 		return insuranceDAO.updateDel(insuranceId);
 	}
+	public int restoreInsurance(String insuranceId) {
+		return insuranceDAO.updateRestore(insuranceId);
+	}
 }

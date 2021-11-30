@@ -72,7 +72,7 @@
                     <span>보험 설계하기</span></a>
             </li>
              <li class="nav-item active">
-               	 <a class="nav-link" href="deleteInsurance.do">
+               	 <a class="nav-link" href="postManageInsurance.do">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>보험 사후관리하기</span></a>
             </li>
@@ -441,28 +441,28 @@
 										<div class="col"></div>
 									</div>
 									<div class="row">
-										<div class="col" id="rateOfFamilyMedicalDisease"></div>
-										<div class="col" id="rateOfFamilyMedicalRelationship"></div>
+										<div class="col" id="rateOfFamilyMedicalDiseaseBox"></div>
+										<div class="col" id="rateOfFamilyMedicalRelationshipBox"></div>
 									</div>
 									<div class="row">
-										<div class="col" id="rateOfCountryRisk"></div>
+										<div class="col" id="rateOfCountryRiskBox"></div>
 										<div class="col"></div>
 									</div>
 									<div class="row">
-										<div class="col" id="annualLimitCount"></div>
+										<div class="col" id="annualLimitCountBox"></div>
 										<div class="col"></div>
 									</div>
 									<div class="row">
-										<div class="col" id="rateOfAccidentHistory"></div>
+										<div class="col" id="rateOfAccidentHistoryBox"></div>
 										<div class="col"></div>
 									</div>
 									<div class="row">
-										<div class="col" id="rateOfCarType"></div>
-										<div class="col" id="rateOfCarRank"></div>
+										<div class="col" id="rateOfCarTypeBox"></div>
+										<div class="col" id="rateOfCarRankBox"></div>
 									</div>
 									<div class="row">
-										<div class="col" id="rateOfPostedPrice"></div>
-										<div class="col" id="rateOfStructureUsage"></div>
+										<div class="col" id="rateOfPostedPriceBox"></div>
+										<div class="col" id="rateOfStructureUsageBox"></div>
 									</div>
 									</div>
 							</div>
@@ -489,7 +489,7 @@
 
 					<div class="col">
 						<div class="col-lg-6 mb-4">
-							<button type="button" class="btn btn-primary btn-lg" onclick="confirm()">보험 삭제하기</button>
+							<button type="button" class="btn btn-primary btn-lg" onclick="delete1()">보험 삭제하기</button>
 						</div>
 					</div>
 
@@ -557,7 +557,7 @@
 		var riskOfCountry = ["안전", "1단계", "2단계", "3단계"];
 		var annualLimitCount = "연간 한도 횟수";
 		var insuranceId = 0;
-		function confirm(){
+		function delete1(){
 			$('#deleteInsuranceId').val(insuranceId);
 			if(insuranceId == 0) alert("삭제할 보험을 선택해주세요.");
 			else {
@@ -566,6 +566,15 @@
 			}
 		}
 		$('.col-xl-3').click(function(){
+			$('#rateOfFamilyMedicalDiseaseBox').empty();
+			$('#rateOfFamilyMedicalRelationshipBox').empty();
+			$('#rateOfAccidentHistoryBox').empty();
+			$('#rateOfCarTypeBox').empty();
+			$('#rateOfCarRankBox').empty();
+			$('#annualLimitCountBox').empty();
+			$('#rateOfPostedPriceBox').empty();
+			$('#rateOfStructureUsageBox').empty();
+			$('#rateOfCountryRiskBox').empty();
 			insuranceId = {"insuranceId" : $(this).attr('id')};
 			$.ajax({
 			url: "deleteInsurance/doSelect",
@@ -599,7 +608,7 @@
 					);
 				});
 				if(data.type == 1) {
-					$('#rateOfAccidentHistory').html('<div class="col mb-3" id="rateOfAccidentHistory"><h4 class="small font-weight-bold">--사고 횟수 요율표--</h4></div>');
+					$('#rateOfAccidentHistoryBox').html('<div class="col mb-3" id="rateOfAccidentHistory"><h4 class="small font-weight-bold">--사고 횟수 요율표--</h4></div>');
 					$.each(data.rateOfAccidentHistory, function(index, item){
 						$('#rateOfAccidentHistory').append(
 								'<h4 class="small font-weight-bold">'+ accidentHistory[index] +'<span class="float-right">' +
@@ -607,7 +616,7 @@
 									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 						);
 					});
-					$('#rateOfCarType').html('<div class="col mb-3" id="rateOfCarType"><h4 class="small font-weight-bold">--차 종류 요율표--</h4></div>');
+					$('#rateOfCarTypeBox').html('<div class="col mb-3" id="rateOfCarType"><h4 class="small font-weight-bold">--차 종류 요율표--</h4></div>');
 					$.each(data.rateOfCarType, function(index, item){
 						$('#rateOfCarType').append(
 								'<h4 class="small font-weight-bold">'+ typeOfCar[index] +'<span class="float-right">' +
@@ -615,7 +624,7 @@
 									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 						);
 					});
-					$('#rateOfCarRank').html('<div class="col mb-3" id="rateOfCarRank"><h4 class="small font-weight-bold">--차 등급 요율표--</h4></div>');
+					$('#rateOfCarRankBox').html('<div class="col mb-3" id="rateOfCarRank"><h4 class="small font-weight-bold">--차 등급 요율표--</h4></div>');
 					$.each(data.rateOfCarRank, function(index, item){
 						$('#rateOfCarRank').append(
 								'<h4 class="small font-weight-bold">'+ rankOfCar[index] +'<span class="float-right">' +
@@ -624,7 +633,7 @@
 						);
 					});
 				} else if(data.type == 2){
-					$('#annualLimitCount').append(
+					$('#annualLimitCountBox').append(
 							'<h4 class="small font-weight-bold">'+ annualLimitCount +'<span class="float-right">' +
 								data.annualLimitCount +
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
@@ -632,7 +641,7 @@
 				} else if(data.type == 3){
 					
 				} else if(data.type == 4){
-					$('#rateOfPostedPrice').html('<div class="col mb-3" id="rateOfPostedPrice"><h4 class="small font-weight-bold">--공시 가격 요율표--</h4></div>');
+					$('#rateOfPostedPriceBox').html('<div class="col mb-3" id="rateOfPostedPrice"><h4 class="small font-weight-bold">--공시 가격 요율표--</h4></div>');
 					$.each(data.rateOfPostedPrice, function(index, item){
 						$('#rateOfPostedPrice').append(
 								'<h4 class="small font-weight-bold">'+ postedPrice[index] +'<span class="float-right">' +
@@ -640,7 +649,7 @@
 									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 						);
 					});
-					$('#rateOfStructureUsage').html('<div class="col mb-3" id="rateOfStructureUsage"><h4 class="small font-weight-bold">--건물 용도 요율표--</h4></div>');
+					$('#rateOfStructureUsageBox').html('<div class="col mb-3" id="rateOfStructureUsage"><h4 class="small font-weight-bold">--건물 용도 요율표--</h4></div>');
 					$.each(data.rateOfStructureUsage, function(index, item){
 						$('#rateOfStructureUsage').append(
 								'<h4 class="small font-weight-bold">'+ usageOfStructure[index] +'<span class="float-right">' +
@@ -650,7 +659,7 @@
 					});
 					
 				} else if(data.type == 5){
-					$('#rateOfFamilyMedicalDisease').html('<div class="col mb-3" id="rateOfFamilyMedicalDisease"><h4 class="small font-weight-bold">--가족병력 요율표--</h4></div>');
+					$('#rateOfFamilyMedicalDiseaseBox').html('<div class="col mb-3" id="rateOfFamilyMedicalDisease"><h4 class="small font-weight-bold">--가족병력 요율표--</h4></div>');
 					$.each(data.rateOfFamilyMedicalDisease, function(index, item){
 						$('#rateOfFamilyMedicalDisease').append(
 								'<h4 class="small font-weight-bold">'+ familyMedicalDisease[index] +'<span class="float-right">' +
@@ -658,7 +667,7 @@
 									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 						);
 					});
-					$('#rateOfFamilyMedicalRelationship').html('<div class="col mb-3" id="rateOfFamilyMedicalRelationship"><h4 class="small font-weight-bold">--병력 가족 관계 요율표--</h4></div>');
+					$('#rateOfFamilyMedicalRelationshipBox').html('<div class="col mb-3" id="rateOfFamilyMedicalRelationship"><h4 class="small font-weight-bold">--병력 가족 관계 요율표--</h4></div>');
 					$.each(data.rateOfFamilyMedicalRelationship, function(index, item){
 						$('#rateOfFamilyMedicalRelationship').append(
 								'<h4 class="small font-weight-bold">'+ familyMedicalRelationship[index] +'<span class="float-right">' +
@@ -666,9 +675,9 @@
 									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 						);
 					});
-				} else if(data.getEType == 5){
-					$('#rateOfCountryRisk').html('<div class="col mb-3" id="rateOfCountryRisk"><h4 class="small font-weight-bold">--여행지 위험 단계 요율표--</h4></div>');
-					$.each(data.rateOfCountryRisk, function(index, item){
+				} else if(data.type == 6){
+					$('#rateOfCountryRiskBox').html('<div class="col mb-3" id="rateOfCountryRisk"><h4 class="small font-weight-bold">--여행지 위험 단계 요율표--</h4></div>');
+					$.each(data.rateOfCountryRank, function(index, item){
 						$('#rateOfCountryRisk').append(
 								'<h4 class="small font-weight-bold">'+ riskOfCountry[index] +'<span class="float-right">' +
 									item +

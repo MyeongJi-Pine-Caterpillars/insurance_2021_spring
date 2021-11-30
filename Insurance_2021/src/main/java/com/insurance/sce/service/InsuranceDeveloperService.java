@@ -16,4 +16,5 @@ public interface InsuranceDeveloperService {
 	public void finishInsurance(Insurance insurance, String[] selected, String[] special, int[] compensation, double[] selfBurden);
 	public void insertInsurance(Insurance insurance);
 	public int deleteInsurance(String insuranceId);
+	public int restoreInsurance(String insuranceId);
 }

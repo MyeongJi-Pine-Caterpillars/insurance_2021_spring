@@ -66,10 +66,16 @@
 			<hr class="sidebar-divider my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item active"><a class="nav-link"
-				href="confirmView.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
-					<span>보험 확정하기</span></a></li>
-
+			<li class="nav-item active">
+               	 <a class="nav-link" href="developInsurance.do">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>보험 설계하기</span></a>
+            </li>
+             <li class="nav-item active">
+               	 <a class="nav-link" href="postManageInsurance.do">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>보험 사후관리하기</span></a>
+            </li>
 			<!-- Divider -->
 			<hr class="sidebar-divider">
 
@@ -374,14 +380,14 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">확정할 보험 리스트</h1>
+						<h1 class="h3 mb-0 text-gray-800">복구 가능한 보험 리스트</h1>
 					</div>
 
 					<!-- Content Row -->
 					<div class="row">
 
 						<%for(Insurance insurance : insuranceList){ 
-						if(!insurance.isConfirmedStatus() && !insurance.isDel()) {%>
+						if(insurance.isDel()) {%>
 						<div class="col-xl-3 col-md-6 mb-4" id=<%=insurance.getInsuranceId() %>>
 							<div class="cardInsurance border-left-primary shadow h-100 py-2">
 								<div class="card-body" id=<%=insurance.getInsuranceId() %>>
@@ -408,9 +414,9 @@
 					}; %>
 
 					</div>
-					<form id="form-confirmerView" action="confirmerView/confirmInsurance" method="get">
+					<form id="form-restoreInsurance" action="restoreInsurance/restore" method="get">
 						<input style="display:none" class="form-check-input" type="text"
-												name="confirmInsuranceId" id="confirmInsuranceId">
+												name="restoreInsuranceId" id="restoreInsuranceId">
 					</form>
 
 					<br>
@@ -431,7 +437,7 @@
 										<div class="col" id="rateOfJob"></div>
 									</div>
 									<div class="row">
-										<div class="col mb-3" id="rateOfGender0"></div>
+										<div class="col mb-3" id="rateOfGender"></div>
 										<div class="col"></div>
 									</div>
 									<div class="row">
@@ -483,7 +489,7 @@
 
 					<div class="col">
 						<div class="col-lg-6 mb-4">
-							<button type="button" class="btn btn-primary btn-lg" onclick="confirm()">보험 확정하기</button>
+							<button type="button" class="btn btn-primary btn-lg" onclick="restore()">보험 복구하기</button>
 						</div>
 					</div>
 
@@ -551,12 +557,12 @@
 		var riskOfCountry = ["안전", "1단계", "2단계", "3단계"];
 		var annualLimitCount = "연간 한도 횟수";
 		var insuranceId = 0;
-		function confirm(){
-			$('#confirmInsuranceId').val(insuranceId);
-			if(insuranceId == 0) alert("확정할 보험을 선택해주세요.");
+		function restore(){
+			$('#restoreInsuranceId').val(insuranceId);
+			if(insuranceId == 0) alert("복구할 보험을 선택해주세요.");
 			else {
-				alert("보험이 확정되었습니다.")
-				$("#form-confirmerView").submit();
+				alert("보험 복구가 요청되었습니다.")
+				$("#form-restoreInsurance").submit();
 			}
 		}
 		$('.col-xl-3').click(function(){
@@ -571,13 +577,12 @@
 			$('#rateOfCountryRiskBox').empty();
 			insuranceId = {"insuranceId" : $(this).attr('id')};
 			$.ajax({
-			url: "confirmerView/doSelect",
+			url: "restoreInsurance/doSelect",
 			type: "GET",
 			data: insuranceId,
-			
+					
 			success : function(data){
 				insuranceId = data.insuranceId;
-				
 				$('#rateOfAge').html('<div class="col mb-3" id="rateOfAge"><h4 class="small font-weight-bold">--나이 요율표--</h4></div>');
 				$.each(data.rateOfAge, function(index, item){
 					$('#rateOfAge').append(
@@ -688,7 +693,7 @@
 			});
 
 			$.ajax({
-			url: "confirmerView/doSelectGuaranteePlan",
+			url: "restoreInsurance/doSelectGuaranteePlan",
 			type: "GET",
 			data: insuranceId,
 					

@@ -26,14 +26,7 @@ public class InsuranceServiceImpl implements InsuranceService{
 	GuaranteePlanDAO guaranteePlanDAO;
 	
 	public List<Insurance> selectAllInsurance(){
-		ArrayList<Insurance> insuranceList = new ArrayList<Insurance>();
-		insuranceList.addAll(this.selectAllCancerInsurance());
-		insuranceList.addAll(this.selectAllDentalInsurance());
-		insuranceList.addAll(this.selectAllDriverInsurance());
-		insuranceList.addAll(this.selectAllActualCostInsurance());
-		insuranceList.addAll(this.selectAllTripInsurance());
-		insuranceList.addAll(this.selectAllFireInsurance());
-		return insuranceList;
+		return insuranceDAO.selectAll();
 	}
 	public List<CancerInsurance> selectAllCancerInsurance() {
 		return insuranceDAO.selectAllCancerInsurance();

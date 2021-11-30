@@ -199,7 +199,7 @@
 	</update>
 	<update id="updateDel" parameterType="com.insurance.sce.model.contract.Accident">
 		UPDATE insurance
-		SET del = #{del}
+		SET del = true
 		WHERE insuranceId = #{insuranceId}
 	</update>
 

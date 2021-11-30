@@ -30,7 +30,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 			case insuranceDeveloper: employeeRole += "developerView";
 				break;
 			case insuranceConfirmer: employeeRole += "confirmerView";
-			break;
+				break;
+			case underWriter: employeeRole += "underWriterView";
 			default:
 				break;
 			}

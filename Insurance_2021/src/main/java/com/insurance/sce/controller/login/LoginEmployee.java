@@ -30,7 +30,7 @@ public class LoginEmployee {
 		if(map.get("employee") != null) {
 			// 세션에 저장
 			HttpSession session = request.getSession(true);
-			session.setAttribute("loginCustomer", map.get("employee"));
+			session.setAttribute("loginEmployee", map.get("employee"));
 			return (String) map.get("employeeRole");
 		}else return "login/loginEmployee";
 	}

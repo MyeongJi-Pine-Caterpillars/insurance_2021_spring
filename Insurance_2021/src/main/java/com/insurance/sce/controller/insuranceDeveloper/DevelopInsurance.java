@@ -5,14 +5,12 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.insurance.sce.global.Constants.eGender;
 import com.insurance.sce.model.insurance.Insurance;
 import com.insurance.sce.service.InsuranceDeveloperService;
 
@@ -22,7 +20,8 @@ import com.insurance.sce.service.InsuranceDeveloperService;
 @Controller
 @RequestMapping(value = "/")
 public class DevelopInsurance {
-	
+	@Autowired
+	InsuranceDeveloperService idService;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -54,7 +53,6 @@ public class DevelopInsurance {
 			System.out.println("Please check the Gender");
 			return "redirect:/insuranceDeveloper/developInsurance";
 		} else {
-			InsuranceDeveloperService idService = new InsuranceDeveloperService();
 			Insurance insurance = idService.designInsurance(insuranceType);
 			insurance = idService.setGender(insurance, insuranceGender);
 			HttpSession session = request.getSession(true);

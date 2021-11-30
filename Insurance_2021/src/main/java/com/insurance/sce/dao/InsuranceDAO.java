@@ -2,20 +2,17 @@ package com.insurance.sce.dao;
 
 import java.util.List;
 
-import org.springframework.stereotype.Repository;
+import com.insurance.sce.model.insurance.ActualCostInsurance;
+import com.insurance.sce.model.insurance.CancerInsurance;
+import com.insurance.sce.model.insurance.DentalInsurance;
+import com.insurance.sce.model.insurance.DriverInsurance;
+import com.insurance.sce.model.insurance.FireInsurance;
+import com.insurance.sce.model.insurance.Insurance;
+import com.insurance.sce.model.insurance.TripInsurance;
 
-import com.insurance.sce.model.insurance.*;
-
-@Repository
 public interface InsuranceDAO {
 	
 	public int insert(Insurance insurance);
-	public int insertActualCostInsurance(Insurance insurance);
-	public int insertCancerInsurance(Insurance insurance);
-	public int insertDentalInsurance(Insurance insurance);
-	public int insertDriverInsurance(Insurance insurance);
-	public int insertFireInsurance(Insurance insurance);
-	public int insertTripInsurance(Insurance insurance);
 	
 	public List<Insurance> selectAll();
 	public List<ActualCostInsurance> selectAllActualCostInsurance();
@@ -27,6 +24,7 @@ public interface InsuranceDAO {
 	public List<Insurance> selectForConfirm();
 	public List<Insurance> selectSimpleData();
 	public List<String> selectInsuranceId();
+	public Integer selectInsuranceType(String insuranceId);
 	public Insurance select(String insuranceId);
 	public Insurance selectActualCostInsurance(String insuranceId);
 	public Insurance selectCancerInsurance(String insuranceId);
@@ -35,7 +33,7 @@ public interface InsuranceDAO {
 	public Insurance selectFireInsurance(String insuranceId);
 	public Insurance selectTripInsurance(String insuranceId);
 	
-	public int updateConfirmedStatus(Insurance insurance);
+	public int updateConfirmedStatus(String insuranceId);
 	public int updateBasicFee(Insurance insurance);
 	public int updateSpeCialContractFee(Insurance insurance);
 	public int updateDel(Insurance insurance);

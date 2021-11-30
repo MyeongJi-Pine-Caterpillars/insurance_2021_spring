@@ -1,8 +1,9 @@
-package com.insurance.sce.controller.customer;
+package com.insurance.sce.controller.contractManager;
 
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,20 +20,27 @@ import com.insurance.sce.model.customer.Customer;
  */
 @Controller
 @RequestMapping(value = "/")
-public class SelectActualInsuranceController {
+public class ContractManage {
 	
-	private static final Logger logger = LoggerFactory.getLogger(SelectActualInsuranceController.class);
+	private static final Logger logger = LoggerFactory.getLogger(ContractManage.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
 	
-	@RequestMapping(value="actualInsurance", method=RequestMethod.GET)
+	@RequestMapping(value="contractManage", method=RequestMethod.GET)
 	public String response4(Locale locale, Model model, HttpServletRequest request) {
-		Customer customer = new Customer();
-		customer.setName("홍영석");
-		model.addAttribute("customerName", customer.getName() );
+		HttpSession session = request.getSession(true);
+		
+		Customer customer = (Customer) session.getAttribute("loginCustomer");
 
-		return "customer/selectActualInsurance";
+		
+		return "contractManager/contractManage";
+	}
+	@RequestMapping(value="contractManage/doLogout")
+	public String doLogout(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("loginCustomer");
+		return "redirect:/loginUser";
 	}
 }

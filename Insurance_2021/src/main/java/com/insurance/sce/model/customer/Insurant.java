@@ -1,7 +1,5 @@
 package com.insurance.sce.model.customer;
 
-import java.util.Scanner;
-
 import com.insurance.sce.global.Constants.*;
 
 public class Insurant {
@@ -14,14 +12,14 @@ public class Insurant {
 	private int age;
 	private int accidentHistory;
 	private long postedPriceOfStructure;
-	private eUsageOfStructure eUsageOfStructure;
-	private eGender eGender;
-	private eJob eJob;
-	private eTypeOfCar eTypeOfCar;
-	private eRankOfCar eRankOfCar;
-	private eRiskOfTripCountry eRiskOfTripCountry;
-	private eFamilyMedicalDisease eFamilyMedicalDisease;
-	private eFamilyMedicalRelationship eFamilyMedicalRelationship;
+	private eUsageOfStructure usageOfStructure;
+	private eGender gender;
+	private eJob job;
+	private eTypeOfCar typeOfCar;
+	private eRankOfCar rankOfCar;
+	private eRiskOfTripCountry riskOfTripCountry;
+	private eFamilyMedicalDisease familyMedicalDisease;
+	private eFamilyMedicalRelationship familyMedicalRelationship;
 
 	// Constructor
 	public Insurant(){
@@ -53,28 +51,53 @@ public class Insurant {
 	public long getPostedPriceOfStructure() {return postedPriceOfStructure;}
 	public void setPostedPriceOfStructure(long postedPriceOfStructure) {this.postedPriceOfStructure = postedPriceOfStructure;}
 
-	public eGender getEGender() {return eGender;}
-	public void setEGender(eGender gender) {this.eGender = gender;}
+	public int getGender() {return gender.getNum();}
+	public void setGender(int gender) {this.gender = eGender.get(gender);}
 
-	public eUsageOfStructure getEUsageOfStructure() {return eUsageOfStructure;}
-	public void setEUsageOfStructure(eUsageOfStructure usageOfStructure) {this.eUsageOfStructure = usageOfStructure;}
+	public int getUsageOfStructure() {return usageOfStructure.getNum();}
+	public void setUsageOfStructure(int usageOfStructure) {this.usageOfStructure = eUsageOfStructure.get(usageOfStructure);}
 
-	public eJob getEJob() {return eJob;}
-	public void setEJob(eJob job) {this.eJob = job;}
+	public int getJob() {return job.getNum();}
+	public void setJob(int job) {this.job = eJob.get(job);}
 
-	public eTypeOfCar getETypeOfCar() {return eTypeOfCar;}
-	public void setETypeOfCar(eTypeOfCar typeOfCar) {this.eTypeOfCar = typeOfCar;}
+	public int getTypeOfCar() {return typeOfCar.getNum();}
+	public void setTypeOfCar(int typeOfCar) {this.typeOfCar = eTypeOfCar.get(typeOfCar);}
 
-	public eRankOfCar getERankOfCar() {return eRankOfCar;}
-	public void setERankOfCar(eRankOfCar rankOfCar) {this.eRankOfCar = rankOfCar;}
+	public int getRankOfCar() {return rankOfCar.getNum();}
+	public void setRankOfCar(int rankOfCar) {this.rankOfCar = eRankOfCar.get(rankOfCar);}
 	
-	public eRiskOfTripCountry getERiskOfTripCountry() {return eRiskOfTripCountry;}
-	public void setERiskOfTripCountry(eRiskOfTripCountry riskOfTripCountry) {this.eRiskOfTripCountry = riskOfTripCountry;}
+	public int getRiskOfTripCountry() {return riskOfTripCountry.getNum();}
+	public void setRiskOfTripCountry(int riskOfTripCountry) {this.riskOfTripCountry = eRiskOfTripCountry.get(riskOfTripCountry);}
 
-	public eFamilyMedicalDisease getEFamilyMedicalDisease() {return eFamilyMedicalDisease;}
-	public void setEFamilyMedicalDisease(eFamilyMedicalDisease familyMedicalDisease) {this.eFamilyMedicalDisease = familyMedicalDisease;}
+	public int getFamilyMedicalDisease() {return familyMedicalDisease.getNum();}
+	public void setFamilyMedicalDisease(int familyMedicalDisease) {this.familyMedicalDisease = eFamilyMedicalDisease.get(familyMedicalDisease);}
 
-	public eFamilyMedicalRelationship getEFamilyMedicalRelationship() {return eFamilyMedicalRelationship;}
-	public void setEFamilyMedicalRelationship(eFamilyMedicalRelationship familyMedicalRelationship) {this.eFamilyMedicalRelationship = familyMedicalRelationship;}
+	public int getFamilyMedicalRelationship() {return familyMedicalRelationship.getNum();}
+	public void setFamilyMedicalRelationship(int familyMedicalRelationship) {this.familyMedicalRelationship = eFamilyMedicalRelationship.get(familyMedicalRelationship);}
+
+	
+	public eGender getEGender() {return gender;}
+	public void setEGender(eGender gender) {this.gender = gender;}
+	
+	public eUsageOfStructure getEUsageOfStructure() {return usageOfStructure;}
+	public void setEUsageOfStructure(eUsageOfStructure usageOfStructure) {this.usageOfStructure = usageOfStructure;}
+	
+	public eJob getEJob() {return job;}
+	public void setEJob(eJob job) {this.job = job;}
+	
+	public eTypeOfCar getETypeOfCar() {return typeOfCar;}
+	public void setETypeOfCar(eTypeOfCar typeOfCar) {this.typeOfCar = typeOfCar;}
+	
+	public eRankOfCar getERankOfCar() {return rankOfCar;}
+	public void setERankOfCar(eRankOfCar rankOfCar) {this.rankOfCar = rankOfCar;}
+	
+	public eRiskOfTripCountry getERiskOfTripCountry() {return riskOfTripCountry;}
+	public void setERiskOfTripCountry(eRiskOfTripCountry riskOfTripCountry) {this.riskOfTripCountry = riskOfTripCountry;}
+
+	public eFamilyMedicalDisease getEFamilyMedicalDisease() {return familyMedicalDisease;}
+	public void setEFamilyMedicalDisease(eFamilyMedicalDisease familyMedicalDisease) {this.familyMedicalDisease = familyMedicalDisease;}
+
+	public eFamilyMedicalRelationship getEFamilyMedicalRelationship() {return familyMedicalRelationship;}
+	public void setEFamilyMedicalRelationship(eFamilyMedicalRelationship familyMedicalRelationship) {this.familyMedicalRelationship = familyMedicalRelationship;}
 
 }

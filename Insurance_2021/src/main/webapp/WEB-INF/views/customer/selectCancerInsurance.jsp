@@ -3,6 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 
+<%@ page import="java.util.List"%>
+<%@ page import="com.insurance.sce.model.insurance.CancerInsurance"%>
+<%
+	List<CancerInsurance> insuranceList = (List<CancerInsurance>)request.getAttribute("insuranceList");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,39 +41,8 @@
 
 <script>
 
-$(function(){
-	$.ajax({
-		url: "selectCancerInsurance/doSelectAll",
-		type: "POST", 
-				
-		success : function(data){
-			$(data).each(function(){
-				$('#insuranceList').append($('<div class="col-xl-3 col-md-6 mb-4">' + 
-						'<div class="cardInsurance border-left-primary shadow h-100 py-2">' +
-						'<div class="card-body">' +
-							'<div class="row no-gutters align-items-center">' +
-								'<div class="col mr-2">' +
-									'<div class="h7 mb-0 font-weight-bold text-primary text-uppercase mb-0">' +
-										this.insuranceId +
-									'</div><div class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">' +
-										this.name +
-									'</div><div class="h6 mb-0 font-weight-bold text-gray-800">' +
-										'기본보험료' +
-									'</div><div class="h6 mb-0 font-weight-bold text-gray-800">' +
-										this.basicFee +
-									'</div></div><div class="col-auto"></div></div></div></div></div>'));
-			
-			});
-			},
-		error :function(){
-			alert("request error!");
-			}
-		
-	});			
-});
-
     	
-    </script>
+</script>
 
 </head>
 
@@ -89,7 +63,7 @@ $(function(){
 				<div class="sidebar-brand-icon rotate-n-15">
 					<i class="fas fa-laugh-wink"></i>
 				</div>
-				<div class="sidebar-brand-text mx-3" id="test">
+				<div class="sidebar-brand-text mx-3" id="test" onclick="selectInsurance();">
 					<h3>송충이들</h3>
 				</div>
 			</a>
@@ -134,7 +108,7 @@ $(function(){
 			<hr class="sidebar-divider my">
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active"><a class="nav-link"
-				href="actualInsurance"> <i class="fas fa-fw fa-hospital"></i> <span>실비보험</span></a>
+				href="actualCostInsurance"> <i class="fas fa-fw fa-hospital"></i> <span>실비보험</span></a>
 			</li>
 
 			<!-- Divider -->
@@ -248,71 +222,29 @@ $(function(){
 					</div>
 					
 					<!-- Content Row -->
-					<div id="insuranceList" class="row">
-<!-- 
-						<div class="col-xl-3 col-md-6 mb-4">
+					<div class="row">
+					
+					<%for(CancerInsurance insurance : insuranceList){ %>					
+						<div class="col-xl-3 col-md-6 mb-4" onclick="selectInsurance();" id=<%=insurance.getInsuranceId() %>>
 							<div class="cardInsurance border-left-primary shadow h-100 py-2">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
-											<div
-												class="h7 mb-0 font-weight-bold text-primary text-uppercase mb-0">
-												ID. 1213</div>
-											<div
-												class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">
-												더건강한암보험</div>
-											<div class="h6 mb-0 font-weight-bold text-gray-800">기본
-												보험료</div>
-											<div class="h6 mb-0 font-weight-bold text-gray-800">15000원</div>
+											<div class="h7 mb-0 font-weight-bold text-primary text-uppercase mb-0">
+												ID. <%=insurance.getInsuranceId() %></div>
+											<div class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">
+												<%=insurance.getName() %></div>
+											<div class="h6 mb-0 font-weight-bold text-gray-800">
+												기본 보험료</div>
+											<div class="h6 mb-0 font-weight-bold text-gray-800"><%=insurance.getBasicFee() %>원</div>
 										</div>
 										<div class="col-auto"></div>
 									</div>
 								</div>
 							</div>
 						</div>
+					<%}; %>
 
-						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="cardInsurance border-left-primary shadow h-100 py-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div
-												class="h7 mb-0 font-weight-bold text-primary text-uppercase mb-0">
-												ID. 1214</div>
-											<div
-												class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">
-												무배당암보험</div>
-											<div class="h6 mb-0 font-weight-bold text-gray-800">기본
-												보험료</div>
-											<div class="h6 mb-0 font-weight-bold text-gray-800">10000원</div>
-										</div>
-										<div class="col-auto"></div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xl-3 col-md-6 mb-4">
-							<div class="cardInsurance border-left-primary shadow h-100 py-2">
-								<div class="card-body">
-									<div class="row no-gutters align-items-center">
-										<div class="col mr-2">
-											<div
-												class="h7 mb-0 font-weight-bold text-primary text-uppercase mb-0">
-												ID. 1215</div>
-											<div
-												class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">
-												노란우산암보험</div>
-											<div class="h6 mb-0 font-weight-bold text-gray-800">기본
-												보험료</div>
-											<div class="h6 mb-0 font-weight-bold text-gray-800">23000원</div>
-										</div>
-										<div class="col-auto"></div>
-									</div>
-								</div>
-							</div>
-						</div>
--->
 					</div>
 
 						<br>
@@ -328,49 +260,23 @@ $(function(){
 										<h6 class="m-0 font-weight-bold text-primary">요율</h6>
 									</div>
 									<div class="card-body">
-										<h4 class="small font-weight-bold">
-											Server Migration <span class="float-right">20%</span>
-										</h4>
-										<div class="progress mb-4">
-											<div class="progress-bar bg-danger" role="progressbar"
-												style="width: 20%" aria-valuenow="20" aria-valuemin="0"
-												aria-valuemax="100"></div>
-										</div>
-										<h4 class="small font-weight-bold">
-											Sales Tracking <span class="float-right">40%</span>
-										</h4>
-										<div class="progress mb-4">
-											<div class="progress-bar bg-warning" role="progressbar"
-												style="width: 40%" aria-valuenow="40" aria-valuemin="0"
-												aria-valuemax="100"></div>
-										</div>
-										<h4 class="small font-weight-bold">
-											Customer Database <span class="float-right">60%</span>
-										</h4>
-										<div class="progress mb-4">
-											<div class="progress-bar" role="progressbar"
-												style="width: 60%" aria-valuenow="60" aria-valuemin="0"
-												aria-valuemax="100"></div>
-										</div>
-										<h4 class="small font-weight-bold">
-											Payout Details <span class="float-right">80%</span>
-										</h4>
-										<div class="progress mb-4">
-											<div class="progress-bar bg-info" role="progressbar"
-												style="width: 80%" aria-valuenow="80" aria-valuemin="0"
-												aria-valuemax="100"></div>
-										</div>
-										<h4 class="small font-weight-bold">
-											Account Setup <span class="float-right">Complete!</span>
-										</h4>
-										<div class="progress">
-											<div class="progress-bar bg-success" role="progressbar"
-												style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-												aria-valuemax="100"></div>
-										</div>
+									<div class="row">
+										<div class="col mb-3" id="rateOfAge"></div>
+										<div class="col" id="rateOfJob"></div>
+									</div>
+									<div class="row">
+										<div class="col mb-3" id="rateOfGender"></div>
+										<div class="col"></div>
+									</div>
+									<div class="row">
+										<div class="col" id="rateOfFamilyMedicalDisease"></div>
+										<div class="col" id="rateOfFamilyMedicalRelationship"></div>
+									</div>
+										
 									</div>
 								</div>
 							</div>
+							
 
 							<div class="col-lg-6 mb-4">
 
@@ -381,55 +287,17 @@ $(function(){
 									</div>
 									<div class="card-body">
 										기본계약
-										<ol class="list-group list-group-numbered">
-											<li
-												class="list-group-item d-flex justify-content-between align-items-start">
-												<div class="ms-2 me-auto">
-													<div class="fw-bold">갑상선암</div>
-													보장금액 : 10000000
-												</div>
-											</li>
-											<li
-												class="list-group-item d-flex justify-content-between align-items-start">
-												<div class="ms-2 me-auto">
-													<div class="fw-bold">폐암</div>
-													보장금액 : 10000000
-												</div>
-											</li>
-											<li
-												class="list-group-item d-flex justify-content-between align-items-start">
-												<div class="ms-2 me-auto">
-													<div class="fw-bold">난소암</div>
-													보장금액 : 15000000
-												</div>
-											</li>
-										</ol>
+										<ol class="list-group list-group-numbered" id="guaranteePlan"></ol>
 										선택특약
-										<ol class="list-group list-group-numbered">
-											<li
-												class="list-group-item d-flex justify-content-between align-items-start">
-												<div class="ms-2 me-auto">
-													<div class="fw-bold">갑상선암</div>
-													보장금액 : 10000000
-												</div>
-											</li>
-											<li
-												class="list-group-item d-flex justify-content-between align-items-start">
-												<div class="ms-2 me-auto">
-													<div class="fw-bold">폐암</div>
-													보장금액 : 10000000
-												</div>
-											</li>
-											<li
-												class="list-group-item d-flex justify-content-between align-items-start">
-												<div class="ms-2 me-auto">
-													<div class="fw-bold">난소암</div>
-													보장금액 : 15000000
-												</div>
-											</li>
-										</ol>
+										<ol class="list-group list-group-numbered" id="guaranteePlanSpecial"></ol>
 									</div>
 								</div>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-lg-6 mb-4">
+								<button type="button" class="btn btn-primary btn-lg" onClick="signUpInsurant();">가입 신청하기</button>
 							</div>
 						</div>
 
@@ -478,11 +346,120 @@ $(function(){
 					<div class="modal-footer">
 						<button class="btn btn-secondary" type="button"
 							data-dismiss="modal">Cancel</button>
-						<a class="btn btn-primary" href="login.html">Logout</a>
+						<a classl="btn btn-primary" href="login.html">Logout</a>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		<script>
+			var ages = ["영유아", "10대", "20대", "30대", "40대", "50대", "노년층"];
+			var jobs = ["사무직", "운송업", "현장직", "학생", "교육직", "군인", "기타"];
+			var gender = ["남성", "야성"];
+			var familyMedicalDisease = ["갑상선암", "고환암", "난소암", "식도암", "폐암"];
+			var familyMedicalRelationship = ["1촌", "2촌", "3촌", "4촌"];
+			var insuranceId = "";
+			
+			$('.col-xl-3').click(function(){
+				insuranceId = {"insuranceId" : $(this).attr('id')};
+				
+				$.ajax({
+					url: "selectCancerInsurance/doSelect",
+					type: "GET",
+					data: insuranceId,
+							
+					success : function(data){
+						$('#rateOfAge').html('<div class="col mb-3" id="rateOfAge"><h4 class="small font-weight-bold">--나이 요율표--</h4></div>');
+						$.each(data.rateOfAge, function(index, item){
+							$('#rateOfAge').append(
+									'<h4 class="small font-weight-bold">'+ ages[index] +'<span class="float-right">' +
+										item +
+										'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+							);
+						});
+						$('#rateOfJob').html('<div class="col mb-3" id="rateOfJob"><h4 class="small font-weight-bold">--직업 요율표--</h4></div>');
+						$.each(data.rateOfJob, function(index, item){
+							$('#rateOfJob').append(
+									'<h4 class="small font-weight-bold">'+ jobs[index] +'<span class="float-right">' +
+										item +
+										'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+							);
+						});
+						$('#rateOfGender').html('<div class="col mb-3" id="rateOfGender"><h4 class="small font-weight-bold">--성별 요율표--</h4></div>');
+						$.each(data.rateOfGender, function(index, item){
+							$('#rateOfGender').append(
+									'<h4 class="small font-weight-bold">'+ gender[index] +'<span class="float-right">' +
+										item +
+										'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+							);
+						});
+						$('#rateOfFamilyMedicalDisease').html('<div class="col mb-3" id="rateOfGender"><h4 class="small font-weight-bold">--가족병력 요율표--</h4></div>');
+						$.each(data.rateOfFamilyMedicalDisease, function(index, item){
+							$('#rateOfFamilyMedicalDisease').append(
+									'<h4 class="small font-weight-bold">'+ familyMedicalDisease[index] +'<span class="float-right">' +
+										item +
+										'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+							);
+						});
+						$('#rateOfFamilyMedicalRelationship').html('<div class="col mb-3" id="rateOfGender"><h4 class="small font-weight-bold">--병력 가족 관계 요율표--</h4></div>');
+						$.each(data.rateOfFamilyMedicalRelationship, function(index, item){
+							$('#rateOfFamilyMedicalRelationship').append(
+									'<h4 class="small font-weight-bold">'+ familyMedicalRelationship[index] +'<span class="float-right">' +
+										item +
+										'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+							);
+						});
+					},error:function(request,status,error){
+					    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);}
+				});
+				
+				$.ajax({
+					url: "selectCancerInsurance/doSelectGuaranteePlan",
+					type: "GET",
+					data: insuranceId,
+							
+					success : function(data){
+						$('#guaranteePlan').html('<ol class="list-group list-group-numbered" id="guaranteePlan"></ol>');
+						$.each(data, function(index, item){
+							if(!item.special){
+								$('#guaranteePlan').append(
+									'<li class="list-group-item d-flex justify-content-between align-items-start">' +
+										'<div class="ms-2 me-auto"><div class="fw-bold">' +
+											item.content +
+										'</div>보장금액 : ' +
+											item.compensation +
+										'원</li>'
+								);
+							}
+						});
+						$('#guaranteePlanSpecial').html('<ol class="list-group list-group-numbered" id="guaranteePlanSpecial"></ol>');
+						$.each(data, function(index, item){
+							if(item.special){
+								$('#guaranteePlanSpecial').append(
+									'<li class="list-group-item d-flex justify-content-between align-items-start">' +
+										'<div class="ms-2 me-auto"><div class="fw-bold">' +
+											item.content +
+										'</div>보장금액 : ' +
+											item.compensation +
+										'원</li>'
+								);
+							}
+						});
+					},
+					error :function(){
+						alert("request error in guaranteePlan!");
+					}
+				});
+			});
+			
+			function signUpInsurant(){
+				if(insuranceId == ""){
+					alert("보험을 선택해주세요")
+				}else{
+					location.href="signUpInsurant?insuranceId="+insuranceId["insuranceId"];
+				}
+			}
+		</script>
 
 		<!-- Bootstrap core JavaScript-->
 		<script src="<c:url value="resources/vendor/jquery/jquery.min.js" />"></script>
@@ -502,6 +479,7 @@ $(function(){
 		<!-- Page level custom scripts -->
 		<script src="<c:url value="resources/js/demo/chart-area-demo.js" />"></script>
 		<script src="<c:url value="resources/js/demo/chart-pie-demo.js" />"></script>
+		
 </body>
 
 </html>

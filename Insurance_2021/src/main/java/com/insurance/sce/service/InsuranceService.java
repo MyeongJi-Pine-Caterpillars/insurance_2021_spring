@@ -2,24 +2,21 @@ package com.insurance.sce.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
+import com.insurance.sce.model.insurance.*;
 
-import com.insurance.sce.dao.InsuranceDAO;
-import com.insurance.sce.model.insurance.CancerInsurance;
-import com.insurance.sce.model.insurance.Insurance;
-
-@Repository
-public class InsuranceService {
-
-	@Autowired
-	InsuranceDAO insuranceDAO;
-	
-	public List<CancerInsurance> selectAll() {
-		List<CancerInsurance> insuranceList = insuranceDAO.selectAllCancerInsurance();
-//		for(CancerInsurance insurance : insuranceList) {
-//			insurance = insuranceDAO.selectCancerInsurance(insurance.getInsuranceId());
-//		}
-		return insuranceList;
-	}
+public interface InsuranceService {
+	public List<Insurance> selectAllInsurance();
+	public List<CancerInsurance> selectAllCancerInsurance();
+	public List<DentalInsurance> selectAllDentalInsurance();
+	public List<DriverInsurance> selectAllDriverInsurance();
+	public List<ActualCostInsurance> selectAllActualCostInsurance();
+	public List<TripInsurance> selectAllTripInsurance();
+	public List<FireInsurance> selectAllFireInsurance();
+	public CancerInsurance selectCancerInsurance(String insuranceId);
+	public DentalInsurance selectDentalInsurance(String insuranceId);
+	public DriverInsurance selectDriverInsurance(String insuranceId);
+	public ActualCostInsurance selectActualCostInsurance(String insuranceId);
+	public TripInsurance selectTripInsurance(String insuranceId);
+	public FireInsurance selectFireInsurance(String insuranceId);
+	public List<GuaranteePlan> selectGuaranteePlan(String insuranceId);
 }

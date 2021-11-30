@@ -41,10 +41,4 @@ public class HomeController {
 		return "home";
 	}
 
-	@RequestMapping(value = "example.do")
-	public ModelAndView example(HttpServletRequest request) throws Exception {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("example");
-		return mv;
-	}
 }

@@ -26,6 +26,7 @@ public class Constants {
 
 		public int getNum() {return num;}
 		public String getName() {return this.name;}
+		public static eAge get(int n) {return eAge.values()[n - 1];}
 	}
 	
 	public static enum eAccidentType {
@@ -43,6 +44,7 @@ public class Constants {
 		}
 
 		public int getNum() {return num;}
+		public static eAccidentType get(int n) {return eAccidentType.values()[n - 1];}
 	}
 
 	public static enum eGender {
@@ -61,12 +63,7 @@ public class Constants {
 		public int getNum() {return num;}
 		public String getName() {return this.name;}
 		
-		public static eGender get(int n) {
-			for(eGender tmp : eGender.values()) {
-				if(tmp.getNum() == n) return tmp;
-			}
-			return null;
-		}
+		public static eGender get(int n) {return eGender.values()[n - 1];}
 	}
 
 	public static enum eJob {
@@ -89,6 +86,8 @@ public class Constants {
 
 		public int getNum() {return num;}
 		public String getName() {return this.name;}
+
+		public static eJob get(int job) {return eJob.values()[job];}
 	}
 
 	public static enum eTypeOfCar {
@@ -109,6 +108,10 @@ public class Constants {
 
 		public int getNum() {return num;}
 		public String getName() {return name;}
+
+		public static eTypeOfCar get(int typeOfCar) {
+			return eTypeOfCar.values()[typeOfCar];
+		}
 	}
 	
 	public static enum eRankOfCar {
@@ -128,6 +131,10 @@ public class Constants {
 
 		public int getNum() {return num;}
 		public String getName() {return name;}
+
+		public static eRankOfCar get(int rankOfCar) {
+			return eRankOfCar.values()[rankOfCar];
+		}
 	}
 	
 	public static String[] accidentHistory = {"0회", "1회", "2회~3회", "4회~5회", "6회~7회", "8회 이상"};
@@ -151,6 +158,8 @@ public class Constants {
 
 		public int getNum() {return num;}
 		public String getName() {return name;}
+
+		public static eUsageOfStructure get(int n) {return eUsageOfStructure.values()[n];}
 	}
 
 	public static enum eRiskOfTripCountry {
@@ -170,17 +179,21 @@ public class Constants {
 
 		public int getNum() {return num;}
 		public String getName() {return name;}
+
+		public static eRiskOfTripCountry get(int riskOfTripCountry) {
+			return eRiskOfTripCountry.values()[riskOfTripCountry];
+		}
 	}
 
 	public static enum eGuaranteePlanGuaranteeItem {
 
 	}
 	
-	private static String[] driverGuarantee = {"자동차사고벌금(대인)", "자동차사고벌금(대물)", "교통상해부상치료비", "자동차사고재산피해"};
-	private static String[] dentalGuarantee = {"레진", "크라운", "틀니", "임플란트", "스케일링", "발치"};
-	private static String[] fireGuarantee = {"화재", "수해", "도난손해", "상해후유장애", "고장수리"};
-	private static String[] cancerGuarantee = {"감상선암", "고환암", "난소암", "식도암", "폐암", "간암", "위암", "췌장암"};
-	private static String[] tripGuarantee = {"사망", "상해", "해외의료비", "휴대품손해", "배상책임", "항공기납치"};
+	public static String[] driverGuarantee = {"자동차사고벌금(대인)", "자동차사고벌금(대물)", "교통상해부상치료비", "자동차사고재산피해"};
+	public static String[] dentalGuarantee = {"레진", "크라운", "틀니", "임플란트", "스케일링", "발치"};
+	public static String[] fireGuarantee = {"화재", "수해", "도난손해", "상해후유장애", "고장수리"};
+	public static String[] cancerGuarantee = {"감상선암", "고환암", "난소암", "식도암", "폐암", "간암", "위암", "췌장암"};
+	public static String[] tripGuarantee = {"사망", "상해", "해외의료비", "휴대품손해", "배상책임", "항공기납치"};
 
 	public enum eInsuranceType {
 		driverInsurance(1, new DriverInsurance(), "driverInsurance", driverGuarantee),
@@ -207,12 +220,8 @@ public class Constants {
 		public String getName() {return this.name;}
 		public String[] getGuaranteePlan() {return this.GuaranteePlan;}
 		
-		public static eInsuranceType get(int n) {
-			for(eInsuranceType tmp : eInsuranceType.values()) {
-				if(tmp.getNum() == n) return tmp;
-			}
-			return null;
-		}
+		public static eInsuranceType get(int n) {return eInsuranceType.values()[n - 1];}
+		
 	}
 
 	public static enum eFamilyMedicalDisease {
@@ -233,6 +242,10 @@ public class Constants {
 		
 		public int getNum() {return num;}
 		public String getName() {return this.name;}
+
+		public static eFamilyMedicalDisease get(int familyMedicalDisease) {
+			return eFamilyMedicalDisease.values()[familyMedicalDisease];
+		}
 	}
 	
 	public static enum eFamilyMedicalRelationship {
@@ -253,33 +266,21 @@ public class Constants {
 		
 		public int getNum() {return num;}
 		public String getName() {return this.name;}
+
+		public static eFamilyMedicalRelationship get(int familyMedicalRelationship) {
+			return eFamilyMedicalRelationship.values()[familyMedicalRelationship];
+		}
 	}
 	
 	public static String[] postedPrice = {"(공시가)<=5천만원", "5천만원<(공시가)<=5억", "5억<(공시가)<=10억", "10억<(공시가)<=20억", "20억<(공시가)"};
 	
-	public static enum eCancer {
-		thyroid(1,"갑상선암"), 
-		testicular(2, "고환암"), 
-		ovarian(3, "난소암"), 
-		esophageal(4, "식도암"), 
-		lung(5, "폐암"),
-		liver(6, "간암"),
-		colorectal(7, "대장암");
-		
-		final private int num;
-		final private String name;
-		
-		private eCancer(int num, String name) {
-			this.num = num;
-			this.name = name;
-		}
-
-		public int getNum() {return num;}
-		public String getName() {return this.name;}
-	}
-
 	public static enum eEmployeeRole {
-		insuranceDeveloper(1), insuranceConfirmer(2), salesperson(3), contractManager(4), compensationHandler(5), underWriter(6);
+		insuranceDeveloper(1),
+		insuranceConfirmer(2),
+		salesperson(3),
+		contractManager(4),
+		compensationHandler(5),
+		underWriter(6);
 		
 		final private int num;
 		
@@ -288,13 +289,9 @@ public class Constants {
 		}
 
 		public int getNum() {return num;}
+		
+		public static eEmployeeRole get(int n) {return eEmployeeRole.values()[n - 1];}
 
-		public static eEmployeeRole get(int n) {
-			for(eEmployeeRole tmp : eEmployeeRole.values()) {
-				if(tmp.getNum() == n) return tmp;
-			}
-			return null;
-		}
 	}
 
 }

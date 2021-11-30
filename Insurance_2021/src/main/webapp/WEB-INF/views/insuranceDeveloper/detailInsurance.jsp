@@ -462,7 +462,7 @@
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
-											<label>${"영유아"} : </label>
+											<label><%= request.getAttribute("ageRateName1") %> : </label>
 											<div class=form-check>
 												<input type="number" name="kidsRate" value="1.0" step="0.1"> 
 											</div>
@@ -470,7 +470,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"10대"} : </label>
+											<label><%= request.getAttribute("ageRateName2") %> : </label>
 											<div class=form-check>
 												<input type="number" name="teensRate" value="1.0" step="0.1"> 
 											</div>
@@ -478,7 +478,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"20대"} : </label>
+											<label><%= request.getAttribute("ageRateName3") %> : </label>
 											<div class=form-check>
 												<input type="number" name="twentiesRate" value="1.0" step="0.1"> 
 											</div>
@@ -486,7 +486,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"30대"} : </label>
+											<label><%= request.getAttribute("ageRateName4") %> : </label>
 											<div class=form-check>
 												<input type="number" name="thirtiesRate" value="1.0" step="0.1"> 
 											</div>
@@ -494,7 +494,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"40대"} : </label>
+											<label><%= request.getAttribute("ageRateName5") %> : </label>
 											<div class=form-check>
 												<input type="number" name="fourtiesRate" value="1.0" step="0.1"> 
 											</div>
@@ -502,7 +502,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"50대"} : </label>
+											<label><%= request.getAttribute("ageRateName6") %> : </label>
 											<div class=form-check>
 												<input type="number" name="fiftiesRate" value="1.0" step="0.1"> 
 											</div>
@@ -510,7 +510,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"노년층"} : </label>
+											<label><%= request.getAttribute("ageRateName7") %> : </label>
 											<div class=form-check>
 												<input type="number" name="oldersRate" value="1.0" step="0.1"> 
 											</div>
@@ -527,7 +527,7 @@
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
-											<label>${"남자"} : </label>
+											<label><%= request.getAttribute("genderRateName1") %> : </label>
 											<div class=form-check>
 												<input type="number" name="maleRate" value="1.0" step="0.1"> 
 											</div>
@@ -535,7 +535,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"여자"} : </label>
+											<label><%= request.getAttribute("genderRateName2") %> : </label>
 											<div class=form-check>
 												<input type="number" name="femaleRate" value="1.0" step="0.1"> 
 											</div>
@@ -552,7 +552,7 @@
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
-											<label>${"사무직"} : </label>
+											<label><%= request.getAttribute("jobRateName1") %> </label>
 											<div class=form-check>
 												<input type="number" name="officeRate" value="1.0" step="0.1"> 
 											</div>
@@ -560,7 +560,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"운송업"} : </label>
+											<label><%= request.getAttribute("jobRateName2") %> : </label>
 											<div class=form-check>
 												<input type="number" name="driverRate" value="1.0" step="0.1"> 
 											</div>
@@ -568,7 +568,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"현장직"} : </label>
+											<label><%= request.getAttribute("jobRateName3") %> : </label>
 											<div class=form-check>
 												<input type="number" name="factoryRate" value="1.0" step="0.1">
 											</div>
@@ -576,7 +576,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"학생"} : </label>
+											<label><%= request.getAttribute("jobRateName4") %> : </label>
 											<div class=form-check>
 												<input type="number" name="studentRate" value="1.0" step="0.1"> 
 											</div>
@@ -584,7 +584,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"교육직"} : </label>
+											<label><%= request.getAttribute("jobRateName5") %> : </label>
 											<div class=form-check>
 												<input type="number" name="teacherRate" value="1.0" step="0.1"> 
 											</div>
@@ -592,7 +592,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"군인"} : </label>
+											<label><%= request.getAttribute("jobRateName6") %> : </label>
 											<div class=form-check>
 												<input type="number" name="soldierRate" value="1.0" step="0.1"> 
 											</div>
@@ -600,7 +600,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"기타"} : </label>
+											<label><%= request.getAttribute("jobRateName7") %> : </label>
 											<div class=form-check>
 												<input type="number" name="etcRate" value="1.0" step="0.1"> 
 											</div>

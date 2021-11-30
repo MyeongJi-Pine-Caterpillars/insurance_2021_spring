@@ -382,7 +382,7 @@
 					<div class="row">
 
 						<div class="col-lg-6 mb-4">
-						<form id="form-rateTripInsurance" action="guaranteeTripInsurance" method="get">
+						<form id="form-rateTripInsurance" action="goToGuaranteeTripInsurance" method="get">
 							<!-- Illustrations -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3"> 
@@ -392,7 +392,7 @@
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
-											<label>${"안전"} : </label>
+											<label><%= request.getAttribute("riskRateName1") %> : </label>
 											<div class=form-check>
 												<input type="number" name="safeRate" value="1.0" step="0.1"> 
 											</div>
@@ -400,7 +400,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"1단계"} : </label>
+											<label><%= request.getAttribute("riskRateName2") %> : </label>
 											<div class=form-check>
 												<input type="number" name="firstRate" value="1.0" step="0.1"> 
 											</div>
@@ -408,7 +408,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"2단계"} : </label>
+											<label><%= request.getAttribute("riskRateName3") %> : </label>
 											<div class=form-check>
 												<input type="number" name="secondRate" value="1.0" step="0.1"> 
 											</div>
@@ -416,7 +416,7 @@
 									</div>
 									<div class = "form-check">
 										<div class="row">
-											<label>${"3단계"} : </label>
+											<label><%= request.getAttribute("riskRateName4") %> : </label>
 											<div class=form-check>
 												<input type="number" name="thirdRate" value="1.0" step="0.1"> 
 											</div>

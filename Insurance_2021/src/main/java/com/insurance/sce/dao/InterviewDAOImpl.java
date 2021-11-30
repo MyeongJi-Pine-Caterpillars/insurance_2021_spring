@@ -5,9 +5,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
+import org.springframework.stereotype.Component;
 
 import com.insurance.sce.model.interview.Interview;
 
+@Component
 public class InterviewDAOImpl extends DBConnector implements InterviewDAO{
 	@Inject
 	private SqlSession sqlSession;

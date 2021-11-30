@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.insurance.sce.global.Constants.eFamilyMedicalDisease;
 import com.insurance.sce.global.Constants.eFamilyMedicalRelationship;
+import com.insurance.sce.global.Constants.eTypeOfCar;
 import com.insurance.sce.model.insurance.Insurance;
 import com.insurance.sce.service.InsuranceDeveloperService;
 
@@ -23,6 +25,8 @@ import com.insurance.sce.service.InsuranceDeveloperService;
 @Controller
 @RequestMapping(value = "/")
 public class RateCancerInsurance {
+	@Autowired
+	InsuranceDeveloperService idService;
 	private Insurance insurance;
 	
 	/**
@@ -33,16 +37,20 @@ public class RateCancerInsurance {
 	public String responseRateCancerInsurance(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		this.insurance = (Insurance) session.getAttribute("detailedInsurance");
-		for(eFamilyMedicalDisease e: eFamilyMedicalDisease.values()) {
-			model.addAttribute(e.getName(), e.getName());
+		int i = 1;
+		for(int k = 1; k < eFamilyMedicalDisease.values().length; k++) {
+			model.addAttribute("familyDiseaseRateName"+i, eFamilyMedicalDisease.values()[k].getName());
+			i++;
 		}
-		for(eFamilyMedicalRelationship e: eFamilyMedicalRelationship.values()) {
-			model.addAttribute(e.getName(), e.getName());
+		i = 1;
+		for(int k = 1; k < eFamilyMedicalRelationship.values().length; k++) {
+			model.addAttribute("familyRelationRateName"+i, eFamilyMedicalRelationship.values()[k].getName());
+			i++;
 		}
 		return "insuranceDeveloper/rateCancerInsurance";
 	}
-	@RequestMapping(value="guaranteeCancerInsurance", method=RequestMethod.GET)
-	public String responseGuaranteeCancerInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
+	@RequestMapping(value="goToGuaranteeCancerInsurance", method=RequestMethod.GET)
+	public String responseGoToGuaranteeCancerInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		String[] familyMeical = {"thyroidRate", "testicularRate", "ovarianRate", "esophagealRate", "lungRate"};
 		String[] familyRelationship = {"oneRelRate", "twoRelRate", "threeRelRate", "fourRelRate"};
 		double[] familyMeicalRate = new double[familyMeical.length];
@@ -54,35 +62,10 @@ public class RateCancerInsurance {
 			familyRelationshipRate[i] = Double.parseDouble(request.getParameter(familyRelationship[i]));
 		}
 		
-		InsuranceDeveloperService idService = new InsuranceDeveloperService();
 		this.insurance = idService.setCancerRate(this.insurance, familyMeicalRate, familyRelationshipRate);
 		HttpSession session = request.getSession(true);
 		session.setAttribute("ratedInsurance", this.insurance);
-		String nextViewUrl = "";
-		switch(this.insurance.getEType()) {
-		case driverInsurance:
-			nextViewUrl = "redirect:/guaranteeDriverInsurance";
-			break;
-		case fireInsurance:
-			nextViewUrl = "redirect:/guaranteeFireInsurance";
-			break;
-		case cancerInsurance:
-			nextViewUrl = "redirect:/guaranteeCancerInsurance";
-			break;
-		case actualCostInsurance:
-			nextViewUrl = "redirect:/guaranteeActualCostInsurance";
-			break;
-		case tripInsurance:
-			nextViewUrl = "redirect:/guaranteeTripInsurance";
-			break;
-		case dentalInsurance:
-			nextViewUrl = "redirect:/guaranteeDentalInsurance";
-			break;
-		default:
-			nextViewUrl = "redirect:/developInsurance";
-			break; 
-		}
-		return nextViewUrl;
+		return "redirect:/guaranteeCancerInsurance";
 	}
 
 }

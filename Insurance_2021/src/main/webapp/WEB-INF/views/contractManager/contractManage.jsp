@@ -50,53 +50,35 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="cancerInsurance">
-                    <i class="fas fa-fw fa-pills"></i>
-                    <span>암보험</span></a>
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>가입한 보험 리스트</span></a>
             </li>
-
-            <!-- Divider -->
+            
             <hr class="sidebar-divider my">
+            
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="driverInsurance">
-                    <i class="fas fa-fw fa-car"></i>
-                    <span>운전자보험</span></a>
+                <a class="nav-link" href=#>
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>보험 부활 신청</span></a>
             </li>
 
-            <!-- Divider -->
             <hr class="sidebar-divider my">
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="dentalInsurance">
-                    <i class="fas fa-fw fa-tooth"></i>
-                    <span>치과보험</span></a>
-            </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider my">
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="fireInsurance">
-                    <i class="fas fa-fw fa-fire"></i>
-                    <span>화재보험</span></a>
+                <a class="nav-link" href=#>
+                    <i class="fas fa-fw fa-handshake"></i>
+                    <span>면담신청</span></a>
             </li>
-
-            <!-- Divider -->
+            
             <hr class="sidebar-divider my">
+            
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="tripInsurance">
-                    <i class="fas fa-fw fa-plane"></i>
-                    <span>여행자보험</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my">
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="actualInsurance">
-                    <i class="fas fa-fw fa-hospital"></i>
-                    <span>실비보험</span></a>
+                <a class="nav-link" href=#>
+                    <i class="fas fa-fw fa-check-square"></i>
+                    <span>고객만족도 설문조사</span></a>
             </li>
 
             <!-- Divider -->
@@ -181,13 +163,13 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        		<button type="button" class="btn btn-outline-success">마이페이지</button>
+                        		<button type="button" class="btn btn-outline-success" onClick="location.href='cancerInsurance'">보험 리스트 보기</button>
                         	</a>
 						</li>                        
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        		<button type="button" class="btn btn-outline-dark">로그아웃</button>
+                        		<button type="button" class="btn btn-outline-dark" onclick="location.href='myPage/doLogout'">로그아웃</button>
                         	</a>
 						</li>                        
                         
@@ -202,72 +184,10 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">실비보험</h1>
+                        <h1 class="h3 mb-0 text-gray-800">마이페이지</h1>
                     </div>
 
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="cardInsurance border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="h7 mb-0 font-weight-bold text-primary text-uppercase mb-0">
-                                                ID. 1213</div>
-                                            <div class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">
-                                                더건강한암보험</div>
-                                            <div class="h6 mb-0 font-weight-bold text-gray-800">기본 보험료</div>
-                                            <div class="h6 mb-0 font-weight-bold text-gray-800">15000원</div>
-                                        </div>
-                                        <div class="col-auto">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="cardInsurance border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="h7 mb-0 font-weight-bold text-primary text-uppercase mb-0">
-                                                ID. 1214</div>
-                                            <div class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">
-                                                무배당암보험</div>
-                                            <div class="h6 mb-0 font-weight-bold text-gray-800">기본 보험료</div>
-                                            <div class="h6 mb-0 font-weight-bold text-gray-800">10000원</div>
-                                        </div>
-                                        <div class="col-auto">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="cardInsurance border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="h7 mb-0 font-weight-bold text-primary text-uppercase mb-0">
-                                                ID. 1215</div>
-                                            <div class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">
-                                                노란우산암보험</div>
-                                            <div class="h6 mb-0 font-weight-bold text-gray-800">기본 보험료</div>
-                                            <div class="h6 mb-0 font-weight-bold text-gray-800">23000원</div>
-                                        </div>
-                                        <div class="col-auto">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                   
 					<br>
                     <!-- Content Row -->
                     <div class="row">
@@ -278,77 +198,14 @@
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">요율</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">가입한 보험 리스트</h6>
                                 </div>
                                 <div class="card-body">
-                                    <h4 class="small font-weight-bold">Server Migration <span
-                                            class="float-right">20%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"
-                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Sales Tracking <span
-                                            class="float-right">40%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"
-                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Customer Database <span
-                                            class="float-right">60%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar" role="progressbar" style="width: 60%"
-                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Payout Details <span
-                                            class="float-right">80%</span></h4>
-                                    <div class="progress mb-4">
-                                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%"
-                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                    <h4 class="small font-weight-bold">Account Setup <span
-                                            class="float-right">Complete!</span></h4>
-                                    <div class="progress">
-                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"
-                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-lg-6 mb-4">
-
-                            <!-- Illustrations -->
-                            <div class="card shadow mb-4">
-									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary">보장내역</h6>
-									</div>
-									<div class="card-body">
-									기본계약 &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-										<ol class="list-group list-group-numbered">
-											<li
-												class="list-group-item d-flex justify-content-between align-items-start">
-												<div class="ms-2 me-auto">
-													<div class="fw-bold">갑상선암</div>
-													보장금액 : 10000000
-												</div> 
-											</li>
-											<li
-												class="list-group-item d-flex justify-content-between align-items-start">
-												<div class="ms-2 me-auto">
-													<div class="fw-bold">폐암</div>
-													보장금액 : 10000000
-												</div> 
-											</li>
-											<li
-												class="list-group-item d-flex justify-content-between align-items-start">
-												<div class="ms-2 me-auto">
-													<div class="fw-bold">난소암</div>
-													보장금액 : 15000000
-												</div> 
-											</li>
-										</ol>
-									</div>
-								</div>
                         </div>
                     </div>
 

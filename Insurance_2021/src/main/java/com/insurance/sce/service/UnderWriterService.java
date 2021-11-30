@@ -15,4 +15,6 @@ public interface UnderWriterService {
 	public Insurant getInsurant(String insurantId);
 	public ArrayList<String[]> getContractList();
 	public Contract getContract(String contractID);
+	public void approveContract(String contractId);
+	public void denyContract(String contractId);
 }

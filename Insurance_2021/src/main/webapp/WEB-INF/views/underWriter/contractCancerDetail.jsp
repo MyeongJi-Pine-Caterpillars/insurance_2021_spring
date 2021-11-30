@@ -8,8 +8,8 @@
 <%@ page import="com.insurance.sce.model.contract.Contract"%>
 <%@ page import="com.insurance.sce.model.customer.Insurant"%>
 <%
-	Contract seletedContract = (Contract)request.getAttribute("seletedContract");
-	Insurant seletedInsurant = (Insurant)request.getAttribute("seletedInsurant");
+	Contract selectedContract = (Contract)request.getAttribute("seletedContract");
+	Insurant selectedInsurant = (Insurant)request.getAttribute("seletedInsurant");
 %>
 
 <!DOCTYPE html>
@@ -177,7 +177,7 @@
 					
 					<!-- Content Row -->
 					<div class="row" style=" width: 200%;">
-						<div class="col-xl-3 col-md-6 mb-4" onclick="selectInsurance();" id=<%=seletedContract.getInsuranceId()%> >
+						<div class="col-xl-3 col-md-6 mb-4" onclick="selectInsurance();" id=<%=selectedContract.getInsuranceId()%> >
 							<div class="cardInsurance border-left-primary shadow h-100 py-2">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
@@ -185,24 +185,24 @@
 											<div class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">
 												Insurant Data</div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800">
-												이름 - <%= seletedInsurant.getName() %></div>
+												이름 - <%= selectedInsurant.getName() %></div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800">
-												주소 - <%= seletedInsurant.getAddress() %></div>
+												주소 - <%= selectedInsurant.getAddress() %></div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800">
-												휴대폰 -<%= seletedInsurant.getPhoneNumber() %> </div>
+												휴대폰 -<%= selectedInsurant.getPhoneNumber() %> </div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800">
-												나이 - <%= seletedInsurant.getAge() %></div>
+												나이 - <%= selectedInsurant.getAge() %></div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800">
-												성별 - <%= seletedInsurant.getEGender().getName() %></div>
+												성별 - <%= selectedInsurant.getEGender().getName() %></div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800">
-												직업 - <%= seletedInsurant.getEJob().getName() %></div>
+												직업 - <%= selectedInsurant.getEJob().getName() %></div>
 										</div>
 										<div class="col-auto"></div>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-xl-3 col-md-6 mb-4" onclick="selectInsurance();" id=<%=seletedContract.getInsuranceId()%> >
+						<div class="col-xl-3 col-md-6 mb-4" onclick="selectInsurance();" id=<%=selectedContract.getInsuranceId()%> >
 							<div class="cardInsurance border-left-primary shadow h-100 py-2">
 								<div class="card-body">
 									<div class="row no-gutters align-items-center">
@@ -210,13 +210,13 @@
 											<div class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">
 												Contract Data</div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800">
-												ID - <%= seletedContract.getContractId() %></div>
+												ID - <%= selectedContract.getContractId() %></div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800">
-												특약여부 - <%= seletedContract.isSpecial() %></div>
+												특약여부 - <%= selectedContract.isSpecial() %></div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800">
-												요금 - <%= seletedContract.getFee() %></div>
+												요금 - <%= selectedContract.getFee() %></div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800">
-												실효기간 -<%= seletedContract.getUnpaidPeriod() %> </div>
+												실효기간 -<%= selectedContract.getUnpaidPeriod() %> </div>
 											</div>
 										<div class="col-auto"></div>
 									</div>
@@ -275,8 +275,8 @@
 						
 						<div class="row">
 							<div class="col-lg-6 mb-4">
-								<button type="button" class="btn btn-primary btn-lg">승인</button>
-								<button type="button" class="btn btn-secondary btn-lg">거부</button>
+								<button type="button" onclick="approve(this.id);" id = <%= selectedContract.getContractId() %> class="btn btn-primary btn-lg">승인</button>
+								<button type="button" onclick="deny(this.id);"  id = <%= selectedContract.getContractId() %> class="btn btn-secondary btn-lg">거부</button>
 							</div>
 						</div>
 
@@ -340,7 +340,7 @@
 			var insuranceId = "";
 			
 			$(document).ready(function(){
-				document.getElementById(<%=seletedContract.getInsuranceId()%>).click();
+				document.getElementById(<%=selectedContract.getInsuranceId()%>).click();
 			});
 
 			$('.col-xl-3').click(function(){
@@ -434,6 +434,13 @@
 					}
 				});
 			});
+			
+			function approve(contractId) {
+				location.href="doApprove?contractId="+contractId;
+			}
+			function deny(contractId) {
+				location.href="doDeny?contractId="+contractId;
+			}
 		</script>
 
 		<!-- Bootstrap core JavaScript-->

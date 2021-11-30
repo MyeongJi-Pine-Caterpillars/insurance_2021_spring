@@ -22,7 +22,7 @@ public class ContractDetail {
 	@Autowired
 	UnderWriterService underWriterService;
 	
-	@RequestMapping(value="contractDetail", method=RequestMethod.GET)
+	@RequestMapping(value="contractCancerDetail", method=RequestMethod.GET)
 	public String response(Locale locale, Model model, HttpServletRequest request, String contractId) {
 		HttpSession session = request.getSession(true);
 		Employee uw = (Employee)session.getAttribute("loginEmployee");
@@ -33,6 +33,6 @@ public class ContractDetail {
 		Insurant insurant = (Insurant)underWriterService.getInsurant(contract.getInsurantId());
 		model.addAttribute("seletedInsurant", insurant);
 		
-		return "underWriter/contractDetail";
+		return "underWriter/contractCancerDetail";
 	}
 }

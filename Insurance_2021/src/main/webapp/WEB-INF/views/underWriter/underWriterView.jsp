@@ -386,6 +386,7 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+                            <form name = dataTable action = "./selectContractView" method = "GET">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -426,6 +427,7 @@
                                      	
                                     </tbody>
                                 </table>
+                                </form>>
                             </div>
                         </div>
                     </div>
@@ -478,7 +480,22 @@
     </div>
 	<script>
 	function selectContract(contractId) {
-		location.href="contractDetail?contractId="+contractId;
+		var form = document.dataTable;
+		var action = form.action;
+		
+		
+		$.get(
+				action,
+				{
+					contractId : contractId
+				},
+				function(data) {
+					location.href="contractCancerDetail?contractId="+contractId;
+				},
+				'html'
+		);
+		
+		
 	}
 	</script>
     <!-- Bootstrap core JavaScript-->

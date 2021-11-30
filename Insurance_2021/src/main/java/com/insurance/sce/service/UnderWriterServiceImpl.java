@@ -65,4 +65,17 @@ public class UnderWriterServiceImpl implements UnderWriterService{
 	public Contract getContract(String contractID) {
 		return contractDAO.select(contractID);
 	}
+
+	@Override
+	public void approveContract(String contractId) {
+		Contract contract = new Contract();
+		contract.setContractId(contractId);
+		contract.setEffectiveness(true);
+		contractDAO.updateEffectiveness(contract);
+	}
+
+	@Override
+	public void denyContract(String contractId) {
+		contractDAO.delete(contractId);
+	}
 }

@@ -60,4 +60,9 @@ public class UnderWriterServiceImpl implements UnderWriterService{
 		}
 		return dataList;
 	}
+
+	@Override
+	public Contract getContract(String contractID) {
+		return contractDAO.select(contractID);
+	}
 }

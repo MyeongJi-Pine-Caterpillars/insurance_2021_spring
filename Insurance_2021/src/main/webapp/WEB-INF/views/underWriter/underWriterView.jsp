@@ -386,7 +386,6 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                            <form name = dataTable action = "./doUnderWriterView" method = "GET">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -427,7 +426,6 @@
                                      	
                                     </tbody>
                                 </table>
-                                </form>
                             </div>
                         </div>
                     </div>
@@ -479,21 +477,9 @@
         </div>
     </div>
 	<script>
-		function selectContract(contractId) {
-			var form = document.dataTable;
-			var action = form.action;
-			
-			$.get(
-				action,
-				{
-					contractID : contractId
-				},
-				function(data) {
-					alert(data);
-				},
-				'html'
-			);
-		}
+	function selectContract(contractId) {
+		location.href="contractDetail?contractId="+contractId;
+	}
 	</script>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>

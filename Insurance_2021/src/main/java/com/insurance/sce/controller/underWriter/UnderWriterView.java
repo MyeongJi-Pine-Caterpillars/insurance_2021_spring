@@ -42,19 +42,14 @@ public class UnderWriterView {
 	UnderWriterService underWriterService;
 	
 	@RequestMapping(value="underWriterView", method=RequestMethod.GET)
-	public String underWriterView(Locale locale, Model model, HttpServletRequest request) {
+	public String underWriterView(Locale locale, Model model, HttpServletRequest request, String contractId) {
 		
 		HttpSession session = request.getSession(true);
 		Employee uw = (Employee)session.getAttribute("loginEmployee");
 		model.addAttribute("employeeName", uw.getName());
 		
 		model.addAttribute("dataList", underWriterService.getContractList());
+		
 		return "underWriter/underWriterView";
-	}
-	
-	@RequestMapping(value="doUnderWriterView")
-	@ResponseBody
-	public String doUnderWriterView(String contractID) {
-		return contractID;
 	}
 }

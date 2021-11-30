@@ -37,7 +37,7 @@ public class ContractDAOImpl extends DBConnector implements ContractDAO{
 	public List<String> selectAllContractId() {return sqlSession.selectList(SelectAllContractId);}
 	public List<Contract> selectAllIds() {return sqlSession.selectList(SelectAllIds);}
 	public List<Contract> selectListByInsurant(String insurantId) {return sqlSession.selectList(SelectListByInsurant, insurantId);}
-	public Contract select(String contractId) {return (Contract) sqlSession.selectList(Select, contractId);}
+	public Contract select(String contractId) {return (Contract) sqlSession.selectOne(Select, contractId);}
 	public Contract selectUnpaidAndFee(String contractId) {return (Contract) sqlSession.selectList(SelectUnpaidAndFee, contractId);}
 
 	// Update

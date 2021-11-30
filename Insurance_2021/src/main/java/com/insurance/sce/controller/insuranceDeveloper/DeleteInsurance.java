@@ -1,4 +1,4 @@
-package com.insurance.sce.controller.insuranceConfirmer;
+package com.insurance.sce.controller.insuranceDeveloper;
 
 import java.util.List;
 import java.util.Locale;
@@ -22,36 +22,36 @@ import com.insurance.sce.service.InsuranceService;
  */
 @Controller
 @RequestMapping(value = "/")
-public class ConfirmerView {
+public class DeleteInsurance {
 	@Autowired
 	InsuranceConfirmerService insuranceConfirmerService;
 	@Autowired
 	InsuranceService insuranceService;
 	
-	@RequestMapping(value="confirmerView", method=RequestMethod.GET)
-	public String responseConfirmerView(Locale locale, Model model, HttpServletRequest request) {
+	@RequestMapping(value="deleteInsurance", method=RequestMethod.GET)
+	public String responseDeleteInsurance(Locale locale, Model model, HttpServletRequest request) {
 		model.addAttribute("insuranceList", insuranceService.selectAllInsurance());
-		return "insuranceConfirmer/confirmerView";
+		return "insuranceDeveloper/deleteInsurance";
 	}
-	@RequestMapping(value="confirmerView/confirmInsurance", method=RequestMethod.GET)
+	@RequestMapping(value="deleteInsurance/delete", method=RequestMethod.GET)
 	public String responseConfirmInsurance(Locale locale, Model model, HttpServletRequest request) {
 		String insuranceId = (String)request.getParameter("confirmInsuranceId");
 		insuranceConfirmerService.confirmInsurance(insuranceId);
 		return "redirect:/confirmerView";
 	}
 	
-	@RequestMapping(value="confirmerView/doSelect")
+	@RequestMapping(value="deleteInsurance/doSelect")
 	@ResponseBody
 	Insurance doSelect(String insuranceId) {
 		return insuranceService.selectInsurance(insuranceId);
 	}
-	@RequestMapping(value="confirmerView/doSelectGuaranteePlan")
+	@RequestMapping(value="deleteInsurance/doSelectGuaranteePlan")
 	@ResponseBody
 	List<GuaranteePlan> doSelectGuaranteePlan(String insuranceId) {
 		return insuranceService.selectGuaranteePlan(insuranceId);
 	}
 	
-	@RequestMapping(value="confirmerView/doLogout")
+	@RequestMapping(value="deleteInsurance/doLogout")
 	public String doLogout(HttpServletRequest request) {
 		return "redirect:/loginEmployee";
 	}

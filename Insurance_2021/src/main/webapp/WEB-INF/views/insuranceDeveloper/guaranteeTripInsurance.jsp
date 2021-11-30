@@ -48,10 +48,15 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-               	 <a class="nav-link" href="developInsurance">
+           <li class="nav-item active">
+               	 <a class="nav-link" href="developInsurance.do">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>보험 설계하기</span></a>
+            </li>
+             <li class="nav-item active">
+               	 <a class="nav-link" href="deleteInsurance.do">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>보험 사후관리하기</span></a>
             </li>
 
             <!-- Divider -->

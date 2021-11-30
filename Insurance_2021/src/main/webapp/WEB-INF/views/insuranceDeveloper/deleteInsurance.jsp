@@ -67,9 +67,14 @@
 
 			<!-- Nav Item - Dashboard -->
 			<li class="nav-item active"><a class="nav-link"
-				href="confirmView.do"> <i class="fas fa-fw fa-tachometer-alt"></i>
-					<span>보험 확정하기</span></a></li>
-
+				href="developInsurance"> <i class="fas fa-fw fa-tachometer-alt"></i>
+					<span>보험 확정하기</span></a>
+			</li>
+			 <li class="nav-item active">
+               	 <a class="nav-link" href="deleteInsurance">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>보험 사후관리하기</span></a>
+            </li>
 			<!-- Divider -->
 			<hr class="sidebar-divider">
 
@@ -381,7 +386,7 @@
 					<div class="row">
 
 						<%for(Insurance insurance : insuranceList){ 
-						if(!insurance.isConfirmedStatus() && !insurance.isDel()) {%>
+						if(!insurance.isDel()) {%>
 						<div class="col-xl-3 col-md-6 mb-4" id=<%=insurance.getInsuranceId() %>>
 							<div class="cardInsurance border-left-primary shadow h-100 py-2">
 								<div class="card-body" id=<%=insurance.getInsuranceId() %>>
@@ -408,9 +413,9 @@
 					}; %>
 
 					</div>
-					<form id="form-confirmerView" action="confirmerView/confirmInsurance" method="get">
+					<form id="form-deleteInsurance" action="deleteInsurance/delete" method="get">
 						<input style="display:none" class="form-check-input" type="text"
-												name="confirmInsuranceId" id="confirmInsuranceId">
+												name="deleteInsuranceId" id="deleteInsuranceId">
 					</form>
 
 					<br>
@@ -483,7 +488,7 @@
 
 					<div class="col">
 						<div class="col-lg-6 mb-4">
-							<button type="button" class="btn btn-primary btn-lg" onclick="confirm()">보험 확정하기</button>
+							<button type="button" class="btn btn-primary btn-lg" onclick="confirm()">보험 d확정하기</button>
 						</div>
 					</div>
 
@@ -552,17 +557,17 @@
 		var annualLimitCount = "연간 한도 횟수";
 		var insuranceId = 0;
 		function confirm(){
-			$('#confirmInsuranceId').val(insuranceId);
+			$('#deleteInsuranceId').val(insuranceId);
 			if(insuranceId == 0) alert("확정할 보험을 선택해주세요.");
 			else {
 				alert("보험이 확정되었습니다.")
-				$("#form-confirmerView").submit();
+				$("#form-deleteInsurance").submit();
 			}
 		}
 		$('.col-xl-3').click(function(){
 			insuranceId = {"insuranceId" : $(this).attr('id')};
 			$.ajax({
-			url: "confirmerView/doSelect",
+			url: "deleteInsurance/doSelect",
 			type: "GET",
 			data: insuranceId,
 					
@@ -678,7 +683,7 @@
 			});
 
 			$.ajax({
-			url: "confirmerView/doSelectGuaranteePlan",
+			url: "deleteInsurance/doSelectGuaranteePlan",
 			type: "GET",
 			data: insuranceId,
 					

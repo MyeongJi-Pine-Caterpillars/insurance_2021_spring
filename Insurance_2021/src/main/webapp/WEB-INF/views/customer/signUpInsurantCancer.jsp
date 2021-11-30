@@ -1,4 +1,4 @@
-f<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
@@ -221,7 +221,7 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 					<div class="row">
 
 						<div class="col-lg-6 mb-4">
-							<form id="form-signupInsurant" action="signUpInsurantType"
+							<form id="form-detailInsurance" action="goToSpecializeRate"
 								method="get">
 								<!-- Illustrations -->
 								<div class="card shadow mb-4">
@@ -280,38 +280,7 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 										</div>
 									</div>
 								</div>
-								<div class="card shadow mb-4">
-									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary">전화번호</h6>
-									</div>
-									<div class="card-body">
-										<div class="column">
-											<div class="form-check">
-												<div class="col">
-													<label>가입자의 전화번호를 입력하세요 (010-xxxx-xxxx)</label>
-													<div class="row">
-
-														<div class="col-2">
-															<input type="tel" class="form-control"
-																id="inputPhoneNumber1" maxlength='3' pattern="[0-9]{3}">
-														</div>
-														<p>-</p>
-														<div class="col-2">
-															<input type="tel" class="form-control"
-																id="inputPhoneNumber2" maxlength='4'>
-														</div>
-														<p>-</p>
-														<div class="col-2">
-															<input type="tel" class="form-control"
-																id="inputPhoneNumber3" maxlength='4'>
-														</div>
-
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+								
 								<div class="card shadow mb-4">
 									<div class="card-header py-3">
 										<h6 class="m-0 font-weight-bold text-primary">직업</h6>
@@ -377,10 +346,16 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 									</div>
 								</div>
 
-							<div class="col">
-								<button type="submit" class="btn btn-primary">다음 단계로</button>
-							</div>
 							</form>
+							<div class="col">
+								<button type="button" class="btn btn-primary"
+									onclick="nextBtn()">다음 단계로</button>
+							</div>
+							<script>
+								function nextBtn() {
+									$("#form-detailInsurance").submit();
+								}
+							</script>
 						</div>
 					</div>
 

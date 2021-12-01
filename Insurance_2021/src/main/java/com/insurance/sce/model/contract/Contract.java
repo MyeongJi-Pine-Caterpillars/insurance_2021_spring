@@ -75,20 +75,4 @@ public class Contract {
 		accident.setDamageCost(damageCost);
 		accident.setHandlingStatus(handlingStatus);
 	}
-
-//	public void reportAccident(String content, enum type){
-//
-//	}
-//
-//	public void requestEmergencyRescueService(String location){
-//
-//	}
-//
-//	public void requestInsuranceRecharter(){
-//
-//	}
-//
-//	public void requestInsuranceRevival(){
-//
-//	}
 }

@@ -9,8 +9,9 @@ import com.insurance.sce.model.customer.Insurant;
 public interface InsurantDAO {
 	public int insertInsurant(Insurant insurant);
 	
-	public List<Insurant> selectInsurantList();
-	public Insurant selectInsurant(String InsurantId);
+	public List<Insurant> selectAll();
+	public List<String> selectInsurantIds();
+	public Insurant select(String InsurantId);
 	public Insurant selectByCustomerId(String customerId);
 	public String selectCustomerId(String insurantId);
 	

@@ -42,6 +42,23 @@
 
 <body id="page-top">
 
+
+	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+		<symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+			<path
+			d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+		</symbol>
+		<symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+			<path
+			d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+		</symbol>
+		<symbol id="exclamation-triangle-fill" fill="currentColor"
+			viewBox="0 0 16 16">
+			<path
+			d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+		</symbol>
+	</svg>
+
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
@@ -213,7 +230,7 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">기본 정보 입력하기</h1>
+						<h1 class="h3 mb-0 text-gray-800">가족 병력 입력하기</h1>
 					</div>
 
 					<!-- /.row -->
@@ -221,125 +238,160 @@
 					<div class="row">
 
 						<div class="col-lg-6 mb-4">
-							<form id="form-detailInsurance" action="goToSpecializeRate"
-								method="get">
-								<!-- Illustrations -->
-								<div class="card shadow mb-4">
-									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary">이름</h6>
-									</div>
-									<div class="card-body">
-										<div class="column">
-											<div class="form-check">
-												<div class="row">
-													<label>가입자의 이름을 입력하세요 : </label>
-													<div class="col-4">
-														<input type="text" class="form-control" id="inputName"
-															maxlength='10'>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+							<form id="form-detailInsurance" name="formSignUpInsurant"
+								action="goToSpecializeRate" method="get">
 
-								<!-- Approach -->
 								<div class="card shadow mb-4">
 									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary">나이</h6>
-									</div>
-									<div class="card-body">
-										<div class="column">
-											<div class="form-check">
-												<div class="row">
-													<label>가입자의 나이를 입력하세요 : </label>
-													<div class="col-2">
-														<input type="number" class="form-control" id="inputAge"
-															maxlength='4' min='0'>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="card shadow mb-4">
-									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary">주소</h6>
-									</div>
-									<div class="card-body">
-										<div class="column">
-											<div class="form-check">
-												<div class="row">
-													<label>가입자의 거주지 주소를 입력하세요</label>
-													<div class="col-10">
-														<input type="text" class="form-control" id="inputAddress"
-															placeholder="ex) xx도 oo시 / xx시 oo구">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								
-								<div class="card shadow mb-4">
-									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary">직업</h6>
+										<h6 class="m-0 font-weight-bold text-primary">가족 병력 여부</h6>
 									</div>
 									<div class="card-body">
 										<div class="column">
 											<div class="form-check">
 												<div class="col">
-													<label>가입자의 직업을 선택해주세요</label>
+													<label>가족 중에 암에 걸리신 분이 있습니까?</label>
 													<div class="col">
 														<div class="row">
 															<div class=form-check>
 																<input class="form-check-input" type="radio"
-																	name="jobRadio" value="Officer" checked> <label
+																	name="isCancerRadio" value="Yes"
+																	onClick="showCancerRadio();"> <label
 																	class="form-check-label" for="insuranceRadio1">
-																	사무직&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+																	예&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 															</div>
 															<div class="form-check">
 																<input class="form-check-input" type="radio"
-																	name="jobRadio" value=Driver> <label
+																	name="isCancerRadio" value="No"
+																	onClick="hideCancerRadio();" checked> <label
 																	class="form-check-label" for="insuranceRadio2">
-																	운전자&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-															</div>
-															<div class=form-check>
-																<input class="form-check-input" type="radio"
-																	name="jobRadio" value="Worker"> <label
-																	class="form-check-label" for="insuranceRadio3">
-																	현장직&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-															</div>
-															<div class="form-check">
-																<input class="form-check-input" type="radio"
-																	name="insuranceRadio" value="Student"> <label
-																	class="form-check-label" for="insuranceRadio4">
-																	학생&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+																	아니오&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 															</div>
 														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="card shadow mb-4" style="display: none"
+									id="checkCancerType">
+									<div class="card-header py-3">
+										<h6 class="m-0 font-weight-bold text-primary">암 종류</h6>
+									</div>
+									<div class="card-body">
+										<div class="column">
+											<div class="form-check">
+												<div class="col">
+													<label>암 종류를 선택해주세요</label>
+													<div class="col">
 														<div class="row">
 															<div class=form-check>
 																<input class="form-check-input" type="radio"
-																	name="jobRadio" value="Teacher" checked> <label
+																	name="familyMedicalDisease" value="thyroid"
+																	onClick="diseaseChange();"> <label
 																	class="form-check-label" for="insuranceRadio1">
-																	교사&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+																	갑상선암&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 															</div>
 															<div class="form-check">
 																<input class="form-check-input" type="radio"
-																	name="jobRadio" value="Soldier"> <label
+																	name="familyMedicalDisease" value="testicular"
+																	onClick="diseaseChange();"> <label
 																	class="form-check-label" for="insuranceRadio2">
-																	군인&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+																	고환암&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 															</div>
-															<div class=form-check>
+															<div class="form-check">
 																<input class="form-check-input" type="radio"
-																	name="jobRadio" value="Etc"> <label
-																	class="form-check-label" for="insuranceRadio3">
-																	기타&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+																	name="familyMedicalDisease" value="ovarian"
+																	onClick="diseaseChange();"> <label
+																	class="form-check-label" for="insuranceRadio2">
+																	난소암&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="familyMedicalDisease" value="esophageal"
+																	onClick="diseaseChange();"> <label
+																	class="form-check-label" for="insuranceRadio2">
+																	식도암&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="familyMedicalDisease" value="lung"
+																	onClick="diseaseChange();"> <label
+																	class="form-check-label" for="insuranceRadio2">
+																	폐암&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 															</div>
 														</div>
-
-
 													</div>
+												</div>
+											</div>
+
+											<div id="diseaseAlarm" style="display: none;">
+												<div
+													class="alert alert-danger d-flex align-items-center mt-3">
+													<svg class="bi flex-shrink-0 me-2" width="24" height="24"
+														role="img" aria-label="Danger:">
+													<use xlink:href="#exclamation-triangle-fill" /></svg>
+													<div>&nbsp 내용을 입력해주세요!!</div>
+												</div>
+											</div>
+
+										</div>
+									</div>
+								</div>
+								<div class="card shadow mb-4" style="display: none"
+									id="checkFamilyRelationship">
+									<div class="card-header py-3">
+										<h6 class="m-0 font-weight-bold text-primary">가족 촌수</h6>
+									</div>
+									<div class="card-body">
+										<div class="column">
+											<div class="form-check">
+												<div class="col">
+													<label>촌수를 선택해주세요</label>
+													<div class="col">
+														<div class="row">
+															<div class=form-check>
+																<input class="form-check-input" type="radio"
+																	name="familyMedicalRelationship" value="one"
+																	check="relationChange();"> <label
+																	class="form-check-label" for="insuranceRadio1">
+																	1촌&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="familyMedicalRelationship" value="two"
+																	onClick="relationChange();"> <label
+																	class="form-check-label" for="insuranceRadio2">
+																	2촌&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="familyMedicalRelationship" value="three"
+																	onClick="relationChange();"> <label
+																	class="form-check-label" for="insuranceRadio2">
+																	3촌&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="familyMedicalRelationship" value="four"
+																	onClick="relationChange();"> <label
+																	class="form-check-label" for="insuranceRadio2">
+																	4촌&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+
+
+											<div id="relationAlarm" style="display: none;">
+												<div
+													class="alert alert-danger d-flex align-items-center mt-3">
+													<svg class="bi flex-shrink-0 me-2" width="24" height="24"
+														role="img" aria-label="Danger:">
+													<use xlink:href="#exclamation-triangle-fill" /></svg>
+													<div>&nbsp 내용을 입력해주세요!!</div>
 												</div>
 											</div>
 										</div>
@@ -349,13 +401,8 @@
 							</form>
 							<div class="col">
 								<button type="button" class="btn btn-primary"
-									onclick="nextBtn()">다음 단계로</button>
+									onclick="checkInput();">가입 신청하기</button>
 							</div>
-							<script>
-								function nextBtn() {
-									$("#form-detailInsurance").submit();
-								}
-							</script>
 						</div>
 					</div>
 
@@ -409,7 +456,35 @@
 	</div>
 
 	<script>
-		
+		function hideCancerRadio() {
+			$('#checkCancerType').hide();
+			$('#checkFamilyRelationship').hide();
+		}
+
+		function showCancerRadio() {
+			$('#checkCancerType').show();
+			$('#checkFamilyRelationship').show();
+		}
+
+		function checkInput() {
+			form = document.formSignupInsurant;
+
+			if ($(':radio[name="familyMedicalDisease"]:checked').length < 1) {
+				$('#diseaseAlarm').show();
+			} else if ($(':radio[name="familyMedicalRelationship"]:checked').length < 1) {
+				$('#relationAlarm').show();
+			} else {
+				form.submit();
+			}
+		}
+
+		$("input:radio[name=familyMedicalDisease]").click(function() {
+			$('#diseaseAlarm').hide();
+		});
+
+		$("input:radio[name=familyMedicalRelationship]").click(function() {
+			$('#relationAlarm').hide();
+		});
 	</script>
 
 	<!-- Bootstrap core JavaScript-->

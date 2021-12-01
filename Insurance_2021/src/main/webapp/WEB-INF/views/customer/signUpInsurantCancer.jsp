@@ -238,8 +238,7 @@
 					<div class="row">
 
 						<div class="col-lg-6 mb-4">
-							<form id="form-detailInsurance" name="formSignUpInsurant"
-								action="goToSpecializeRate" method="get">
+							<form name="formSignUpInsurant" action="doRegisterCancerInsurance" method="get">
 
 								<div class="card shadow mb-4">
 									<div class="card-header py-3">
@@ -264,7 +263,7 @@
 																	name="isCancerRadio" value="No"
 																	onClick="hideCancerRadio();" checked> <label
 																	class="form-check-label" for="insuranceRadio2">
-																	아니오&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+																	아니요&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 															</div>
 														</div>
 													</div>
@@ -397,12 +396,12 @@
 										</div>
 									</div>
 								</div>
+								<div class="col">
+									<button type="button" class="btn btn-primary"
+										onclick="checkInput();">가입 신청하기</button>
+								</div>
 
 							</form>
-							<div class="col">
-								<button type="button" class="btn btn-primary"
-									onclick="checkInput();">가입 신청하기</button>
-							</div>
 						</div>
 					</div>
 
@@ -467,14 +466,18 @@
 		}
 
 		function checkInput() {
-			form = document.formSignupInsurant;
+			form = document.formSignUpInsurant;
 
-			if ($(':radio[name="familyMedicalDisease"]:checked').length < 1) {
-				$('#diseaseAlarm').show();
-			} else if ($(':radio[name="familyMedicalRelationship"]:checked').length < 1) {
-				$('#relationAlarm').show();
-			} else {
+			if ($("input:radio[name=isCancerRadio]")[1].checked)
 				form.submit();
+			else {
+				if ($(':radio[name="familyMedicalDisease"]:checked').length < 1) {
+					$('#diseaseAlarm').show();
+				} else if ($(':radio[name="familyMedicalRelationship"]:checked').length < 1) {
+					$('#relationAlarm').show();
+				} else {
+					form.submit();
+				}
 			}
 		}
 

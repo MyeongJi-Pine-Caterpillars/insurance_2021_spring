@@ -40,7 +40,7 @@ public class UnderWriterServiceImpl implements UnderWriterService{
 	}
 
 	public Insurant getInsurant(String insurantId) {
-		return insurantDAO.selectInsurant(insurantId);
+		return insurantDAO.select(insurantId);
 	}
 	
 	public ArrayList<String[]> getContractList() {

@@ -42,6 +42,7 @@ public class SignUpInsurant {
 		this.insuranceId = insuranceId;
 		this.insuranceType = insuranceType;
 		
+		model.addAttribute("guaranteePlanList", insuranceService.selectGuaranteePlan(insuranceId));	
 		model.addAttribute("insuranceId", insuranceId);
 		return "customer/signUpInsurant";
 	}
@@ -61,12 +62,14 @@ public class SignUpInsurant {
 		map.put("insurantPhoneNumber2", request.getParameter("insurantPhoneNumber2"));
 		map.put("insurantPhoneNumber3", request.getParameter("insurantPhoneNumber3"));
 		map.put("jobRadio", (String) request.getParameter("jobRadio"));
+		map.put("genderRadio", (String) request.getParameter("genderRadio"));
 		
 		// 받아온 정보를 insurant 객체에 주입 후 세션 전송
 		Insurant insurant = insurantService.setInsurantBasic(map);
 		session.setAttribute("insurantBasic", insurant);
 		
 		// 보험 종류에 따라 화면을 띄움
+		model.addAttribute("spcial", request.getParameter("spcialRadio"));
 		model.addAttribute("insuranceId", insuranceId);
 		return "redirect:/signUpInsurant" + insuranceType;
 	}

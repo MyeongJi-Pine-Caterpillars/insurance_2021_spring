@@ -13,10 +13,13 @@
 	</insert>
 	
 	<!-- SELECT -->
-	<select id = "selectInsurantList" resultType = "com.insurance.sce.model.customer.Insurant">
+	<select id = "selectAll" resultType = "com.insurance.sce.model.customer.Insurant">
 		SELECT * FROM insurant
 	</select>
-	<select id = "selectInsurant" resultType = "com.insurance.sce.model.customer.Insurant">
+	<select id = "selectInsurantIds" resultType = "String">
+		SELECT insurantId FROM insurant
+	</select>
+	<select id = "select" resultType = "com.insurance.sce.model.customer.Insurant">
 		SELECT * FROM insurant
 		WHERE insurantId = #{insurantId}
 	</select>

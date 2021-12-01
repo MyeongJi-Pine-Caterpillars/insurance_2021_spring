@@ -2,6 +2,11 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.insurance.sce.model.insurance.GuaranteePlan"%>
+<%
+List<GuaranteePlan> guaranteePlanList = (List<GuaranteePlan>) request.getAttribute("guaranteePlanList");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -250,7 +255,8 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 													<label>가입자의 이름을 입력하세요 : </label>
 													<div class="col-4">
 														<input type="text" class="form-control"
-															name="insurantName" maxlength='10' onChange="nameChange();">
+															name="insurantName" maxlength='10'
+															onChange="nameChange();">
 													</div>
 												</div>
 											</div>
@@ -279,7 +285,8 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 													<label>가입자의 나이를 입력하세요 : </label>
 													<div class="col-2">
 														<input type="number" class="form-control"
-															name="insurantAge" maxlength='4' min='0' onChange="ageChange();">
+															name="insurantAge" maxlength='4' min='0'
+															onChange="ageChange();">
 													</div>
 												</div>
 											</div>
@@ -297,7 +304,7 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 								</div>
 								<div class="card shadow mb-4">
 									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary">주소</h6>
+										<h6 class="m-0 font-weight-bold text-primary" id="address">주소</h6>
 									</div>
 									<div class="card-body">
 										<div class="column">
@@ -307,7 +314,8 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 													<div class="col-10">
 														<input type="text" class="form-control"
 															name="insurantAddress"
-															placeholder="ex) xx도 oo시 / xx시 oo구" onChange="addressChange();">
+															placeholder="ex) xx도 oo시 / xx시 oo구"
+															onChange="addressChange();">
 													</div>
 												</div>
 											</div>
@@ -325,7 +333,7 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 								</div>
 								<div class="card shadow mb-4">
 									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary">전화번호</h6>
+										<h6 class="m-0 font-weight-bold text-primary" id="phoneNumber">전화번호</h6>
 									</div>
 									<div class="card-body">
 										<div class="column">
@@ -336,23 +344,66 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 
 														<div class="col-2">
 															<input type="tel" class="form-control"
-																name="insurantPhoneNumber1" maxlength='3' onChange="phoneNumberChange();">
+																name="insurantPhoneNumber1" maxlength='3'
+																onChange="phoneNumberChange();">
 														</div>
 														<p>-</p>
 														<div class="col-2">
 															<input type="tel" class="form-control"
-																name="insurantPhoneNumber2" maxlength='4' onChange="phoneNumberChange();">
+																name="insurantPhoneNumber2" maxlength='4'
+																onChange="phoneNumberChange();">
 														</div>
 														<p>-</p>
 														<div class="col-2">
 															<input type="tel" class="form-control"
-																name="insurantPhoneNumber3" maxlength='4' onChange="phoneNumberChange();">
+																name="insurantPhoneNumber3" maxlength='4'
+																onChange="phoneNumberChange();">
 														</div>
 
 													</div>
 												</div>
 											</div>
 											<div id="phoneNumberAlarm" style="display: none;">
+												<div
+													class="alert alert-danger d-flex align-items-center mt-3">
+													<svg class="bi flex-shrink-0 me-2" width="24" height="24"
+														role="img" aria-label="Danger:">
+													<use xlink:href="#exclamation-triangle-fill" /></svg>
+													<div>&nbsp 내용을 입력해주세요!!</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="card shadow mb-4">
+									<div class="card-header py-3">
+										<h6 class="m-0 font-weight-bold text-primary">성별</h6>
+									</div>
+									<div class="card-body">
+										<div class="column">
+											<div class="form-check">
+												<div class="col">
+													<label>가입자의 성별을 선택해주세요</label>
+													<div class="col">
+														<div class="row">
+															<div class=form-check>
+																<input class="form-check-input" type="radio"
+																	name="genderRadio" value="Male"> <label
+																	class="form-check-label" for="insuranceRadio1">
+																	남성&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="genderRadio" value="Female"> <label
+																	class="form-check-label" for="insuranceRadio2">
+																	여성&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											
+											<div id="genderAlarm" style="display: none;">
 												<div
 													class="alert alert-danger d-flex align-items-center mt-3">
 													<svg class="bi flex-shrink-0 me-2" width="24" height="24"
@@ -383,7 +434,7 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 															</div>
 															<div class="form-check">
 																<input class="form-check-input" type="radio"
-																	name="jobRadio" value=Driver> <label
+																	name="jobRadio" value="Driver"> <label
 																	class="form-check-label" for="insuranceRadio2">
 																	운전자&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 															</div>
@@ -420,8 +471,78 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 																	기타&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 															</div>
 														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
 
+								<div class="card shadow mb-4">
+									<div class="card-header py-3">
+										<h6 class="m-0 font-weight-bold text-primary">특약 가입여부</h6>
+									</div>
+									<div class="card-body">
+										<div class="column">
+											<div class="form-check">
+												<div class="col">
 
+													기본계약
+													<ol class="list-group list-group-numbered"
+														id="guaranteePlan">
+														<%
+														for (GuaranteePlan guranteePlan : guaranteePlanList) {
+														if (!guranteePlan.isSpecial()) {
+														%>
+														<li
+															class="list-group-item d-flex justify-content-between align-items-start">
+															<div class="ms-2 me-auto">
+																<div class="fw-bold"><%=guranteePlan.getContent()%></div>
+																보장금액 :
+																<%=guranteePlan.getCompensation()%>원
+																<div id="guaranteeRate" style="display:none">
+																	보장비율 :
+																	<%=guranteePlan.getRate() * 100%>%
+																</div>
+															</div>
+														</li>
+														<%}} ;%>
+													</ol>
+													선택특약
+													<ol class="list-group list-group-numbered mb-3"
+														id="guaranteePlanSpecial">
+														<%for (GuaranteePlan guranteePlan : guaranteePlanList) {
+														if (guranteePlan.isSpecial()) {%>
+														<li
+															class="list-group-item d-flex justify-content-between align-items-start">
+															<div class="ms-2 me-auto">
+																<div class="fw-bold"><%=guranteePlan.getContent()%></div>
+																보장금액 :
+																<%=guranteePlan.getCompensation()%>원
+																<div id="guaranteeRate" style="display:none">
+																	보장비율 :
+																	<%=guranteePlan.getRate() * 100%>%
+																</div>
+															</div>
+														</li>
+														<%}} ;%>
+													</ol>
+													<label>특약에 가입하시겠습니까?</label>
+													<div class="col">
+														<div class="row">
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="spcialRadio" value="Yes"> <label
+																	class="form-check-label" for="insuranceRadio1">
+																	예&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="spcialRadio" value="No" checked> <label
+																	class="form-check-label" for="insuranceRadio2">
+																	아니요&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+														</div>
 													</div>
 												</div>
 											</div>
@@ -487,6 +608,13 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 	</div>
 
 	<script>
+		$(document).ready(function() {
+			if($("insuranceType") == "Fire"||
+					$("insuranceType") == "Driver"){
+				$("#")
+			}
+		})
+
 		function checkInput() {
 			form = document.formSignupInsurant;
 
@@ -494,41 +622,54 @@ f<%@ page language="java" contentType="text/html; charset=UTF-8"
 				form.insurantName.style.borderColor = "red";
 				document.getElementById("name").scrollIntoView();
 				$('#nameAlarm').show();
-			}else if(form.insurantAge.value == ""){
+			} else if (form.insurantAge.value == "") {
 				form.insurantAge.style.borderColor = "red";
 				document.getElementById("age").scrollIntoView();
 				$('#ageAlarm').show();
-			}else if(form.insurantAddress.value == ""){
+			} else if (form.insurantAddress.value == "") {
 				form.insurantAddress.style.borderColor = "red";
+				document.getElementById("address").scrollIntoView();
 				$('#addressAlarm').show();
-			}else if(form.insurantPhoneNumber1.value.length != 3
+			} else if (form.insurantPhoneNumber1.value.length != 3
 					|| form.insurantPhoneNumber2.value.length != 4
-					|| form.insurantPhoneNumber3.value.length != 4){
+					|| form.insurantPhoneNumber3.value.length != 4) {
+				document.getElementById("phoneNumber").scrollIntoView();
 				form.insurantPhoneNumber1.style.borderColor = "red";
 				form.insurantPhoneNumber2.style.borderColor = "red";
 				form.insurantPhoneNumber3.style.borderColor = "red";
 				$('#phoneNumberAlarm').show();
+			}else if ($(':radio[name="genderRadio"]:checked').length < 1) {
+				$('#genderAlarm').show();
 			} else {
-					form.submit();
+				form.submit();
 			}
 		}
-		
-		function nameChange(){
+
+		function nameChange() {
 			form.insurantName.style.borderColor = "#D1D3E2";
 			$('#nameAlarm').hide();
 		}
-		
-		function ageChange(){
+
+		function ageChange() {
 			form.insurantAge.style.borderColor = "#D1D3E2";
 			$('#ageAlarm').hide();
 		}
-		
-		function addressChange(){
+
+		function addressChange() {
 			form.insurantAddress.style.borderColor = "#D1D3E2";
 			$('#addressAlarm').hide();
 		}
 		
-		function phoneNumberChange(){
+		function addressChange() {
+			form.insurantAddress.style.borderColor = "#D1D3E2";
+			$('#addressAlarm').hide();
+		}
+		
+		$("input:radio[name=genderRadio]").click(function() {
+			$('#genderAlarm').hide();
+		});
+
+		function phoneNumberChange() {
 			form.insurantPhoneNumber1.style.borderColor = "#D1D3E2";
 			form.insurantPhoneNumber2.style.borderColor = "#D1D3E2";
 			form.insurantPhoneNumber3.style.borderColor = "#D1D3E2";

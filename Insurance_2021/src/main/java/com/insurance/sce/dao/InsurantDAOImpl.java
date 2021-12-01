@@ -19,8 +19,9 @@ public class InsurantDAOImpl implements InsurantDAO {
 	
 	private static final String Insert = "insurantMapper.insertInsurant";
 	
-	private static final String SelectInsurantList = "insurantMapper.selectInsurantList";
-	private static final String SelectInsurant = "insurantMapper.selectInsurant";
+	private static final String SelectAll = "insurantMapper.selectAll";
+	private static final String SelectInsurantIds = "insurantMapper.selectInsurantIds";
+	private static final String Select = "insurantMapper.select";
 	private static final String SelectByCustomerId = "insurantMapper.selectByCustomerId";
 	private static final String SelectCustomerId = "insurantMapper.selectCustomerId";
 	
@@ -44,44 +45,18 @@ public class InsurantDAOImpl implements InsurantDAO {
 	
 	public int insertInsurant(Insurant insurant) {return sqlSession.insert(Insert, insurant);}
 
-	public List<Insurant> selectInsurantList() {
-		return sqlSession.selectList(SelectInsurantList);
-	}
-	
-	public Insurant selectInsurant(String InsurantId) {return sqlSession.selectOne(SelectInsurant, InsurantId);}
+	public List<Insurant> selectAll() {return sqlSession.selectList(SelectAll);}
+	public List<String> selectInsurantIds() {return sqlSession.selectList(SelectInsurantIds);}
+	public Insurant select(String InsurantId) {return sqlSession.selectOne(Select, InsurantId);}
+	public Insurant selectByCustomerId(String customerId) {return sqlSession.selectOne(SelectByCustomerId, customerId);}
+	public String selectCustomerId(String insurantId) {return sqlSession.selectOne(SelectCustomerId, insurantId);}
 
-	public Insurant selectByCustomerId(String customerId) {
-		return sqlSession.selectOne(SelectByCustomerId, customerId);
-	}
-
-	public String selectCustomerId(String insurantId) {
-		return sqlSession.selectOne(SelectCustomerId, insurantId);
-	}
-
-	public int updateName(Insurant insurant) {
-		return sqlSession.update(UpdateName, insurant);
-	}
-
-	public int updateAddress(Insurant insurant) {
-		return sqlSession.update(UpdateAddress, insurant);
-	}
-
-	public int updatePhoneNumber(Insurant insurant) {
-		return sqlSession.update(UpdatePhoneNumber, insurant);
-	}
-
-	public int updateAge(Insurant insurant) {
-		return sqlSession.update(UpdateAge, insurant);
-	}
-
-	public int updateAccidentHistory(Insurant insurant) {
-		return sqlSession.update(UpdateAccidentHistory, insurant);
-	}
-
-	public int updatePostedPriceOfStructure(Insurant insurant) {
-		return sqlSession.update(UpdatePostedPriceOfStructure, insurant);
-	}
-
+	public int updateName(Insurant insurant) {return sqlSession.update(UpdateName, insurant);}
+	public int updateAddress(Insurant insurant) {return sqlSession.update(UpdateAddress, insurant);}
+	public int updatePhoneNumber(Insurant insurant) {return sqlSession.update(UpdatePhoneNumber, insurant);}
+	public int updateAge(Insurant insurant) {return sqlSession.update(UpdateAge, insurant);}
+	public int updateAccidentHistory(Insurant insurant) {return sqlSession.update(UpdateAccidentHistory, insurant);}
+	public int updatePostedPriceOfStructure(Insurant insurant) {return sqlSession.update(UpdatePostedPriceOfStructure, insurant);}
 	public int updateUsageOfStructure(Insurant insurant) {return sqlSession.update(UpdateUsageOfStructure, insurant);}
 	public int updateGender(Insurant insurant) {return sqlSession.update(UpdateGender, insurant);}
 	public int updateJob(Insurant insurant) {return sqlSession.update(UpdateJob, insurant);}
@@ -96,4 +71,6 @@ public class InsurantDAOImpl implements InsurantDAO {
 		return sqlSession.delete(Delete, insurantId);
 		
 	}
+
+	
 }

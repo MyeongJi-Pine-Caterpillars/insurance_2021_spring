@@ -50,10 +50,5 @@ public class ConfirmerView {
 	List<GuaranteePlan> doSelectGuaranteePlan(String insuranceId) {
 		return insuranceService.selectGuaranteePlan(insuranceId);
 	}
-	
-	@RequestMapping(value="confirmerView/doLogout")
-	public String doLogout(HttpServletRequest request) {
-		return "redirect:/loginEmployee";
-	}
 }
 /*  */

@@ -1,6 +1,7 @@
 package com.insurance.sce.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -68,17 +69,17 @@ public class InsuranceDeveloperServiceImpl implements InsuranceDeveloperService{
 		}
 		return insurance;
 	}
-	public Insurance detailInsurance(Insurance insurance, String name, int basicFee, int specialFee, int warrantyPeriod, double[] age, double[] gender, double[] job) {
-		insurance.setName(name);
-		insurance.setBasicFee(basicFee);
-		if(specialFee != 0) {
+	public Insurance detailInsurance(Insurance insurance, HashMap<String, Object> map) {
+		insurance.setName((String)map.get("name"));
+		insurance.setBasicFee((int)map.get("basicFee"));
+		if((int)map.get("specialFee") != 0) {
 			insurance.setSpecialContract(true);
-			insurance.setSpecialContractFee(specialFee);
+			insurance.setSpecialContractFee((int)map.get("specialFee"));
 		}
-		insurance.setWarrantyPeriod(warrantyPeriod);
-		insurance.setRateOfAge(age);
-		insurance.setRateOfGender(gender);
-		insurance.setRateOfJob(job);
+		insurance.setWarrantyPeriod((int)map.get("warrantyPeriod"));
+		insurance.setRateOfAge((double[])map.get("ageRate"));
+		insurance.setRateOfGender((double[])map.get("genderRate"));
+		insurance.setRateOfJob((double[])map.get("jobRate"));
 		return insurance;
 	}
 	public Insurance setCancerRate(Insurance insurance, double[] familyMedical, double[] familyRelationship) {

@@ -50,10 +50,5 @@ public class DeleteInsurance {
 	List<GuaranteePlan> doSelectGuaranteePlan(String insuranceId) {
 		return insuranceService.selectGuaranteePlan(insuranceId);
 	}
-	
-	@RequestMapping(value="deleteInsurance/doLogout")
-	public String doLogout(HttpServletRequest request) {
-		return "redirect:/loginEmployee";
-	}
 }
 /*  */

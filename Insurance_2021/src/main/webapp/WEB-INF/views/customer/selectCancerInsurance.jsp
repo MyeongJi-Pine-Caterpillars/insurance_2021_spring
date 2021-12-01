@@ -456,7 +456,7 @@
 				if(insuranceId == ""){
 					alert("보험을 선택해주세요")
 				}else{
-					location.href="signUpInsurant?insuranceId="+insuranceId["insuranceId"]+"&type=5";
+					location.href="signUpInsurant?insuranceId="+insuranceId["insuranceId"]+"&insuranceType=Cancer";
 				}
 			}
 		</script>

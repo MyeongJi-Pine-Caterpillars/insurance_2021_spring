@@ -104,6 +104,7 @@
 				<!-- End of Topbar -->
 
 				<!-- Begin Page Content -->
+				<form id="form-handleCompensation" action="handleCompensation/compensate" method="get">
 				<div class="container-fluid">
 
 					<!-- Page Heading -->
@@ -132,7 +133,8 @@
 											<div class="h6 mb-0 font-weight-bold text-gray-800">손해액</div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800" id=><%=accident.getDamageCost() %>원
 											</div>
-											<input id="contractId" type="text" style="display: none" name=<%=accident.getContractId() %>>
+											<input name="contractId" id="contractId" type="text" style="display: none" value=<%=accident.getContractId() %>>
+											<input name="accidentId" id="accidentId" type="text" style="display: none" value=<%=accident.getAccidentId() %>>
 											<input id="damageCost" type="text" style="display: none" name=<%=accident.getDamageCost() %>>
 											</div>
 										</div>
@@ -144,10 +146,6 @@
 					}; %>
 					
 					</div>
-					<form id="form-confirmerView" action="confirmerView/confirmInsurance" method="get">
-						<input style="display:none" class="form-check-input" type="text"
-												name="confirmInsuranceId" id="confirmInsuranceId">
-					</form>
 
 					<br>
 					<!-- Content Row -->
@@ -197,11 +195,12 @@
 
 					<div class="col">
 						<div class="col-lg-6 mb-4">
-							<button type="button" class="btn btn-primary btn-lg" onclick="confirm()">보험 확정하기</button>
+							<button type="button" class="btn btn-primary btn-lg" onclick="compensate()">보상 처리하기</button>
 						</div>
 					</div>
 
 				</div>
+				</form>
 				<!-- /.container-fluid -->
 
 			</div>
@@ -255,19 +254,18 @@
 		var accidentId = "";
 		var contractId = "";
 		var insuranceId = "";
-		var fee = 0;
-		var tmpCompensation = 0;
-		function confirm(){
-			$('#confirmInsuranceId').val(insuranceId);
-			if(insuranceId == 0) alert("확정할 보험을 선택해주세요.");
+		var fee = null;
+		var tmpCompensation = null;
+		function compensate(){
+			if(fee == null) alert("처리할 사고를 선택해주세요.");
 			else {
-				alert("보험이 확정되었습니다.")
-				$("#form-confirmerView").submit();
+				alert("입력하신 내용으로 보상 처리되었습니다.")
+				$("#form-handleCompensation").submit();
 			}
 		}
 		$('.col-xl-3').click(function(){
-			accidentId = $('#accidentId').attr('id');
-			contractId = $('#contractId').attr('name');
+			accidentId = $('#accidentId').attr('value');
+			contractId = $('#contractId').attr('value');
 			tmpCompensation = $('#damageCost').attr('name');
 			<%for(Contract contract: contractList){%>
 				if(contractId == <%=contract.getContractId() %>) {
@@ -300,19 +298,19 @@
 					);
 					$('#compensation').html('<div class="col mb-3" id="compensation"></div>');
 					$('#compensation').append(
-							'<h4 class="small font-weight-bold">배상금 <div class="float-center"><input id="updateCompensation" type="number" value=' +
+							'<h4 class="small font-weight-bold">배상금 <div class="float-center"><input step="1000" name="compensation" type="number" value=' +
 								tmpCompensation + '>' +
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div></h4>'
 					);
 					$('#fee').html('<div class="col mb-3" id="fee"></div>');
 					$('#fee').append(
-							'<h4 class="small font-weight-bold">보험료 갱신<div class="float-center"><input id="updatedFee" type="number" value=' +
+							'<h4 class="small font-weight-bold">보험료 갱신<div class="float-center"><input step="1000" name="fee" type="number" value=' +
 								fee + '>' +
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div></h4>'
 					);
 					$('#compensationCause').html('<div class="col mb-3" id="compensationCause"></div>');
 					$('#compensationCause').append(
-							'<textarea id="updateCause" name="ta" rows="7" cols="40" wrap="virtual">배상금 책정 이유를 입력해주세요.</textarea>' +
+							'<textarea id="compensationCause" name="compensationCause" rows="7" cols="40" wrap="virtual" placeholder="배상금 책정 이유를 입력해주세요."></textarea>' +
 							'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div></h4>'
 					);
 			},

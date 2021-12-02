@@ -28,3 +28,4 @@ public class CompensationCauseDAOImpl implements CompensationCauseDAO{
 	// Select
 	public String select(String accidentId) {return sqlSession.selectOne(Select, accidentId);}
 }
+

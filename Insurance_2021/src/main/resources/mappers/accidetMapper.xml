@@ -30,12 +30,12 @@
 	<update id="updateCompensation" parameterType="com.insurance.sce.model.contract.Accident">
 		UPDATE accident
 		SET compensation = #{compensation}
-		WHERE contractId = #{contractId}
+		WHERE accidentId = #{accidentId}
 	</update>
 	<update id="updateHandlingStatus" parameterType="com.insurance.sce.model.contract.Accident">
 		UPDATE accident
-		SET hadlingStatus = #{hadlingStatus}
-		WHERE contractId = #{contractId}
+		SET handlingStatus = #{handlingStatus}
+		WHERE accidentId = #{accidentId}
 	</update>
 	
 	<!-- DELETE -->

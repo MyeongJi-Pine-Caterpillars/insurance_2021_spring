@@ -49,9 +49,10 @@ public class HandleCompensation {
 	public String responseConfirmInsurance(Locale locale, Model model, HttpServletRequest request) {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("fee", Integer.parseInt(request.getParameter("fee")));
-		map.put("compensationCause", request.getParameter("compensationCause"));
-		map.put("contractId", request.getParameter("contractId"));
-		map.put("accidentId", request.getParameter("accidentId"));
+		map.put("compensation", Integer.parseInt(request.getParameter("compensation")));
+		map.put("compensationCause", (String)request.getParameter("compensationCause"));
+		map.put("contractId", (String)request.getParameter("contractId"));
+		map.put("accidentId", (String)request.getParameter("accidentId"));
 		compensationHandlerService.compensate(map);
 		return "redirect:/handleCompensation";
 	}

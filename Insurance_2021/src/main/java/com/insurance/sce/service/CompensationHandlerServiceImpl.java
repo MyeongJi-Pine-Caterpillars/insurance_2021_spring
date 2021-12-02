@@ -25,6 +25,12 @@ public class CompensationHandlerServiceImpl implements CompensationHandlerServic
 		Contract contract = new Contract();
 		contract.setContractId((String)map.get("contractId"));
 		contract.setFee((int)map.get("fee"));
+		Accident accident = new Accident();
+		accident.setAccidentId((String)map.get("accidentId"));
+		accident.setCompensation((int)map.get("compensation"));
+		accident.setHandlingStatus(true);
+		accidentDAO.updateCompensation(accident);
+		accidentDAO.updateHandlingStatus(accident);
 		contractDAO.updateFee(contract);
 		compensationCauseDAO.insert((String)map.get("accidentId"), (String)map.get("compensationCause"));
 	}

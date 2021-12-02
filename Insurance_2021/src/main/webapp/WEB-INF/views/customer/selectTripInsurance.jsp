@@ -349,7 +349,7 @@
 		
 		<script>
 			var ages = ["영유아", "10대", "20대", "30대", "40대", "50대", "노년층"];
-			var gender = ["남성", "야성"];
+			var gender = ["남성", "여성"];
 			var countryRisk = ["안전", "1단계", "2단계", "3단계"];
 
 			$('.col-xl-3').click(function(){

@@ -352,7 +352,7 @@
 		<script>
 			var ages = ["영유아", "10대", "20대", "30대", "40대", "50대", "노년층"];
 			var jobs = ["사무직", "운송업", "현장직", "학생", "교육직", "군인", "기타"];
-			var gender = ["남성", "야성"];
+			var gender = ["남성", "여성"];
 
 			$('.col-xl-3').click(function(){
 				var insuranceId = {"insuranceId" : $(this).attr('id')};

@@ -6,4 +6,5 @@ import com.insurance.sce.model.contract.Contract;
 
 public interface ContractService {
 	public List<Contract> selectNotEffectiveContract();
+	public List<Contract> selectAllContract();
 }

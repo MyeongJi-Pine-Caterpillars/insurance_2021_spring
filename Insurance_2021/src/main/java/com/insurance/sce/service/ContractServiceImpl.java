@@ -207,6 +207,11 @@ public class ContractServiceImpl implements ContractService{
 		return insurant;
 	}
 
+	@Override
+	public List<Contract> selectAllContract() {
+		return contractDAO.selectAll();
+	}
+
 
 
 	

@@ -339,6 +339,10 @@
 		$('.col-xl-3').click(function(){
 			var insuranceId = {"insuranceId" : $(this).attr('id')};
 			
+			$(document).ready(function(){
+				document.getElementById(<%=selectedContract.getInsuranceId()%>).click();
+			});
+			
 			$.ajax({
 				url: "selectTripInsurance/doSelect",
 				type: "GET",

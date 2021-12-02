@@ -26,16 +26,6 @@ public class UnderWriterServiceImpl implements UnderWriterService{
 	@Autowired
 	InsuranceDAO insuranceDAO;
 	
-	public List<Contract> selectNotEffectiveContract() {
-		List<Contract> list = contractDAO.selectAll();
-		ArrayList<Contract> resultList = new ArrayList<Contract>();
-		for(Contract contract : list) {
-			if(contract.isEffectiveness() == false) {
-				resultList.add(contract);
-			}
-		}
-		return resultList;
-	}
 
 	public Insurance getInsurace(String insuranceId) {
 		return insuranceDAO.selectCancerInsurance(insuranceId);
@@ -47,7 +37,7 @@ public class UnderWriterServiceImpl implements UnderWriterService{
 	
 	public ArrayList<String[]> getContractList() {
 		ArrayList<String[]> dataList = new ArrayList<String[]>();
-		for(Contract contract : selectNotEffectiveContract()) {
+		for(Contract contract : this.contractDAO.selectNotEffectiveContract()) {
 			String[] list = new String[7];
 			Insurance insurance = this.getInsurace(contract.getInsuranceId());
 			Insurant insurant = this.getInsurant(contract.getInsurantId());
@@ -55,7 +45,7 @@ public class UnderWriterServiceImpl implements UnderWriterService{
 			list[1] = insurance.getEType().name();
 			list[2] = String.valueOf(insurant.getAge());
 			list[3] = insurant.getEGender().getName();
-			list[4] = String.valueOf(contract.getFee());
+			list[4] = String.valueOf(insurance.getBasicFee());
 			list[5] = String.valueOf(contract.isSpecial());
 			list[6] = contract.getContractId();
 			dataList.add(list);
@@ -64,8 +54,8 @@ public class UnderWriterServiceImpl implements UnderWriterService{
 	}
 
 	@Override
-	public Contract getContract(String contractID) {
-		return contractDAO.select(contractID);
+	public Contract getContract(String contractId) {
+		return contractDAO.select(contractId);
 	}
 
 	@Override
@@ -105,5 +95,12 @@ public class UnderWriterServiceImpl implements UnderWriterService{
 			break;
 		}
 		return jsp;
+	}
+
+	@Override
+	public void calculateFee(Contract contract, Insurance insurance, Insurant insurant) {
+		int fee = insurance.calculateFee(insurant);
+		contract.setFee(fee);
+		this.contractDAO.updateFee(contract);
 	}
 }

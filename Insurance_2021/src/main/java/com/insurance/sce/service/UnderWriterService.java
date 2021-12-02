@@ -11,7 +11,6 @@ import com.insurance.sce.model.insurance.CancerInsurance;
 import com.insurance.sce.model.insurance.Insurance;
 
 public interface UnderWriterService {
-	public List<Contract> selectNotEffectiveContract();
 	public Insurance getInsurace(String insuranceId);
 	public Insurant getInsurant(String insurantId);
 	public ArrayList<String[]> getContractList();
@@ -19,4 +18,5 @@ public interface UnderWriterService {
 	public void approveContract(String contractId);
 	public void denyContract(String contractId);
 	public String selectInsuranceType(eInsuranceType eType);
+	public void calculateFee(Contract contract, Insurance insurance, Insurant insurant);
 }

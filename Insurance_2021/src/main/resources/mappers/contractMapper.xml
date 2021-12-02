@@ -35,6 +35,9 @@
 		SELECT contractId, fee, unpaidPeriod FROM contract 
 		WHERE contractId = #{contractId}
 	</select>
+	<select id="selectNotEffectiveContract" resultType="com.insurance.sce.model.contract.Contract">
+		SELECT * FROM contract WHERE effectiveness = 0
+	</select>
 	
 	<!-- UPDATE -->
 	<update id="updateFee" parameterType="com.insurance.sce.model.contract.Contract">

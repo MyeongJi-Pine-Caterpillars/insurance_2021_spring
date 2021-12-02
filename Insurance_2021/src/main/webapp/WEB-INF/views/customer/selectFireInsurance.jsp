@@ -261,16 +261,8 @@
 									</div>
 									<div class="card-body">
 									<div class="row">
-										<div class="col mb-3" id="rateOfAge"></div>
-										<div class="col" id="rateOfJob"></div>
-									</div>
-									<div class="row">
-										<div class="col mb-3" id="rateOfGender"></div>
-										<div class="col"></div>
-									</div>
-									<div class="row">
-										<div class="col" id="rateOfFamilyMedicalDisease"></div>
-										<div class="col" id="rateOfFamilyMedicalRelationship"></div>
+										<div class="col" id="rateOfStructureUsage"></div>
+										<div class="col" id="rateOfPostedPrice"></div>
 									</div>
 										
 									</div>
@@ -297,7 +289,7 @@
 						
 						<div class="row">
 							<div class="col-lg-6 mb-4">
-								<button type="button" class="btn btn-primary btn-lg">가입 신청하기</button>
+								<button type="button" class="btn btn-primary btn-lg" onClick="signUpInsurant();">가입 신청하기</button>
 							</div>
 						</div>
 
@@ -355,42 +347,19 @@
 		<script>
 			var ages = ["영유아", "10대", "20대", "30대", "40대", "50대", "노년층"];
 			var jobs = ["사무직", "운송업", "현장직", "학생", "교육직", "군인", "기타"];
-			var gender = ["남성", "야성"];
+			var gender = ["남성", "여성"];
 			var postedPrice = ["주택", "교육", "공장", "창고", "사무", "공공시설"];
 			var structureUsage = ["~5천만원", "5천만원~5억", "5억~10억", "10억~20억", "20억~"];
-
+			var insuranceId = "";
+			
 			$('.col-xl-3').click(function(){
-				var insuranceId = {"insuranceId" : $(this).attr('id')};
+				insuranceId = {"insuranceId" : $(this).attr('id')};
 				$.ajax({
 					url: "selectFireInsurance/doSelect",
 					type: "GET",
 					data: insuranceId,
 							
 					success : function(data){
-						$('#rateOfAge').html('<div class="col mb-3" id="rateOfAge"><h4 class="small font-weight-bold">--나이 요율표--</h4></div>');
-						$.each(data.rateOfAge, function(index, item){
-							$('#rateOfAge').append(
-									'<h4 class="small font-weight-bold">'+ ages[index] +'<span class="float-right">' +
-										item +
-										'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
-							);
-						});
-						$('#rateOfJob').html('<div class="col mb-3" id="rateOfJob"><h4 class="small font-weight-bold">--직업 요율표--</h4></div>');
-						$.each(data.rateOfJob, function(index, item){
-							$('#rateOfJob').append(
-									'<h4 class="small font-weight-bold">'+ jobs[index] +'<span class="float-right">' +
-										item +
-										'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
-							);
-						});
-						$('#rateOfGender').html('<div class="col mb-3" id="rateOfGender"><h4 class="small font-weight-bold">--성별 요율표--</h4></div>');
-						$.each(data.rateOfGender, function(index, item){
-							$('#rateOfGender').append(
-									'<h4 class="small font-weight-bold">'+ gender[index] +'<span class="float-right">' +
-										item +
-										'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
-							);
-						});
 						$('#rateOfStructureUsage').html('<div class="col mb-3" id="rateOfGender"><h4 class="small font-weight-bold">--건축물 용도 요율표--</h4></div>');
 						$.each(data.rateOfStructureUsage, function(index, item){
 							$('#rateOfStructureUsage').append(
@@ -455,6 +424,14 @@
 					}
 				});
 			});
+
+			function signUpInsurant(){
+				if(insuranceId == ""){
+					alert("보험을 선택해주세요")
+				}else{
+					location.href="signUpInsurant?insuranceId="+insuranceId["insuranceId"]+"&insuranceType=Fire";
+				}
+			}
 		</script>
 
 		<!-- Bootstrap core JavaScript-->

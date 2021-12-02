@@ -297,7 +297,7 @@
 						
 						<div class="row">
 							<div class="col-lg-6 mb-4">
-								<button type="button" class="btn btn-primary btn-lg">가입 신청하기</button>
+								<button type="button" class="btn btn-primary btn-lg" onClick="signUpInsurant();">가입 신청하기</button>
 							</div>
 						</div>
 
@@ -355,13 +355,14 @@
 		<script>
 			var ages = ["영유아", "10대", "20대", "30대", "40대", "50대", "노년층"];
 			var jobs = ["사무직", "운송업", "현장직", "학생", "교육직", "군인", "기타"];
-			var gender = ["남성", "야성"];
+			var gender = ["남성", "여성"];
 			var carType = ["버스", "승합차", "SUV", "외제차", "기타"];
 			var carRank = ["최고급", "고급", "보급형", "저가"];
 			var accidentHistory = ["0회", "1회", "2회~3회", "3회~4회", "4회~5회", "5회~6회", "7회 이상"];
-
+			var insuranceId = "";
+			
 			$('.col-xl-3').click(function(){
-				var insuranceId = {"insuranceId" : $(this).attr('id')};
+				insuranceId = {"insuranceId" : $(this).attr('id')};
 				
 				$.ajax({
 					url: "selectDriverInsurance/doSelect",
@@ -465,6 +466,14 @@
 					}
 				});
 			});
+			
+			function signUpInsurant(){
+				if(insuranceId == ""){
+					alert("보험을 선택해주세요")
+				}else{
+					location.href="signUpInsurant?insuranceId="+insuranceId["insuranceId"]+"&insuranceType=Driver";
+				}
+			}
 		</script>
 
 		<!-- Bootstrap core JavaScript-->

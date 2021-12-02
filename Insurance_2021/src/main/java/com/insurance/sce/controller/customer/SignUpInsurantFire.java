@@ -21,15 +21,15 @@ import com.insurance.sce.service.ContractServiceImpl;
 
 @Controller
 @RequestMapping(value = "/")
-public class SignUpInsurantCancer {
+public class SignUpInsurantFire {
 	
-	private static final Logger logger = LoggerFactory.getLogger(SelectTripInsuranceController.class);
+	private static final Logger logger = LoggerFactory.getLogger(SelectFireInsuranceController.class);
 	String insuranceId = "";
 	String special = "";
 	@Autowired
 	ContractServiceImpl contractService;
 	
-	@RequestMapping(value="signUpInsurantCancer", method=RequestMethod.GET)
+	@RequestMapping(value="signUpInsurantFire", method=RequestMethod.GET)
 	public String response(Locale locale, Model model, HttpServletRequest request, String insuranceId, String special) {
 		HttpSession session = request.getSession(true);
 		Customer customer = (Customer) session.getAttribute("loginCustomer");
@@ -38,10 +38,10 @@ public class SignUpInsurantCancer {
 		this.special = special;
 		
 		model.addAttribute("insuranceId", insuranceId);
-		return "customer/signUpInsurantCancer";
+		return "customer/signUpInsurantFire";
 	}
 	
-	@RequestMapping(value="doRegisterCancerInsurance", method=RequestMethod.GET)
+	@RequestMapping(value="doRegisterFireInsurance", method=RequestMethod.GET)
 	public String doSignUp(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		
@@ -53,11 +53,10 @@ public class SignUpInsurantCancer {
 		map.put("special", special);
 		map.put("insuranceId", insuranceId);
 		map.put("customerId", customer.getCustomerId());
-		map.put("isCancerRadio", (String) request.getParameter("isCancerRadio"));
-		map.put("familyMedicalDisease", (String) request.getParameter("familyMedicalDisease"));
-		map.put("familyMedicalRelationship", (String) request.getParameter("familyMedicalRelationship"));
-		contractService.signUpCancerInsurance(map, insurant);
+		map.put("postedPrice", Integer.parseInt(request.getParameter("postedPrice")));
+		map.put("usageOfStructure", (String) request.getParameter("usageOfStructure"));
+		contractService.signUpFireInsurance(map, insurant);
 		
-		return "redirect:/cancerInsurance";
+		return "redirect:/fireInsurance";
 	}
 }

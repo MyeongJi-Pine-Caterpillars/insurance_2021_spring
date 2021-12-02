@@ -1,12 +1,7 @@
-f<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
-<%@ page import="java.util.List"%>
-<%@ page import="com.insurance.sce.model.insurance.GuaranteePlan"%>
-<%
-List<GuaranteePlan> guaranteePlanList = (List<GuaranteePlan>) request.getAttribute("guaranteePlanList");
-%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,6 +42,7 @@ List<GuaranteePlan> guaranteePlanList = (List<GuaranteePlan>) request.getAttribu
 
 <body id="page-top">
 
+
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 		<symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
 			<path
@@ -62,6 +58,7 @@ List<GuaranteePlan> guaranteePlanList = (List<GuaranteePlan>) request.getAttribu
 			d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
 		</symbol>
 	</svg>
+
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 
@@ -233,7 +230,7 @@ List<GuaranteePlan> guaranteePlanList = (List<GuaranteePlan>) request.getAttribu
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">기본 정보 입력하기</h1>
+						<h1 class="h3 mb-0 text-gray-800">상세정보 입력하기</h1>
 					</div>
 
 					<!-- /.row -->
@@ -241,169 +238,68 @@ List<GuaranteePlan> guaranteePlanList = (List<GuaranteePlan>) request.getAttribu
 					<div class="row">
 
 						<div class="col-lg-6 mb-4">
-							<form name="formSignupInsurant" action="signUpInsurantType"
-								method="get">
-								<!-- Illustrations -->
-								<div class="card shadow mb-4">
-									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary" id="name">이름</h6>
-									</div>
-									<div class="card-body">
-										<div class="column">
-											<div class="form-check">
-												<div class="row">
-													<label>가입자의 이름을 입력해주세요 : </label>
-													<div class="col-4">
-														<input type="text" class="form-control"
-															name="insurantName" maxlength='10'
-															onChange="nameChange();">
-													</div>
-												</div>
-											</div>
-											<div id="nameAlarm" style="display: none;">
-												<div
-													class="alert alert-danger d-flex align-items-center mt-3">
-													<svg class="bi flex-shrink-0 me-2" width="24" height="24"
-														role="img" aria-label="Danger:">
-													<use xlink:href="#exclamation-triangle-fill" /></svg>
-													<div>&nbsp 내용을 입력해주세요!!</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+							<form name="formSignUpInsurant"
+								action="doRegisterDriverInsurance" method="get">
 
-								<!-- Approach -->
 								<div class="card shadow mb-4">
 									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary" id="age">나이</h6>
-									</div>
-									<div class="card-body">
-										<div class="column">
-											<div class="form-check">
-												<div class="row">
-													<label>가입자의 나이를 입력해주세요 : </label>
-													<div class="col-2">
-														<input type="number" class="form-control"
-															name="insurantAge" maxlength='4' min='0'
-															onChange="ageChange();">
-													</div>
-												</div>
-											</div>
-											<div id="ageAlarm" style="display: none;">
-												<div
-													class="alert alert-danger d-flex align-items-center mt-3">
-													<svg class="bi flex-shrink-0 me-2" width="24" height="24"
-														role="img" aria-label="Danger:">
-													<use xlink:href="#exclamation-triangle-fill" /></svg>
-													<div>&nbsp 내용을 입력해주세요!!</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="card shadow mb-4">
-									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary" id="address">주소</h6>
-									</div>
-									<div class="card-body">
-										<div class="column">
-											<div class="form-check">
-												<div class="row">
-													<label>가입자의 거주지 주소를 입력해주세요</label>
-													<div class="col-10">
-														<input type="text" class="form-control"
-															name="insurantAddress"
-															placeholder="ex) xx도 oo시 / xx시 oo구"
-															onChange="addressChange();">
-													</div>
-												</div>
-											</div>
-											<div id="addressAlarm" style="display: none;">
-												<div
-													class="alert alert-danger d-flex align-items-center mt-3">
-													<svg class="bi flex-shrink-0 me-2" width="24" height="24"
-														role="img" aria-label="Danger:">
-													<use xlink:href="#exclamation-triangle-fill" /></svg>
-													<div>&nbsp 내용을 입력해주세요!!</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="card shadow mb-4">
-									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary" id="phoneNumber">전화번호</h6>
+										<h6 class="m-0 font-weight-bold text-primary">사고 횟수</h6>
 									</div>
 									<div class="card-body">
 										<div class="column">
 											<div class="form-check">
 												<div class="col">
-													<label>가입자의 전화번호를 입력해주세요 (010-xxxx-xxxx)</label>
-													<div class="row">
-
-														<div class="col-2">
-															<input type="tel" class="form-control"
-																name="insurantPhoneNumber1" maxlength='3'
-																onChange="phoneNumberChange();">
-														</div>
-														<p>-</p>
-														<div class="col-2">
-															<input type="tel" class="form-control"
-																name="insurantPhoneNumber2" maxlength='4'
-																onChange="phoneNumberChange();">
-														</div>
-														<p>-</p>
-														<div class="col-2">
-															<input type="tel" class="form-control"
-																name="insurantPhoneNumber3" maxlength='4'
-																onChange="phoneNumberChange();">
-														</div>
-
-													</div>
-												</div>
-											</div>
-											<div id="phoneNumberAlarm" style="display: none;">
-												<div
-													class="alert alert-danger d-flex align-items-center mt-3">
-													<svg class="bi flex-shrink-0 me-2" width="24" height="24"
-														role="img" aria-label="Danger:">
-													<use xlink:href="#exclamation-triangle-fill" /></svg>
-													<div>&nbsp 내용을 입력해주세요!!</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="card shadow mb-4">
-									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary" id="gender">성별</h6>
-									</div>
-									<div class="card-body">
-										<div class="column">
-											<div class="form-check">
-												<div class="col">
-													<label>가입자의 성별을 선택해주세요</label>
+													<label>사고 경력이 있습니까? 있다면 몇 회 입니까?</label>
 													<div class="col">
 														<div class="row">
 															<div class=form-check>
 																<input class="form-check-input" type="radio"
-																	name="genderRadio" value="Male"> <label
+																	name="accidentHistoryRadio" value="Zero"
+																	onClick="accidentHistoryChange();" checked> <label
 																	class="form-check-label" for="insuranceRadio1">
-																	남성&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+																	없음&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 															</div>
 															<div class="form-check">
 																<input class="form-check-input" type="radio"
-																	name="genderRadio" value="Female"> <label
+																	name="accidentHistoryRadio" value="One"
+																	onClick="accidentHistoryChange();"> <label
 																	class="form-check-label" for="insuranceRadio2">
-																	여성&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+																	1회&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="accidentHistoryRadio" value="TwoThree"
+																	onClick="accidentHistoryChange();"> <label
+																	class="form-check-label" for="insuranceRadio2">
+																	2회~3회&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="accidentHistoryRadio" value="FourFive"
+																	onClick="accidentHistoryChange();"> <label
+																	class="form-check-label" for="insuranceRadio2">
+																	4회~5회&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class=form-check>
+																<input class="form-check-input" type="radio"
+																	name="accidentHistoryRadio" value="SixSeven"
+																	onClick="accidentHistoryChange();"> <label
+																	class="form-check-label" for="insuranceRadio1">
+																	6회~7회&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="accidentHistoryRadio" value="Eight"
+																	onClick="accidentHistoryChange();"> <label
+																	class="form-check-label" for="insuranceRadio2">
+																	8회이상&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
-											
-											<div id="genderAlarm" style="display: none;">
+
+											<div id="accidentHistoryAlarm" style="display: none;">
 												<div
 													class="alert alert-danger d-flex align-items-center mt-3">
 													<svg class="bi flex-shrink-0 me-2" width="24" height="24"
@@ -415,147 +311,131 @@ List<GuaranteePlan> guaranteePlanList = (List<GuaranteePlan>) request.getAttribu
 										</div>
 									</div>
 								</div>
-								<div class="card shadow mb-4">
+
+								<div class="card shadow mb-4"
+									id="checkCancerType">
 									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary">직업</h6>
+										<h6 class="m-0 font-weight-bold text-primary">자동차 종류</h6>
 									</div>
 									<div class="card-body">
 										<div class="column">
 											<div class="form-check">
 												<div class="col">
-													<label>가입자의 직업을 선택해주세요</label>
+													<label>자동차의 종류를 선택해주세요</label>
 													<div class="col">
 														<div class="row">
 															<div class=form-check>
 																<input class="form-check-input" type="radio"
-																	name="jobRadio" value="Officer"> <label
+																	name="typeOfCarRadio" value="Bus"
+																	onClick="carTypeChange();"> <label
 																	class="form-check-label" for="insuranceRadio1">
-																	사무직&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+																	버스&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 															</div>
 															<div class="form-check">
 																<input class="form-check-input" type="radio"
-																	name="jobRadio" value="Driver"> <label
+																	name="typeOfCarRadio" value="Van"
+																	onClick="carTypeChange();"> <label
 																	class="form-check-label" for="insuranceRadio2">
-																	운전자&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-															</div>
-															<div class=form-check>
-																<input class="form-check-input" type="radio"
-																	name="jobRadio" value="factoryWorker"> <label
-																	class="form-check-label" for="insuranceRadio3">
-																	현장직&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+																	승합차&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 															</div>
 															<div class="form-check">
 																<input class="form-check-input" type="radio"
-																	name="jobRadio" value="Student"> <label
-																	class="form-check-label" for="insuranceRadio4">
-																	학생&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-															</div>
-														</div>
-														<div class="row">
-															<div class=form-check>
-																<input class="form-check-input" type="radio"
-																	name="jobRadio" value="Teacher"> <label
-																	class="form-check-label" for="insuranceRadio1">
-																	교사&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
-															</div>
-															<div class="form-check">
-																<input class="form-check-input" type="radio"
-																	name="jobRadio" value="Soldier"> <label
+																	name="typeOfCarRadio" value="SUV"
+																	onClick="carTypeChange();"> <label
 																	class="form-check-label" for="insuranceRadio2">
-																	군인&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+																	SUV&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 															</div>
-															<div class=form-check>
+															<div class="form-check">
 																<input class="form-check-input" type="radio"
-																	name="jobRadio" value="Etc" checked> <label
-																	class="form-check-label" for="insuranceRadio3">
+																	name="typeOfCarRadio" value="Foreign"
+																	onClick="carTypeChange();"> <label
+																	class="form-check-label" for="insuranceRadio2">
+																	외제차&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="typeOfCarRadio" value="Etc"
+																	onClick="carTypeChange();"> <label
+																	class="form-check-label" for="insuranceRadio2">
 																	기타&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
+
+											<div id="carTypeAlarm" style="display: none;">
+												<div
+													class="alert alert-danger d-flex align-items-center mt-3">
+													<svg class="bi flex-shrink-0 me-2" width="24" height="24"
+														role="img" aria-label="Danger:">
+													<use xlink:href="#exclamation-triangle-fill" /></svg>
+													<div>&nbsp 내용을 입력해주세요!!</div>
+												</div>
+											</div>
+
 										</div>
 									</div>
 								</div>
-
-								<div class="card shadow mb-4" id="specialCard">
+								<div class="card shadow mb-4"
+									id="checkFamilyRelationship">
 									<div class="card-header py-3">
-										<h6 class="m-0 font-weight-bold text-primary">특약 가입여부</h6>
+										<h6 class="m-0 font-weight-bold text-primary">자동차 등급</h6>
 									</div>
 									<div class="card-body">
 										<div class="column">
 											<div class="form-check">
 												<div class="col">
-
-													기본계약
-													<ol class="list-group list-group-numbered"
-														id="guaranteePlan">
-														<%
-														for (GuaranteePlan guranteePlan : guaranteePlanList) {
-														if (!guranteePlan.isSpecial()) {
-														%>
-														<li
-															class="list-group-item d-flex justify-content-between align-items-start">
-															<div class="ms-2 me-auto">
-																<div class="fw-bold"><%=guranteePlan.getContent()%></div>
-																보장금액 :
-																<%=guranteePlan.getCompensation()%>원
-																<div class="guaranteeRate" style="display:none">
-																	보장비율 :
-																	<%=guranteePlan.getRate() * 100%>%
-																</div>
-															</div>
-														</li>
-														<%}} ;%>
-													</ol>
-													선택특약
-													<ol class="list-group list-group-numbered mb-3"
-														id="guaranteePlanSpecial">
-														<%for (GuaranteePlan guranteePlan : guaranteePlanList) {
-														if (guranteePlan.isSpecial()) {%>
-														<li
-															class="list-group-item d-flex justify-content-between align-items-start">
-															<div class="ms-2 me-auto">
-																<div class="fw-bold"><%=guranteePlan.getContent()%></div>
-																보장금액 :
-																<%=guranteePlan.getCompensation()%>원
-																<div class="guaranteeRate" style="display:none">
-																	보장비율 :
-																	<%=guranteePlan.getRate() * 100%>%
-																</div>
-															</div>
-														</li>
-														<%}} ;%>
-													</ol>
-													<label>특약에 가입하시겠습니까?</label>
+													<label>자동차의 등급을 선택해주세요</label>
 													<div class="col">
 														<div class="row">
-															<div class="form-check">
+															<div class=form-check>
 																<input class="form-check-input" type="radio"
-																	name="specialRadio" value="Yes"> <label
+																	name="rankOfCarRadio" value="Luxury"> <label
 																	class="form-check-label" for="insuranceRadio1">
-																	예&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+																	최고급&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 															</div>
 															<div class="form-check">
 																<input class="form-check-input" type="radio"
-																	name="specialRadio" value="No" checked> <label
+																	name="rankOfCarRadio" value="High"> <label
 																	class="form-check-label" for="insuranceRadio2">
-																	아니요&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+																	고급&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="rankOfCarRadio" value="Middle"> <label
+																	class="form-check-label" for="insuranceRadio2">
+																	보급형&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
+															</div>
+															<div class="form-check">
+																<input class="form-check-input" type="radio"
+																	name="rankOfCarRadio" value="Low"> <label
+																	class="form-check-label" for="insuranceRadio2">
+																	저가&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label>
 															</div>
 														</div>
 													</div>
 												</div>
 											</div>
+
+
+											<div id="carRankAlarm" style="display: none;">
+												<div
+													class="alert alert-danger d-flex align-items-center mt-3">
+													<svg class="bi flex-shrink-0 me-2" width="24" height="24"
+														role="img" aria-label="Danger:">
+													<use xlink:href="#exclamation-triangle-fill" /></svg>
+													<div>&nbsp 내용을 입력해주세요!!</div>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
-
 								<div class="col">
 									<button type="button" class="btn btn-primary"
-										onClick="checkInput();" id="nextBtn">다음 단계로</button>
-									<button type="button" class="btn btn-primary"
-										onClick="checkInput();" style="display:none" id="signUpBtn">가입 신청하기</button>
+										onclick="checkInput();">가입 신청하기</button>
 								</div>
+
 							</form>
 						</div>
 					</div>
@@ -608,85 +488,33 @@ List<GuaranteePlan> guaranteePlanList = (List<GuaranteePlan>) request.getAttribu
 			</div>
 		</div>
 	</div>
-	
-	<input type="hidden" id="insuranceType" value=<%=request.getAttribute("insuranceType") %>>/>
 
 	<script>
-		$(document).ready(function() {
-			if("${insuranceType}" == "Fire"||
-					"${insuranceType}" == "Driver"){
-				$(".guaranteeRate").show();
-			}else if("${insuranceType}" == "Dental" ||
-					"${insuranceType}" == "ActualCost"){
-				$("#signUpBtn").show();
-				$("#nextBtn").hide();
-				if("${insuranceType}" == "ActualCost"){
-					$("#specialCard").hide();
-				}
-			}
-		});
-
 		function checkInput() {
-			form = document.formSignupInsurant;
+			form = document.formSignUpInsurant;
 
-			if (form.insurantName.value == "") {
-				form.insurantName.style.borderColor = "red";
-				document.getElementById("name").scrollIntoView();
-				$('#nameAlarm').show();
-			} else if (form.insurantAge.value == "") {
-				form.insurantAge.style.borderColor = "red";
-				document.getElementById("age").scrollIntoView();
-				$('#ageAlarm').show();
-			} else if (form.insurantAddress.value == "") {
-				form.insurantAddress.style.borderColor = "red";
-				document.getElementById("address").scrollIntoView();
-				$('#addressAlarm').show();
-			} else if (form.insurantPhoneNumber1.value.length != 3
-					|| form.insurantPhoneNumber2.value.length != 4
-					|| form.insurantPhoneNumber3.value.length != 4) {
-				document.getElementById("phoneNumber").scrollIntoView();
-				form.insurantPhoneNumber1.style.borderColor = "red";
-				form.insurantPhoneNumber2.style.borderColor = "red";
-				form.insurantPhoneNumber3.style.borderColor = "red";
-				$('#phoneNumberAlarm').show();
-			}else if ($(':radio[name="genderRadio"]:checked').length < 1) {
-				$('#genderAlarm').show();
-				document.getElementById("gender").scrollIntoView();
+			if ($(':radio[name="accidentHistoryRadio"]:checked').length < 1) {
+				$('#accidentHistoryAlarm').show();
+			} else if ($(':radio[name="typeOfCarRadio"]:checked').length < 1) {
+				$('#carTypeAlarm').show();
+			} else if ($(':radio[name="rankOfCarRadio"]:checked').length < 1) {
+				$('#carRankAlarm').show();
 			} else {
 				form.submit();
 			}
 		}
 
-		function nameChange() {
-			form.insurantName.style.borderColor = "#D1D3E2";
-			$('#nameAlarm').hide();
-		}
-
-		function ageChange() {
-			form.insurantAge.style.borderColor = "#D1D3E2";
-			$('#ageAlarm').hide();
-		}
-
-		function addressChange() {
-			form.insurantAddress.style.borderColor = "#D1D3E2";
-			$('#addressAlarm').hide();
-		}
-		
-		function addressChange() {
-			form.insurantAddress.style.borderColor = "#D1D3E2";
-			$('#addressAlarm').hide();
-		}
-		
-		$("input:radio[name=genderRadio]").click(function() {
-			$('#genderAlarm').hide();
+		$("input:radio[name=accidentHistoryRadio]").click(function() {
+			$('#accidentHistoryAlarm').hide();
 		});
 
-		function phoneNumberChange() {
-			form.insurantPhoneNumber1.style.borderColor = "#D1D3E2";
-			form.insurantPhoneNumber2.style.borderColor = "#D1D3E2";
-			form.insurantPhoneNumber3.style.borderColor = "#D1D3E2";
-			$('#phoneNumberAlarm').hide();
-		}
+		$("input:radio[name=typeOfCarRadio]").click(function() {
+			$('#carTypeAlarm').hide();
+		});
+
+		$("input:radio[name=rankOfCarRadio]").click(function() {
+			$('#carRankAlarm').hide();
+		});
 	</script>
 
 	<!-- Bootstrap core JavaScript-->

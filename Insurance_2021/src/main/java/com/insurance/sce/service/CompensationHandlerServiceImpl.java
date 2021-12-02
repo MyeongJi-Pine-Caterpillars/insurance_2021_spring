@@ -32,9 +32,9 @@ public class CompensationHandlerServiceImpl implements CompensationHandlerServic
 	public ArrayList<Accident> selectAccidentByInsurant(ArrayList<Accident> acList, String contractId) {
 		ArrayList<Accident> returnList = new ArrayList<>();
 		for(Accident ac: acList) {
-			if(ac.getContractId().equals(contractId)) returnList.add(ac);
+			if(ac.getContractId().equals(contractId) && ac.isHandlingStatus() == true) returnList.add(ac);
 		}
-		return acList;
+		return returnList;
 	}
 	
 }

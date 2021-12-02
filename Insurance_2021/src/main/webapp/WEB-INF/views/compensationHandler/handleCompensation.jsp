@@ -119,7 +119,7 @@
 						if(!accident.isHandlingStatus()) {%>
 						<div class="col-xl-3 col-md-6 mb-4" id=<%=accident.getAccidentId() %>>
 							<div class="cardInsurance border-left-primary shadow h-100 py-2">
-								<div class="card-body" id=<%=accident.getAccidentId() %>>
+								<div class="card-body">
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
 											<div
@@ -130,19 +130,19 @@
 												class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">
 												<%=accident.getContent() %></div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800">손해액</div>
-											<div class="h6 mb-0 font-weight-bold text-gray-800"><%=accident.getDamageCost() %>원
+											<div class="h6 mb-0 font-weight-bold text-gray-800" id=><%=accident.getDamageCost() %>원
 											</div>
-											<input type="text" id="contractId" style="display: none" value=<%=accident.getContractId() %>>
+											<input id="contractId" type="text" style="display: none" name=<%=accident.getContractId() %>>
+											<input id="damageCost" type="text" style="display: none" name=<%=accident.getDamageCost() %>>
 											</div>
 										</div>
 										<div class="col-auto"></div>
 									</div>
 								</div>
 							</div>
-						</div>
 						<%}
 					}; %>
-
+					
 					</div>
 					<form id="form-confirmerView" action="confirmerView/confirmInsurance" method="get">
 						<input style="display:none" class="form-check-input" type="text"
@@ -163,14 +163,14 @@
 								</div>
 								 <div class="card-body">
 									<div class="row">
-										<div class="col mb-3" id="contractId"></div>
+										<div class="col mb-3" id="contractIdBox"></div>
 									</div>
 									<div class="row">
 										<div class="col mb-3" id="insurantName"></div>
 										<div class="col" id="insurantAge"></div>
 									</div>
 									<div class="row">
-									<div class="col" id="compensation"></div>
+										<div class="col" id="compensation"></div>
 										<div class="col" id="fee"></div>
 									</div>
 									<div class="row">
@@ -256,6 +256,7 @@
 		var contractId = "";
 		var insuranceId = "";
 		var fee = 0;
+		var tmpCompensation = 0;
 		function confirm(){
 			$('#confirmInsuranceId').val(insuranceId);
 			if(insuranceId == 0) alert("확정할 보험을 선택해주세요.");
@@ -265,8 +266,9 @@
 			}
 		}
 		$('.col-xl-3').click(function(){
-			accidentId = {"accidentId" : $(this).attr('id')};
-			contractId = $('#contractId').attr('id');
+			accidentId = $('#accidentId').attr('id');
+			contractId = $('#contractId').attr('name');
+			tmpCompensation = $('#damageCost').attr('name');
 			<%for(Contract contract: contractList){%>
 				if(contractId == <%=contract.getContractId() %>) {
 					fee = <%=contract.getFee() %>;
@@ -276,48 +278,52 @@
 			$.ajax({
 			url: "handleCompensation/doSelect",
 			type: "GET",
-			data: contractId,
+			data: {contractId : contractId},
 			success : function(data){
-					$('#contractId').html('<div class="col mb-3" id="contractId">ㅁㄴ<h4 class="small font-weight-bold">--계약 정보--</h4></div>');
-					$('#contractId').append(
-							'<h4 class="small font-weight-bold">계약 ID <span class="float-right">' +
+					$('#contractIdBox').html('<div class="col mb-3" id="contractIdBox"><h4 class="small font-weight-bold">--계약 정보--</h4></div>');
+					$('#contractIdBox').append(
+							'<h4 class="small font-weight-bold">계약 ID : <span class="float-center">' +
 								contractId +
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 					);
 					$('#insurantName').html('<div class="col mb-3" id="insurantName"></div>');
 					$('#insurantName').append(
-							'<h4 class="small font-weight-bold">가입자 이름 <span class="float-right">' +
+							'<h4 class="small font-weight-bold">가입자 이름 : <span class="float-center">' +
 								data.name +
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 					);
 					$('#insurantAge').html('<div class="col mb-3" id="insurantAge"></div>');
 					$('#insurantAge').append(
-							'<h4 class="small font-weight-bold">가입자 나이 <span class="float-right">' +
+							'<h4 class="small font-weight-bold">가입자 나이 : <span class="float-center">' +
 								data.age +
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 					);
+					$('#compensation').html('<div class="col mb-3" id="compensation"></div>');
+					$('#compensation').append(
+							'<h4 class="small font-weight-bold">배상금 <div class="float-center"><input id="updateCompensation" type="number" value=' +
+								tmpCompensation + '>' +
+								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div></h4>'
+					);
 					$('#fee').html('<div class="col mb-3" id="fee"></div>');
 					$('#fee').append(
-							'<h4 class="small font-weight-bold">보험료<div class="float-right"><input type="number" value=' +
+							'<h4 class="small font-weight-bold">보험료 갱신<div class="float-center"><input id="updatedFee" type="number" value=' +
 								fee + '>' +
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div></h4>'
 					);
 					$('#compensationCause').html('<div class="col mb-3" id="compensationCause"></div>');
 					$('#compensationCause').append(
-							'<textarea name="ta" rows="7" cols="40" wrap="virtual">배상금 책정 이유를 입력해주세요.</textarea>'
+							'<textarea id="updateCause" name="ta" rows="7" cols="40" wrap="virtual">배상금 책정 이유를 입력해주세요.</textarea>' +
+							'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div></h4>'
 					);
 			},
 			error :function(){
 				alert("request error!");
 			}
 			});
-		});
-		$('.col-xl-3').click(function(){
-			contractId = $('#contractId').attr('id');
 			$.ajax({
 			url: "handleCompensation/doSelectCompensationCause",
 			type: "GET",
-			data: contractId,
+			data: {contractId : contractId},
 			success : function(data){
 				$('#past').empty();
 				$.each(data, function(index, item){
@@ -337,6 +343,29 @@
 				alert("request error!");
 			}
 			});
+			$.ajax({
+				url: "handleCompensation/doSelectCompensation",
+				type: "GET",
+				data: {contractId : contractId},
+				success : function(data){
+					$('#past').empty();
+					$.each(data, function(index, item){
+						$('#past').append(
+								'<li class="list-group-item d-flex justify-content-between align-items-start">' +
+									'<div class="ms-2 me-auto"><div class="fw-bold">' +
+										item.content +
+										'</div>손해액 : ' +
+										item.damageCost +'원\n' + 
+										'보상액 : ' +
+										item.compensation +
+									'</li>'
+							);
+					});
+				},
+				error :function(){
+					alert("request error!");
+				}
+				});
 		});
 
 	</script>

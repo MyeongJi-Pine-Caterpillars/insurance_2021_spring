@@ -22,17 +22,18 @@ public class ContractDetail {
 	@Autowired
 	UnderWriterService underWriterService;
 	
-	@RequestMapping(value="contractCancerDetail", method=RequestMethod.GET)
-	public String response(Locale locale, Model model, HttpServletRequest request, String contractId) {
+	@RequestMapping(value="contractDetail", method=RequestMethod.GET)
+	public String cancerResponse(Locale locale, Model model, HttpServletRequest request, String contractId) {
 		HttpSession session = request.getSession(true);
 		Employee uw = (Employee)session.getAttribute("loginEmployee");
 		model.addAttribute("employeeName", uw.getName());
 		
 		Contract contract = (Contract)underWriterService.getContract(contractId);
 		model.addAttribute("seletedContract", contract);
+		Insurance insurance = underWriterService.getInsurace(contract.getInsuranceId());
 		Insurant insurant = (Insurant)underWriterService.getInsurant(contract.getInsurantId());
 		model.addAttribute("seletedInsurant", insurant);
 		
-		return "underWriter/contractCancerDetail";
+		return "underWriter/"+underWriterService.selectInsuranceType(insurance.getEType());
 	}
 }

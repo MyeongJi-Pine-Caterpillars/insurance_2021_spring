@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 import com.insurance.sce.dao.ContractDAO;
 import com.insurance.sce.dao.InsuranceDAO;
 import com.insurance.sce.dao.InsurantDAO;
+import com.insurance.sce.global.Constants.eInsuranceType;
 import com.insurance.sce.model.contract.Contract;
 import com.insurance.sce.model.customer.Insurant;
+import com.insurance.sce.model.insurance.DriverInsurance;
 import com.insurance.sce.model.insurance.Insurance;
 
 @Service
@@ -77,5 +79,31 @@ public class UnderWriterServiceImpl implements UnderWriterService{
 	@Override
 	public void denyContract(String contractId) {
 		contractDAO.delete(contractId);
+	}
+
+	@Override
+	public String selectInsuranceType(eInsuranceType eType) {
+		String jsp = "ContractDetail";
+		switch(eType) {
+		case driverInsurance :
+			jsp = eType.driverInsurance.getName() + jsp;
+			break;
+		case dentalInsurance : 
+			jsp = eType.dentalInsurance.getName() + jsp;
+			break;
+		case actualCostInsurance : 
+			jsp = eType.actualCostInsurance.getName() + jsp;
+			break;
+		case fireInsurance : 
+			jsp = eType.fireInsurance.getName() + jsp;
+			break;
+		case cancerInsurance : 
+			jsp = eType.cancerInsurance.getName() + jsp;
+			break;
+		case tripInsurance : 
+			jsp = eType.tripInsurance.getName() + jsp;
+			break;
+		}
+		return jsp;
 	}
 }

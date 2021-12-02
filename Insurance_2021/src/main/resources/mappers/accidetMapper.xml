@@ -22,7 +22,7 @@
 		WHERE accidentId = #{accidentId}
 	</select>
 	<select id="selectListByContractId" resultType="com.insurance.sce.model.contract.Accident">
-		SELECT * FROM customer
+		SELECT * FROM accident
 		WHERE contractId = #{contractId}
 	</select>
 	

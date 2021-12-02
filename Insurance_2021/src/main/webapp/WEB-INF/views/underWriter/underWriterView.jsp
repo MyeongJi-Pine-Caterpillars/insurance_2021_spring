@@ -390,24 +390,24 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Type</th>
-                                            <th>Age</th>
-                                            <th>Gender</th>
-                                            <th>Fee</th>
-                                            <th>Special</th>
-                                            <th>Select</th>
+                                            <th>보험이름</th>
+                                            <th>종류</th>
+                                            <th>나이</th>
+                                            <th>성별</th>
+                                            <th>요금</th>
+                                            <th>특약여부</th>
+                                            <th>선택</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Type</th>
-                                            <th>Age</th>
-                                            <th>Gender</th>
-                                            <th>Fee</th>
-                                            <th>Special</th>
-                                            <th>Select</th>
+                                            <th>보험이름</th>
+                                            <th>종류</th>
+                                            <th>나이</th>
+                                            <th>성별</th>
+                                            <th>요금</th>
+                                            <th>특약여부</th>
+                                            <th>선택</th>
                                         </tr>
                                     </tfoot>
                                    
@@ -490,7 +490,7 @@
 					contractId : contractId
 				},
 				function(data) {
-					location.href="contractCancerDetail?contractId="+contractId;
+					location.href="contractDetail?contractId="+contractId;
 				},
 				'html'
 		);

@@ -43,13 +43,10 @@ public class UnderWriterView {
 	
 	@RequestMapping(value="underWriterView", method=RequestMethod.GET)
 	public String underWriterView(Locale locale, Model model, HttpServletRequest request, String contractId) {
-		
 		HttpSession session = request.getSession(true);
 		Employee uw = (Employee)session.getAttribute("loginEmployee");
 		model.addAttribute("employeeName", uw.getName());
-		
 		model.addAttribute("dataList", underWriterService.getContractList());
-		
 		return "underWriter/underWriterView";
 	}
 	
@@ -58,45 +55,22 @@ public class UnderWriterView {
 	public String selectContractView(String contractId) {
 		Contract contract = underWriterService.getContract(contractId);
 		Insurance insurance = underWriterService.getInsurace(contract.getInsuranceId());
-		String jsp = "contractCancerDetail";
-		switch(insurance.getEType()) {
-		case driverInsurance : 
-			break;
-		case dentalInsurance : 
-			break;
-		case actualCostInsurance : 
-			break;
-		case fireInsurance : 
-			break;
-		case cancerInsurance : 
-			break;
-		case tripInsurance : 
-			break;
-		}
+		String jsp = underWriterService.selectInsuranceType(insurance.getEType());
 		return jsp+"?contractId="+contractId;
 	}
 	
 	@RequestMapping(value="doApprove", method=RequestMethod.GET)
 	public String doApprove(Locale locale, Model model, HttpServletRequest request, String contractId) {
-		
 		HttpSession session = request.getSession(true);
-		Employee uw = (Employee)session.getAttribute("loginEmployee");
-		model.addAttribute("employeeName", uw.getName());
 		underWriterService.approveContract(contractId);
 		model.addAttribute("dataList", underWriterService.getContractList());
-		
 		return "underWriter/underWriterView";
 	}
 	
 	@RequestMapping(value="doDeny", method=RequestMethod.GET)
 	public String doDeny(Locale locale, Model model, HttpServletRequest request, String contractId) {
-		
-		HttpSession session = request.getSession(true);
-		Employee uw = (Employee)session.getAttribute("loginEmployee");
-		model.addAttribute("employeeName", uw.getName());
 		underWriterService.denyContract(contractId);
 		model.addAttribute("dataList", underWriterService.getContractList());
-		
 		return "underWriter/underWriterView";
 	}
 }

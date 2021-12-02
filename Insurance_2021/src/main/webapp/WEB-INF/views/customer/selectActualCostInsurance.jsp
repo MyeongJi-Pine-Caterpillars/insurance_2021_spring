@@ -294,7 +294,7 @@
 						
 						<div class="row">
 							<div class="col-lg-6 mb-4">
-								<button type="button" class="btn btn-primary btn-lg">가입 신청하기</button>
+								<button type="button" class="btn btn-primary btn-lg" onClick="signUpInsurant();">가입 신청하기</button>
 							</div>
 						</div>
 
@@ -353,9 +353,10 @@
 			var ages = ["영유아", "10대", "20대", "30대", "40대", "50대", "노년층"];
 			var jobs = ["사무직", "운송업", "현장직", "학생", "교육직", "군인", "기타"];
 			var gender = ["남성", "여성"];
-
+			var insuranceId = "";
+			
 			$('.col-xl-3').click(function(){
-				var insuranceId = {"insuranceId" : $(this).attr('id')};
+				insuranceId = {"insuranceId" : $(this).attr('id')};
 				
 				$.ajax({
 					url: "selectActualCostInsurance/doSelect",
@@ -394,6 +395,14 @@
 					}
 				});
 			});
+			
+			function signUpInsurant(){
+				if(insuranceId == ""){
+					alert("보험을 선택해주세요")
+				}else{
+					location.href="signUpInsurant?insuranceId="+insuranceId["insuranceId"]+"&insuranceType=ActualCost";
+				}
+			}
 		</script>
 
 		<!-- Bootstrap core JavaScript-->

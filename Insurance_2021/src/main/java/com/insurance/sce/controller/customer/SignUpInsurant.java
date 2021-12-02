@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.insurance.sce.model.customer.Customer;
 import com.insurance.sce.model.customer.Insurant;
+import com.insurance.sce.service.ContractServiceImpl;
 import com.insurance.sce.service.InsuranceServiceImpl;
 import com.insurance.sce.service.InsurantServiceImpl;
 
@@ -30,6 +31,8 @@ public class SignUpInsurant {
 	InsuranceServiceImpl insuranceService;
 	@Autowired
 	InsurantServiceImpl insurantService;
+	@Autowired
+	ContractServiceImpl contractService;
 	
 	String insuranceId = "";
 	String insuranceType = "";
@@ -44,6 +47,7 @@ public class SignUpInsurant {
 		
 		model.addAttribute("guaranteePlanList", insuranceService.selectGuaranteePlan(insuranceId));	
 		model.addAttribute("insuranceId", insuranceId);
+		model.addAttribute("insuranceType", insuranceType);
 		return "customer/signUpInsurant";
 	}
 	
@@ -69,8 +73,27 @@ public class SignUpInsurant {
 		session.setAttribute("insurantBasic", insurant);
 		
 		// 보험 종류에 따라 화면을 띄움
-		model.addAttribute("spcial", request.getParameter("spcialRadio"));
+		model.addAttribute("special", (String) request.getParameter("specialRadio"));
 		model.addAttribute("insuranceId", insuranceId);
 		return "redirect:/signUpInsurant" + insuranceType;
+	}
+	
+
+	@RequestMapping(value={"signUpInsurantDental", "signUpInsurantActualCost"}, method=RequestMethod.GET)
+	public String doSignUp(Locale locale, Model model, HttpServletRequest request, String special) {
+		HttpSession session = request.getSession(true);
+		
+		// 세션으로부터 고객과 피보험자의 정보를 불러옴
+		Customer customer = (Customer) session.getAttribute("loginCustomer");
+		Insurant insurant = (Insurant) session.getAttribute("insurantBasic");
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("special", special);
+		map.put("insuranceId", insuranceId);
+		map.put("customerId", customer.getCustomerId());
+		contractService.signUpDentalInsurance(map, insurant);
+		
+		if(insuranceType.equals("ActualCost")) return "redirect:/actualCostInsurance";
+		return "redirect:/dentalInsurance";
 	}
 }

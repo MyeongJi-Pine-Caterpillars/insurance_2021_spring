@@ -52,7 +52,6 @@ public class SelectCacnerInsuranceController {
 	@RequestMapping(value="selectCancerInsurance/doSelectGuaranteePlan")
 	@ResponseBody
 	List<GuaranteePlan> doSelectGuaranteePlan(String insuranceId) {
-		System.out.println(insuranceId);
 		return insuranceService.selectGuaranteePlan(insuranceId);
 	}
 	

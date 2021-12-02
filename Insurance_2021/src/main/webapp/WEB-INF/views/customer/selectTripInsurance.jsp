@@ -292,7 +292,7 @@
 						
 						<div class="row">
 							<div class="col-lg-6 mb-4">
-								<button type="button" class="btn btn-primary btn-lg">가입 신청하기</button>
+								<button type="button" class="btn btn-primary btn-lg" onClick="signUpInsurant();">가입 신청하기</button>
 							</div>
 						</div>
 
@@ -351,9 +351,9 @@
 			var ages = ["영유아", "10대", "20대", "30대", "40대", "50대", "노년층"];
 			var gender = ["남성", "여성"];
 			var countryRisk = ["안전", "1단계", "2단계", "3단계"];
-
+			var insuranceId = "";
 			$('.col-xl-3').click(function(){
-				var insuranceId = {"insuranceId" : $(this).attr('id')};
+				insuranceId = {"insuranceId" : $(this).attr('id')};
 				
 				$.ajax({
 					url: "selectTripInsurance/doSelect",
@@ -429,6 +429,14 @@
 					}
 				});
 			});
+			
+			function signUpInsurant(){
+				if(insuranceId == ""){
+					alert("보험을 선택해주세요")
+				}else{
+					location.href="signUpInsurant?insuranceId="+insuranceId["insuranceId"]+"&insuranceType=Trip";
+				}
+			}
 		</script>
 
 		<!-- Bootstrap core JavaScript-->

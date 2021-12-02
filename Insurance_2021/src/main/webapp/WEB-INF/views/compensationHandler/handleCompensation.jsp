@@ -343,29 +343,6 @@
 				alert("request error!");
 			}
 			});
-			$.ajax({
-				url: "handleCompensation/doSelectCompensation",
-				type: "GET",
-				data: {contractId : contractId},
-				success : function(data){
-					$('#past').empty();
-					$.each(data, function(index, item){
-						$('#past').append(
-								'<li class="list-group-item d-flex justify-content-between align-items-start">' +
-									'<div class="ms-2 me-auto"><div class="fw-bold">' +
-										item.content +
-										'</div>손해액 : ' +
-										item.damageCost +'원\n' + 
-										'보상액 : ' +
-										item.compensation +
-									'</li>'
-							);
-					});
-				},
-				error :function(){
-					alert("request error!");
-				}
-				});
 		});
 
 	</script>

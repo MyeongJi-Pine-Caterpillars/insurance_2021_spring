@@ -20,7 +20,7 @@ import com.insurance.sce.service.InsuranceDeveloperService;
  */
 @Controller
 @RequestMapping(value = "/")
-public class GuaranteeTripInsurance {
+public class GuaranteeTripInsuranceController {
 	@Autowired
 	InsuranceDeveloperService idService;
 	private Insurance insurance;

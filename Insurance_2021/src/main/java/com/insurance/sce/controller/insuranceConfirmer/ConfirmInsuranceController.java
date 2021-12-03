@@ -22,7 +22,7 @@ import com.insurance.sce.service.InsuranceService;
  */
 @Controller
 @RequestMapping(value = "/")
-public class ConfirmerView {
+public class ConfirmInsuranceController {
 	@Autowired
 	InsuranceConfirmerService insuranceConfirmerService;
 	@Autowired

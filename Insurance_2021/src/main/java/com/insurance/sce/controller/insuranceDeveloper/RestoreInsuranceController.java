@@ -22,7 +22,7 @@ import com.insurance.sce.service.InsuranceService;
  */
 @Controller
 @RequestMapping(value = "/")
-public class RestoreInsurance {
+public class RestoreInsuranceController {
 	@Autowired
 	InsuranceDeveloperService insuranceDeveloperService;
 	@Autowired

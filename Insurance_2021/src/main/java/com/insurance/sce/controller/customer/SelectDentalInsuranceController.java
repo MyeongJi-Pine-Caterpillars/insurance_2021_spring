@@ -29,7 +29,7 @@ public class SelectDentalInsuranceController {
 	private static final Logger logger = LoggerFactory.getLogger(SelectDentalInsuranceController.class);
 	
 	@Autowired
-	InsuranceServiceImpl insuranceService;
+	InsuranceService insuranceService;
 	
 	@RequestMapping(value="dentalInsurance", method=RequestMethod.GET)
 	public String response5(Locale locale, Model model, HttpServletRequest request) {

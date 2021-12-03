@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.insurance.sce.model.customer.Customer;
 import com.insurance.sce.model.customer.Insurant;
+import com.insurance.sce.service.ContractService;
 import com.insurance.sce.service.ContractServiceImpl;
 
 @Controller
@@ -27,7 +28,7 @@ public class SignUpInsurantCancer {
 	String insuranceId = "";
 	String special = "";
 	@Autowired
-	ContractServiceImpl contractService;
+	ContractService contractService;
 	
 	@RequestMapping(value="signUpInsurantCancer", method=RequestMethod.GET)
 	public String response(Locale locale, Model model, HttpServletRequest request, String insuranceId, String special) {

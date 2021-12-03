@@ -31,7 +31,7 @@ public class SelectCacnerInsuranceController {
 	private static final Logger logger = LoggerFactory.getLogger(SelectCacnerInsuranceController.class);
 	
 	@Autowired
-	InsuranceServiceImpl insuranceService;
+	InsuranceService insuranceService;
 	
 	@RequestMapping(value="cancerInsurance", method=RequestMethod.GET)
 	public String response(Locale locale, Model model, HttpServletRequest request) {

@@ -17,19 +17,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.insurance.sce.model.customer.Customer;
 import com.insurance.sce.model.customer.Insurant;
+import com.insurance.sce.service.ContractService;
 import com.insurance.sce.service.ContractServiceImpl;
 
 @Controller
 @RequestMapping(value = "/")
-public class SignUpInsurantDriver {
+public class SignUpInsurantFireController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(SelectTripInsuranceController.class);
+	private static final Logger logger = LoggerFactory.getLogger(SelectFireInsuranceController.class);
 	String insuranceId = "";
 	String special = "";
 	@Autowired
-	ContractServiceImpl contractService;
+	ContractService contractService;
 	
-	@RequestMapping(value="signUpInsurantDriver", method=RequestMethod.GET)
+	@RequestMapping(value="signUpInsurantFire", method=RequestMethod.GET)
 	public String response(Locale locale, Model model, HttpServletRequest request, String insuranceId, String special) {
 		HttpSession session = request.getSession(true);
 		Customer customer = (Customer) session.getAttribute("loginCustomer");
@@ -38,10 +39,10 @@ public class SignUpInsurantDriver {
 		this.special = special;
 		
 		model.addAttribute("insuranceId", insuranceId);
-		return "customer/signUpInsurantDriver";
+		return "customer/signUpInsurantFire";
 	}
 	
-	@RequestMapping(value="doRegisterDriverInsurance", method=RequestMethod.GET)
+	@RequestMapping(value="doRegisterFireInsurance", method=RequestMethod.GET)
 	public String doSignUp(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		
@@ -53,11 +54,10 @@ public class SignUpInsurantDriver {
 		map.put("special", special);
 		map.put("insuranceId", insuranceId);
 		map.put("customerId", customer.getCustomerId());
-		map.put("accidentHistoryRadio", (String) request.getParameter("accidentHistoryRadio"));
-		map.put("typeOfCarRadio", (String) request.getParameter("typeOfCarRadio"));
-		map.put("rankOfCarRadio", (String) request.getParameter("rankOfCarRadio"));
-		contractService.signUpDriverInsurance(map, insurant);
+		map.put("postedPrice", Integer.parseInt(request.getParameter("postedPrice")));
+		map.put("usageOfStructure", (String) request.getParameter("usageOfStructure"));
+		contractService.signUpFireInsurance(map, insurant);
 		
-		return "redirect:/driverInsurance";
+		return "redirect:/fireInsurance";
 	}
 }

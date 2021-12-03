@@ -17,17 +17,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.insurance.sce.model.customer.Customer;
 import com.insurance.sce.model.customer.Insurant;
+import com.insurance.sce.service.ContractService;
 import com.insurance.sce.service.ContractServiceImpl;
 
 @Controller
 @RequestMapping(value = "/")
-public class SignUpInsurantTrip {
+public class SignUpInsurantTripController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SelectTripInsuranceController.class);
 	String insuranceId = "";
 	String special = "";
 	@Autowired
-	ContractServiceImpl contractService;
+	ContractService contractService;
 	
 	@RequestMapping(value="signUpInsurantTrip", method=RequestMethod.GET)
 	public String response(Locale locale, Model model, HttpServletRequest request, String insuranceId, String special) {

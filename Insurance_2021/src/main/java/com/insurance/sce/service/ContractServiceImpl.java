@@ -211,8 +211,4 @@ public class ContractServiceImpl implements ContractService{
 	public List<Contract> selectAllContract() {
 		return contractDAO.selectAll();
 	}
-
-
-
-	
 }

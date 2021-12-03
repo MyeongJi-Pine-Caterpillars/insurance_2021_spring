@@ -14,7 +14,7 @@ import com.insurance.sce.service.EmployeeService;
 
 @Controller
 @RequestMapping(value="/")
-public class LoginEmployee {
+public class LoginEmployeeController {
 	@Autowired
 	EmployeeService employeeService;
 	

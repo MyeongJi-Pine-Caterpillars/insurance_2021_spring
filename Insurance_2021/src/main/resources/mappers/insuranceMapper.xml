@@ -77,7 +77,7 @@
 	</insert>
 
 	<!-- SELECT -->
-	<select id="selectAll" resultType="com.insurance.sce.model.insurance.Insurance">
+	<select id="selectAll" resultType="com.insurance.sce.model.insurance.CancerInsurance">
 		SELECT * FROM insurance
 	</select>
 	<select id="selectAllActualCostInsurance" resultType="com.insurance.sce.model.insurance.ActualCostInsurance">
@@ -134,7 +134,7 @@
 	<select id="selectInsuranceType" resultType="Integer">
 		SELECT type FROM insurance WHERE insuranceId = #{insuranceId}
 	</select>
-	<select id="select" resultType="com.insurance.sce.model.insurance.Insurance">
+	<select id="select" resultType="com.insurance.sce.model.insurance.CancerInsurance">
 		SELECT * FROM insurance
 		WHERE insuranceId = #{insuranceId}
 	</select>
@@ -199,7 +199,12 @@
 	</update>
 	<update id="updateDel" parameterType="com.insurance.sce.model.contract.Accident">
 		UPDATE insurance
-		SET del = #{del}
+		SET del = true
+		WHERE insuranceId = #{insuranceId}
+	</update>
+	<update id="updateRestore" parameterType="com.insurance.sce.model.contract.Accident">
+		UPDATE insurance
+		SET del = false
 		WHERE insuranceId = #{insuranceId}
 	</update>
 

@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 import com.insurance.sce.dao.ContractDAO;
 import com.insurance.sce.dao.InsuranceDAO;
 import com.insurance.sce.dao.InsurantDAO;
+import com.insurance.sce.global.Constants.eInsuranceType;
 import com.insurance.sce.model.contract.Contract;
 import com.insurance.sce.model.customer.Insurant;
+import com.insurance.sce.model.insurance.DriverInsurance;
 import com.insurance.sce.model.insurance.Insurance;
 
 @Service
@@ -24,28 +26,18 @@ public class UnderWriterServiceImpl implements UnderWriterService{
 	@Autowired
 	InsuranceDAO insuranceDAO;
 	
-	public List<Contract> selectNotEffectiveContract() {
-		List<Contract> list = contractDAO.selectAll();
-		ArrayList<Contract> resultList = new ArrayList<Contract>();
-		for(Contract contract : list) {
-			if(contract.isEffectiveness() == false) {
-				resultList.add(contract);
-			}
-		}
-		return resultList;
-	}
 
 	public Insurance getInsurace(String insuranceId) {
 		return insuranceDAO.selectCancerInsurance(insuranceId);
 	}
 
 	public Insurant getInsurant(String insurantId) {
-		return insurantDAO.selectInsurant(insurantId);
+		return insurantDAO.select(insurantId);
 	}
 	
 	public ArrayList<String[]> getContractList() {
 		ArrayList<String[]> dataList = new ArrayList<String[]>();
-		for(Contract contract : selectNotEffectiveContract()) {
+		for(Contract contract : this.contractDAO.selectNotEffectiveContract()) {
 			String[] list = new String[7];
 			Insurance insurance = this.getInsurace(contract.getInsuranceId());
 			Insurant insurant = this.getInsurant(contract.getInsurantId());
@@ -53,11 +45,62 @@ public class UnderWriterServiceImpl implements UnderWriterService{
 			list[1] = insurance.getEType().name();
 			list[2] = String.valueOf(insurant.getAge());
 			list[3] = insurant.getEGender().getName();
-			list[4] = String.valueOf(contract.getFee());
+			list[4] = String.valueOf(insurance.getBasicFee());
 			list[5] = String.valueOf(contract.isSpecial());
 			list[6] = contract.getContractId();
 			dataList.add(list);
 		}
 		return dataList;
+	}
+
+	@Override
+	public Contract getContract(String contractId) {
+		return contractDAO.select(contractId);
+	}
+
+	@Override
+	public void approveContract(String contractId) {
+		Contract contract = new Contract();
+		contract.setContractId(contractId);
+		contract.setEffectiveness(true);
+		contractDAO.updateEffectiveness(contract);
+	}
+
+	@Override
+	public void denyContract(String contractId) {
+		contractDAO.delete(contractId);
+	}
+
+	@Override
+	public String selectInsuranceType(eInsuranceType eType) {
+		String jsp = "ContractDetail";
+		switch(eType) {
+		case driverInsurance :
+			jsp = eType.driverInsurance.getName() + jsp;
+			break;
+		case dentalInsurance : 
+			jsp = eType.dentalInsurance.getName() + jsp;
+			break;
+		case actualCostInsurance : 
+			jsp = eType.actualCostInsurance.getName() + jsp;
+			break;
+		case fireInsurance : 
+			jsp = eType.fireInsurance.getName() + jsp;
+			break;
+		case cancerInsurance : 
+			jsp = eType.cancerInsurance.getName() + jsp;
+			break;
+		case tripInsurance : 
+			jsp = eType.tripInsurance.getName() + jsp;
+			break;
+		}
+		return jsp;
+	}
+
+	@Override
+	public void calculateFee(Contract contract, Insurance insurance, Insurant insurant) {
+		int fee = insurance.calculateFee(insurant);
+		contract.setFee(fee);
+		this.contractDAO.updateFee(contract);
 	}
 }

@@ -19,4 +19,5 @@ public interface InsuranceService {
 	public TripInsurance selectTripInsurance(String insuranceId);
 	public FireInsurance selectFireInsurance(String insuranceId);
 	public List<GuaranteePlan> selectGuaranteePlan(String insuranceId);
+	public Insurance selectInsurance(String insuranceId);
 }

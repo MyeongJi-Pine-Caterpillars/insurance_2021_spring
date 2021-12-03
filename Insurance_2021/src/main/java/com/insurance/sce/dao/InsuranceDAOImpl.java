@@ -49,6 +49,7 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	private static final String UpdateBasicFee = "insuranceMapper.updateBasicFee";
 	private static final String UpdateSpeCialContractFee = "insuranceMapper.updateSpeCialContractFee";
 	private static final String UpdateDel = "insuranceMapper.updateDel";
+	private static final String UpdateRestore = "insuranceMapper.updateRestore";
 	private static final String Delete = "insuranceMapper.delete";
 
 	// Insert
@@ -97,7 +98,8 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	public int updateConfirmedStatus(String insuranceId) {return sqlSession.update(UpdateConfirmedStatus, insuranceId);}
 	public int updateBasicFee(Insurance insurance) {return sqlSession.update(UpdateBasicFee, insurance);}
 	public int updateSpeCialContractFee(Insurance insurance) {return sqlSession.update(UpdateSpeCialContractFee, insurance);}
-	public int updateDel(Insurance insurance) {return sqlSession.update(UpdateDel, insurance);}
+	public int updateDel(String insuranceId) {return sqlSession.update(UpdateDel, insuranceId);}
+	public int updateRestore(String insuranceId) {return sqlSession.update(UpdateRestore, insuranceId);}
 	
 	// Delete
 	public int delete(String insuranceId) {return sqlSession.delete(Delete, insuranceId);}

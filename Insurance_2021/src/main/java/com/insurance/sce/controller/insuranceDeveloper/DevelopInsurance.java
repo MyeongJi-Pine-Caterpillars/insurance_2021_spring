@@ -31,34 +31,16 @@ public class DevelopInsurance {
 
 		return "insuranceDeveloper/developInsurance";
 	}
-	
-//	@RequestMapping(value="clickNextBtn", method=RequestMethod.GET)
-//	public String response5(@RequestParam(value="genderCheckbox") HashMap<String, Object> commandMap) {
-//		String[] checkedGenders = null;
-//		String checkGender = commandMap.get("arrayParam").toString();
-//		checkedGenders = checkGender.split(",");
-//		, @RequestParam(value="insuranceRadio", defaultValue="insuranceRadio4", required=false) String k
-//		System.out.println(k);
-//		for(String a: checkedGenders) {
-//			System.out.println(a);
-//		}
-//		
-//		return "insuranceDeveloper/developInsurance";
-//	}
+
 	@RequestMapping(value="goToDetailInsurance", method=RequestMethod.GET)
 	public String responseGoToDetailInsurance(Locale locale, Model model, HttpServletRequest request) {
 		String insuranceType = (String) request.getParameter("insuranceRadio");
 		String[] insuranceGender = request.getParameterValues("genderCheckbox");
-		if(insuranceGender == null) {
-			System.out.println("Please check the Gender");
-			return "redirect:/insuranceDeveloper/developInsurance";
-		} else {
-			Insurance insurance = idService.designInsurance(insuranceType);
-			insurance = idService.setGender(insurance, insuranceGender);
-			HttpSession session = request.getSession(true);
-			session.setAttribute("designedInsurance", insurance);
-			return "redirect:/detailInsurance";
-		}
-		
+		Insurance insurance = idService.designInsurance(insuranceType);
+		insurance = idService.setGender(insurance, insuranceGender);
+		HttpSession session = request.getSession(true);
+		session.setAttribute("designedInsurance", insurance);
+		session.setAttribute("insuranceType", insuranceType);
+		return "redirect:/detailInsurance";
 	}
 }

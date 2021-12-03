@@ -26,14 +26,7 @@ public class InsuranceServiceImpl implements InsuranceService{
 	GuaranteePlanDAO guaranteePlanDAO;
 	
 	public List<Insurance> selectAllInsurance(){
-		ArrayList<Insurance> insuranceList = new ArrayList<Insurance>();
-		insuranceList.addAll(this.selectAllCancerInsurance());
-		insuranceList.addAll(this.selectAllDentalInsurance());
-		insuranceList.addAll(this.selectAllDriverInsurance());
-		insuranceList.addAll(this.selectAllActualCostInsurance());
-		insuranceList.addAll(this.selectAllTripInsurance());
-		insuranceList.addAll(this.selectAllFireInsurance());
-		return insuranceList;
+		return insuranceDAO.selectAll();
 	}
 	public List<CancerInsurance> selectAllCancerInsurance() {
 		return insuranceDAO.selectAllCancerInsurance();
@@ -86,5 +79,29 @@ public class InsuranceServiceImpl implements InsuranceService{
 	public List<GuaranteePlan> selectGuaranteePlan(String insuranceId) {
 		return guaranteePlanDAO.selectByInsuranceId(insuranceId);
 	}
-
+	public Insurance selectInsurance(String insuranceId) {
+		int type = insuranceDAO.selectInsuranceType(insuranceId);
+		Insurance insurance = null;
+		switch(type) {
+		case 1:
+			insurance = insuranceDAO.selectDriverInsurance(insuranceId);
+			break;
+		case 2:
+			insurance = insuranceDAO.selectDentalInsurance(insuranceId);
+			break;
+		case 3:
+			insurance = insuranceDAO.selectActualCostInsurance(insuranceId);
+			break;
+		case 4:
+			insurance = insuranceDAO.selectFireInsurance(insuranceId);
+			break;
+		case 5:
+			insurance = insuranceDAO.selectCancerInsurance(insuranceId);
+			break;
+		case 6:
+			insurance = insuranceDAO.selectTripInsurance(insuranceId);
+			break;
+		}
+		return insurance;
+	}
 }

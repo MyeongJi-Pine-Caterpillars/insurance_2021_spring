@@ -43,17 +43,12 @@ public class ConfirmerView {
 	@RequestMapping(value="confirmerView/doSelect")
 	@ResponseBody
 	Insurance doSelect(String insuranceId) {
-		return insuranceConfirmerService.selectInsurance(insuranceId);
+		return insuranceService.selectInsurance(insuranceId);
 	}
 	@RequestMapping(value="confirmerView/doSelectGuaranteePlan")
 	@ResponseBody
 	List<GuaranteePlan> doSelectGuaranteePlan(String insuranceId) {
 		return insuranceService.selectGuaranteePlan(insuranceId);
-	}
-	
-	@RequestMapping(value="confirmerView/doLogout")
-	public String doLogout(HttpServletRequest request) {
-		return "redirect:/loginEmployee";
 	}
 }
 /*  */

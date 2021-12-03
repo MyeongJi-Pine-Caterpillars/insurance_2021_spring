@@ -29,7 +29,7 @@ public class SelectActualCostInsuranceController {
 	private static final Logger logger = LoggerFactory.getLogger(SelectActualCostInsuranceController.class);
 	
 	@Autowired
-	InsuranceServiceImpl insuranceService;
+	InsuranceService insuranceService;
 	
 	@RequestMapping(value="actualCostInsurance", method=RequestMethod.GET)
 	public String response5(Locale locale, Model model, HttpServletRequest request) {

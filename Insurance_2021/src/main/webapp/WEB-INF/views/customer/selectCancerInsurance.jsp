@@ -355,7 +355,7 @@
 		<script>
 			var ages = ["영유아", "10대", "20대", "30대", "40대", "50대", "노년층"];
 			var jobs = ["사무직", "운송업", "현장직", "학생", "교육직", "군인", "기타"];
-			var gender = ["남성", "야성"];
+			var gender = ["남성", "여성"];
 			var familyMedicalDisease = ["갑상선암", "고환암", "난소암", "식도암", "폐암"];
 			var familyMedicalRelationship = ["1촌", "2촌", "3촌", "4촌"];
 			var insuranceId = "";
@@ -456,7 +456,7 @@
 				if(insuranceId == ""){
 					alert("보험을 선택해주세요")
 				}else{
-					location.href="signUpInsurant?insuranceId="+insuranceId["insuranceId"];
+					location.href="signUpInsurant?insuranceId="+insuranceId["insuranceId"]+"&insuranceType=Cancer";
 				}
 			}
 		</script>

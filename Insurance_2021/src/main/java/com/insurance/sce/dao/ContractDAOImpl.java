@@ -22,12 +22,14 @@ public class ContractDAOImpl extends DBConnector implements ContractDAO{
 	private static final String SelectListByInsurant = "contractMapper.selectListByInsurant";
 	private static final String Select = "contractMapper.select";
 	private static final String SelectUnpaidAndFee = "contractMapper.selectUnpaidAndFee";
+	private static final String SelectNotEffectiveContract = "contractMapper.selectNotEffectiveContract";
 	private static final String UpdateFee = "contractMapper.updateFee";
 	private static final String UpdateEffectiveness = "contractMapper.updateEffectiveness";
 	private static final String UpdateLifespan = "contractMapper.updateLifespan";
 	private static final String UpdateUnpaidPeriod = "contractMapper.updateUnpaidPeriod";
 	private static final String UpdateSpecial = "contractMapper.updateSpecial";
 	private static final String Delete = "contractMapper.delete";
+	
 
 	// Insert
 	public int insert(Contract contract) {return sqlSession.insert(Insert, contract);}
@@ -37,9 +39,9 @@ public class ContractDAOImpl extends DBConnector implements ContractDAO{
 	public List<String> selectAllContractId() {return sqlSession.selectList(SelectAllContractId);}
 	public List<Contract> selectAllIds() {return sqlSession.selectList(SelectAllIds);}
 	public List<Contract> selectListByInsurant(String insurantId) {return sqlSession.selectList(SelectListByInsurant, insurantId);}
-	public Contract select(String contractId) {return (Contract) sqlSession.selectList(Select, contractId);}
+	public Contract select(String contractId) {return (Contract) sqlSession.selectOne(Select, contractId);}
 	public Contract selectUnpaidAndFee(String contractId) {return (Contract) sqlSession.selectList(SelectUnpaidAndFee, contractId);}
-
+	public List<Contract> selectNotEffectiveContract() {return sqlSession.selectList(SelectNotEffectiveContract);}
 	// Update
 	public int updateFee(Contract contract) {return sqlSession.update(UpdateFee, contract);}
 	public int updateEffectiveness(Contract contract) {return sqlSession.update(UpdateEffectiveness, contract);}
@@ -49,6 +51,5 @@ public class ContractDAOImpl extends DBConnector implements ContractDAO{
 
 	// Delete
 	public int delete(String contractId) {return sqlSession.update(Delete, contractId);}
-	
 	
 }

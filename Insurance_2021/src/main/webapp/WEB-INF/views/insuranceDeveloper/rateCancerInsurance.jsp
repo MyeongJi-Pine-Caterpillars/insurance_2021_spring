@@ -29,7 +29,21 @@
 </head>
 
 <body id="page-top">
-
+	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+		<symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+			<path
+			d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+		</symbol>
+		<symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+			<path
+			d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+		</symbol>
+		<symbol id="exclamation-triangle-fill" fill="currentColor"
+			viewBox="0 0 16 16">
+			<path
+			d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+		</symbol>
+	</svg>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -114,12 +128,12 @@
 					<div class="row">
 
 						<div class="col-lg-6 mb-4">
-						<form id="form-rateCancerInsurance" action="goToGuaranteeCancerInsurance" method="get">
+						<form id="formrateCancerInsurance" name="formrateCancerInsurance" action="goToGuaranteeCancerInsurance" method="get">
 							<!-- Illustrations -->
 							
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">가족 병력별 요율</h6>
+									<h6 class="m-0 font-weight-bold text-primary" id="familyMBox">가족 병력별 요율</h6>
 								</div>
 								<div class="card-body">
 									<div class="column">
@@ -127,7 +141,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("familyDiseaseRateName1") %> : </label>
 											<div class=form-check>
-												<input type="number" name="thyroidRate" value="1.0" step="0.1"> 
+												<input type="number" name="thyroidRate" min="0.1" value="1.0" step="0.1" onChange="familyMChange()"> 
 											</div>
 										</div>
 									</div>
@@ -135,7 +149,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("familyDiseaseRateName2") %> </label>
 											<div class=form-check>
-												<input type="number" name="testicularRate" value="1.0" step="0.1"> 
+												<input type="number" name="testicularRate" min="0.1" value="1.0" step="0.1" onChange="familyMChange()"> 
 											</div>
 										</div>
 									</div>
@@ -143,7 +157,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("familyDiseaseRateName3") %> </label>
 											<div class=form-check>
-												<input type="number" name="ovarianRate" value="1.0" step="0.1"> 
+												<input type="number" name="ovarianRate" min="0.1" value="1.0" step="0.1" onChange="familyMChange()"> 
 											</div>
 										</div>
 									</div>
@@ -151,7 +165,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("familyDiseaseRateName4") %> </label>
 											<div class=form-check>
-												<input type="number" name="esophagealRate" value="1.0" step="0.1"> 
+												<input type="number" name="esophagealRate" min="0.1" value="1.0" step="0.1" onChange="familyMChange()"> 
 											</div>
 										</div>
 									</div>
@@ -159,16 +173,25 @@
 										<div class="row">
 											<label><%= request.getAttribute("familyDiseaseRateName5") %> : </label>
 											<div class=form-check>
-												<input type="number" name="lungRate" value="1.0" step="0.1"> 
+												<input type="number" name="lungRate" min="0.1" value="1.0" step="0.1" onChange="familyMChange()"> 
 											</div>
 										</div>
 									</div>
 									</div>
+									<div id="familyMAlarm" style="display: none;">
+											<div
+												class="alert alert-danger d-flex align-items-center mt-3">
+												<svg class="bi flex-shrink-0 me-2" width="24" height="24"
+													role="img" aria-label="Danger:">
+													<use xlink:href="#exclamation-triangle-fill" /></svg>
+												<div>&nbsp 0 이상의 숫자를 입력해주세요!!</div>
+											</div>
+										</div>
 								</div>
 							</div>
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">병력자와의 관계별 요율</h6>
+									<h6 class="m-0 font-weight-bold text-primary" id="familyRBox">병력자와의 관계별 요율</h6>
 								</div>
 								<div class="card-body">
 									<div class="column">
@@ -176,7 +199,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("familyRelationRateName1") %></label>
 											<div class=form-check>
-												<input type="number" name="oneRelRate" value="1.0" step="0.1"> 
+												<input type="number" name="oneRelRate" min="0.1" value="1.0" step="0.1" onChange="familyRChange()"> 
 											</div>
 										</div>
 									</div>
@@ -184,7 +207,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("familyRelationRateName2") %> : </label>
 											<div class=form-check>
-												<input type="number" name="twoRelRate" value="1.0" step="0.1"> 
+												<input type="number" name="twoRelRate" min="0.1" value="1.0" step="0.1" onChange="familyRChange()"> 
 											</div>
 										</div>
 									</div>
@@ -192,7 +215,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("familyRelationRateName3") %> : </label>
 											<div class=form-check>
-												<input type="number" name="threeRelRate" value="1.0" step="0.1"> 
+												<input type="number" name="threeRelRate" min="0.1" value="1.0" step="0.1" onChange="familyRChange()"> 
 											</div>
 										</div>
 									</div>
@@ -200,11 +223,20 @@
 										<div class="row">
 											<label><%= request.getAttribute("familyRelationRateName4") %> : </label>
 											<div class=form-check>
-												<input type="number" name="fourRelRate" value="1.0" step="0.1"> 
+												<input type="number" name="fourRelRate" min="0.1" value="1.0" step="0.1" onChange="familyRChange()"> 
 											</div>
 										</div>
 									</div>
 									</div>
+									<div id="familyRAlarm" style="display: none;">
+											<div
+												class="alert alert-danger d-flex align-items-center mt-3">
+												<svg class="bi flex-shrink-0 me-2" width="24" height="24"
+													role="img" aria-label="Danger:">
+													<use xlink:href="#exclamation-triangle-fill" /></svg>
+												<div>&nbsp 0 이상의 숫자를 입력해주세요!!</div>
+											</div>
+										</div>
 								</div>
 							</div>
 							</form>
@@ -213,7 +245,29 @@
 							</div>
 							<script>
 							function nextBtn(){
-								$("#form-rateCancerInsurance").submit();
+								form = document.formrateCancerInsurance;
+								if(form.thyroidRate.value == null || form.thyroidRate.value <= 0 || form.testicularRate.value == null || form.testicularRate.value <= 0
+										|| form.ovarianRate.value == null || form.ovarianRate.value <= 0 || form.esophagealRate.value == null || form.esophagealRate.value <= 0
+										|| form.lungRate.value == null || form.lungRate.value <= 0) {
+									document.getElementById("familyMBox").style.borderColor = "red";
+									document.getElementById("familyMBox").scrollIntoView();
+									$('#familyMAlarm').show();
+								} else if(form.oneRelRate.value == null || form.oneRelRate.value <= 0 || form.twoRelRate.value == null || form.twoRelRate.value <= 0
+										|| form.threeRelRate.value == null || form.threeRelRate.value <= 0 || form.fourRelRate.value == null || form.fourRelRate.value <= 0) {
+									document.getElementById("familyRBox").style.borderColor = "red";
+									document.getElementById("familyRBox").scrollIntoView();
+									$('#familyRAlarm').show();
+								} else {
+									form.submit();
+								}
+							}
+							function familyMChange() {
+								document.getElementById("familyMBox").style.borderColor = "#D1D3E2";
+								$('#familyMAlarm').hide();
+							}
+							function familyRChange() {
+								document.getElementById("familyRBox").style.borderColor = "#D1D3E2";
+								$('#familyRAlarm').hide();
 							}
 							</script>
 						</div>

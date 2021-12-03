@@ -220,7 +220,7 @@
 										<div class="row">
 											<label>보장기간을 입력하세요(연단위) : </label>
 											<div class=form-check>
-												<input type="text" name="insuranceWarrantyPeriod" value="0" onChange="warrantyPeriodChange()"> 
+												<input type="number" name="insuranceWarrantyPeriod" value="0" onChange="warrantyPeriodChange()"> 
 											</div>
 										</div>
 									</div>
@@ -238,15 +238,15 @@
 							</div>
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">나이별 요율</h6>
+									<h6 class="m-0 font-weight-bold text-primary" id="ageBox">나이별 요율</h6>
 								</div>
-								<div class="card-body">
+								<div class="card-body" id="ageList">
 									<div class="column">
 									<div class = "form-check">
 										<div class="row">
 											<label><%= request.getAttribute("ageRateName1") %> : </label>
 											<div class=form-check>
-												<input type="number" name="kidsRate" min="0.1" value="1.0" step="0.1"> 
+												<input type="number" name="kidsRate" min="0.1" value="1.0" step="0.1" onChange="ageChange()"> 
 											</div>
 										</div>
 									</div>
@@ -254,7 +254,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("ageRateName2") %> : </label>
 											<div class=form-check>
-												<input type="number" name="teensRate" min="0.1" value="1.0" step="0.1"> 
+												<input type="number" name="teensRate" min="0.1" value="1.0" step="0.1" onChange="ageChange()"> 
 											</div>
 										</div>
 									</div>
@@ -262,7 +262,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("ageRateName3") %> : </label>
 											<div class=form-check>
-												<input type="number" name="twentiesRate" min="0.1" value="1.0" step="0.1"> 
+												<input type="number" name="twentiesRate" min="0.1" value="1.0" step="0.1" onChange="ageChange()"> 
 											</div>
 										</div>
 									</div>
@@ -270,7 +270,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("ageRateName4") %> : </label>
 											<div class=form-check>
-												<input type="number" name="thirtiesRate" min="0.1" value="1.0" step="0.1"> 
+												<input type="number" name="thirtiesRate" min="0.1" value="1.0" step="0.1" onChange="ageChange()"> 
 											</div>
 										</div>
 									</div>
@@ -278,7 +278,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("ageRateName5") %> : </label>
 											<div class=form-check>
-												<input type="number" name="fourtiesRate" min="0.1" value="1.0" step="0.1"> 
+												<input type="number" name="fourtiesRate" min="0.1" value="1.0" step="0.1" onChange="ageChange()"> 
 											</div>
 										</div>
 									</div>
@@ -286,7 +286,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("ageRateName6") %> : </label>
 											<div class=form-check>
-												<input type="number" name="fiftiesRate" min="0.1" value="1.0" step="0.1"> 
+												<input type="number" name="fiftiesRate" min="0.1" value="1.0" step="0.1" onChange="ageChange()"> 
 											</div>
 										</div>
 									</div>
@@ -294,16 +294,25 @@
 										<div class="row">
 											<label><%= request.getAttribute("ageRateName7") %> : </label>
 											<div class=form-check>
-												<input type="number" name="oldersRate" min="0.1" value="1.0" step="0.1"> 
+												<input type="number" name="oldersRate" min="0.1" value="1.0" step="0.1" onChange="ageChange()"> 
 											</div>
 										</div>
 									</div>
 									</div>
+									<div id="ageAlarm" style="display: none;">
+											<div
+												class="alert alert-danger d-flex align-items-center mt-3">
+												<svg class="bi flex-shrink-0 me-2" width="24" height="24"
+													role="img" aria-label="Danger:">
+													<use xlink:href="#exclamation-triangle-fill" /></svg>
+												<div>&nbsp 0.1 이상의 숫자를 입력해주세요!!</div>
+											</div>
+										</div>
 								</div>
 							</div>
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">성별별 요율</h6>
+									<h6 class="m-0 font-weight-bold text-primary" id="genderBox">성별별 요율</h6>
 								</div>
 								<div class="card-body">
 									<div class="column">
@@ -311,7 +320,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("genderRateName1") %> : </label>
 											<div class=form-check>
-												<input type="number" name="maleRate" min="0.1" value="1.0" step="0.1"> 
+												<input type="number" name="maleRate" min="0.1" value="1.0" step="0.1" onChange="genderChange()"> 
 											</div>
 										</div>
 									</div>
@@ -319,16 +328,25 @@
 										<div class="row">
 											<label><%= request.getAttribute("genderRateName2") %> : </label>
 											<div class=form-check>
-												<input type="number" name="femaleRate" min="0.1" value="1.0" step="0.1"> 
+												<input type="number" name="femaleRate" min="0.1" value="1.0" step="0.1" onChange="genderChange()"> 
 											</div>
 										</div>
 									</div>
 									</div>
+									<div id="genderAlarm" style="display: none;">
+											<div
+												class="alert alert-danger d-flex align-items-center mt-3">
+												<svg class="bi flex-shrink-0 me-2" width="24" height="24"
+													role="img" aria-label="Danger:">
+													<use xlink:href="#exclamation-triangle-fill" /></svg>
+												<div>&nbsp 0.1 이상의 숫자를 입력해주세요!!</div>
+											</div>
+										</div>
 								</div>
 							</div>
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">직업별 요율</h6>
+									<h6 class="m-0 font-weight-bold text-primary" id="jobBox">직업별 요율</h6>
 								</div>
 								<div class="card-body">
 									<div class="column">
@@ -336,7 +354,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("jobRateName1") %> </label>
 											<div class=form-check>
-												<input type="number" name="officeRate" min="0.1" value="1.0" step="0.1"> 
+												<input type="number" name="officeRate" min="0.1" value="1.0" step="0.1" onChange="jobChange()"> 
 											</div>
 										</div>
 									</div>
@@ -344,7 +362,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("jobRateName2") %> : </label>
 											<div class=form-check>
-												<input type="number" name="driverRate" min="0.1" value="1.0" step="0.1"> 
+												<input type="number" name="driverRate" min="0.1" value="1.0" step="0.1" onChange="jobChange()"> 
 											</div>
 										</div>
 									</div>
@@ -352,7 +370,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("jobRateName3") %> : </label>
 											<div class=form-check>
-												<input type="number" name="factoryRate" min="0.1" value="1.0" step="0.1">
+												<input type="number" name="factoryRate" min="0.1" value="1.0" step="0.1" onChange="jobChange()">
 											</div>
 										</div>
 									</div>
@@ -360,7 +378,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("jobRateName4") %> : </label>
 											<div class=form-check>
-												<input type="number" name="studentRate" min="0.1" value="1.0" step="0.1"> 
+												<input type="number" name="studentRate" min="0.1" value="1.0" step="0.1" onChange="jobChange()"> 
 											</div>
 										</div>
 									</div>
@@ -368,7 +386,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("jobRateName5") %> : </label>
 											<div class=form-check>
-												<input type="number" name="teacherRate" min="0.1" value="1.0" step="0.1"> 
+												<input type="number" name="teacherRate" min="0.1" value="1.0" step="0.1" onChange="jobChange()"> 
 											</div>
 										</div>
 									</div>
@@ -376,7 +394,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("jobRateName6") %> : </label>
 											<div class=form-check>
-												<input type="number" name="soldierRate" min="0.1" value="1.0" step="0.1"> 
+												<input type="number" name="soldierRate" min="0.1" value="1.0" step="0.1" onChange="jobChange()"> 
 											</div>
 										</div>
 									</div>
@@ -384,11 +402,20 @@
 										<div class="row">
 											<label><%= request.getAttribute("jobRateName7") %> : </label>
 											<div class=form-check>
-												<input type="number" name="etcRate" min="0.1" value="1.0" step="0.1"> 
+												<input type="number" name="etcRate" min="0.1" value="1.0" step="0.1" onChange="jobChange()"> 
 											</div>
 										</div>
 									</div>
 									</div>
+									<div id="jobAlarm" style="display: none;">
+											<div
+												class="alert alert-danger d-flex align-items-center mt-3">
+												<svg class="bi flex-shrink-0 me-2" width="24" height="24"
+													role="img" aria-label="Danger:">
+													<use xlink:href="#exclamation-triangle-fill" /></svg>
+												<div>&nbsp 0.1 이상의 숫자를 입력해주세요!!</div>
+											</div>
+										</div>
 								</div>
 							</div>
 							</form>
@@ -410,10 +437,28 @@
 									form.insuranceSpecialFee.style.borderColor = "red";
 									document.getElementById("specialFeeBox").scrollIntoView();
 									$('#specialFeeAlarm').show();
-								} else if(form.insuranceWarrantyPeriod.value == null || form.insuranceWarrantyPeriod.value < 0) {
+								} else if(form.insuranceWarrantyPeriod.value == null || form.insuranceWarrantyPeriod.value <= 0) {
 									form.insuranceWarrantyPeriod.style.borderColor = "red";
 									document.getElementById("warrantyPeriodBox").scrollIntoView();
 									$('#warrantyPeriodAlarm').show();
+								} else if(form.kidsRate.value == null || form.kidsRate.value <= 0 || form.teensRate.value == null || form.teensRate.value <= 0
+										|| form.twentiesRate.value == null || form.twentiesRate.value <= 0 || form.thirtiesRate.value == null || form.thirtiesRate.value <= 0
+										|| form.fourtiesRate.value == null || form.fourtiesRate.value <= 0 || form.fiftiesRate.value == null || form.fiftiesRate.value <= 0
+										|| form.oldersRate.value == null || form.oldersRate.value <= 0) {
+									document.getElementById("ageBox").style.borderColor = "red";
+									document.getElementById("ageBox").scrollIntoView();
+									$('#ageAlarm').show();
+								} else if(form.maleRate.value == null || form.maleRate.value <= 0 || form.femaleRate.value == null || form.femaleRate.value <= 0) {
+									document.getElementById("genderBox").style.borderColor = "red";
+									document.getElementById("genderBox").scrollIntoView();
+									$('#genderAlarm').show();
+								} else if(form.officeRate.value == null || form.officeRate.value <= 0 || form.driverRate.value == null || form.driverRate.value <= 0
+										 || form.factoryRate.value == null || form.factoryRate.value <= 0 || form.studentRate.value == null || form.studentRate.value <= 0
+										 || form.teacherRate.value == null || form.teacherRate.value <= 0 || form.soldierRate.value == null || form.soldierRate.value <= 0
+										 || form.etcRate.value == null || form.etcRate.value <= 0) {
+									document.getElementById("jobBox").style.borderColor = "red";
+									document.getElementById("jobBox").scrollIntoView();
+									$('#jobAlarm').show();
 								} else {
 									form.submit();
 								}
@@ -435,6 +480,18 @@
 							function warrantyPeriodChange() {
 								form.insuranceWarrantyPeriod.style.borderColor = "#D1D3E2";
 								$('#warrantyPeriodAlarm').hide();
+							}
+							function ageChange() {
+								document.getElementById("ageBox").style.borderColor = "#D1D3E2";
+								$('#ageAlarm').hide();
+							}
+							function genderChange() {
+								document.getElementById("genderBox").style.borderColor = "#D1D3E2";
+								$('#genderAlarm').hide();
+							}
+							function jobChange() {
+								document.getElementById("jobBox").style.borderColor = "#D1D3E2";
+								$('#jobAlarm').hide();
 							}
 							</script>
 						</div>

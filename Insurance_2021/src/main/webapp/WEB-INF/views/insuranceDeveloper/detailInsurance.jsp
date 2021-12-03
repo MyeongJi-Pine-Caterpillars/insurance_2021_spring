@@ -168,7 +168,7 @@
 										<div class="row">
 											<label>기본 보험료를 입력하세요 : </label>
 											<div class=form-check>
-												<input type="text" name="insuranceFee" value="0"  onChange="feeChange()"> 
+												<input type="number" name="insuranceFee" value="0"  onChange="feeChange()"> 
 											</div>
 										</div>
 									</div>
@@ -194,7 +194,7 @@
 										<div class="row">
 											<label>특약 보험료를 입력하세요 : </label>
 											<div class=form-check>
-												<input type="text" name="insuranceSpecialFee" value="0" onChange="specialFeeChange()"> 
+												<input type="number" name="insuranceSpecialFee" value="0" onChange="specialFeeChange()"> 
 											</div>
 										</div>
 									</div>

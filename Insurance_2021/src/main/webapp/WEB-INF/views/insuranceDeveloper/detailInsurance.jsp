@@ -29,7 +29,21 @@
 </head>
 
 <body id="page-top">
-
+	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+		<symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+			<path
+			d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+		</symbol>
+		<symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+			<path
+			d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" />
+		</symbol>
+		<symbol id="exclamation-triangle-fill" fill="currentColor"
+			viewBox="0 0 16 16">
+			<path
+			d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+		</symbol>
+	</svg>
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -114,11 +128,11 @@
 					<div class="row">
 
 						<div class="col-lg-6 mb-4">
-						<form id="form-detailInsurance" action="goToSpecializeRate" method="get">
+						<form id="formdetailInsurance" name="formdetailInsurance" action="goToSpecializeRate" method="get">
 							<!-- Illustrations -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">보험 이름</h6>
+									<h6 class="m-0 font-weight-bold text-primary" id="nameBox">보험 이름</h6>
 								</div>
 								<div class="card-body">
 									<div class="column">
@@ -126,18 +140,27 @@
 										<div class="row">
 											<label>보험의 이름을 입력하세요 : </label>
 											<div class=form-check>
-												<input type="text" name="insuranceName"> 
+												<input type="text" name="insuranceName" onChange="nameChange()"> 
 											</div>
 										</div>
 									</div>
 									</div>
+									<div id="nameAlarm" style="display: none;">
+											<div
+												class="alert alert-danger d-flex align-items-center mt-3">
+												<svg class="bi flex-shrink-0 me-2" width="24" height="24"
+													role="img" aria-label="Danger:">
+													<use xlink:href="#exclamation-triangle-fill" /></svg>
+												<div>&nbsp 내용을 입력해주세요!!</div>
+											</div>
+										</div>
 								</div>
 							</div>
 
 							<!-- Approach -->
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">보험 기본료</h6>
+									<h6 class="m-0 font-weight-bold text-primary" id="feeBox">보험 기본료</h6>
 								</div>
 								<div class="card-body">
 									<div class="column">
@@ -145,16 +168,25 @@
 										<div class="row">
 											<label>기본 보험료를 입력하세요 : </label>
 											<div class=form-check>
-												<input type="text" name="insuranceFee" value="0"> 
+												<input type="text" name="insuranceFee" value="0"  onChange="feeChange()"> 
 											</div>
 										</div>
 									</div>
 									</div>
-								</div>
+										<div id="feeAlarm" style="display: none;">
+											<div
+												class="alert alert-danger d-flex align-items-center mt-3">
+												<svg class="bi flex-shrink-0 me-2" width="24" height="24"
+													role="img" aria-label="Danger:">
+													<use xlink:href="#exclamation-triangle-fill" /></svg>
+												<div>&nbsp 1 이상의 숫자를 입력해주세요!!</div>
+											</div>
+										</div>
+									</div>
 							</div>
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">특약 보험료</h6>
+									<h6 class="m-0 font-weight-bold text-primary" id="specialFeeBox">특약 보험료</h6>
 								</div>
 								<div class="card-body">
 									<div class="column">
@@ -162,16 +194,25 @@
 										<div class="row">
 											<label>특약 보험료를 입력하세요 : </label>
 											<div class=form-check>
-												<input type="text" name="insuranceSpecialFee" value="0"> 
+												<input type="text" name="insuranceSpecialFee" value="0" onChange="specialFeeChange()"> 
 											</div>
 										</div>
 									</div>
 									</div>
-								</div>
+									<div id="specialFeeAlarm" style="display: none;">
+											<div
+												class="alert alert-danger d-flex align-items-center mt-3">
+												<svg class="bi flex-shrink-0 me-2" width="24" height="24"
+													role="img" aria-label="Danger:">
+													<use xlink:href="#exclamation-triangle-fill" /></svg>
+												<div>&nbsp 0 이상의 숫자를 입력해주세요!!</div>
+											</div>
+										</div>
+									</div>
 							</div>
 							<div class="card shadow mb-4">
 								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">보장 기간</h6>
+									<h6 class="m-0 font-weight-bold text-primary" id="warrantyPeriodBox">보장 기간</h6>
 								</div>
 								<div class="card-body">
 									<div class="column">
@@ -179,11 +220,20 @@
 										<div class="row">
 											<label>보장기간을 입력하세요(연단위) : </label>
 											<div class=form-check>
-												<input type="text" name="insuranceWarrantyPeriod" value="0"> 
+												<input type="text" name="insuranceWarrantyPeriod" value="0" onChange="warrantyPeriodChange()"> 
 											</div>
 										</div>
 									</div>
 									</div>
+									<div id="warrantyPeriodAlarm" style="display: none;">
+											<div
+												class="alert alert-danger d-flex align-items-center mt-3">
+												<svg class="bi flex-shrink-0 me-2" width="24" height="24"
+													role="img" aria-label="Danger:">
+													<use xlink:href="#exclamation-triangle-fill" /></svg>
+												<div>&nbsp 0 이상의 숫자를 입력해주세요!!</div>
+											</div>
+										</div>
 								</div>
 							</div>
 							<div class="card shadow mb-4">
@@ -196,7 +246,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("ageRateName1") %> : </label>
 											<div class=form-check>
-												<input type="number" name="kidsRate" value="1.0" step="0.1"> 
+												<input type="number" name="kidsRate" min="0.1" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -204,7 +254,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("ageRateName2") %> : </label>
 											<div class=form-check>
-												<input type="number" name="teensRate" value="1.0" step="0.1"> 
+												<input type="number" name="teensRate" min="0.1" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -212,7 +262,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("ageRateName3") %> : </label>
 											<div class=form-check>
-												<input type="number" name="twentiesRate" value="1.0" step="0.1"> 
+												<input type="number" name="twentiesRate" min="0.1" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -220,7 +270,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("ageRateName4") %> : </label>
 											<div class=form-check>
-												<input type="number" name="thirtiesRate" value="1.0" step="0.1"> 
+												<input type="number" name="thirtiesRate" min="0.1" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -228,7 +278,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("ageRateName5") %> : </label>
 											<div class=form-check>
-												<input type="number" name="fourtiesRate" value="1.0" step="0.1"> 
+												<input type="number" name="fourtiesRate" min="0.1" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -236,7 +286,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("ageRateName6") %> : </label>
 											<div class=form-check>
-												<input type="number" name="fiftiesRate" value="1.0" step="0.1"> 
+												<input type="number" name="fiftiesRate" min="0.1" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -244,7 +294,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("ageRateName7") %> : </label>
 											<div class=form-check>
-												<input type="number" name="oldersRate" value="1.0" step="0.1"> 
+												<input type="number" name="oldersRate" min="0.1" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -261,7 +311,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("genderRateName1") %> : </label>
 											<div class=form-check>
-												<input type="number" name="maleRate" value="1.0" step="0.1"> 
+												<input type="number" name="maleRate" min="0.1" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -269,7 +319,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("genderRateName2") %> : </label>
 											<div class=form-check>
-												<input type="number" name="femaleRate" value="1.0" step="0.1"> 
+												<input type="number" name="femaleRate" min="0.1" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -286,7 +336,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("jobRateName1") %> </label>
 											<div class=form-check>
-												<input type="number" name="officeRate" value="1.0" step="0.1"> 
+												<input type="number" name="officeRate" min="0.1" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -294,7 +344,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("jobRateName2") %> : </label>
 											<div class=form-check>
-												<input type="number" name="driverRate" value="1.0" step="0.1"> 
+												<input type="number" name="driverRate" min="0.1" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -302,7 +352,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("jobRateName3") %> : </label>
 											<div class=form-check>
-												<input type="number" name="factoryRate" value="1.0" step="0.1">
+												<input type="number" name="factoryRate" min="0.1" value="1.0" step="0.1">
 											</div>
 										</div>
 									</div>
@@ -310,7 +360,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("jobRateName4") %> : </label>
 											<div class=form-check>
-												<input type="number" name="studentRate" value="1.0" step="0.1"> 
+												<input type="number" name="studentRate" min="0.1" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -318,7 +368,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("jobRateName5") %> : </label>
 											<div class=form-check>
-												<input type="number" name="teacherRate" value="1.0" step="0.1"> 
+												<input type="number" name="teacherRate" min="0.1" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -326,7 +376,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("jobRateName6") %> : </label>
 											<div class=form-check>
-												<input type="number" name="soldierRate" value="1.0" step="0.1"> 
+												<input type="number" name="soldierRate" min="0.1" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -334,7 +384,7 @@
 										<div class="row">
 											<label><%= request.getAttribute("jobRateName7") %> : </label>
 											<div class=form-check>
-												<input type="number" name="etcRate" value="1.0" step="0.1"> 
+												<input type="number" name="etcRate" min="0.1" value="1.0" step="0.1"> 
 											</div>
 										</div>
 									</div>
@@ -347,7 +397,44 @@
 							</div>
 							<script>
 							function nextBtn(){
-								$("#form-detailInsurance").submit();
+								form = document.formdetailInsurance;
+								if(form.insuranceName.value == "") {
+									form.insuranceName.style.borderColor = "red";
+									document.getElementById("nameBox").scrollIntoView();
+									$('#nameAlarm').show();
+								} else if(form.insuranceFee.value == null || form.insuranceFee.value <= 0) {
+									form.insuranceFee.style.borderColor = "red";
+									document.getElementById("feeBox").scrollIntoView();
+									$('#feeAlarm').show();
+								} else if(form.insuranceSpecialFee.value == null || form.insuranceSpecialFee.value < 0) {
+									form.insuranceSpecialFee.style.borderColor = "red";
+									document.getElementById("specialFeeBox").scrollIntoView();
+									$('#specialFeeAlarm').show();
+								} else if(form.insuranceWarrantyPeriod.value == null || form.insuranceWarrantyPeriod.value < 0) {
+									form.insuranceWarrantyPeriod.style.borderColor = "red";
+									document.getElementById("warrantyPeriodBox").scrollIntoView();
+									$('#warrantyPeriodAlarm').show();
+								} else {
+									form.submit();
+								}
+								
+							}
+							function nameChange() {
+								form.insuranceName.style.borderColor = "#D1D3E2";
+								$('#nameAlarm').hide();
+							}
+							function feeChange() {
+								form.insuranceFee.style.borderColor = "#D1D3E2";
+								$('#feeAlarm').hide();
+							}
+
+							function specialFeeChange() {
+								form.insuranceSpecialFee.style.borderColor = "#D1D3E2";
+								$('#specialFeeAlarm').hide();
+							}
+							function warrantyPeriodChange() {
+								form.insuranceWarrantyPeriod.style.borderColor = "#D1D3E2";
+								$('#warrantyPeriodAlarm').hide();
 							}
 							</script>
 						</div>

@@ -25,6 +25,8 @@ public class ContractDetail {
 	@RequestMapping(value="contractDetail", method=RequestMethod.GET)
 	public String cancerResponse(Locale locale, Model model, HttpServletRequest request, String contractId) {
 		HttpSession session = request.getSession(true);
+		Employee uw = (Employee)session.getAttribute("loginEmployee");
+		model.addAttribute("employeeName", uw.getName());
 		Contract contract = (Contract)underWriterService.getContract(contractId);
 		model.addAttribute("seletedContract", contract);
 		Insurance insurance = underWriterService.getInsurace(contract.getInsuranceId());

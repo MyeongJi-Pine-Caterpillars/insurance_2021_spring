@@ -73,10 +73,6 @@
 			<br>
 			<!-- Heading -->
 			<div class="sidebar-heading">Insurance</div>
-
-
-
-
 		</ul>
 		<!-- End of Sidebar -->
 

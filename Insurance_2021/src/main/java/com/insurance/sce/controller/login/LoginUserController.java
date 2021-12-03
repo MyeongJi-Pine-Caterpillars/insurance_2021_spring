@@ -16,7 +16,7 @@ import com.insurance.sce.service.CustomerService;
 
 @Controller
 @RequestMapping(value="/")
-public class LoginUser {
+public class LoginUserController {
 	@Autowired
 	CustomerService customerService;
 	

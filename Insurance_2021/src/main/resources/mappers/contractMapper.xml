@@ -39,6 +39,16 @@
 		SELECT * FROM contract WHERE effectiveness = 0
 	</select>
 	
+	<select id="selectAllData" resultType="com.insurance.sce.dao.Data">
+		SELECT contractId, T1.insurantId, T1.insuranceId, special, T2.name, type, T3.gender, basicFee, age
+		FROM contract T1
+		LEFT OUTER JOIN insurance T2
+		ON(T1.insuranceId = T2.insuranceId)
+			LEFT OUTER JOIN insurant T3
+			ON(T1.insurantId = T3.insurantId)
+			WHERE T1.effectiveness = 0
+	</select>
+	
 	<!-- UPDATE -->
 	<update id="updateFee" parameterType="com.insurance.sce.model.contract.Contract">
 		UPDATE contract

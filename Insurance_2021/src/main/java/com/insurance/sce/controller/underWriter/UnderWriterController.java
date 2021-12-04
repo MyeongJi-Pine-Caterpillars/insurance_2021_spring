@@ -46,31 +46,22 @@ public class UnderWriterController {
 		HttpSession session = request.getSession(true);
 		Employee uw = (Employee)session.getAttribute("loginEmployee");
 		model.addAttribute("employeeName", uw.getName());
-		model.addAttribute("dataList", underWriterService.getContractList());
+		model.addAttribute("dataList", underWriterService.getAllData());
 		return "underWriter/underWriter";
-	}
-	
-	@RequestMapping(value="selectContractView", method=RequestMethod.GET)
-	@ResponseBody
-	public String selectContractView(String contractId) {
-		Contract contract = underWriterService.getContract(contractId);
-		Insurance insurance = underWriterService.getInsurace(contract.getInsuranceId());
-		String jsp = underWriterService.selectInsuranceType(insurance.getEType());
-		return jsp+"?contractId="+contractId;
 	}
 	
 	@RequestMapping(value="doApprove", method=RequestMethod.GET)
 	public String doApprove(Locale locale, Model model, HttpServletRequest request, String contractId) {
 		HttpSession session = request.getSession(true);
 		underWriterService.approveContract(contractId);
-		model.addAttribute("dataList", underWriterService.getContractList());
+		model.addAttribute("dataList", underWriterService.getAllData());
 		return "underWriter/underWriter";
 	}
 	
 	@RequestMapping(value="doDeny", method=RequestMethod.GET)
 	public String doDeny(Locale locale, Model model, HttpServletRequest request, String contractId) {
 		underWriterService.denyContract(contractId);
-		model.addAttribute("dataList", underWriterService.getContractList());
+		model.addAttribute("dataList", underWriterService.getAllData());
 		return "underWriter/underWriterView";
 	}
 }

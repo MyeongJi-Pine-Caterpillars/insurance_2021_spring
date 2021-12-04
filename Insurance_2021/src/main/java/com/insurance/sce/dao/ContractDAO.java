@@ -24,4 +24,5 @@ public interface ContractDAO {
 
 	public int delete(String contractId);
 	public List<Contract> selectNotEffectiveContract();
+	public List<Data> getAllData();
 }

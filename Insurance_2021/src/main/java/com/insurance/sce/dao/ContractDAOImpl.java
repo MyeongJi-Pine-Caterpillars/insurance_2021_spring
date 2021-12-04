@@ -1,6 +1,7 @@
 package com.insurance.sce.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -29,6 +30,7 @@ public class ContractDAOImpl extends DBConnector implements ContractDAO{
 	private static final String UpdateUnpaidPeriod = "contractMapper.updateUnpaidPeriod";
 	private static final String UpdateSpecial = "contractMapper.updateSpecial";
 	private static final String Delete = "contractMapper.delete";
+	private static final String SelectContractInsurance = "contractMapper.selectContractInsurance";
 	
 
 	// Insert
@@ -42,6 +44,8 @@ public class ContractDAOImpl extends DBConnector implements ContractDAO{
 	public Contract select(String contractId) {return (Contract) sqlSession.selectOne(Select, contractId);}
 	public Contract selectUnpaidAndFee(String contractId) {return (Contract) sqlSession.selectList(SelectUnpaidAndFee, contractId);}
 	public List<Contract> selectNotEffectiveContract() {return sqlSession.selectList(SelectNotEffectiveContract);}
+	public List<Map<String, Object>> selectContractInsurance(String customerId) {return sqlSession.selectList(SelectContractInsurance, customerId);}
+
 	// Update
 	public int updateFee(Contract contract) {return sqlSession.update(UpdateFee, contract);}
 	public int updateEffectiveness(Contract contract) {return sqlSession.update(UpdateEffectiveness, contract);}
@@ -51,5 +55,6 @@ public class ContractDAOImpl extends DBConnector implements ContractDAO{
 
 	// Delete
 	public int delete(String contractId) {return sqlSession.update(Delete, contractId);}
+
 	
 }

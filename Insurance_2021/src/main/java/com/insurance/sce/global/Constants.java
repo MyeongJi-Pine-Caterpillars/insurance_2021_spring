@@ -196,29 +196,32 @@ public class Constants {
 	public static String[] tripGuarantee = {"사망", "상해", "해외의료비", "휴대품손해", "배상책임", "항공기납치"};
 
 	public enum eInsuranceType {
-		driverInsurance(1, new DriverInsurance(), "driverInsurance", driverGuarantee),
-		dentalInsurance(2, new DentalInsurance(), "dentalInsurance", dentalGuarantee),
-		actualCostInsurance(3, new ActualCostInsurance(), "actualCostInsurance", null),
-		fireInsurance(4, new FireInsurance(), "fireInsurance", fireGuarantee),
-		cancerInsurance(5, new CancerInsurance(), "cancerInsurance", cancerGuarantee),
-		tripInsurance(6, new TripInsurance(), "tripInsurance", tripGuarantee);
+		driverInsurance(1, new DriverInsurance(), "driverInsurance", driverGuarantee, "운전자보험"),
+		dentalInsurance(2, new DentalInsurance(), "dentalInsurance", dentalGuarantee, "치과보험"),
+		actualCostInsurance(3, new ActualCostInsurance(), "actualCostInsurance", null, "실비보험"),
+		fireInsurance(4, new FireInsurance(), "fireInsurance", fireGuarantee, "화재보험"),
+		cancerInsurance(5, new CancerInsurance(), "cancerInsurance", cancerGuarantee, "암보험"),
+		tripInsurance(6, new TripInsurance(), "tripInsurance", tripGuarantee, "여행자보험");
 
 		private int num;
 		private Insurance selectedInsurance;
 		private String name;
 		private String[] GuaranteePlan;
+		private String nameKor;
 		
-		private eInsuranceType(int num, Insurance selectedInsurance, String name, String[] GuaranteePlan) {
+		private eInsuranceType(int num, Insurance selectedInsurance, String name, String[] GuaranteePlan, String nameKor) {
 			this.num = num;
 			this.selectedInsurance = selectedInsurance;
 			this.name = name;
 			this.GuaranteePlan = GuaranteePlan;
+			this.nameKor = nameKor;
 		}
 
 		public int getNum() {return this.num;}
 		public Insurance getSelectedInsurance() {return this.selectedInsurance;}
 		public String getName() {return this.name;}
 		public String[] getGuaranteePlan() {return this.GuaranteePlan;}
+		public String getNameKor() {return this.nameKor;}
 		
 		public static eInsuranceType get(int n) {return eInsuranceType.values()[n - 1];}
 		

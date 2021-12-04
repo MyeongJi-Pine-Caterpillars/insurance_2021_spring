@@ -1,6 +1,7 @@
 package com.insurance.sce.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -8,11 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.insurance.sce.dao.ContractDAO;
+import com.insurance.sce.dao.CustomerDAO;
 import com.insurance.sce.dao.InsurantDAO;
 import com.insurance.sce.model.contract.Contract;
 import com.insurance.sce.model.customer.Insurant;
 import com.insurance.sce.global.Constants.eFamilyMedicalDisease;
 import com.insurance.sce.global.Constants.eFamilyMedicalRelationship;
+import com.insurance.sce.global.Constants.eGender;
+import com.insurance.sce.global.Constants.eJob;
 import com.insurance.sce.global.Constants.eRankOfCar;
 import com.insurance.sce.global.Constants.eRiskOfTripCountry;
 import com.insurance.sce.global.Constants.eTypeOfCar;
@@ -25,6 +29,7 @@ public class ContractServiceImpl implements ContractService{
 	ContractDAO contractDAO;
 	@Autowired
 	InsurantDAO insurantDAO;
+	
 
 	public List<Contract> selectNotEffectiveContract() {
 		List<Contract> list = contractDAO.selectAll();
@@ -207,8 +212,28 @@ public class ContractServiceImpl implements ContractService{
 		return insurant;
 	}
 
-	@Override
 	public List<Contract> selectAllContract() {
 		return contractDAO.selectAll();
+	}
+
+	public List<Map<String, Object>> selectContractInsurance(String customerId) {
+		return contractDAO.selectContractInsurance(customerId);
+	}
+
+	@Override
+	public Map<String, Object> getInsurantFromContract(List<Map<String, Object>> mapList, String contractId) {
+		Map<String, Object> newMap = new HashMap<String, Object>();
+		for(Map<String, Object> map : mapList) {
+			if(map.get("contractId").equals(contractId)) {
+				newMap.put("insurantName",map.get("insurantName"));
+				newMap.put("phoneNumber",map.get("phoneNumber"));
+				newMap.put("address",map.get("address"));
+				newMap.put("age",map.get("age"));
+				newMap.put("gender",(eGender.get((Integer)map.get("gender")).getName()));
+				newMap.put("job",(eJob.get((Integer)map.get("job")).getName()));
+			}
+		}
+		
+		return newMap;
 	}
 }

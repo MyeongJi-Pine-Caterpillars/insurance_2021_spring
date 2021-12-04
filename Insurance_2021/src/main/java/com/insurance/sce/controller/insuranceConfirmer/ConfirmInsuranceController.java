@@ -1,4 +1,4 @@
-package com.insurance.sce.controller.insuranceDeveloper;
+package com.insurance.sce.controller.insuranceConfirmer;
 
 import java.util.List;
 import java.util.Locale;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.insurance.sce.model.insurance.GuaranteePlan;
 import com.insurance.sce.model.insurance.Insurance;
-import com.insurance.sce.service.InsuranceDeveloperService;
+import com.insurance.sce.service.InsuranceConfirmerService;
 import com.insurance.sce.service.InsuranceService;
 
 /**
@@ -22,30 +22,30 @@ import com.insurance.sce.service.InsuranceService;
  */
 @Controller
 @RequestMapping(value = "/")
-public class RestoreInsurance {
+public class ConfirmInsuranceController {
 	@Autowired
-	InsuranceDeveloperService insuranceDeveloperService;
+	InsuranceConfirmerService insuranceConfirmerService;
 	@Autowired
 	InsuranceService insuranceService;
 	
-	@RequestMapping(value="restoreInsurance", method=RequestMethod.GET)
-	public String responseRestoreInsurance(Locale locale, Model model, HttpServletRequest request) {
+	@RequestMapping(value="confirmInsurance", method=RequestMethod.GET)
+	public String responseConfirmerView(Locale locale, Model model, HttpServletRequest request) {
 		model.addAttribute("insuranceList", insuranceService.selectAllInsurance());
-		return "insuranceDeveloper/restoreInsurance";
+		return "insuranceConfirmer/confirmInsurance";
 	}
-	@RequestMapping(value="restoreInsurance/restore", method=RequestMethod.GET)
-	public String responseRestore(Locale locale, Model model, HttpServletRequest request) {
-		String insuranceId = (String)request.getParameter("restoreInsuranceId");
-		insuranceDeveloperService.restoreInsurance(insuranceId);
-		return "redirect:/restoreInsurance";
+	@RequestMapping(value="confirmInsurance/confirm", method=RequestMethod.GET)
+	public String responseConfirmInsurance(Locale locale, Model model, HttpServletRequest request) {
+		String insuranceId = (String)request.getParameter("confirmInsuranceId");
+		insuranceConfirmerService.confirmInsurance(insuranceId);
+		return "redirect:/confirmInsurance";
 	}
 	
-	@RequestMapping(value="restoreInsurance/doSelect")
+	@RequestMapping(value="confirmInsurance/doSelect")
 	@ResponseBody
 	Insurance doSelect(String insuranceId) {
 		return insuranceService.selectInsurance(insuranceId);
 	}
-	@RequestMapping(value="restoreInsurance/doSelectGuaranteePlan")
+	@RequestMapping(value="confirmInsurance/doSelectGuaranteePlan")
 	@ResponseBody
 	List<GuaranteePlan> doSelectGuaranteePlan(String insuranceId) {
 		return insuranceService.selectGuaranteePlan(insuranceId);

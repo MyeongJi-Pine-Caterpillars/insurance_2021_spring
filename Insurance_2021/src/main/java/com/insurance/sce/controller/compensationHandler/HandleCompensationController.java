@@ -26,7 +26,7 @@ import com.insurance.sce.service.InsurantService;
  */
 @Controller
 @RequestMapping(value = "/")
-public class HandleCompensation {
+public class HandleCompensationController {
 	@Autowired
 	AccidentService accidentService;
 	@Autowired

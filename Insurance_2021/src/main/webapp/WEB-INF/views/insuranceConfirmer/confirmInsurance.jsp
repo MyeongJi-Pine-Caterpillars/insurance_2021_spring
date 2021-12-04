@@ -55,7 +55,7 @@
 
             <!-- Nav Item - Dashboard -->
            <li class="nav-item active">
-               	 <a class="nav-link" href="confirmerView.do">
+               	 <a class="nav-link" href="confirmInsurance.do">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>보험 확정하기</span></a>
             </li>
@@ -160,11 +160,11 @@
 								</div>
 								 <div class="card-body">
 									<div class="row">
-										<div class="col mb-3" id="rateOfAge"></div>
-										<div class="col" id="rateOfJob"></div>
+										<div class="col mb-3" id="rateOfAgeBox"></div>
+										<div class="col" id="rateOfJobBox"></div>
 									</div>
 									<div class="row">
-										<div class="col mb-3" id="rateOfGender0"></div>
+										<div class="col mb-3" id="rateOfGenderBox"></div>
 										<div class="col"></div>
 									</div>
 									<div class="row">
@@ -293,6 +293,9 @@
 			}
 		}
 		$('.col-xl-3').click(function(){
+			$('#rateOfAgeBox').empty();
+			$('#rateOfJobBox').empty();
+			$('#rateOfGenderBox').empty();
 			$('#rateOfFamilyMedicalDiseaseBox').empty();
 			$('#rateOfFamilyMedicalRelationshipBox').empty();
 			$('#rateOfAccidentHistoryBox').empty();
@@ -311,7 +314,7 @@
 			success : function(data){
 				insuranceId = data.insuranceId;
 				
-				$('#rateOfAge').html('<div class="col mb-3" id="rateOfAge"><h4 class="small font-weight-bold">--나이 요율표--</h4></div>');
+				$('#rateOfAgeBox').html('<div class="col mb-3" id="rateOfAge"><h4 class="small font-weight-bold">--나이 요율표--</h4></div>');
 				$.each(data.rateOfAge, function(index, item){
 					$('#rateOfAge').append(
 							'<h4 class="small font-weight-bold">'+ ages[index] +'<span class="float-right">' +
@@ -319,7 +322,7 @@
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 					);
 				});
-				$('#rateOfJob').html('<div class="col mb-3" id="rateOfJob"><h4 class="small font-weight-bold">--직업 요율표--</h4></div>');
+				$('#rateOfJobBox').html('<div class="col mb-3" id="rateOfJob"><h4 class="small font-weight-bold">--직업 요율표--</h4></div>');
 				$.each(data.rateOfJob, function(index, item){
 					$('#rateOfJob').append(
 							'<h4 class="small font-weight-bold">'+ jobs[index] +'<span class="float-right">' +
@@ -327,7 +330,7 @@
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 					);
 				});
-				$('#rateOfGender').html('<div class="col mb-3" id="rateOfGender"><h4 class="small font-weight-bold">--성별 요율표--</h4></div>');
+				$('#rateOfGenderBox').html('<div class="col mb-3" id="rateOfGender"><h4 class="small font-weight-bold">--성별 요율표--</h4></div>');
 				$.each(data.rateOfGender, function(index, item){
 					$('#rateOfGender').append(
 							'<h4 class="small font-weight-bold">'+ gender[index] +'<span class="float-right">' +
@@ -362,9 +365,9 @@
 					});
 				} else if(data.type == 2){
 					$('#annualLimitCountBox').append(
-							'<h4 class="small font-weight-bold">'+ annualLimitCount +'<span class="float-right">' +
+							'<h4 class="small font-weight-bold">&nbsp&nbsp&nbsp'+ annualLimitCount +'<span class="float-right">' +
 								data.annualLimitCount +
-								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 					);
 				} else if(data.type == 3){
 					

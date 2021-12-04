@@ -29,7 +29,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 			switch(employee.getERole()) {
 			case insuranceDeveloper: employeeRole += "developerView";
 				break;
-			case insuranceConfirmer: employeeRole += "confirmerView";
+			case insuranceConfirmer: employeeRole += "confirmInsurance";
 				break;
 			case underWriter: employeeRole += "underWriter";
 				break;

@@ -27,6 +27,7 @@ import com.insurance.sce.service.InsuranceServiceImpl;
 public class SelectDentalInsuranceController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SelectDentalInsuranceController.class);
+	private List<DentalInsurance> insuranceList;
 	
 	@Autowired
 	InsuranceService insuranceService;
@@ -37,7 +38,8 @@ public class SelectDentalInsuranceController {
 		
 		Customer customer = (Customer)session.getAttribute("loginCustomer");
 
-		model.addAttribute("insuranceList", insuranceService.selectAllDentalInsurance());
+		insuranceList = insuranceService.selectAllDentalInsurance();
+		model.addAttribute("insuranceList", insuranceList);
 		model.addAttribute("clientName", customer.getName() );
 		return "customer/selectDentalInsurance";
 	}
@@ -45,7 +47,7 @@ public class SelectDentalInsuranceController {
 	@RequestMapping(value="selectDentalInsurance/doSelect")
 	@ResponseBody
 	DentalInsurance doSelect(String insuranceId) {
-		return insuranceService.selectDentalInsurance(insuranceId);
+		return insuranceService.selectDentalInsurance(insuranceList, insuranceId);
 	}
 	@RequestMapping(value="selectDentalInsurance/doSelectGuaranteePlan")
 	@ResponseBody

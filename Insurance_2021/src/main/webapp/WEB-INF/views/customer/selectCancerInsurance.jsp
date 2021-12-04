@@ -184,7 +184,7 @@
 							aria-expanded="false"> <span
 								class="mr-2 d-none d-lg-inline text-gray-600 small">안녕하세요
 									${customerName} 님!</span> <img class="img-profile rounded-circle"
-								src="img/undraw_profile.svg">
+								src="${pageContext.request.contextPath}/resources/img/undraw_profile.svg">
 						</a></li>
 
 						<div class="topbar-divider d-none d-sm-block"></div>
@@ -285,6 +285,7 @@
 									<div class="card-header py-3">
 										<h6 class="m-0 font-weight-bold text-primary">보장내역</h6>
 									</div>
+									
 									<div class="card-body">
 										기본계약
 										<ol class="list-group list-group-numbered" id="guaranteePlan"></ol>
@@ -352,6 +353,12 @@
 			</div>
 		</div>
 		
+		
+									<div id="ajax_indicator" style="display:none;">
+			 							<p style="text-align: center; padding: 16px 0 0 0; left: 50%; top: 50%; position: absolute;">
+			 								<img src="${pageContext.request.contextPath}/resources/img/loading.gif" />
+			 							</p>
+									</div>
 		<script>
 			var ages = ["영유아", "10대", "20대", "30대", "40대", "50대", "노년층"];
 			var jobs = ["사무직", "운송업", "현장직", "학생", "교육직", "군인", "기타"];
@@ -362,6 +369,52 @@
 			
 			$('.col-xl-3').click(function(){
 				insuranceId = {"insuranceId" : $(this).attr('id')};
+				
+
+				$.ajax({
+					url: "selectCancerInsurance/doSelectGuaranteePlan",
+					type: "GET",
+					data: insuranceId,
+					
+					beforeSend: function() {
+						$('#ajax_indicator').show().fadeIn('fast');
+					},
+					complete: function() {
+						$('#ajax_indicator').fadeOut();
+					},
+					
+					success : function(data){
+						$('#guaranteePlan').html('<ol class="list-group list-group-numbered" id="guaranteePlan"></ol>');
+						$.each(data, function(index, item){
+							if(!item.special){
+								$('#guaranteePlan').append(
+									'<li class="list-group-item d-flex justify-content-between align-items-start">' +
+										'<div class="ms-2 me-auto"><div class="fw-bold">' +
+											item.content +
+										'</div>보장금액 : ' +
+											item.compensation +
+										'원</li>'
+								);
+							}
+						});
+						$('#guaranteePlanSpecial').html('<ol class="list-group list-group-numbered" id="guaranteePlanSpecial"></ol>');
+						$.each(data, function(index, item){
+							if(item.special){
+								$('#guaranteePlanSpecial').append(
+									'<li class="list-group-item d-flex justify-content-between align-items-start">' +
+										'<div class="ms-2 me-auto"><div class="fw-bold">' +
+											item.content +
+										'</div>보장금액 : ' +
+											item.compensation +
+										'원</li>'
+								);
+							}
+						});
+					},
+					error :function(){
+						alert("request error in guaranteePlan!");
+					}
+				});
 				
 				$.ajax({
 					url: "selectCancerInsurance/doSelect",
@@ -413,43 +466,6 @@
 					    alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);}
 				});
 				
-				$.ajax({
-					url: "selectCancerInsurance/doSelectGuaranteePlan",
-					type: "GET",
-					data: insuranceId,
-							
-					success : function(data){
-						$('#guaranteePlan').html('<ol class="list-group list-group-numbered" id="guaranteePlan"></ol>');
-						$.each(data, function(index, item){
-							if(!item.special){
-								$('#guaranteePlan').append(
-									'<li class="list-group-item d-flex justify-content-between align-items-start">' +
-										'<div class="ms-2 me-auto"><div class="fw-bold">' +
-											item.content +
-										'</div>보장금액 : ' +
-											item.compensation +
-										'원</li>'
-								);
-							}
-						});
-						$('#guaranteePlanSpecial').html('<ol class="list-group list-group-numbered" id="guaranteePlanSpecial"></ol>');
-						$.each(data, function(index, item){
-							if(item.special){
-								$('#guaranteePlanSpecial').append(
-									'<li class="list-group-item d-flex justify-content-between align-items-start">' +
-										'<div class="ms-2 me-auto"><div class="fw-bold">' +
-											item.content +
-										'</div>보장금액 : ' +
-											item.compensation +
-										'원</li>'
-								);
-							}
-						});
-					},
-					error :function(){
-						alert("request error in guaranteePlan!");
-					}
-				});
 			});
 			
 			function signUpInsurant(){

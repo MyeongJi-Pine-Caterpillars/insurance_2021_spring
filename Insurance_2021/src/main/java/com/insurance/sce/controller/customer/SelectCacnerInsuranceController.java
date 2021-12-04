@@ -19,7 +19,6 @@ import com.insurance.sce.model.customer.Customer;
 import com.insurance.sce.model.insurance.CancerInsurance;
 import com.insurance.sce.model.insurance.GuaranteePlan;
 import com.insurance.sce.service.InsuranceService;
-import com.insurance.sce.service.InsuranceServiceImpl;
 
 /**
  * Handles requests for the application home page.
@@ -29,6 +28,7 @@ import com.insurance.sce.service.InsuranceServiceImpl;
 public class SelectCacnerInsuranceController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SelectCacnerInsuranceController.class);
+	private List<CancerInsurance> insuranceList;
 	
 	@Autowired
 	InsuranceService insuranceService;
@@ -39,7 +39,8 @@ public class SelectCacnerInsuranceController {
 		
 		Customer customer = (Customer)session.getAttribute("loginCustomer");
 		
-		model.addAttribute("insuranceList", insuranceService.selectAllCancerInsurance());
+		insuranceList = insuranceService.selectAllCancerInsurance();
+		model.addAttribute("insuranceList", insuranceList);
 		model.addAttribute("customerName", customer.getName() );
 		return "customer/selectCancerInsurance";
 	}
@@ -47,8 +48,9 @@ public class SelectCacnerInsuranceController {
 	@RequestMapping(value="selectCancerInsurance/doSelect")
 	@ResponseBody
 	CancerInsurance doSelect(String insuranceId) {
-		return insuranceService.selectCancerInsurance(insuranceId);
+		return insuranceService.selectCancerInsurance(insuranceList, insuranceId);
 	}
+	
 	@RequestMapping(value="selectCancerInsurance/doSelectGuaranteePlan")
 	@ResponseBody
 	List<GuaranteePlan> doSelectGuaranteePlan(String insuranceId) {

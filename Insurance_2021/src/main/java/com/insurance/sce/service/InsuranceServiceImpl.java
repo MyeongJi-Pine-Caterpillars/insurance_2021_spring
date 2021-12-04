@@ -52,27 +52,45 @@ public class InsuranceServiceImpl implements InsuranceService{
 		return insuranceDAO.selectAllFireInsurance();
 	}
 	
-	public CancerInsurance selectCancerInsurance(String insuranceId) {
+	public CancerInsurance selectCancerInsurance(List<CancerInsurance> insuranceList, String insuranceId) {
+		for(CancerInsurance insurance : insuranceList) {
+			if(insurance.getInsuranceId().equals(insuranceId)) return insurance;
+		}
 		return (CancerInsurance) insuranceDAO.selectCancerInsurance(insuranceId);
 	}
 
-	public DentalInsurance selectDentalInsurance(String insuranceId) {
+	public DentalInsurance selectDentalInsurance(List<DentalInsurance> insuranceList, String insuranceId) {
+		for(DentalInsurance insurance : insuranceList) {
+			if(insurance.getInsuranceId().equals(insuranceId)) return insurance;
+		}
 		return (DentalInsurance) insuranceDAO.selectDentalInsurance(insuranceId);
 	}
 
-	public DriverInsurance selectDriverInsurance(String insuranceId) {
+	public DriverInsurance selectDriverInsurance(List<DriverInsurance> insuranceList, String insuranceId) {
+		for(DriverInsurance insurance : insuranceList) {
+			if(insurance.getInsuranceId().equals(insuranceId)) return insurance;
+		}
 		return (DriverInsurance) insuranceDAO.selectDriverInsurance(insuranceId);
 	}
 	
-	public ActualCostInsurance selectActualCostInsurance(String insuranceId) {
+	public ActualCostInsurance selectActualCostInsurance(List<ActualCostInsurance> insuranceList, String insuranceId) {
+		for(ActualCostInsurance insurance : insuranceList) {
+			if(insurance.getInsuranceId().equals(insuranceId)) return insurance;
+		}
 		return (ActualCostInsurance) insuranceDAO.selectActualCostInsurance(insuranceId);
 	}
 	
-	public TripInsurance selectTripInsurance(String insuranceId) {
+	public TripInsurance selectTripInsurance(List<TripInsurance> insuranceList, String insuranceId) {
+		for(TripInsurance insurance : insuranceList) {
+			if(insurance.getInsuranceId().equals(insuranceId)) return insurance;
+		}
 		return (TripInsurance) insuranceDAO.selectTripInsurance(insuranceId);
 	}
 	
-	public FireInsurance selectFireInsurance(String insuranceId) {
+	public FireInsurance selectFireInsurance(List<FireInsurance> insuranceList, String insuranceId) {
+		for(FireInsurance insurance : insuranceList) {
+			if(insurance.getInsuranceId().equals(insuranceId)) return insurance;
+		}
 		return (FireInsurance) insuranceDAO.selectFireInsurance(insuranceId);
 	}
 	

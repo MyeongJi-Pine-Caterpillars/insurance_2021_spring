@@ -18,7 +18,7 @@ import com.insurance.sce.service.InsuranceService;
  */
 @Controller
 @RequestMapping(value = "/")
-public class PostManageInsurance {
+public class PostManageInsuranceController {
 	@Autowired
 	InsuranceService insuranceService;
 	/**

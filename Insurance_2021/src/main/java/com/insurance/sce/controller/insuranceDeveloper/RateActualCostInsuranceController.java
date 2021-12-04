@@ -5,12 +5,16 @@ import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.insurance.sce.global.Constants;
+import com.insurance.sce.global.Constants.eRiskOfTripCountry;
 import com.insurance.sce.model.insurance.Insurance;
 import com.insurance.sce.service.InsuranceDeveloperService;
 
@@ -19,7 +23,7 @@ import com.insurance.sce.service.InsuranceDeveloperService;
  */
 @Controller
 @RequestMapping(value = "/")
-public class RateDentalInsurance {
+public class RateActualCostInsuranceController {
 	@Autowired
 	InsuranceDeveloperService idService;
 	private Insurance insurance;
@@ -28,19 +32,18 @@ public class RateDentalInsurance {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	
-	@RequestMapping(value="rateDentalInsurance", method=RequestMethod.GET)
-	public String responseRateDentalInsurance(Locale locale, Model model, HttpServletRequest request) {
+	@RequestMapping(value="rateActualCostInsurance", method=RequestMethod.GET)
+	public String responseRateActualCostInsurance(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		this.insurance = (Insurance) session.getAttribute("detailedInsurance");
-		return "insuranceDeveloper/rateDentalInsurance";
+		return "insuranceDeveloper/rateActualCostInsurance";
 	}
-	@RequestMapping(value="goToGuaranteeDentalInsurance", method=RequestMethod.GET)
-	public String responseGoToGuaranteeDentalInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
-		int annualCount = Integer.parseInt(request.getParameter("annualCount"));
-		this.insurance = idService.setDentalRate(insurance, annualCount);
-		HttpSession session = request.getSession(true);
-		session.setAttribute("ratedInsurance", this.insurance);
-		return"redirect:/guaranteeDentalInsurance";
+	@RequestMapping(value="goToGuaranteeActualCostInsurance", method=RequestMethod.GET)
+	public String responseGoToGuaranteeActualCostInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
+		double selfBurdenRate = Double.parseDouble(request.getParameter("selfBurdenRate"));
+		this.insurance = idService.setActualCostRate(insurance, selfBurdenRate);
+		idService.insertInsurance(this.insurance);
+		return "redirect:/developInsurance";
 	}
 
 }

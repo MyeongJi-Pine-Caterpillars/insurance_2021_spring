@@ -32,7 +32,7 @@ public class ContractDAOImpl extends DBConnector implements ContractDAO{
 	private static final String Delete = "contractMapper.delete";
 	private static final String SelectContractInsurance = "contractMapper.selectContractInsurance";
 	
-
+	static final String GetAllData = "contractMapper.selectAllData";
 	// Insert
 	public int insert(Contract contract) {return sqlSession.insert(Insert, contract);}
 
@@ -56,5 +56,8 @@ public class ContractDAOImpl extends DBConnector implements ContractDAO{
 	// Delete
 	public int delete(String contractId) {return sqlSession.update(Delete, contractId);}
 
+	public List<Data> getAllData() {
+		return sqlSession.selectList(GetAllData);
+	}
 	
 }

@@ -17,7 +17,7 @@ import com.insurance.sce.service.UnderWriterService;
 
 @Controller
 @RequestMapping(value = "/")
-public class ContractDetail {
+public class ContractDetailController {
 	
 	@Autowired
 	UnderWriterService underWriterService;

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import com.insurance.sce.dao.ContractDAO;
+import com.insurance.sce.dao.Data;
 import com.insurance.sce.dao.InsuranceDAO;
 import com.insurance.sce.dao.InsurantDAO;
 import com.insurance.sce.global.Constants.eInsuranceType;
@@ -35,22 +36,9 @@ public class UnderWriterServiceImpl implements UnderWriterService{
 		return insurantDAO.select(insurantId);
 	}
 	
-	public ArrayList<String[]> getContractList() {
-		ArrayList<String[]> dataList = new ArrayList<String[]>();
-		for(Contract contract : this.contractDAO.selectNotEffectiveContract()) {
-			String[] list = new String[7];
-			Insurance insurance = this.getInsurace(contract.getInsuranceId());
-			Insurant insurant = this.getInsurant(contract.getInsurantId());
-			list[0] = insurance.getName();
-			list[1] = insurance.getEType().name();
-			list[2] = String.valueOf(insurant.getAge());
-			list[3] = insurant.getEGender().getName();
-			list[4] = String.valueOf(insurance.getBasicFee());
-			list[5] = String.valueOf(contract.isSpecial());
-			list[6] = contract.getContractId();
-			dataList.add(list);
-		}
-		return dataList;
+	@Override
+	public List<Data> getAllData() {
+		return contractDAO.getAllData();
 	}
 
 	@Override

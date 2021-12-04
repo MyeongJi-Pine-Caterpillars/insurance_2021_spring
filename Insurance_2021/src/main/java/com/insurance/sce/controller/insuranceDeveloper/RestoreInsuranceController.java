@@ -22,30 +22,30 @@ import com.insurance.sce.service.InsuranceService;
  */
 @Controller
 @RequestMapping(value = "/")
-public class DeleteInsurance {
+public class RestoreInsuranceController {
 	@Autowired
 	InsuranceDeveloperService insuranceDeveloperService;
 	@Autowired
 	InsuranceService insuranceService;
 	
-	@RequestMapping(value="deleteInsurance", method=RequestMethod.GET)
-	public String responseDeleteInsurance(Locale locale, Model model, HttpServletRequest request) {
+	@RequestMapping(value="restoreInsurance", method=RequestMethod.GET)
+	public String responseRestoreInsurance(Locale locale, Model model, HttpServletRequest request) {
 		model.addAttribute("insuranceList", insuranceService.selectAllInsurance());
-		return "insuranceDeveloper/deleteInsurance";
+		return "insuranceDeveloper/restoreInsurance";
 	}
-	@RequestMapping(value="deleteInsurance/delete", method=RequestMethod.GET)
-	public String responseDelete(Locale locale, Model model, HttpServletRequest request) {
-		String insuranceId = (String)request.getParameter("deleteInsuranceId");
-		insuranceDeveloperService.deleteInsurance(insuranceId);
-		return "redirect:/deleteInsurance";
+	@RequestMapping(value="restoreInsurance/restore", method=RequestMethod.GET)
+	public String responseRestore(Locale locale, Model model, HttpServletRequest request) {
+		String insuranceId = (String)request.getParameter("restoreInsuranceId");
+		insuranceDeveloperService.restoreInsurance(insuranceId);
+		return "redirect:/restoreInsurance";
 	}
 	
-	@RequestMapping(value="deleteInsurance/doSelect")
+	@RequestMapping(value="restoreInsurance/doSelect")
 	@ResponseBody
 	Insurance doSelect(String insuranceId) {
 		return insuranceService.selectInsurance(insuranceId);
 	}
-	@RequestMapping(value="deleteInsurance/doSelectGuaranteePlan")
+	@RequestMapping(value="restoreInsurance/doSelectGuaranteePlan")
 	@ResponseBody
 	List<GuaranteePlan> doSelectGuaranteePlan(String insuranceId) {
 		return insuranceService.selectGuaranteePlan(insuranceId);

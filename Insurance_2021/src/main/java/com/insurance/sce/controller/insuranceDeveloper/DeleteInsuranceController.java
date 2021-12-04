@@ -1,4 +1,4 @@
-package com.insurance.sce.controller.insuranceConfirmer;
+package com.insurance.sce.controller.insuranceDeveloper;
 
 import java.util.List;
 import java.util.Locale;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.insurance.sce.model.insurance.GuaranteePlan;
 import com.insurance.sce.model.insurance.Insurance;
-import com.insurance.sce.service.InsuranceConfirmerService;
+import com.insurance.sce.service.InsuranceDeveloperService;
 import com.insurance.sce.service.InsuranceService;
 
 /**
@@ -22,30 +22,30 @@ import com.insurance.sce.service.InsuranceService;
  */
 @Controller
 @RequestMapping(value = "/")
-public class ConfirmerView {
+public class DeleteInsuranceController {
 	@Autowired
-	InsuranceConfirmerService insuranceConfirmerService;
+	InsuranceDeveloperService insuranceDeveloperService;
 	@Autowired
 	InsuranceService insuranceService;
 	
-	@RequestMapping(value="confirmerView", method=RequestMethod.GET)
-	public String responseConfirmerView(Locale locale, Model model, HttpServletRequest request) {
+	@RequestMapping(value="deleteInsurance", method=RequestMethod.GET)
+	public String responseDeleteInsurance(Locale locale, Model model, HttpServletRequest request) {
 		model.addAttribute("insuranceList", insuranceService.selectAllInsurance());
-		return "insuranceConfirmer/confirmerView";
+		return "insuranceDeveloper/deleteInsurance";
 	}
-	@RequestMapping(value="confirmerView/confirmInsurance", method=RequestMethod.GET)
-	public String responseConfirmInsurance(Locale locale, Model model, HttpServletRequest request) {
-		String insuranceId = (String)request.getParameter("confirmInsuranceId");
-		insuranceConfirmerService.confirmInsurance(insuranceId);
-		return "redirect:/confirmerView";
+	@RequestMapping(value="deleteInsurance/delete", method=RequestMethod.GET)
+	public String responseDelete(Locale locale, Model model, HttpServletRequest request) {
+		String insuranceId = (String)request.getParameter("deleteInsuranceId");
+		insuranceDeveloperService.deleteInsurance(insuranceId);
+		return "redirect:/deleteInsurance";
 	}
 	
-	@RequestMapping(value="confirmerView/doSelect")
+	@RequestMapping(value="deleteInsurance/doSelect")
 	@ResponseBody
 	Insurance doSelect(String insuranceId) {
 		return insuranceService.selectInsurance(insuranceId);
 	}
-	@RequestMapping(value="confirmerView/doSelectGuaranteePlan")
+	@RequestMapping(value="deleteInsurance/doSelectGuaranteePlan")
 	@ResponseBody
 	List<GuaranteePlan> doSelectGuaranteePlan(String insuranceId) {
 		return insuranceService.selectGuaranteePlan(insuranceId);

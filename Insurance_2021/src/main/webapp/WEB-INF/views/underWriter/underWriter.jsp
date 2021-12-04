@@ -3,8 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <%@ page import="java.util.List"%>
+<%@ page import="com.insurance.sce.dao.Data"%>
 <%
-	List<String[]> dataList = (List<String[]>)request.getAttribute("dataList");
+	List<Data> dataList = (List<Data>)request.getAttribute("dataList");
 %>
 
 <!DOCTYPE html>
@@ -114,8 +115,6 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">${employeeName} 님!</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -139,7 +138,15 @@
                                 </a>
                             </div>
                         </li>
-
+						<div class="topbar-divider d-none d-sm-block"></div>
+						<li class="nav-item dropdown no-arrow"><a
+							class="nav-link dropdown-toggle" href="#" id="userDropdown"
+							role="button" data-toggle="dropdown" aria-haspopup="true"
+							aria-expanded="false">
+								<button type="button"
+									onclick="location.href='loginEmployee'"
+									class="btn btn-outline-dark">로그아웃</button>
+						</a></li>
                     </ul>
 
                 </nav>
@@ -188,21 +195,21 @@
                                    
                                     <tbody>
                                     
-                                     	<%for(String[] data : dataList){%>
+                                     	<%for(Data data : dataList){%>
                                      		<tr>
-                                     			<td><%=data[0]%></td>
-                                     			<td><%=data[1]%></td>
-                                     			<td><%=data[2]%></td>
-                                     			<td><%=data[3]%></td>
-                                     			<td><%=data[4]%></td>
-                                     			<td><%=data[5]%></td>
-                                     			<td><input class = "selectedContract" onclick = "selectContract(this.id);" type = "button" value = "Select" id = <%=data[6]%>></td>
+                                     			<td><%=data.getName()%></td>
+                                     			<td><%=data.getEType().getName()%></td>
+                                     			<td><%=data.getAge()%></td>
+                                     			<td><%=data.getEGender().getName()%></td>
+                                     			<td><%=data.getBasicFee()%></td>
+                                     			<td><%=data.isSpecial()%></td>
+                                     			<td><input class = "selectedContract" onclick = "selectContract(this.id);" type = "button" value = "Select" id = <%=data.getContractId()%>></td>
                                      		</tr>
                                      	<%}; %>
                                      	
                                     </tbody>
                                 </table>
-                                </form>>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -257,20 +264,7 @@
 	function selectContract(contractId) {
 		var form = document.dataTable;
 		var action = form.action;
-		
-		
-		$.get(
-				action,
-				{
-					contractId : contractId
-				},
-				function(data) {
-					location.href="contractDetail?contractId="+contractId;
-				},
-				'html'
-		);
-		
-		
+		location.href="contractDetail?contractId="+contractId;
 	}
 	</script>
     <!-- Bootstrap core JavaScript-->

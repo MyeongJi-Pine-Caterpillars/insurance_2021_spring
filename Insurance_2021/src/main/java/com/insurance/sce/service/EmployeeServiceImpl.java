@@ -29,11 +29,13 @@ public class EmployeeServiceImpl implements EmployeeService{
 			switch(employee.getERole()) {
 			case insuranceDeveloper: employeeRole += "developInsurance";
 				break;
-			case insuranceConfirmer: employeeRole += "confirmerView";
+			case insuranceConfirmer: employeeRole += "confirmInsurance";
 				break;
-			case underWriter: employeeRole += "underWriterView";
+			case underWriter: employeeRole += "underWriter";
 				break;
-			case compensationHandler: employeeRole += "handleCompensation";
+			case salesperson :employeeRole += "salesperson";
+				break;
+			case compensationHandler :employeeRole += "handleCompensation";
 				break;
 			default:
 				break;

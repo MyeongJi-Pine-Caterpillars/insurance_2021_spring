@@ -55,7 +55,7 @@
 
             <!-- Nav Item - Dashboard -->
            <li class="nav-item active">
-               	 <a class="nav-link" href="confirmerView.do">
+               	 <a class="nav-link" href="confirmInsurance.do">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>보험 확정하기</span></a>
             </li>
@@ -112,7 +112,7 @@
 
 					<!-- Content Row -->
 					<div class="row">
-
+						<%int confirming = 0;%>
 						<%for(Insurance insurance : insuranceList){ 
 						if(!insurance.isConfirmedStatus() && !insurance.isDel()) {%>
 						<div class="col-xl-3 col-md-6 mb-4" id=<%=insurance.getInsuranceId() %>>
@@ -137,9 +137,12 @@
 								</div>
 							</div>
 						</div>
-						<%}
+						<%confirming = 1;
+						}
 					}; %>
-
+					<%if(confirming == 0) { %>
+						<h1 class="h2 mb-0 text-gray-800">확정할 보험이 존재하지 않습니다.</h1>
+					<%} %>
 					</div>
 					<form id="form-confirmerView" action="confirmerView/confirmInsurance" method="get">
 						<input style="display:none" class="form-check-input" type="text"
@@ -160,11 +163,11 @@
 								</div>
 								 <div class="card-body">
 									<div class="row">
-										<div class="col mb-3" id="rateOfAge"></div>
-										<div class="col" id="rateOfJob"></div>
+										<div class="col mb-3" id="rateOfAgeBox"></div>
+										<div class="col" id="rateOfJobBox"></div>
 									</div>
 									<div class="row">
-										<div class="col mb-3" id="rateOfGender0"></div>
+										<div class="col mb-3" id="rateOfGenderBox"></div>
 										<div class="col"></div>
 									</div>
 									<div class="row">
@@ -269,7 +272,11 @@
 			</div>
 		</div>
 	</div>
-
+<div id="ajax_indicator" style="display:none;">
+			 							<p style="text-align: center; padding: 16px 0 0 0; left: 50%; top: 50%; position: absolute;">
+			 								<img src="${pageContext.request.contextPath}/resources/img/loading.gif" />
+			 							</p>
+									</div>
 	<script>
 		var ages = ["영유아", "10대", "20대", "30대", "40대", "50대", "노년층"];
 		var jobs = ["사무직", "운송업", "현장직", "학생", "교육직", "군인", "기타"];
@@ -293,6 +300,9 @@
 			}
 		}
 		$('.col-xl-3').click(function(){
+			$('#rateOfAgeBox').empty();
+			$('#rateOfJobBox').empty();
+			$('#rateOfGenderBox').empty();
 			$('#rateOfFamilyMedicalDiseaseBox').empty();
 			$('#rateOfFamilyMedicalRelationshipBox').empty();
 			$('#rateOfAccidentHistoryBox').empty();
@@ -304,14 +314,21 @@
 			$('#rateOfCountryRiskBox').empty();
 			insuranceId = {"insuranceId" : $(this).attr('id')};
 			$.ajax({
-			url: "confirmerView/doSelect",
+			url: "confirmInsurance/doSelect",
 			type: "GET",
 			data: insuranceId,
+			
+			beforeSend: function() {
+				$('#ajax_indicator').show().fadeIn('fast');
+			},
+			complete: function() {
+				$('#ajax_indicator').fadeOut();
+			}, 
 			
 			success : function(data){
 				insuranceId = data.insuranceId;
 				
-				$('#rateOfAge').html('<div class="col mb-3" id="rateOfAge"><h4 class="small font-weight-bold">--나이 요율표--</h4></div>');
+				$('#rateOfAgeBox').html('<div class="col mb-3" id="rateOfAge"><h4 class="small font-weight-bold">--나이 요율표--</h4></div>');
 				$.each(data.rateOfAge, function(index, item){
 					$('#rateOfAge').append(
 							'<h4 class="small font-weight-bold">'+ ages[index] +'<span class="float-right">' +
@@ -319,7 +336,7 @@
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 					);
 				});
-				$('#rateOfJob').html('<div class="col mb-3" id="rateOfJob"><h4 class="small font-weight-bold">--직업 요율표--</h4></div>');
+				$('#rateOfJobBox').html('<div class="col mb-3" id="rateOfJob"><h4 class="small font-weight-bold">--직업 요율표--</h4></div>');
 				$.each(data.rateOfJob, function(index, item){
 					$('#rateOfJob').append(
 							'<h4 class="small font-weight-bold">'+ jobs[index] +'<span class="float-right">' +
@@ -327,7 +344,7 @@
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 					);
 				});
-				$('#rateOfGender').html('<div class="col mb-3" id="rateOfGender"><h4 class="small font-weight-bold">--성별 요율표--</h4></div>');
+				$('#rateOfGenderBox').html('<div class="col mb-3" id="rateOfGender"><h4 class="small font-weight-bold">--성별 요율표--</h4></div>');
 				$.each(data.rateOfGender, function(index, item){
 					$('#rateOfGender').append(
 							'<h4 class="small font-weight-bold">'+ gender[index] +'<span class="float-right">' +
@@ -362,9 +379,9 @@
 					});
 				} else if(data.type == 2){
 					$('#annualLimitCountBox').append(
-							'<h4 class="small font-weight-bold">'+ annualLimitCount +'<span class="float-right">' +
+							'<h4 class="small font-weight-bold">&nbsp&nbsp&nbsp'+ annualLimitCount +'<span class="float-right">' +
 								data.annualLimitCount +
-								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 					);
 				} else if(data.type == 3){
 					
@@ -421,7 +438,7 @@
 			});
 
 			$.ajax({
-			url: "confirmerView/doSelectGuaranteePlan",
+			url: "confirmInsurance/doSelectGuaranteePlan",
 			type: "GET",
 			data: insuranceId,
 					
@@ -434,7 +451,7 @@
 								'<div class="ms-2 me-auto"><div class="fw-bold">' +
 									item.content +
 									'</div>보장금액 : ' +
-									item.compensation +'원\n' + 
+									item.compensation +'원&nbsp&nbsp&nbsp' + 
 									'자기부담률 : ' +
 									item.rate +
 								'</li>'
@@ -449,7 +466,7 @@
 								'<div class="ms-2 me-auto"><div class="fw-bold">' +
 									item.content +
 									'</div>보장금액 : ' +
-									item.compensation +'원]' + 
+									item.compensation +'원&nbsp&nbsp&nbsp' + 
 									'자기부담률 : ' +
 									item.rate +
 								'</li>'

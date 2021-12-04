@@ -274,7 +274,11 @@
 			</div>
 		</div>
 	</div>
-
+	<div id="ajax_indicator" style="display:none;">
+			 							<p style="text-align: center; padding: 16px 0 0 0; left: 50%; top: 50%; position: absolute;">
+			 								<img src="${pageContext.request.contextPath}/resources/img/loading.gif" />
+			 							</p>
+									</div>
 	<script>
 		var ages = ["영유아", "10대", "20대", "30대", "40대", "50대", "노년층"];
 		var jobs = ["사무직", "운송업", "현장직", "학생", "교육직", "군인", "기타"];
@@ -312,7 +316,14 @@
 			url: "deleteInsurance/doSelect",
 			type: "GET",
 			data: insuranceId,
-					
+			
+			beforeSend: function() {
+				$('#ajax_indicator').show().fadeIn('fast');
+			},
+			complete: function() {
+				$('#ajax_indicator').fadeOut();
+			},
+			
 			success : function(data){
 				insuranceId = data.insuranceId;
 				$('#rateOfAge').html('<div class="col mb-3" id="rateOfAge"><h4 class="small font-weight-bold">--나이 요율표--</h4></div>');

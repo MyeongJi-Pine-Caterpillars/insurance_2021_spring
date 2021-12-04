@@ -29,12 +29,12 @@ public class ConfirmInsuranceController {
 	InsuranceService insuranceService;
 	
 	@RequestMapping(value="confirmInsurance", method=RequestMethod.GET)
-	public String responseConfirmerView(Locale locale, Model model, HttpServletRequest request) {
+	public String responseConfirmInsurance(Locale locale, Model model, HttpServletRequest request) {
 		model.addAttribute("insuranceList", insuranceService.selectAllInsurance());
 		return "insuranceConfirmer/confirmInsurance";
 	}
 	@RequestMapping(value="confirmInsurance/confirm", method=RequestMethod.GET)
-	public String responseConfirmInsurance(Locale locale, Model model, HttpServletRequest request) {
+	public String responseConfirm(Locale locale, Model model, HttpServletRequest request) {
 		String insuranceId = (String)request.getParameter("confirmInsuranceId");
 		insuranceConfirmerService.confirmInsurance(insuranceId);
 		return "redirect:/confirmInsurance";

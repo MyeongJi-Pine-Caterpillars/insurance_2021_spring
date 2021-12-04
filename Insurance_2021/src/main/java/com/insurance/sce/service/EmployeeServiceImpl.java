@@ -27,13 +27,15 @@ public class EmployeeServiceImpl implements EmployeeService{
 		else {
 			String employeeRole = "redirect:/";
 			switch(employee.getERole()) {
-			case insuranceDeveloper: employeeRole += "developerView";
+			case insuranceDeveloper: employeeRole += "developInsurance";
 				break;
 			case insuranceConfirmer: employeeRole += "confirmInsurance";
 				break;
 			case underWriter: employeeRole += "underWriter";
 				break;
 			case salesperson :employeeRole += "salesperson";
+				break;
+			case compensationHandler :employeeRole += "handleCompensation";
 				break;
 			default:
 				break;

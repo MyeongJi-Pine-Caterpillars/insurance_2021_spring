@@ -184,7 +184,7 @@
 							aria-expanded="false"> <span
 								class="mr-2 d-none d-lg-inline text-gray-600 small">안녕하세요
 									${customerName} 님!</span> <img class="img-profile rounded-circle"
-								src="img/undraw_profile.svg">
+								src="${pageContext.request.contextPath}/resources/img/undraw_profile.svg">
 						</a></li>
 
 						<div class="topbar-divider d-none d-sm-block"></div>
@@ -347,6 +347,12 @@
 			</div>
 		</div>
 		
+		<div id="ajax_indicator" style="display:none;">
+			<p style="text-align: center; padding: 16px 0 0 0; left: 50%; top: 50%; position: absolute;">
+				<img src="${pageContext.request.contextPath}/resources/img/loading.gif" />
+			</p>
+		</div>
+		
 		<script>
 			var ages = ["영유아", "10대", "20대", "30대", "40대", "50대", "노년층"];
 			var gender = ["남성", "여성"];
@@ -395,6 +401,13 @@
 					url: "selectTripInsurance/doSelectGuaranteePlan",
 					type: "GET",
 					data: insuranceId,
+					
+					beforeSend: function() {
+						$('#ajax_indicator').show().fadeIn('fast');
+					},
+					complete: function() {
+						$('#ajax_indicator').fadeOut();
+					},
 							
 					success : function(data){
 						$('#guaranteePlan').html('<ol class="list-group list-group-numbered" id="guaranteePlan"></ol>');

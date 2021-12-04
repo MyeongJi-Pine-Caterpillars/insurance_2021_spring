@@ -184,7 +184,7 @@
 							aria-expanded="false"> <span
 								class="mr-2 d-none d-lg-inline text-gray-600 small">안녕하세요
 									${customerName} 님!</span> <img class="img-profile rounded-circle"
-								src="img/undraw_profile.svg">
+								src="${pageContext.request.contextPath}/resources/img/undraw_profile.svg">
 						</a></li>
 
 						<div class="topbar-divider d-none d-sm-block"></div>

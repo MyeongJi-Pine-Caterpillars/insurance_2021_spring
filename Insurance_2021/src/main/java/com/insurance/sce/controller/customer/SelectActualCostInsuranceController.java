@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.insurance.sce.model.customer.Customer;
 import com.insurance.sce.model.insurance.ActualCostInsurance;
+import com.insurance.sce.model.insurance.CancerInsurance;
 import com.insurance.sce.model.insurance.GuaranteePlan;
 import com.insurance.sce.service.InsuranceService;
 import com.insurance.sce.service.InsuranceServiceImpl;
@@ -27,6 +28,7 @@ import com.insurance.sce.service.InsuranceServiceImpl;
 public class SelectActualCostInsuranceController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(SelectActualCostInsuranceController.class);
+	private List<ActualCostInsurance> insuranceList;
 	
 	@Autowired
 	InsuranceService insuranceService;
@@ -37,7 +39,8 @@ public class SelectActualCostInsuranceController {
 		
 		Customer customer = (Customer)session.getAttribute("loginCustomer");
 
-		model.addAttribute("insuranceList", insuranceService.selectAllActualCostInsurance());
+		insuranceList = insuranceService.selectAllActualCostInsurance();
+		model.addAttribute("insuranceList", insuranceList);
 		model.addAttribute("clientName", customer.getName() );
 		return "customer/selectActualCostInsurance";
 	}
@@ -45,7 +48,7 @@ public class SelectActualCostInsuranceController {
 	@RequestMapping(value="selectActualCostInsurance/doSelect")
 	@ResponseBody
 	ActualCostInsurance doSelect(String insuranceId) {
-		return insuranceService.selectActualCostInsurance(insuranceId);
+		return insuranceService.selectActualCostInsurance(insuranceList, insuranceId);
 	}
 	@RequestMapping(value="selectActualCostInsurance/doSelectGuaranteePlan")
 	@ResponseBody

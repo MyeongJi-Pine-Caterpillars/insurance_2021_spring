@@ -12,12 +12,12 @@ public interface InsuranceService {
 	public List<ActualCostInsurance> selectAllActualCostInsurance();
 	public List<TripInsurance> selectAllTripInsurance();
 	public List<FireInsurance> selectAllFireInsurance();
-	public CancerInsurance selectCancerInsurance(String insuranceId);
-	public DentalInsurance selectDentalInsurance(String insuranceId);
-	public DriverInsurance selectDriverInsurance(String insuranceId);
-	public ActualCostInsurance selectActualCostInsurance(String insuranceId);
-	public TripInsurance selectTripInsurance(String insuranceId);
-	public FireInsurance selectFireInsurance(String insuranceId);
+	public CancerInsurance selectCancerInsurance(List<CancerInsurance> insruanceList, String insuranceId);
+	public DentalInsurance selectDentalInsurance(List<DentalInsurance> insruanceList, String insuranceId);
+	public DriverInsurance selectDriverInsurance(List<DriverInsurance> insruanceList, String insuranceId);
+	public ActualCostInsurance selectActualCostInsurance(List<ActualCostInsurance> insruanceList, String insuranceId);
+	public TripInsurance selectTripInsurance(List<TripInsurance> insruanceList, String insuranceId);
+	public FireInsurance selectFireInsurance(List<FireInsurance> insruanceList, String insuranceId);
 	public List<GuaranteePlan> selectGuaranteePlan(String insuranceId);
 	public Insurance selectInsurance(String insuranceId);
 }

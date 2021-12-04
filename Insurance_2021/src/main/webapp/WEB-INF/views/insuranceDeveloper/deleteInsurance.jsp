@@ -117,7 +117,6 @@
 
 					<!-- Content Row -->
 					<div class="row">
-
 						<%for(Insurance insurance : insuranceList){ 
 						if(!insurance.isDel()) {%>
 						<div class="col-xl-3 col-md-6 mb-4" id=<%=insurance.getInsuranceId() %>>
@@ -329,7 +328,7 @@
 				$('#rateOfAge').html('<div class="col mb-3" id="rateOfAge"><h4 class="small font-weight-bold">--나이 요율표--</h4></div>');
 				$.each(data.rateOfAge, function(index, item){
 					$('#rateOfAge').append(
-							'<h4 class="small font-weight-bold">'+ ages[index] +'<span class="float-right">' +
+							'<h4 class="small font-weight-bold">&nbsp&nbsp&nbsp'+ ages[index] +'<span class="float-right">' +
 								item +
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 					);
@@ -337,7 +336,7 @@
 				$('#rateOfJob').html('<div class="col mb-3" id="rateOfJob"><h4 class="small font-weight-bold">--직업 요율표--</h4></div>');
 				$.each(data.rateOfJob, function(index, item){
 					$('#rateOfJob').append(
-							'<h4 class="small font-weight-bold">'+ jobs[index] +'<span class="float-right">' +
+							'<h4 class="small font-weight-bold">&nbsp&nbsp&nbsp'+ jobs[index] +'<span class="float-right">' +
 								item +
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 					);
@@ -345,7 +344,7 @@
 				$('#rateOfGender').html('<div class="col mb-3" id="rateOfGender"><h4 class="small font-weight-bold">--성별 요율표--</h4></div>');
 				$.each(data.rateOfGender, function(index, item){
 					$('#rateOfGender').append(
-							'<h4 class="small font-weight-bold">'+ gender[index] +'<span class="float-right">' +
+							'<h4 class="small font-weight-bold">&nbsp&nbsp&nbsp'+ gender[index] +'<span class="float-right">' +
 								item +
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 					);
@@ -356,7 +355,7 @@
 						$('#rateOfAccidentHistory').append(
 								'<h4 class="small font-weight-bold">'+ accidentHistory[index] +'<span class="float-right">' +
 									item +
-									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 						);
 					});
 					$('#rateOfCarTypeBox').html('<div class="col mb-3" id="rateOfCarType"><h4 class="small font-weight-bold">--차 종류 요율표--</h4></div>');
@@ -364,7 +363,7 @@
 						$('#rateOfCarType').append(
 								'<h4 class="small font-weight-bold">'+ typeOfCar[index] +'<span class="float-right">' +
 									item +
-									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 						);
 					});
 					$('#rateOfCarRankBox').html('<div class="col mb-3" id="rateOfCarRank"><h4 class="small font-weight-bold">--차 등급 요율표--</h4></div>');
@@ -372,14 +371,14 @@
 						$('#rateOfCarRank').append(
 								'<h4 class="small font-weight-bold">'+ rankOfCar[index] +'<span class="float-right">' +
 									item +
-									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 						);
 					});
 				} else if(data.type == 2){
 					$('#annualLimitCountBox').append(
 							'<h4 class="small font-weight-bold">'+ annualLimitCount +'<span class="float-right">' +
 								data.annualLimitCount +
-								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&</span></h4>'
 					);
 				} else if(data.type == 3){
 					
@@ -389,7 +388,7 @@
 						$('#rateOfPostedPrice').append(
 								'<h4 class="small font-weight-bold">'+ postedPrice[index] +'<span class="float-right">' +
 									item +
-									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 						);
 					});
 					$('#rateOfStructureUsageBox').html('<div class="col mb-3" id="rateOfStructureUsage"><h4 class="small font-weight-bold">--건물 용도 요율표--</h4></div>');
@@ -397,7 +396,7 @@
 						$('#rateOfStructureUsage').append(
 								'<h4 class="small font-weight-bold">'+ usageOfStructure[index] +'<span class="float-right">' +
 									item +
-									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 						);
 					});
 					
@@ -407,7 +406,7 @@
 						$('#rateOfFamilyMedicalDisease').append(
 								'<h4 class="small font-weight-bold">'+ familyMedicalDisease[index] +'<span class="float-right">' +
 									item +
-									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 						);
 					});
 					$('#rateOfFamilyMedicalRelationshipBox').html('<div class="col mb-3" id="rateOfFamilyMedicalRelationship"><h4 class="small font-weight-bold">--병력 가족 관계 요율표--</h4></div>');
@@ -415,7 +414,7 @@
 						$('#rateOfFamilyMedicalRelationship').append(
 								'<h4 class="small font-weight-bold">'+ familyMedicalRelationship[index] +'<span class="float-right">' +
 									item +
-									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 						);
 					});
 				} else if(data.type == 6){
@@ -424,7 +423,7 @@
 						$('#rateOfCountryRisk').append(
 								'<h4 class="small font-weight-bold">'+ riskOfCountry[index] +'<span class="float-right">' +
 									item +
-									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+									'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 						);
 					});
 				}
@@ -449,7 +448,7 @@
 								'<div class="ms-2 me-auto"><div class="fw-bold">' +
 									item.content +
 									'</div>보장금액 : ' +
-									item.compensation +'원\n' + 
+									item.compensation +'원&nbsp&nbsp&nbsp' + 
 									'자기부담률 : ' +
 									item.rate +
 								'</li>'
@@ -464,7 +463,7 @@
 								'<div class="ms-2 me-auto"><div class="fw-bold">' +
 									item.content +
 									'</div>보장금액 : ' +
-									item.compensation +'원]' + 
+									item.compensation +'원&nbsp&nbsp&nbsp' + 
 									'자기부담률 : ' +
 									item.rate +
 								'</li>'

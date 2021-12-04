@@ -112,7 +112,7 @@
 
 					<!-- Content Row -->
 					<div class="row">
-
+						<%int confirming = 0;%>
 						<%for(Insurance insurance : insuranceList){ 
 						if(!insurance.isConfirmedStatus() && !insurance.isDel()) {%>
 						<div class="col-xl-3 col-md-6 mb-4" id=<%=insurance.getInsuranceId() %>>
@@ -137,9 +137,12 @@
 								</div>
 							</div>
 						</div>
-						<%}
+						<%confirming = 1;
+						}
 					}; %>
-
+					<%if(confirming == 0) { %>
+						<h1 class="h2 mb-0 text-gray-800">확정할 보험이 존재하지 않습니다.</h1>
+					<%} %>
 					</div>
 					<form id="form-confirmerView" action="confirmerView/confirmInsurance" method="get">
 						<input style="display:none" class="form-check-input" type="text"
@@ -448,7 +451,7 @@
 								'<div class="ms-2 me-auto"><div class="fw-bold">' +
 									item.content +
 									'</div>보장금액 : ' +
-									item.compensation +'원\n' + 
+									item.compensation +'원&nbsp&nbsp&nbsp' + 
 									'자기부담률 : ' +
 									item.rate +
 								'</li>'
@@ -463,7 +466,7 @@
 								'<div class="ms-2 me-auto"><div class="fw-bold">' +
 									item.content +
 									'</div>보장금액 : ' +
-									item.compensation +'원]' + 
+									item.compensation +'원&nbsp&nbsp&nbsp' + 
 									'자기부담률 : ' +
 									item.rate +
 								'</li>'

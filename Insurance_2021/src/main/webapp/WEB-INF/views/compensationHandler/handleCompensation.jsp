@@ -115,7 +115,7 @@
 
 					<!-- Content Row -->
 					<div class="row">
-
+						<%int handling = 0;%>
 						<%for(Accident accident : accidentList){ 
 						if(!accident.isHandlingStatus()) {%>
 						<div class="col-xl-3 col-md-6 mb-4" id=<%=accident.getAccidentId() %>>
@@ -142,9 +142,12 @@
 									</div>
 								</div>
 							</div>
-						<%}
+						<%handling = 1;
+							}
 					}; %>
-					
+					<%if(handling == 0) { %>
+						<h1 class="h2 mb-0 text-gray-800">보상 처리할 사고가 존재하지 않습니다.</h1>
+					<%} %>
 					</div>
 
 					<br>
@@ -162,10 +165,15 @@
 								 <div class="card-body">
 									<div class="row">
 										<div class="col mb-3" id="contractIdBox"></div>
+										<div class="col" id="insuranceIdBox"></div>
 									</div>
 									<div class="row">
 										<div class="col mb-3" id="insurantName"></div>
 										<div class="col" id="insurantAge"></div>
+									</div>
+									<div class="row">
+										<div class="col mb-3" id="insurantAddress"></div>
+										<div class="col" id="insurantPhoneNumber"></div>
 									</div>
 									<div class="row">
 										<div class="col" id="compensation"></div>
@@ -249,7 +257,11 @@
 			</div>
 		</div>
 	</div>
-
+	<div id="ajax_indicator" style="display:none;">
+			 							<p style="text-align: center; padding: 16px 0 0 0; left: 50%; top: 50%; position: absolute;">
+			 								<img src="${pageContext.request.contextPath}/resources/img/loading.gif" />
+			 							</p>
+									</div>
 	<script>
 		var accidentId = "";
 		var contractId = "";
@@ -277,10 +289,24 @@
 			url: "handleCompensation/doSelect",
 			type: "GET",
 			data: {contractId : contractId},
+			
+			beforeSend: function() {
+				$('#ajax_indicator').show().fadeIn('fast');
+			},
+			complete: function() {
+				$('#ajax_indicator').fadeOut();
+			},
+			
 			success : function(data){
 					$('#contractIdBox').html('<div class="col mb-3" id="contractIdBox"><h4 class="small font-weight-bold">--계약 정보--</h4></div>');
 					$('#contractIdBox').append(
 							'<h4 class="small font-weight-bold">계약 ID : <span class="float-center">' +
+								contractId +
+								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+					);
+					$('#insuranceIdBox').html('<div class="col mb-3" id="insuranceIdBox"></div>');
+					$('#insuranceIdBox').append(
+							'<h4 class="small font-weight-bold">가입한 보험의 ID : <span class="float-center">' +
 								contractId +
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 					);
@@ -294,6 +320,18 @@
 					$('#insurantAge').append(
 							'<h4 class="small font-weight-bold">가입자 나이 : <span class="float-center">' +
 								data.age +
+								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+					);
+					$('#insurantAddress').html('<div class="col mb-3" id="insurantAddress"></div>');
+					$('#insurantAddress').append(
+							'<h4 class="small font-weight-bold">가입자 주소 : <span class="float-center">' +
+								data.address +
+								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
+					);
+					$('#insurantPhoneNumber').html('<div class="col mb-3" id="insurantPhoneNumber"></div>');
+					$('#insurantPhoneNumber').append(
+							'<h4 class="small font-weight-bold">가입자 전화번호 : <span class="float-center">' +
+								data.phoneNumber +
 								'&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></h4>'
 					);
 					$('#compensation').html('<div class="col mb-3" id="compensation"></div>');
@@ -330,7 +368,7 @@
 								'<div class="ms-2 me-auto"><div class="fw-bold">' +
 									item.content +
 									'</div>손해액 : ' +
-									item.damageCost +'원\n' + 
+									item.damageCost +'원&nbsp&nbsp&nbsp' + 
 									'보상액 : ' +
 									item.compensation +
 								'</li>'

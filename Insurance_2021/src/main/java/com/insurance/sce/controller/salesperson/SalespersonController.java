@@ -44,7 +44,6 @@ public class SalespersonController {
 		HttpSession session = request.getSession(true);
 		Employee uw = (Employee)session.getAttribute("loginEmployee");
 		model.addAttribute("employeeName", uw.getName());
-		
 		return "login/loginEmployee";
 	}
 }

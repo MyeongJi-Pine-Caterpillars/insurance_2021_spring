@@ -3,8 +3,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <%@ page import="java.util.List"%>
+<%@ page import="com.insurance.sce.dao.Data"%>
 <%
-	List<String[]> dataList = (List<String[]>)request.getAttribute("dataList");
+	List<Data> dataList = (List<Data>)request.getAttribute("dataList");
 %>
 
 <!DOCTYPE html>
@@ -194,15 +195,15 @@
                                    
                                     <tbody>
                                     
-                                     	<%for(String[] data : dataList){%>
+                                     	<%for(Data data : dataList){%>
                                      		<tr>
-                                     			<td><%=data[0]%></td>
-                                     			<td><%=data[1]%></td>
-                                     			<td><%=data[2]%></td>
-                                     			<td><%=data[3]%></td>
-                                     			<td><%=data[4]%></td>
-                                     			<td><%=data[5]%></td>
-                                     			<td><input class = "selectedContract" onclick = "selectContract(this.id);" type = "button" value = "Select" id = <%=data[6]%>></td>
+                                     			<td><%=data.getName()%></td>
+                                     			<td><%=data.getEType().getName()%></td>
+                                     			<td><%=data.getAge()%></td>
+                                     			<td><%=data.getEGender().getName()%></td>
+                                     			<td><%=data.getBasicFee()%></td>
+                                     			<td><%=data.isSpecial()%></td>
+                                     			<td><input class = "selectedContract" onclick = "selectContract(this.id);" type = "button" value = "Select" id = <%=data.getContractId()%>></td>
                                      		</tr>
                                      	<%}; %>
                                      	

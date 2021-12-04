@@ -1,6 +1,7 @@
 package com.insurance.sce.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -13,6 +14,7 @@ public interface ContractDAO {
 	public List<String> selectAllContractId();
 	public List<Contract> selectAllIds();
 	public List<Contract> selectListByInsurant(String insurantId);
+	public List<Map<String, Object>> selectContractInsurance(String customerId);
 	public Contract select(String contractId);
 	public Contract selectUnpaidAndFee(String contractId);
 	

@@ -66,7 +66,7 @@
 	</select>
 
 	
-	<select id="selectAllData" resultType="com.insurance.sce.dao.Data">
+	<select id="selectAllData" resultType="HashMap">
 		SELECT contractId, T1.insurantId, T1.insuranceId, special, T2.name, type, T3.gender, basicFee, age
 		FROM contract T1
 		LEFT OUTER JOIN insurance T2

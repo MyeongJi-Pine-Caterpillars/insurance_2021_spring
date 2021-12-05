@@ -2,8 +2,6 @@ package com.insurance.sce.dao.contract;
 
 import java.util.List;
 import java.util.Map;
-
-import com.insurance.sce.dao.Data;
 import com.insurance.sce.model.contract.Contract;
 
 public interface ContractDAO {

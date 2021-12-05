@@ -3,9 +3,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <%@ page import="java.util.List"%>
-<%@ page import="com.insurance.sce.dao.Data"%>
+<%@ page import="java.util.Map"%>
+<%@ page import="com.insurance.sce.global.Constants.eInsuranceType"%>
+<%@ page import="com.insurance.sce.global.Constants.eGender"%>
+
 <%
-	List<Data> dataList = (List<Data>)request.getAttribute("dataList");
+List<Map<String, Object>> mapList = (List<Map<String, Object>>) request.getAttribute("mapList");
 %>
 
 <!DOCTYPE html>
@@ -106,15 +109,14 @@
                                 </form>
                             </div>
                         </li>
-
-
                         <div class="topbar-divider d-none d-sm-block"></div>
-
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">${employeeName} 님!</span>
+                                <img class="img-profile rounded-circle"
+								src="${pageContext.request.contextPath}/resources/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -144,7 +146,7 @@
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false">
 								<button type="button"
-									onclick="location.href='loginEmployee'"
+									onclick="location.href='doLogout'"
 									class="btn btn-outline-dark">로그아웃</button>
 						</a></li>
                     </ul>
@@ -156,15 +158,11 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Tables</h1>
-                    <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank"
-                            href="https://datatables.net">official DataTables documentation</a>.</p>
-
+                    <h1 class="h3 mb-2 text-gray-800">Contract</h1>
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Comtract List</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -181,29 +179,18 @@
                                             <th>선택</th>
                                         </tr>
                                     </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>보험이름</th>
-                                            <th>종류</th>
-                                            <th>나이</th>
-                                            <th>성별</th>
-                                            <th>요금</th>
-                                            <th>특약여부</th>
-                                            <th>선택</th>
-                                        </tr>
-                                    </tfoot>
                                    
                                     <tbody>
                                     
-                                     	<%for(Data data : dataList){%>
+                                     	<%	for (Map<String, Object> map : mapList) {%>
                                      		<tr>
-                                     			<td><%=data.getName()%></td>
-                                     			<td><%=data.getEType().getName()%></td>
-                                     			<td><%=data.getAge()%></td>
-                                     			<td><%=data.getEGender().getName()%></td>
-                                     			<td><%=data.getBasicFee()%></td>
-                                     			<td><%=data.isSpecial()%></td>
-                                     			<td><input class = "selectedContract" onclick = "selectContract(this.id);" type = "button" value = "Select" id = <%=data.getContractId()%>></td>
+                                     			<td><%=map.get("name")%></td>
+                                     			<td><%=eInsuranceType.get((Integer) map.get("type")).getNameKor()%></td>
+                                     			<td><%=map.get("age")%></td>
+                                     			<td><%=eGender.get((Integer) map.get("gender")).getName()%></td>
+                                     			<td><%=map.get("basicFee")%></td>
+                                     			<td><%=map.get("special")%></td>
+                                     			<td><input class = "selectedContract" onclick = "selectContract(this.id);" type = "button" value = "Select" id = <%=(String)map.get("contractId")%>></td>
                                      		</tr>
                                      	<%}; %>
                                      	

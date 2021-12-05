@@ -46,7 +46,7 @@ public class UnderWriterController {
 		HttpSession session = request.getSession(true);
 		Employee uw = (Employee)session.getAttribute("loginEmployee");
 		model.addAttribute("employeeName", uw.getName());
-		model.addAttribute("dataList", underWriterService.getAllData());
+		model.addAttribute("mapList", underWriterService.getAllData());
 		return "underWriter/underWriter";
 	}
 	
@@ -54,14 +54,20 @@ public class UnderWriterController {
 	public String doApprove(Locale locale, Model model, HttpServletRequest request, String contractId) {
 		HttpSession session = request.getSession(true);
 		underWriterService.approveContract(contractId);
-		model.addAttribute("dataList", underWriterService.getAllData());
+		model.addAttribute("mapList", underWriterService.getAllData());
 		return "underWriter/underWriter";
 	}
 	
 	@RequestMapping(value="doDeny", method=RequestMethod.GET)
 	public String doDeny(Locale locale, Model model, HttpServletRequest request, String contractId) {
 		underWriterService.denyContract(contractId);
-		model.addAttribute("dataList", underWriterService.getAllData());
+		model.addAttribute("mapList", underWriterService.getAllData());
 		return "underWriter/underWriterView";
+	}
+	@RequestMapping(value="doLogout")
+	public String doLogout(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("loginEmployee");
+		return "redirect:/loginEmployee";
 	}
 }

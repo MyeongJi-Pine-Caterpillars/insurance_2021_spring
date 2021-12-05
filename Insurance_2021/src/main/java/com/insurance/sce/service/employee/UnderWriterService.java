@@ -3,8 +3,6 @@ package com.insurance.sce.service.employee;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-
-import com.insurance.sce.dao.Data;
 import com.insurance.sce.global.Constants.eInsuranceType;
 import com.insurance.sce.model.contract.Contract;
 import com.insurance.sce.model.customer.Insurant;

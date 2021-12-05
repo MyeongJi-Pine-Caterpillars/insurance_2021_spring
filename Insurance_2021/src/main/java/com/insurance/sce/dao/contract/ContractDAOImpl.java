@@ -2,13 +2,9 @@ package com.insurance.sce.dao.contract;
 
 import java.util.List;
 import java.util.Map;
-
 import javax.inject.Inject;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
-
-import com.insurance.sce.dao.Data;
 import com.insurance.sce.model.contract.Contract;
 
 @Component

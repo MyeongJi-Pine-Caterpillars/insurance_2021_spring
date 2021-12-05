@@ -41,7 +41,7 @@ public class SelectActualCostInsuranceController {
 
 		insuranceList = insuranceService.selectAllActualCostInsurance();
 		model.addAttribute("insuranceList", insuranceList);
-		model.addAttribute("clientName", customer.getName() );
+		model.addAttribute("customerName", customer.getName() );
 		return "customer/selectActualCostInsurance";
 	}
 
@@ -61,6 +61,6 @@ public class SelectActualCostInsuranceController {
 	public String doLogout(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("loginCustomer");
-		return "redirect:/loginUser";
+		return "redirect:/login";
 	}
 }

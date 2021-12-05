@@ -40,7 +40,7 @@ public class SelectDriverInsuranceController {
 
 		insuranceList = insuranceService.selectAllDriverInsurance();
 		model.addAttribute("insuranceList", insuranceList);
-		model.addAttribute("clientName", customer.getName() );
+		model.addAttribute("customerName", customer.getName() );
 		return "customer/selectDriverInsurance";
 	}
 
@@ -60,6 +60,6 @@ public class SelectDriverInsuranceController {
 	public String doLogout(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("loginCustomer");
-		return "redirect:/loginUser";
+		return "redirect:/login";
 	}
 }

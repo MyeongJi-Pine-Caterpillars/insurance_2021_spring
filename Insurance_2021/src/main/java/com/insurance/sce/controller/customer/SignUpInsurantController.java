@@ -48,6 +48,7 @@ public class SignUpInsurantController {
 		model.addAttribute("guaranteePlanList", insuranceService.selectGuaranteePlan(insuranceId));	
 		model.addAttribute("insuranceId", insuranceId);
 		model.addAttribute("insuranceType", insuranceType);
+		model.addAttribute("customerName", customer.getName() );
 		return "customer/signUpInsurant";
 	}
 	
@@ -96,4 +97,12 @@ public class SignUpInsurantController {
 		if(insuranceType.equals("ActualCost")) return "redirect:/actualCostInsurance";
 		return "redirect:/dentalInsurance";
 	}
+	
+	@RequestMapping(value="signUpInsurant/doLogout")
+	public String doLogout(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("loginCustomer");
+		return "redirect:/login";
+	}
+	
 }

@@ -75,6 +75,6 @@ public class MyPageController {
 	public String doLogout(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("loginCustomer");
-		return "redirect:/loginUser";
+		return "redirect:/login";
 	}
 }

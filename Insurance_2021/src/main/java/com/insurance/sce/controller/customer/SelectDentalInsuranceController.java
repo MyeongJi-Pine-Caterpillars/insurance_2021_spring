@@ -40,7 +40,7 @@ public class SelectDentalInsuranceController {
 
 		insuranceList = insuranceService.selectAllDentalInsurance();
 		model.addAttribute("insuranceList", insuranceList);
-		model.addAttribute("clientName", customer.getName() );
+		model.addAttribute("customerName", customer.getName() );
 		return "customer/selectDentalInsurance";
 	}
 
@@ -60,6 +60,6 @@ public class SelectDentalInsuranceController {
 	public String doLogout(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("loginCustomer");
-		return "redirect:/loginUser";
+		return "redirect:/login";
 	}
 }

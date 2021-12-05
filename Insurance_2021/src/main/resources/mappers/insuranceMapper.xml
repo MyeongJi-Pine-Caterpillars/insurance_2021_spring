@@ -180,6 +180,11 @@
 		ON(T1.insuranceId = T2.insuranceId)
 		WHERE T1.insuranceId = #{insuranceId}
 	</select>
+	<select id="selectSelfBurdenRate" resultType="_double">
+		SELECT selfBurdenRate
+		FROM actualCostInsurance
+		WHERE insuranceId = #{insuranceId}
+	</select>
 
 	<!-- UPDATE -->
 	<update id="updateConfirmedStatus" parameterType="com.insurance.sce.model.contract.Accident">

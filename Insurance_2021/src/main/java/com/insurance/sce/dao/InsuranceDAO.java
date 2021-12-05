@@ -32,6 +32,7 @@ public interface InsuranceDAO {
 	public Insurance selectDriverInsurance(String insuranceId);
 	public Insurance selectFireInsurance(String insuranceId);
 	public Insurance selectTripInsurance(String insuranceId);
+	public double selectSelfBurdenRate(String insuranceId);
 	
 	public int updateConfirmedStatus(String insuranceId);
 	public int updateBasicFee(Insurance insurance);
@@ -41,4 +42,5 @@ public interface InsuranceDAO {
 	
 	
 	public int delete(String insuranceId);
+
 }

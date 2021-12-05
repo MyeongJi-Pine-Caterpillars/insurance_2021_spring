@@ -45,6 +45,7 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	private static final String SelectDriverInsurance = "insuranceMapper.selectDriverInsurance";
 	private static final String SelectFireInsurance = "insuranceMapper.selectFireInsurance";
 	private static final String SelectTripInsurance = "insuranceMapper.selectTripInsurance";
+	private static final String SelectSelfBurdenRate = "insuranceMapper.selectSelfBurdenRate";
 	private static final String UpdateConfirmedStatus = "insuranceMapper.updateConfirmedStatus";
 	private static final String UpdateBasicFee = "insuranceMapper.updateBasicFee";
 	private static final String UpdateSpeCialContractFee = "insuranceMapper.updateSpeCialContractFee";
@@ -93,6 +94,7 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	public Insurance selectDriverInsurance(String insuranceId) {return sqlSession.selectOne(SelectDriverInsurance, insuranceId);}
 	public Insurance selectFireInsurance(String insuranceId) {return sqlSession.selectOne(SelectFireInsurance, insuranceId);}
 	public Insurance selectTripInsurance(String insuranceId) {return sqlSession.selectOne(SelectTripInsurance, insuranceId);}
+	public double selectSelfBurdenRate(String insuranceId) {return sqlSession.selectOne(SelectSelfBurdenRate, insuranceId);}
 
 	// Update
 	public int updateConfirmedStatus(String insuranceId) {return sqlSession.update(UpdateConfirmedStatus, insuranceId);}
@@ -103,4 +105,5 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	
 	// Delete
 	public int delete(String insuranceId) {return sqlSession.delete(Delete, insuranceId);}
+
 }

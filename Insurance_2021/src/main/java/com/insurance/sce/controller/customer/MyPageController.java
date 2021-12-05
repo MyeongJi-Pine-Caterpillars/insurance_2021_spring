@@ -63,6 +63,13 @@ public class MyPageController {
 		return contractService.getInsurantFromContract(mapList, contractId);
 	}
 	
+	@RequestMapping(value="myPage/doSelectRate")
+	@ResponseBody
+	double doSelectRate(String insuranceId) {
+		System.out.println(insuranceService.getSelfBurdenRate(insuranceId));
+		return insuranceService.getSelfBurdenRate(insuranceId);
+	}
+	
 	
 	@RequestMapping(value="myPage/doLogout")
 	public String doLogout(HttpServletRequest request) {

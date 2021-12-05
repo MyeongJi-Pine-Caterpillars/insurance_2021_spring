@@ -125,7 +125,7 @@
 							aria-expanded="false"> <span
 								class="mr-2 d-none d-lg-inline text-gray-600 small">안녕하세요
 									${employeeName} 님!</span> <img class="img-profile rounded-circle"
-								src="img/undraw_profile.svg">
+								src="${pageContext.request.contextPath}/resources/img/undraw_profile.svg">
 						</a></li>
 
 						<div class="topbar-divider d-none d-sm-block"></div>
@@ -137,7 +137,7 @@
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false">
 								<button type="button"
-									onclick="location.href='loginEmployee'"
+									onclick="location.href='doLogout'"
 									class="btn btn-outline-dark">로그아웃</button>
 						</a></li>
 

@@ -7,8 +7,8 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.insurance.sce.dao.CustomerDAO;
-import com.insurance.sce.dao.InsuranceDAO;
+import com.insurance.sce.dao.customer.CustomerDAO;
+import com.insurance.sce.dao.insurance.InsuranceDAO;
 import com.insurance.sce.model.customer.Customer;
 import com.insurance.sce.model.insurance.CancerInsurance;
 

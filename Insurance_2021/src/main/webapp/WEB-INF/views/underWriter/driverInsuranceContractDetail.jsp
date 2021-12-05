@@ -138,7 +138,7 @@
 							aria-expanded="false"> <span
 								class="mr-2 d-none d-lg-inline text-gray-600 small">안녕하세요
 									${employeeName} 님!</span> <img class="img-profile rounded-circle"
-								src="img/undraw_profile.svg">
+								src="${pageContext.request.contextPath}/resources/img/undraw_profile.svg">
 						</a></li>
 
 						<div class="topbar-divider d-none d-sm-block"></div>
@@ -148,7 +148,7 @@
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false">
 								<button type="button"
-									onclick="location.href='loginEmployee'"
+									onclick="location.href='doLogout'"
 									class="btn btn-outline-dark">로그아웃</button>
 						</a></li>
 
@@ -236,11 +236,11 @@
 									</div>
 									<div class="row">
 										<div class="col mb-3" id="rateOfGender"></div>
-										<div class="col"></div>
+										<div class="col" id="rateOfCarRank"></div>
 									</div>
 									<div class="row">
-										<div class="col" id="rateOfFamilyMedicalDisease"></div>
-										<div class="col" id="rateOfFamilyMedicalRelationship"></div>
+										<div class="col" id="rateOfAccidentHistory"></div>
+										<div class="col" id="rateOfCarType"></div>
 									</div>
 										
 									</div>
@@ -330,7 +330,8 @@
 			var carType = ["버스", "승합차", "SUV", "외제차", "기타"];
 			var carRank = ["최고급", "고급", "보급형", "저가"];
 			var accidentHistory = ["0회", "1회", "2회~3회", "3회~4회", "4회~5회", "5회~6회", "7회 이상"];
-
+			var insuranceId = "";
+			
 			$(document).ready(function(){
 				document.getElementById(<%=selectedContract.getInsuranceId()%>).click();
 			});
@@ -402,6 +403,13 @@
 					url: "selectDriverInsurance/doSelectGuaranteePlan",
 					type: "GET",
 					data: insuranceId,
+					
+					beforeSend: function() {
+						$('#ajax_indicator').show().fadeIn('fast');
+					},
+					complete: function() {
+						$('#ajax_indicator').fadeOut();
+					},
 							
 					success : function(data){
 						$('#guaranteePlan').html('<ol class="list-group list-group-numbered" id="guaranteePlan"></ol>');

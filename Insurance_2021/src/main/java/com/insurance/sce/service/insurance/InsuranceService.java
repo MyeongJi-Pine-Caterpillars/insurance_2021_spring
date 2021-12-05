@@ -1,4 +1,4 @@
-package com.insurance.sce.service;
+package com.insurance.sce.service.insurance;
 
 import java.util.List;
 

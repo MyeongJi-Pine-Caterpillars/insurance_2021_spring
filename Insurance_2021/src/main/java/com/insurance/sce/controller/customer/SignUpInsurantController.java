@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.insurance.sce.model.customer.Customer;
 import com.insurance.sce.model.customer.Insurant;
-import com.insurance.sce.service.ContractService;
-import com.insurance.sce.service.InsuranceService;
-import com.insurance.sce.service.InsurantService;
+import com.insurance.sce.service.contract.ContractService;
+import com.insurance.sce.service.customer.InsurantService;
+import com.insurance.sce.service.insurance.InsuranceService;
 
 @Controller
 @RequestMapping(value = "/")

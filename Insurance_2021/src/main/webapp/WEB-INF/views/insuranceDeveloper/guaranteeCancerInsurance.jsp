@@ -133,7 +133,7 @@
 										<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="감상선암" checked>
+												name="guaranteeCheckbox" value="감상선암">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
@@ -164,7 +164,7 @@
 										<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="고환암" checked>
+												name="guaranteeCheckbox" value="고환암">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
@@ -196,7 +196,7 @@
 										<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="난소암" checked>
+												name="guaranteeCheckbox" value="난소암">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
@@ -226,7 +226,7 @@
 										<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="식도암" checked>
+												name="guaranteeCheckbox" value="식도암">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
@@ -259,7 +259,7 @@
 										<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="폐암" checked>
+												name="guaranteeCheckbox" value="폐암">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
@@ -289,7 +289,7 @@
 										<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="간암" checked>
+												name="guaranteeCheckbox" value="간암">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
@@ -322,7 +322,7 @@
 										<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="위암" checked>
+												name="guaranteeCheckbox" value="위암">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
@@ -352,7 +352,7 @@
 										<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="췌장암" checked>
+												name="guaranteeCheckbox" value="췌장암">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"

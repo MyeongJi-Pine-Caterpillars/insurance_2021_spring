@@ -25,14 +25,14 @@ import com.insurance.sce.model.customer.Insurant;
 import com.insurance.sce.model.employee.Employee;
 import com.insurance.sce.model.employee.UnderWriter;
 import com.insurance.sce.model.insurance.Insurance;
-import com.insurance.sce.service.ContractService;
-import com.insurance.sce.service.ContractServiceImpl;
-import com.insurance.sce.service.InsuranceService;
-import com.insurance.sce.service.InsuranceServiceImpl;
-import com.insurance.sce.service.InsurantService;
-import com.insurance.sce.service.InsurantServiceImpl;
-import com.insurance.sce.service.UnderWriterService;
-import com.insurance.sce.service.UnderWriterServiceImpl;
+import com.insurance.sce.service.contract.ContractService;
+import com.insurance.sce.service.contract.ContractServiceImpl;
+import com.insurance.sce.service.customer.InsurantService;
+import com.insurance.sce.service.customer.InsurantServiceImpl;
+import com.insurance.sce.service.employee.UnderWriterService;
+import com.insurance.sce.service.employee.UnderWriterServiceImpl;
+import com.insurance.sce.service.insurance.InsuranceService;
+import com.insurance.sce.service.insurance.InsuranceServiceImpl;
 
 @Controller
 @RequestMapping(value = "/")
@@ -46,7 +46,7 @@ public class UnderWriterController {
 		HttpSession session = request.getSession(true);
 		Employee uw = (Employee)session.getAttribute("loginEmployee");
 		model.addAttribute("employeeName", uw.getName());
-		model.addAttribute("dataList", underWriterService.getAllData());
+		model.addAttribute("mapList", underWriterService.getAllData());
 		return "underWriter/underWriter";
 	}
 	
@@ -54,14 +54,20 @@ public class UnderWriterController {
 	public String doApprove(Locale locale, Model model, HttpServletRequest request, String contractId) {
 		HttpSession session = request.getSession(true);
 		underWriterService.approveContract(contractId);
-		model.addAttribute("dataList", underWriterService.getAllData());
+		model.addAttribute("mapList", underWriterService.getAllData());
 		return "underWriter/underWriter";
 	}
 	
 	@RequestMapping(value="doDeny", method=RequestMethod.GET)
 	public String doDeny(Locale locale, Model model, HttpServletRequest request, String contractId) {
 		underWriterService.denyContract(contractId);
-		model.addAttribute("dataList", underWriterService.getAllData());
+		model.addAttribute("mapList", underWriterService.getAllData());
 		return "underWriter/underWriterView";
+	}
+	@RequestMapping(value="doLogout")
+	public String doLogout(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("loginEmployee");
+		return "redirect:/loginEmployee";
 	}
 }

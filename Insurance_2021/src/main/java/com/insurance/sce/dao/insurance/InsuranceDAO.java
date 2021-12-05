@@ -1,4 +1,4 @@
-package com.insurance.sce.dao;
+package com.insurance.sce.dao.insurance;
 
 import java.util.List;
 
@@ -42,5 +42,4 @@ public interface InsuranceDAO {
 	
 	
 	public int delete(String insuranceId);
-
 }

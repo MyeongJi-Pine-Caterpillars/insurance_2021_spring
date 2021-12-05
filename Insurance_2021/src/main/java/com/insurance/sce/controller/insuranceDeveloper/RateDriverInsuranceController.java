@@ -17,7 +17,7 @@ import com.insurance.sce.global.Constants;
 import com.insurance.sce.global.Constants.eRankOfCar;
 import com.insurance.sce.global.Constants.eTypeOfCar;
 import com.insurance.sce.model.insurance.Insurance;
-import com.insurance.sce.service.InsuranceDeveloperService;
+import com.insurance.sce.service.employee.InsuranceDeveloperService;
 
 /**
  * Handles requests for the application home page.

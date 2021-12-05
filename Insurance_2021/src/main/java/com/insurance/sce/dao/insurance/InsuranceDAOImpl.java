@@ -1,4 +1,4 @@
-package com.insurance.sce.dao;
+package com.insurance.sce.dao.insurance;
 
 import java.util.List;
 
@@ -16,7 +16,7 @@ import com.insurance.sce.model.insurance.Insurance;
 import com.insurance.sce.model.insurance.TripInsurance;
 
 @Repository
-public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
+public class InsuranceDAOImpl implements InsuranceDAO{
 	@Inject
 	private SqlSession sqlSession;
 
@@ -46,7 +46,8 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	private static final String SelectFireInsurance = "insuranceMapper.selectFireInsurance";
 	private static final String SelectTripInsurance = "insuranceMapper.selectTripInsurance";
 	private static final String SelectSelfBurdenRate = "insuranceMapper.selectSelfBurdenRate";
-	private static final String UpdateConfirmedStatus = "insuranceMapper.updateConfirmedStatus";
+
+  private static final String UpdateConfirmedStatus = "insuranceMapper.updateConfirmedStatus";
 	private static final String UpdateBasicFee = "insuranceMapper.updateBasicFee";
 	private static final String UpdateSpeCialContractFee = "insuranceMapper.updateSpeCialContractFee";
 	private static final String UpdateDel = "insuranceMapper.updateDel";
@@ -105,5 +106,4 @@ public class InsuranceDAOImpl extends DBConnector implements InsuranceDAO{
 	
 	// Delete
 	public int delete(String insuranceId) {return sqlSession.delete(Delete, insuranceId);}
-
 }

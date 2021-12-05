@@ -136,7 +136,7 @@
 									<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="자동차사고재산피해" checked>
+												name="guaranteeCheckbox" value="자동차사고재산피해">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
@@ -171,7 +171,7 @@
 									<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="자동차사고재산피해" checked>
+												name="guaranteeCheckbox" value="자동차사고재산피해">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
@@ -207,7 +207,7 @@
 									<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="자동차사고재산피해" checked>
+												name="guaranteeCheckbox" value="자동차사고재산피해">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
@@ -241,7 +241,7 @@
 									<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="자동차사고재산피해" checked>
+												name="guaranteeCheckbox" value="자동차사고재산피해">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"

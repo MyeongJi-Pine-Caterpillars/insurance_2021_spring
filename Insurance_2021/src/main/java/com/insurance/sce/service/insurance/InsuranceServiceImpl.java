@@ -1,4 +1,4 @@
-package com.insurance.sce.service;
+package com.insurance.sce.service.insurance;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.insurance.sce.dao.GuaranteePlanDAO;
-import com.insurance.sce.dao.InsuranceDAO;
+import com.insurance.sce.dao.insurance.GuaranteePlanDAO;
+import com.insurance.sce.dao.insurance.InsuranceDAO;
 import com.insurance.sce.model.insurance.ActualCostInsurance;
 import com.insurance.sce.model.insurance.CancerInsurance;
 import com.insurance.sce.model.insurance.DentalInsurance;
@@ -140,8 +140,8 @@ public class InsuranceServiceImpl implements InsuranceService{
 		}
 		return insurance;
 	}
-	@Override
-	public double getSelfBurdenRate(String insuranceId) {
+
+  public double getSelfBurdenRate(String insuranceId) {
 		return insuranceDAO.selectSelfBurdenRate(insuranceId);
 	}
 }

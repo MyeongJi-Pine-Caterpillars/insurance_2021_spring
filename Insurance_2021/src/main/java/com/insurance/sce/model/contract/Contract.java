@@ -2,9 +2,9 @@ package com.insurance.sce.model.contract;
 
 import java.util.ArrayList;
 
-import com.insurance.sce.dao.AccidentDAO;
-import com.insurance.sce.dao.AccidentDAOImpl;
-import com.insurance.sce.dao.ContractDAO;
+import com.insurance.sce.dao.contract.AccidentDAO;
+import com.insurance.sce.dao.contract.AccidentDAOImpl;
+import com.insurance.sce.dao.contract.ContractDAO;
 import com.insurance.sce.model.customer.Insurant;
 import com.insurance.sce.model.insurance.Insurance;
 

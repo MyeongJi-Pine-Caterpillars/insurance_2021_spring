@@ -498,7 +498,7 @@ List<GuaranteePlan> guaranteePlanList = (List<GuaranteePlan>) request.getAttribu
 															class="list-group-item d-flex justify-content-between align-items-start">
 															<div class="ms-2 me-auto">
 																<div class="fw-bold"><%=guranteePlan.getContent()%></div>
-																보장금액 :
+																<span class="guaranteeRate" style="display:none">최대 </span>보장금액 :
 																<%=guranteePlan.getCompensation()%>원
 																<div class="guaranteeRate" style="display:none">
 																	보장비율 :
@@ -517,7 +517,7 @@ List<GuaranteePlan> guaranteePlanList = (List<GuaranteePlan>) request.getAttribu
 															class="list-group-item d-flex justify-content-between align-items-start">
 															<div class="ms-2 me-auto">
 																<div class="fw-bold"><%=guranteePlan.getContent()%></div>
-																보장금액 :
+																<span class="guaranteeRate" style="display:none">최대 </span>보장금액 :
 																<%=guranteePlan.getCompensation()%>원
 																<div class="guaranteeRate" style="display:none">
 																	보장비율 :

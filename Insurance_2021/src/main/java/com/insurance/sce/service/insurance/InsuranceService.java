@@ -20,4 +20,5 @@ public interface InsuranceService {
 	public FireInsurance selectFireInsurance(List<FireInsurance> insruanceList, String insuranceId);
 	public List<GuaranteePlan> selectGuaranteePlan(String insuranceId);
 	public Insurance selectInsurance(String insuranceId);
+	public double getSelfBurdenRate(String insuranceId);
 }

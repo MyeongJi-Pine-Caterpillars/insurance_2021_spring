@@ -307,11 +307,16 @@ List<Map<String, Object>> mapList = (List<Map<String, Object>>) request.getAttri
 								</div>
 
 								<div class="card-body">
-									기본계약
-									<ol class="list-group list-group-numbered" id="guaranteePlan"></ol>
-									선택특약
-									<ol class="list-group list-group-numbered"
-										id="guaranteePlanSpecial"></ol>
+									<div id="guaranteePlanActual" style="display:none">
+									</div>
+									
+									<div id="guaranteePlanLabel" style="display:none">
+										기본계약
+										<ol class="list-group list-group-numbered" id="guaranteePlan"></ol>
+										선택특약
+										<ol class="list-group list-group-numbered"
+											id="guaranteePlanSpecial"></ol>
+									</div>
 								</div>
 							</div>
 
@@ -381,142 +386,139 @@ List<Map<String, Object>> mapList = (List<Map<String, Object>>) request.getAttri
 	</div>
 
 	<script>
-		$("#dataTable tr")
-				.click(
-						function() {
-							var tr = $(this);
-							var td = tr.children();
+		$("#dataTable tr").click(function() {
+			var tr = $(this);
+			var td = tr.children();
+			var contractId = {"contractId" : td.eq(0).text()};
+			var insuranceId = {"insuranceId" : td.eq(5).text()};
+			var type = td.eq(2).text();
+			
+			if(type == "실비보험"){
+				$('#guaranteePlanLabel').hide();
+				$('#guaranteePlanActual').show();
+				$.ajax({
+					url : "myPage/doSelectRate",
+					type : "GET",
+					data : insuranceId,
 
-							var contractId = {
-								"contractId" : td.eq(0).text()
-							};
-							var insuranceId = {
-								"insuranceId" : td.eq(5).text()
-							};
-							var type = td.eq(2).text();
+					beforeSend : function() {
+						$('#ajax_indicator').show().fadeIn('fast');
+					},
+					complete : function() {
+						$('#ajax_indicator').fadeOut();
+					},
+					
+					success : function(data) {
+						$('#guaranteePlanActual').html(
+							'<div class="list-group list-group-numbered" id="guaranteePlanActual">병ㆍ의원 및 약국에서 실제로 지출한 의료비의 '
+								+(1-data)*100+
+								'%</div>');
+					},
+					error : function() {
+						alert("request error in guaranteePlan!");
+					}
+					
+				});
+								
+			}else{
+				$('#guaranteePlanLabel').show();
+				$('#guaranteePlanActual').hide();
+				$.ajax({
+					url : "myPage/doSelectGuaranteePlan",
+					type : "GET",
+					data : insuranceId,
 
-							$
-									.ajax({
-										url : "myPage/doSelectGuaranteePlan",
-										type : "GET",
-										data : insuranceId,
+					beforeSend : function() {
+						$('#ajax_indicator').show().fadeIn('fast');
+					},
+					complete : function() {
+						$('#ajax_indicator').fadeOut();
+					},
 
-										beforeSend : function() {
-											$('#ajax_indicator').show().fadeIn(
-													'fast');
-										},
-										complete : function() {
-											$('#ajax_indicator').fadeOut();
-										},
-
-										success : function(data) {
-											$('#guaranteePlan')
-													.html(
-															'<ol class="list-group list-group-numbered" id="guaranteePlan"></ol>');
-											$
-													.each(
-															data,
-															function(index,
-																	item) {
-																if (!item.special) {
-																	if (type == "화재보험"
-																			|| type == "운전자보험") {
-																		$(
-																				'#guaranteePlan')
-																				.append(
-																						'<li class="list-group-item d-flex justify-content-between align-items-start">'
-																								+ '<div class="ms-2 me-auto"><div class="fw-bold">'
-																								+ item.content
-																								+ '</div>보장금액 : '
-																								+ item.compensation
-																								+ '원<br>보장비율 : '
-																								+ item.rate
-																								* 100
-																								+ '%</li>');
-																	} else {
-																		$(
-																				'#guaranteePlan')
-																				.append(
-																						'<li class="list-group-item d-flex justify-content-between align-items-start">'
-																								+ '<div class="ms-2 me-auto"><div class="fw-bold">'
-																								+ item.content
-																								+ '</div>보장금액 : '
-																								+ item.compensation
-																								+ '원</li>');
-																	}
-																}
-															});
-											$('#guaranteePlanSpecial')
-													.html(
-															'<ol class="list-group list-group-numbered" id="guaranteePlanSpecial"></ol>');
-											$
-													.each(
-															data,
-															function(index,
-																	item) {
-																if (item.special) {
-																	if (type == "화재보험"
-																			|| type == "운전자보험") {
-																		$(
-																				'#guaranteePlanSpecial')
-																				.append(
-																						'<li class="list-group-item d-flex justify-content-between align-items-start">'
-																								+ '<div class="ms-2 me-auto"><div class="fw-bold">'
-																								+ item.content
-																								+ '</div>보장금액 : '
-																								+ item.compensation
-																								+ '원<br>보장비율 : '
-																								+ item.rate
-																								* 100
-																								+ '%</li>');
-																	} else {
-																		$(
-																				'#guaranteePlanSpecial')
-																				.append(
-																						'<li class="list-group-item d-flex justify-content-between align-items-start">'
-																								+ '<div class="ms-2 me-auto"><div class="fw-bold">'
-																								+ item.content
-																								+ '</div>보장금액 : '
-																								+ item.compensation
-																								+ '원</li>');
-																	}
-																}
-															});
-										},
-										error : function() {
-											alert("request error in guaranteePlan!");
-										}
-									});
-
-							$('#insurantCard').show();
-							$.ajax({
-								url : "myPage/doSelectInsurant",
-								type : "GET",
-								data : contractId,
-
-								success : function(data) {
-									$('#name').text("이름 : " + data.insurantName);
-									$('#phoneNumber').text("전화번호 : " + data.phoneNumber);
-									$('#address').text("주소 : " + data.address);
-									$('#age').text("나이 : " + data.age);
-									$('#gender').text("성별 : " + data.gender);
-									$('#job').text("직업 : " + data.job);
-									if (data.gender == "남성") {
-										$('#man').show();
-										$('#woman').hide();
-									} else {
-										$('#man').hide();
-										$('#woman').show();
-									}
-
-								},
-								error : function(request, status, error) {
-									alert("code:" + request.status + "\n"
-											+ "message:" + request.responseText
-											+ "\n" + "error:" + error);
+					success : function(data) {
+						$('#guaranteePlan').html('<ol class="list-group list-group-numbered" id="guaranteePlan"></ol>');
+						$.each(data,function(index,item) {
+							if (!item.special) {
+								if (type == "화재보험" || type == "운전자보험") {
+									$('#guaranteePlan').append(
+										'<li class="list-group-item d-flex justify-content-between align-items-start">'
+											+ '<div class="ms-2 me-auto"><div class="fw-bold">'
+											+ item.content
+											+ '</div>보장금액 : '
+											+ item.compensation
+											+ '원<br>보장비율 : '
+											+ item.rate* 100
+											+ '%</li>');
+								} else {
+									$('#guaranteePlan').append(
+										'<li class="list-group-item d-flex justify-content-between align-items-start">'
+											+ '<div class="ms-2 me-auto"><div class="fw-bold">'
+											+ item.content
+											+ '</div>보장금액 : '
+											+ item.compensation
+											+ '원</li>');
 								}
-							});
+							}
 						});
+						$('#guaranteePlanSpecial').html('<ol class="list-group list-group-numbered" id="guaranteePlanSpecial"></ol>');
+						$.each(data,function(index,item) {
+							if (item.special) {
+								if (type == "화재보험" || type == "운전자보험") {
+									$('#guaranteePlanSpecial').append(
+										'<li class="list-group-item d-flex justify-content-between align-items-start">'
+										+ '<div class="ms-2 me-auto"><div class="fw-bold">'
+										+ item.content
+										+ '</div>보장금액 : '
+										+ item.compensation
+										+ '원<br>보장비율 : '
+										+ item.rate* 100
+										+ '%</li>');
+								} else {
+									$('#guaranteePlanSpecial').append(
+										'<li class="list-group-item d-flex justify-content-between align-items-start">'
+										+ '<div class="ms-2 me-auto"><div class="fw-bold">'
+										+ item.content
+										+ '</div>보장금액 : '
+										+ item.compensation
+										+ '원</li>');
+								}
+							}
+						});
+					},
+					error : function() {
+						alert("request error in guaranteePlan!");
+					}
+				});
+			}
+
+			$('#insurantCard').show();
+			$.ajax({
+				url : "myPage/doSelectInsurant",
+				type : "GET",
+				data : contractId,
+
+				success : function(data) {
+					$('#name').text("이름 : " + data.insurantName);
+					$('#phoneNumber').text("전화번호 : " + data.phoneNumber);
+					$('#address').text("주소 : " + data.address);
+					$('#age').text("나이 : " + data.age);
+					$('#gender').text("성별 : " + data.gender);
+					$('#job').text("직업 : " + data.job);
+					if (data.gender == "남성") {
+						$('#man').show();
+						$('#woman').hide();
+					} else {
+						$('#man').hide();
+						$('#woman').show();
+					}
+				},
+				error : function(request, status, error) {
+					alert("code:" + request.status + "\n"
+						+ "message:" + request.responseText
+						+ "\n" + "error:" + error);
+				}
+			});
+		});
 	</script>
 	<!-- Bootstrap core JavaScript-->
 	<script src="<c:url value="resources/vendor/jquery/jquery.min.js" />"></script>

@@ -140,4 +140,8 @@ public class InsuranceServiceImpl implements InsuranceService{
 		}
 		return insurance;
 	}
+
+  public double getSelfBurdenRate(String insuranceId) {
+		return insuranceDAO.selectSelfBurdenRate(insuranceId);
+	}
 }

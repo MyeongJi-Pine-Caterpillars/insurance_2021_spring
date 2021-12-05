@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.insurance.sce.model.employee.Employee;
 import com.insurance.sce.model.insurance.Insurance;
-import com.insurance.sce.service.SalespersonService;
+import com.insurance.sce.service.employee.SalespersonService;
 
 @Controller
 @RequestMapping(value = "/")

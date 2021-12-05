@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.insurance.sce.dao.ContractDAO;
+import com.insurance.sce.dao.contract.ContractDAO;
 import com.insurance.sce.model.contract.Contract;
 
 @RunWith(SpringJUnit4ClassRunner.class)

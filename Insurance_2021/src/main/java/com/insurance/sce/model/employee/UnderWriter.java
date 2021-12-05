@@ -1,6 +1,6 @@
 package com.insurance.sce.model.employee;
 
-import com.insurance.sce.dao.ContractDAO;
+import com.insurance.sce.dao.contract.ContractDAO;
 import com.insurance.sce.model.contract.Contract;
 
 public class UnderWriter extends Employee{

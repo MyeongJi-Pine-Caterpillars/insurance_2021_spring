@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.insurance.sce.model.contract.Accident;
 import com.insurance.sce.model.contract.Contract;
 import com.insurance.sce.model.customer.Insurant;
-import com.insurance.sce.service.AccidentService;
-import com.insurance.sce.service.CompensationHandlerService;
-import com.insurance.sce.service.ContractService;
-import com.insurance.sce.service.InsurantService;
+import com.insurance.sce.service.contract.AccidentService;
+import com.insurance.sce.service.contract.ContractService;
+import com.insurance.sce.service.customer.InsurantService;
+import com.insurance.sce.service.employee.CompensationHandlerService;
 
 /**
  * Handles requests for the application home page.

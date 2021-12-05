@@ -2,7 +2,7 @@ package com.insurance.sce.model.insurance;
 
 import java.util.ArrayList;
 
-import com.insurance.sce.dao.GuaranteePlanDAO;
+import com.insurance.sce.dao.insurance.GuaranteePlanDAO;
 import com.insurance.sce.global.Constants.*;
 import com.insurance.sce.model.customer.Insurant;
 

@@ -1,6 +1,6 @@
 package com.insurance.sce.model.employee;
 
-import com.insurance.sce.dao.InterviewDAO;
+import com.insurance.sce.dao.interview.InterviewDAO;
 import com.insurance.sce.model.interview.Interview;
 
 public class Salesperson extends Employee{

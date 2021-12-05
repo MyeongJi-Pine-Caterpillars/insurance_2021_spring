@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.insurance.sce.service.InsuranceService;
+import com.insurance.sce.service.insurance.InsuranceService;
 
 /**
  * Handles requests for the application home page.

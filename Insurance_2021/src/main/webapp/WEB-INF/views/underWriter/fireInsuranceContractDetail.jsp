@@ -138,7 +138,7 @@
 							aria-expanded="false"> <span
 								class="mr-2 d-none d-lg-inline text-gray-600 small">안녕하세요
 									${employeeName} 님!</span> <img class="img-profile rounded-circle"
-								src="img/undraw_profile.svg">
+								src="${pageContext.request.contextPath}/resources/img/undraw_profile.svg">
 						</a></li>
 
 						<div class="topbar-divider d-none d-sm-block"></div>
@@ -148,7 +148,7 @@
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false">
 								<button type="button"
-									onclick="location.href='loginEmployee'"
+									onclick="location.href='doLogout'"
 									class="btn btn-outline-dark">로그아웃</button>
 						</a></li>
 
@@ -231,16 +231,8 @@
 									</div>
 									<div class="card-body">
 									<div class="row">
-										<div class="col mb-3" id="rateOfAge"></div>
-										<div class="col" id="rateOfJob"></div>
-									</div>
-									<div class="row">
-										<div class="col mb-3" id="rateOfGender"></div>
-										<div class="col"></div>
-									</div>
-									<div class="row">
-										<div class="col" id="rateOfFamilyMedicalDisease"></div>
-										<div class="col" id="rateOfFamilyMedicalRelationship"></div>
+										<div class="col" id="rateOfStructureUsage"></div>
+										<div class="col" id="rateOfPostedPrice"></div>
 									</div>
 										
 									</div>

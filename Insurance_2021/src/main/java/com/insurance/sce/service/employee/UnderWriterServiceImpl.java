@@ -7,8 +7,6 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
-
-import com.insurance.sce.dao.Data;
 import com.insurance.sce.dao.contract.ContractDAO;
 import com.insurance.sce.dao.customer.InsurantDAO;
 import com.insurance.sce.dao.insurance.InsuranceDAO;

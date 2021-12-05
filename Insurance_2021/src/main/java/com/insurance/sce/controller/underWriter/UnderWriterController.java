@@ -25,14 +25,14 @@ import com.insurance.sce.model.customer.Insurant;
 import com.insurance.sce.model.employee.Employee;
 import com.insurance.sce.model.employee.UnderWriter;
 import com.insurance.sce.model.insurance.Insurance;
-import com.insurance.sce.service.ContractService;
-import com.insurance.sce.service.ContractServiceImpl;
-import com.insurance.sce.service.InsuranceService;
-import com.insurance.sce.service.InsuranceServiceImpl;
-import com.insurance.sce.service.InsurantService;
-import com.insurance.sce.service.InsurantServiceImpl;
-import com.insurance.sce.service.UnderWriterService;
-import com.insurance.sce.service.UnderWriterServiceImpl;
+import com.insurance.sce.service.contract.ContractService;
+import com.insurance.sce.service.contract.ContractServiceImpl;
+import com.insurance.sce.service.customer.InsurantService;
+import com.insurance.sce.service.customer.InsurantServiceImpl;
+import com.insurance.sce.service.employee.UnderWriterService;
+import com.insurance.sce.service.employee.UnderWriterServiceImpl;
+import com.insurance.sce.service.insurance.InsuranceService;
+import com.insurance.sce.service.insurance.InsuranceServiceImpl;
 
 @Controller
 @RequestMapping(value = "/")

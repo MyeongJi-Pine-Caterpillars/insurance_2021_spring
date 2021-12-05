@@ -20,8 +20,8 @@ import com.insurance.sce.model.customer.Customer;
 import com.insurance.sce.model.insurance.ActualCostInsurance;
 import com.insurance.sce.model.insurance.CancerInsurance;
 import com.insurance.sce.model.insurance.GuaranteePlan;
-import com.insurance.sce.service.InsuranceService;
-import com.insurance.sce.service.InsuranceServiceImpl;
+import com.insurance.sce.service.insurance.InsuranceService;
+import com.insurance.sce.service.insurance.InsuranceServiceImpl;
 
 @Controller
 @RequestMapping(value = "/")

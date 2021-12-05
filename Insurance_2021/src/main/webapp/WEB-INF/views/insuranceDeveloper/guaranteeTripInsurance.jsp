@@ -133,7 +133,7 @@
 										<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="사망" checked>
+												name="guaranteeCheckbox" value="사망">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
@@ -164,7 +164,7 @@
 										<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="상해" checked>
+												name="guaranteeCheckbox" value="상해">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
@@ -196,7 +196,7 @@
 										<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="해외의료비" checked>
+												name="guaranteeCheckbox" value="해외의료비">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
@@ -226,7 +226,7 @@
 										<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="휴대품손해" checked>
+												name="guaranteeCheckbox" value="휴대품손해">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
@@ -259,7 +259,7 @@
 										<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="배상책임" checked>
+												name="guaranteeCheckbox" value="배상책임">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
@@ -289,7 +289,7 @@
 										<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="항공기납치" checked>
+												name="guaranteeCheckbox" value="항공기납치">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"

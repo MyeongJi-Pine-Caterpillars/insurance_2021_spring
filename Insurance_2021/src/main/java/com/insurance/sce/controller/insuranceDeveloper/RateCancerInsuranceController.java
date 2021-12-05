@@ -17,7 +17,7 @@ import com.insurance.sce.global.Constants.eFamilyMedicalDisease;
 import com.insurance.sce.global.Constants.eFamilyMedicalRelationship;
 import com.insurance.sce.global.Constants.eTypeOfCar;
 import com.insurance.sce.model.insurance.Insurance;
-import com.insurance.sce.service.InsuranceDeveloperService;
+import com.insurance.sce.service.employee.InsuranceDeveloperService;
 
 /**
  * Handles requests for the application home page.

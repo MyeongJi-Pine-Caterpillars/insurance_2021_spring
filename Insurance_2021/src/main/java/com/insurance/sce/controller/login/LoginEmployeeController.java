@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.insurance.sce.service.EmployeeService;
+import com.insurance.sce.service.employee.EmployeeService;
 
 @Controller
 @RequestMapping(value="/")

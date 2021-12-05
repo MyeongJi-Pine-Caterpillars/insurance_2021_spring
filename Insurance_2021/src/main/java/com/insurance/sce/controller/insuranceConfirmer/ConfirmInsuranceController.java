@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.insurance.sce.model.insurance.GuaranteePlan;
 import com.insurance.sce.model.insurance.Insurance;
-import com.insurance.sce.service.InsuranceConfirmerService;
-import com.insurance.sce.service.InsuranceService;
+import com.insurance.sce.service.employee.InsuranceConfirmerService;
+import com.insurance.sce.service.insurance.InsuranceService;
 
 /**
  * Handles requests for the application home page.

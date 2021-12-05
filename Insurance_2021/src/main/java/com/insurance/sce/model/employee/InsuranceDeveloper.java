@@ -1,6 +1,6 @@
 package com.insurance.sce.model.employee;
 
-import com.insurance.sce.dao.InsuranceDAO;
+import com.insurance.sce.dao.insurance.InsuranceDAO;
 import com.insurance.sce.global.Constants.eInsuranceType;
 import com.insurance.sce.model.insurance.*;
 

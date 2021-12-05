@@ -13,7 +13,7 @@ import com.insurance.sce.model.customer.Insurant;
 import com.insurance.sce.model.employee.Employee;
 import com.insurance.sce.model.insurance.CancerInsurance;
 import com.insurance.sce.model.insurance.Insurance;
-import com.insurance.sce.service.UnderWriterService;
+import com.insurance.sce.service.employee.UnderWriterService;
 
 @Controller
 @RequestMapping(value = "/")

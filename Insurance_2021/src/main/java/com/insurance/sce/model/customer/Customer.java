@@ -2,10 +2,10 @@ package com.insurance.sce.model.customer;
 
 import java.util.ArrayList;
 
-import com.insurance.sce.dao.ContractDAO;
-import com.insurance.sce.dao.InsurantDAO;
-import com.insurance.sce.dao.InsurantDAOImpl;
-import com.insurance.sce.dao.InterviewDAO;
+import com.insurance.sce.dao.contract.ContractDAO;
+import com.insurance.sce.dao.customer.InsurantDAO;
+import com.insurance.sce.dao.customer.InsurantDAOImpl;
+import com.insurance.sce.dao.interview.InterviewDAO;
 import com.insurance.sce.global.Constants;
 import com.insurance.sce.model.interview.Interview;
 

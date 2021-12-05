@@ -39,6 +39,7 @@ public class SignUpInsurantDriverController {
 		this.special = special;
 		
 		model.addAttribute("insuranceId", insuranceId);
+		model.addAttribute("customerName", customer.getName() );
 		return "customer/signUpInsurantDriver";
 	}
 	
@@ -60,5 +61,12 @@ public class SignUpInsurantDriverController {
 		contractService.signUpDriverInsurance(map, insurant);
 		
 		return "redirect:/driverInsurance";
+	}
+
+	@RequestMapping(value="signUpInsurantDriver/doLogout")
+	public String doLogout(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("loginCustomer");
+		return "redirect:/login";
 	}
 }

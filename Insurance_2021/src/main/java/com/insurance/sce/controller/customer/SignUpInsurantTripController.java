@@ -39,6 +39,7 @@ public class SignUpInsurantTripController {
 		this.special = special;
 		
 		model.addAttribute("insuranceId", insuranceId);
+		model.addAttribute("customerName", customer.getName() );
 		return "customer/signUpInsurantTrip";
 	}
 	
@@ -58,5 +59,12 @@ public class SignUpInsurantTripController {
 		contractService.signUpTripInsurance(map, insurant);
 		
 		return "redirect:/tripInsurance";
+	}
+
+	@RequestMapping(value="signUpInsurantTrip/doLogout")
+	public String doLogout(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("loginCustomer");
+		return "redirect:/login";
 	}
 }

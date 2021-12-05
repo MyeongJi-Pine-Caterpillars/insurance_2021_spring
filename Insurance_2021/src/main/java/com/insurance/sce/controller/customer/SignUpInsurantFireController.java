@@ -39,6 +39,7 @@ public class SignUpInsurantFireController {
 		this.special = special;
 		
 		model.addAttribute("insuranceId", insuranceId);
+		model.addAttribute("customerName", customer.getName() );
 		return "customer/signUpInsurantFire";
 	}
 	
@@ -59,5 +60,12 @@ public class SignUpInsurantFireController {
 		contractService.signUpFireInsurance(map, insurant);
 		
 		return "redirect:/fireInsurance";
+	}
+
+	@RequestMapping(value="signUpInsurantFire/doLogout")
+	public String doLogout(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("loginCustomer");
+		return "redirect:/login";
 	}
 }

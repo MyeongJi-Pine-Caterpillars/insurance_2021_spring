@@ -2,6 +2,7 @@ package com.insurance.sce.controller.customer;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.insurance.sce.model.customer.Customer;
+import com.insurance.sce.model.customer.Insurant;
 import com.insurance.sce.model.insurance.CancerInsurance;
 import com.insurance.sce.model.insurance.GuaranteePlan;
+import com.insurance.sce.service.contract.ContractService;
 import com.insurance.sce.service.insurance.InsuranceService;
 
 /**
@@ -25,39 +28,32 @@ import com.insurance.sce.service.insurance.InsuranceService;
  */
 @Controller
 @RequestMapping(value = "/")
-public class SelectCacnerInsuranceController {
+public class RegisterAccidentController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(SelectCacnerInsuranceController.class);
-	private List<CancerInsurance> insuranceList;
+	private static final Logger logger = LoggerFactory.getLogger(MyPageController.class);
+	List<GuaranteePlan> guaranteePlanList;
 	
 	@Autowired
 	InsuranceService insuranceService;
 	
-	@RequestMapping(value="cancerInsurance", method=RequestMethod.GET)
-	public String response(Locale locale, Model model, HttpServletRequest request) {
+	
+	@RequestMapping(value="registerAccident", method=RequestMethod.GET)
+	public String response4(Locale locale, Model model, HttpServletRequest request, String contractId, String insuranceId, String type) {
 		HttpSession session = request.getSession(true);
 		
-		Customer customer = (Customer)session.getAttribute("loginCustomer");
+		Customer customer = (Customer) session.getAttribute("loginCustomer");
 		
-		insuranceList = insuranceService.selectAllCancerInsurance();
-		model.addAttribute("insuranceList", insuranceList);
+		guaranteePlanList =  insuranceService.selectGuaranteePlan(insuranceId);
+		System.out.println(type);
+		
+		model.addAttribute("guaranteePlanList", guaranteePlanList );
+		model.addAttribute("type", type );
 		model.addAttribute("customerName", customer.getName() );
-		return "customer/selectCancerInsurance";
+		return "customer/registerAccident";
 	}
 	
-	@RequestMapping(value="selectCancerInsurance/doSelect")
-	@ResponseBody
-	CancerInsurance doSelect(String insuranceId) {
-		return insuranceService.selectCancerInsurance(insuranceList, insuranceId);
-	}
 	
-	@RequestMapping(value="selectCancerInsurance/doSelectGuaranteePlan")
-	@ResponseBody
-	List<GuaranteePlan> doSelectGuaranteePlan(String insuranceId) {
-		return insuranceService.selectGuaranteePlan(insuranceId);
-	}
-	
-	@RequestMapping(value="selectCancerInsurance/doLogout")
+	@RequestMapping(value="registerAccident/doLogout")
 	public String doLogout(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("loginCustomer");

@@ -4,10 +4,10 @@
 <%@ page session="false"%>
 <%@ page import="java.util.Map"%>
 <%@ page import="java.util.List"%>
-<%@ page import="com.insurance.sce.global.Constants.eInsuranceType"%>
+<%@ page import="com.insurance.sce.model.insurance.GuaranteePlan"%>
 
 <%
-List<Map<String, Object>> mapList = (List<Map<String, Object>>) request.getAttribute("mapList");
+List<GuaranteePlan> guaranteePlanList = (List<GuaranteePlan>) request.getAttribute("guaranteePlanList");
 %>
 
 
@@ -198,7 +198,7 @@ List<Map<String, Object>> mapList = (List<Map<String, Object>>) request.getAttri
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">마이페이지</h1>
+						<h1 class="h3 mb-0 text-gray-800">사고접수하기</h1>
 					</div>
 
 
@@ -210,122 +210,85 @@ List<Map<String, Object>> mapList = (List<Map<String, Object>>) request.getAttri
 						<div class="col-lg-6 mb-4">
 
 							<!-- Project Card Example -->
-							<div class="card shadow mb-4">
-								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">가입한 보험 리스트</h6>
-								</div>
+						
+					<div class="row">
+					<%for(GuaranteePlan guaranteePlan : guaranteePlanList){ %>					
+						<div class="col-xl-3 col-md-6 mb-4" onclick="selectInsurance();" id=<%=guaranteePlan.getContent() %> 
+						compensation=<%=guaranteePlan.getCompensation() %> rate=<%=guaranteePlan.getRate()%>>
+							<div class="cardInsurance border-left-primary shadow h-100 py-2">
 								<div class="card-body">
-									<div class="row">
-										<table class="table table-bordered table-hover" id="dataTable"
-											width="100%">
-											<thead>
-												<tr>
-													<th>계약 ID</th>
-													<th>보험 이름</th>
-													<th>보험 종류</th>
-													<th>보험료</th>
-													<th>가입자 이름</th>
-												</tr>
-											</thead>
-
-											<tbody>
-
-												<%
-												for (Map<String, Object> map : mapList) {
-												%>
-												<tr>
-													<td><%=(String) map.get("contractId")%></td>
-													<td><%=(String) map.get("insuranceName")%></td>
-													<td><%=(String) eInsuranceType.get((Integer) map.get("type")).getNameKor()%></td>
-													<td><%=(Integer) map.get("fee")%></td>
-													<td><%=(String) map.get("insurantName")%></td>
-													<td style="display: none"><%=(String) map.get("insuranceId")%></td>
-												</tr>
-												<%
-												} ;
-												%>
-
-											</tbody>
-										</table>
-
+									<div class="row no-gutters align-items-center">
+										<div class="col mr-2">
+											<div class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">
+												<%=guaranteePlan.getContent() %></div>
+											<div class="h6 mb-0 font-weight-bold text-gray-800">
+												<span class="guaranteeRate" style="display:none">최대 </span>보장금액 : <%=guaranteePlan.getCompensation() %></div>
+											<div class="h6 mb-0 font-weight-bold text-gray-800 guaranteeRate" style="display:none">보장비율 : <%=guaranteePlan.getRate()*100%>%</div>
+										</div>
+										<div class="col-auto"></div>
 									</div>
 								</div>
 							</div>
-							<div class="card shadow mb-4">
-								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">가입자 정보</h6>
+						</div>
+					<%}; %>	
+					</div>
+					<form name="formDamageCost" action="doRegisterAccident"
+								method="get">
+								<div class="card shadow mb-4 guaranteeRate" style="display:none">
+									<div class="card-header py-3">
+										<h6 class="m-0 font-weight-bold text-primary" id="age">피해액</h6>
+									</div>
+									<div class="card-body">
+										<div class="column">
+											<div class="form-check">
+												<div class="row">
+													<label>피해액을 입력해주세요 : </label>
+													<div class="col-2">
+														<input type="number" class="form-control"
+															name="damageCost" min='0'
+															onChange="change();" id="damage">
+													</div>
+												</div>
+											</div>
+											<div id="damageCostAlarm" style="display: none;">
+												<div
+													class="alert alert-danger d-flex align-items-center mt-3">
+													<svg class="bi flex-shrink-0 me-2" width="24" height="24"
+														role="img" aria-label="Danger:">
+													<use xlink:href="#exclamation-triangle-fill" /></svg>
+													<div>&nbsp 내용을 입력해주세요!!</div>
+												</div>
+											</div>
+										</div>
+									</div>
 								</div>
-								<div class="card-body">
-									<div class="row" style="display: none" id="insurantCard">
-										<div class="col-3" style="display: none" id="man">
-											<img
-												src="${pageContext.request.contextPath}/resources/img/undraw_profile_2.svg"
-												class="img-thumbnail">
-										</div>
-										<div class="col-3" style="display: none" id="woman">
-											<img
-												src="${pageContext.request.contextPath}/resources/img/undraw_profile_3.svg"
-												class="img-thumbnail">
-										</div>
-
-										<div class="col">
-											<div class="row mb-3 mt-4">
-												<div class="col">
-													<h5 id="name">이름 :</h5>
-												</div>
-												<div class="col">
-													<h5 id="gender">성별 :</h5>
-												</div>
-												<div class="col">
-													<h5 id="age">나이 :</h5>
+								
+								<div class="card shadow mb-4">
+									<div class="card-header py-3">
+										<h6 class="m-0 font-weight-bold text-primary" id="age">보장금액</h6>
+									</div>
+									<div class="card-body">
+										<div class="column">
+											<div class="form-check">
+												<div class="row">
+													<p id="compensation"></p>
 												</div>
 											</div>
 											
-											<div class="row mb-3 mt-3">
-												<div class="col-md-4">
-													<h5 id="job">직업 :</h5>
-												</div>
-												<div class="col-md-8">
-													<h5 id="address">주소 :</h5>
-												</div>
-											</div>
-
-											<div class="row mb-3 mt-3">
-												<div class="col">
-													<h5 id="phoneNumber">전화번호 :</h5>
-												</div>
-											</div>
 										</div>
 									</div>
-
 								</div>
-							</div>
-
-							<div class="card shadow mb-4">
-								<div class="card-header py-3">
-									<h6 class="m-0 font-weight-bold text-primary">보장내역</h6>
-								</div>
-
-								<div class="card-body">
-									<div id="guaranteePlanActual" style="display:none">
-									</div>
-									
-									<div id="guaranteePlanLabel" style="display:none">
-										기본계약
-										<ol class="list-group list-group-numbered list-hover" id="guaranteePlan"></ol>
-										선택특약
-										<ol class="list-group list-group-numbered"
-											id="guaranteePlanSpecial"></ol>
-									</div>
-								</div>
-							</div>
+							
+							
+							
 						<div class="row">
 							<div class="col-lg-6 mb-4">
 								<button type="button" class="btn btn-primary btn-lg" 
-								onClick="registerAccident();" style="display:none"
-								id="registerBtn">사고 접수하기</button>
+								onClick="registerAccident();"
+								id="registerBtn">확인</button>
 							</div>
 						</div>
+							</form>
 						</div>
 					</div>
 					
@@ -391,152 +354,45 @@ List<Map<String, Object>> mapList = (List<Map<String, Object>>) request.getAttri
 	</div>
 
 	<script>
-		var contractId = "";
-		var insuranceId = "";
-		var type = "";
-		
-		function registerAccident(){
-			alert(contractId.contractId);
-			location.href="registerAccident?contractId="+contractId.contractId
-					+"&insuranceId="+insuranceId.insuranceId+"&type="+type;
+	var content = "";
+	var compensation;
+	var rate;
+	
+	$(document).ready(function(){
+		if("${type}" == "화재보험" || "${type}" == "운전자보험"){
+			$('.guaranteeRate').show();
 		}
+	});
+	
+	$('.col-xl-3').click(function(){
+		content = {"content" : $(this).attr('id')};
+		compensation = $(this).attr('compensation');
+		rate = $(this).attr('rate');
+		if("${type}" == "암보험" || "${type}" == "치과보험"){
+			$('#compensation').text(content.content + "의 보장금액은 " + compensation + "원입니다.");
+		}
+	});
 	
 	
-		$("#dataTable tr").click(function() {
-			var tr = $(this);
-			var td = tr.children();
-			contractId = {"contractId" : td.eq(0).text()};
-			insuranceId = {"insuranceId" : td.eq(5).text()};
-			type = td.eq(2).text();
-
-			$('#registerBtn').show();
-			
-			if(type == "실비보험"){
-				$('#guaranteePlanLabel').hide();
-				$('#guaranteePlanActual').show();
-				$.ajax({
-					url : "myPage/doSelectRate",
-					type : "GET",
-					data : insuranceId,
-
-					beforeSend : function() {
-						$('#ajax_indicator').show().fadeIn('fast');
-					},
-					complete : function() {
-						$('#ajax_indicator').fadeOut();
-					},
-					
-					success : function(data) {
-						$('#guaranteePlanActual').html(
-							'<div class="list-group list-group-numbered" id="guaranteePlanActual">병ㆍ의원 및 약국에서 실제로 지출한 의료비의 '
-								+(1-data)*100+
-								'%</div>');
-					},
-					error : function() {
-						alert("request error in guaranteePlan!");
-					}
-					
-				});
-								
+	$("#damage").bind("propertychange change keyup paste input", function() {
+	    var currentVal = $(this).val();
+		form = document.formDamageCost;
+		if(content == ""){
+			alert("보장내역을 선택해주세요")
+		}
+		
+		if("${type}" == "화재보험" || "${type}" == "운전자보험"){
+			if(form.damageCost.value > compensation){
+				$('#compensation').text(content.content + "의 보장금액은 " + compensation + "원입니다.");
 			}else{
-				$('#guaranteePlanLabel').show();
-				$('#guaranteePlanActual').hide();
-				$.ajax({
-					url : "myPage/doSelectGuaranteePlan",
-					type : "GET",
-					data : insuranceId,
-
-					beforeSend : function() {
-						$('#ajax_indicator').show().fadeIn('fast');
-					},
-					complete : function() {
-						$('#ajax_indicator').fadeOut();
-					},
-
-					success : function(data) {
-						$('#guaranteePlan').html('<ol class="list-group list-group-numbered" id="guaranteePlan"></ol>');
-						$.each(data,function(index,item) {
-							if (!item.special) {
-								if (type == "화재보험" || type == "운전자보험") {
-									$('#guaranteePlan').append(
-										'<li class="list-group-item d-flex justify-content-between align-items-start">'
-											+ '<div class="ms-2 me-auto"><div class="fw-bold">'
-											+ item.content
-											+ '</div>보장금액 : '
-											+ item.compensation
-											+ '원<br>보장비율 : '
-											+ item.rate* 100
-											+ '%</li>');
-								} else {
-									$('#guaranteePlan').append(
-										'<li class="list-group-item d-flex justify-content-between align-items-start">'
-											+ '<div class="ms-2 me-auto"><div class="fw-bold">'
-											+ item.content
-											+ '</div>보장금액 : '
-											+ item.compensation
-											+ '원</li>');
-								}
-							}
-						});
-						$('#guaranteePlanSpecial').html('<ol class="list-group list-group-numbered" id="guaranteePlanSpecial"></ol>');
-						$.each(data,function(index,item) {
-							if (item.special) {
-								if (type == "화재보험" || type == "운전자보험") {
-									$('#guaranteePlanSpecial').append(
-										'<li class="list-group-item d-flex justify-content-between align-items-start">'
-										+ '<div class="ms-2 me-auto"><div class="fw-bold">'
-										+ item.content
-										+ '</div>보장금액 : '
-										+ item.compensation
-										+ '원<br>보장비율 : '
-										+ item.rate* 100
-										+ '%</li>');
-								} else {
-									$('#guaranteePlanSpecial').append(
-										'<li class="list-group-item d-flex justify-content-between align-items-start">'
-										+ '<div class="ms-2 me-auto"><div class="fw-bold">'
-										+ item.content
-										+ '</div>보장금액 : '
-										+ item.compensation
-										+ '원</li>');
-								}
-							}
-						});
-					},
-					error : function() {
-						alert("request error in guaranteePlan!");
-					}
-				});
+				$('#compensation').text(content.content + "의 보장금액은 " + form.damageCost.value*rate + "원입니다.");
 			}
-
-			$('#insurantCard').show();
-			$.ajax({
-				url : "myPage/doSelectInsurant",
-				type : "GET",
-				data : contractId,
-
-				success : function(data) {
-					$('#name').text("이름 : " + data.insurantName);
-					$('#phoneNumber').text("전화번호 : " + data.phoneNumber);
-					$('#address').text("주소 : " + data.address);
-					$('#age').text("나이 : " + data.age);
-					$('#gender').text("성별 : " + data.gender);
-					$('#job').text("직업 : " + data.job);
-					if (data.gender == "남성") {
-						$('#man').show();
-						$('#woman').hide();
-					} else {
-						$('#man').hide();
-						$('#woman').show();
-					}
-				},
-				error : function(request, status, error) {
-					alert("code:" + request.status + "\n"
-						+ "message:" + request.responseText
-						+ "\n" + "error:" + error);
-				}
-			});
-		});
+			
+		}
+	 
+	});
+		
+		
 	</script>
 	<!-- Bootstrap core JavaScript-->
 	<script src="<c:url value="resources/vendor/jquery/jquery.min.js" />"></script>

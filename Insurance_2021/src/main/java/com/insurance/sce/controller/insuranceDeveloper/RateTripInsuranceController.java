@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.insurance.sce.global.Constants.eRiskOfTripCountry;
+import com.insurance.sce.model.employee.Employee;
 import com.insurance.sce.model.insurance.Insurance;
 import com.insurance.sce.service.employee.InsuranceDeveloperService;
 
@@ -32,6 +33,8 @@ public class RateTripInsuranceController {
 	@RequestMapping(value="rateTripInsurance", method=RequestMethod.GET)
 	public String responseRateTripInsurance(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
+		Employee uw = (Employee)session.getAttribute("loginEmployee");
+		model.addAttribute("employeeName", uw.getName());
 		this.insurance = (Insurance) session.getAttribute("detailedInsurance");
 		int i = 1;
 		for(int k = 1; k < eRiskOfTripCountry.values().length; k++) {
@@ -53,5 +56,10 @@ public class RateTripInsuranceController {
 		session.setAttribute("ratedInsurance", this.insurance);
 		return "redirect:/guaranteeTripInsurance";
 	}
-
+	@RequestMapping(value="rateTripInsurance/doLogout")
+	public String doLogout(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("loginEmployee");
+		return "redirect:/login";
+	}
 }

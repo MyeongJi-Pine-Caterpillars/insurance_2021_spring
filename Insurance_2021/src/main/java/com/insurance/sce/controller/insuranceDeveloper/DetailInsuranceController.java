@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.insurance.sce.global.Constants.eAge;
 import com.insurance.sce.global.Constants.eGender;
 import com.insurance.sce.global.Constants.eJob;
+import com.insurance.sce.model.employee.Employee;
 import com.insurance.sce.model.insurance.Insurance;
 import com.insurance.sce.service.employee.InsuranceDeveloperService;
 
@@ -32,6 +33,8 @@ public class DetailInsuranceController {
 	@RequestMapping(value="detailInsurance", method=RequestMethod.GET)
 	public String responseDetailInsurance(Locale locale, Model model, HttpServletRequest request) throws Exception{
 		HttpSession session = request.getSession(true);
+		Employee uw = (Employee)session.getAttribute("loginEmployee");
+		model.addAttribute("employeeName", uw.getName());
 		this.insurance = (Insurance) session.getAttribute("designedInsurance");
 		this.nextUrl = (String)session.getAttribute("insuranceType");
 		int i = 1;
@@ -66,5 +69,11 @@ public class DetailInsuranceController {
 		HttpSession session = request.getSession(true);
 		session.setAttribute("detailedInsurance", this.insurance);
 		return "redirect:/rate"+this.nextUrl+"Insurance";
+	}
+	@RequestMapping(value="detailInsurance/doLogout")
+	public String doLogout(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("loginEmployee");
+		return "redirect:/login";
 	}
 }

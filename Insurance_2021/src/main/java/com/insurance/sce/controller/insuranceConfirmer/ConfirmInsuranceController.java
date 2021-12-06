@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.insurance.sce.model.employee.Employee;
 import com.insurance.sce.model.insurance.GuaranteePlan;
 import com.insurance.sce.model.insurance.Insurance;
 import com.insurance.sce.service.employee.InsuranceConfirmerService;
@@ -30,6 +32,9 @@ public class ConfirmInsuranceController {
 	
 	@RequestMapping(value="confirmInsurance", method=RequestMethod.GET)
 	public String responseConfirmInsurance(Locale locale, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		Employee uw = (Employee)session.getAttribute("loginEmployee");
+		model.addAttribute("employeeName", uw.getName());
 		model.addAttribute("insuranceList", insuranceService.selectAllInsurance());
 		return "insuranceConfirmer/confirmInsurance";
 	}
@@ -49,6 +54,13 @@ public class ConfirmInsuranceController {
 	@ResponseBody
 	List<GuaranteePlan> doSelectGuaranteePlan(String insuranceId) {
 		return insuranceService.selectGuaranteePlan(insuranceId);
+	}
+	
+	@RequestMapping(value="confirmInsurance/doLogout")
+	public String doLogout(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("loginEmployee");
+		return "redirect:/login";
 	}
 }
 /*  */

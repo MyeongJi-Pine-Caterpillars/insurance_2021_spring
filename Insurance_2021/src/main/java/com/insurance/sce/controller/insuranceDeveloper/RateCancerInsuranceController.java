@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.insurance.sce.global.Constants.eFamilyMedicalDisease;
 import com.insurance.sce.global.Constants.eFamilyMedicalRelationship;
 import com.insurance.sce.global.Constants.eTypeOfCar;
+import com.insurance.sce.model.employee.Employee;
 import com.insurance.sce.model.insurance.Insurance;
 import com.insurance.sce.service.employee.InsuranceDeveloperService;
 
@@ -36,6 +37,8 @@ public class RateCancerInsuranceController {
 	@RequestMapping(value="rateCancerInsurance", method=RequestMethod.GET)
 	public String responseRateCancerInsurance(Locale locale, Model model, HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
+		Employee uw = (Employee)session.getAttribute("loginEmployee");
+		model.addAttribute("employeeName", uw.getName());
 		this.insurance = (Insurance) session.getAttribute("detailedInsurance");
 		int i = 1;
 		for(int k = 1; k < eFamilyMedicalDisease.values().length; k++) {

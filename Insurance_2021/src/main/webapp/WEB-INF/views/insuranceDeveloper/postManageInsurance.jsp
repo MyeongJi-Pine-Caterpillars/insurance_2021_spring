@@ -98,12 +98,23 @@
 
 
                         <div class="topbar-divider d-none d-sm-block"></div>
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">${employeeName} 님!</span>
+                                <img class="img-profile rounded-circle"
+								src="${pageContext.request.contextPath}/resources/img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                        </li>
+                        <div class="topbar-divider d-none d-sm-block"></div>
                        <li class="nav-item dropdown no-arrow"><a
 							class="nav-link dropdown-toggle" href="#" id="userDropdown"
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false">
 								<button type="button"
-									onclick="location.href='login.do'"
+									onclick="location.href='postManageInsurance/doLogout'"
 									class="btn btn-outline-dark">로그아웃</button>
 						</a></li>
 

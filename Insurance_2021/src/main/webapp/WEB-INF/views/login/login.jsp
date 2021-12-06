@@ -67,7 +67,7 @@
                                         <hr>
                                     </form>
 									<hr>
-									<div class="text-center">
+									<div class="loginText">
 									<div class = "row">
 									<h4> 고객 </h4>
 										<label class="switch"> <input type="checkbox" value = "employee" id = "loginType">
@@ -155,6 +155,10 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.loginText {
+ margin-left : 30%;
 }
 </style>
     <!-- Bootstrap core JavaScript-->

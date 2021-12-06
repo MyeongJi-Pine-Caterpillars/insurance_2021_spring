@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.insurance.sce.model.contract.Accident;
 import com.insurance.sce.model.contract.Contract;
 import com.insurance.sce.model.customer.Insurant;
+import com.insurance.sce.model.employee.Employee;
 import com.insurance.sce.service.contract.AccidentService;
 import com.insurance.sce.service.contract.ContractService;
 import com.insurance.sce.service.customer.InsurantService;
@@ -39,6 +41,9 @@ public class HandleCompensationController {
 	ArrayList<Accident> accidentList;
 	@RequestMapping(value="handleCompensation", method=RequestMethod.GET)
 	public String responseHandleCompensation(Locale locale, Model model, HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		Employee uw = (Employee)session.getAttribute("loginEmployee");
+		model.addAttribute("employeeName", uw.getName());
 		this.contractList = (ArrayList<Contract>) contractService.selectAllContract();
 		this.accidentList = (ArrayList<Accident>) accidentService.selectAllAccident();
 		model.addAttribute("accidentList", this.accidentList);
@@ -70,6 +75,12 @@ public class HandleCompensationController {
 	@ResponseBody
 	ArrayList<Accident> doSelectCompensationCause(String contractId) {
 		return compensationHandlerService.selectAccidentByInsurant(this.accidentList, contractId);
+	}
+	@RequestMapping(value="handleCompensation/doLogout")
+	public String doLogout(HttpServletRequest request) {
+		HttpSession session = request.getSession(true);
+		session.removeAttribute("loginEmployee");
+		return "redirect:/login";
 	}
 }
 /*  */

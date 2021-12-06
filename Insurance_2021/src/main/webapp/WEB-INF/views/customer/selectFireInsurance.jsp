@@ -224,7 +224,8 @@
 					<!-- Content Row -->
 					<div class="row">
 					
-					<%for(FireInsurance insurance : insuranceList){ %>					
+					<%for(FireInsurance insurance : insuranceList){  
+					if(!insurance.isConfirmedStatus())continue;%>								
 						<div class="col-xl-3 col-md-6 mb-4" id=<%=insurance.getInsuranceId() %>>
 							<div class="cardInsurance border-left-primary shadow h-100 py-2">
 								<div class="card-body">

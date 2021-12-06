@@ -396,7 +396,6 @@ List<Map<String, Object>> mapList = (List<Map<String, Object>>) request.getAttri
 		var type = "";
 		
 		function registerAccident(){
-			alert(contractId.contractId);
 			location.href="registerAccident?contractId="+contractId.contractId
 					+"&insuranceId="+insuranceId.insuranceId+"&type="+type;
 		}

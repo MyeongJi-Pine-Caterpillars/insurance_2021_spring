@@ -136,11 +136,11 @@
 									<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="자동차사고재산피해">
+												name="guaranteeCheckbox" value="자동차사고벌금(대인)">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
-												name="specialCheckbox" id="special1" value="자동차사고재산피해">
+												name="specialCheckbox" id="special1" value="자동차사고벌금(대인)">
 										</div>
 								</div>
 								
@@ -171,11 +171,11 @@
 									<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="자동차사고재산피해">
+												name="guaranteeCheckbox" value="자동차사고벌금(대물)">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
-												name="specialCheckbox" id="special2" value="자동차사고재산피해">
+												name="specialCheckbox" id="special2" value="자동차사고벌금(대물)">
 										</div>
 								</div>
 								
@@ -207,11 +207,11 @@
 									<div class="row no-gutters align-items-center">
 										
 											<input style="zoom:1.5" class="form-check-input" type="checkbox"
-												name="guaranteeCheckbox" value="자동차사고재산피해">
+												name="guaranteeCheckbox" value="교통상해부상치료비">
 										</div>
 										<div class="row no-gutters align-items-center">
 											<input style="display:none" class="form-check-input" type="checkbox"
-												name="specialCheckbox" id="special3" value="자동차사고재산피해">
+												name="specialCheckbox" id="special3" value="교통상해부상치료비">
 										</div>
 								</div>
 								

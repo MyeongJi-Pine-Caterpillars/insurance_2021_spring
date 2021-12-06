@@ -140,7 +140,7 @@
 										<div class="row">
 											<label>자기 부담률을 입력하세요 (최대 1.0) : </label>
 											<div class=form-check>
-												<input type="number" name="selfBurdenRate" min="0.1" max="1.0" value="0.1" step="0.1" onChange="selfBurdenChange"> 
+												<input type="number" name="selfBurdenRate" min="0.1" max="1.0" value="0.1" step="0.1" onChange="selfBurdenChange()"> 
 											</div>
 										</div>
 									</div>

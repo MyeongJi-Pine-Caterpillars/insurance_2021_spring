@@ -17,15 +17,15 @@ public class TripInsurance extends Insurance {
 	public void setRateOfCountryRank(double[] rateOfCountryRank) {this.rateOfCountryRisk = rateOfCountryRank;}
 	
 
-	public double getRateOfCountryRank0() {return rateOfCountryRisk[0];}
-	public double getRateOfCountryRank1() {return rateOfCountryRisk[1];}
-	public double getRateOfCountryRank2() {return rateOfCountryRisk[2];}
-	public double getRateOfCountryRank3() {return rateOfCountryRisk[3];}
+	public double getRateOfCountryRisk0() {return rateOfCountryRisk[0];}
+	public double getRateOfCountryRisk1() {return rateOfCountryRisk[1];}
+	public double getRateOfCountryRisk2() {return rateOfCountryRisk[2];}
+	public double getRateOfCountryRisk3() {return rateOfCountryRisk[3];}
 
-	public void setRateOfCountryRank0(double x) {this.rateOfCountryRisk[0] = x;}
-	public void setRateOfCountryRank1(double x) {this.rateOfCountryRisk[1] = x;}
-	public void setRateOfCountryRank2(double x) {this.rateOfCountryRisk[2] = x;}
-	public void setRateOfCountryRank3(double x) {this.rateOfCountryRisk[3] = x;}
+	public void setRateOfCountryRisk0(double x) {this.rateOfCountryRisk[0] = x;}
+	public void setRateOfCountryRisk1(double x) {this.rateOfCountryRisk[1] = x;}
+	public void setRateOfCountryRisk2(double x) {this.rateOfCountryRisk[2] = x;}
+	public void setRateOfCountryRisk3(double x) {this.rateOfCountryRisk[3] = x;}
 
 	// Methods
 	public int calculateFee(Insurant insurant){

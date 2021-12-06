@@ -161,7 +161,7 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">Contract Detail</h1>
+						<h1 class="h3 mb-0 text-gray-800">계약 세부내역</h1>
 					</div>
 					
 					<!-- Content Row -->
@@ -172,7 +172,7 @@
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
 											<div class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">
-												Insurant Data</div>
+												가입자 정보</div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800">
 												이름 - <%= selectedInsurant.getName() %></div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800">
@@ -197,15 +197,13 @@
 									<div class="row no-gutters align-items-center">
 										<div class="col mr-2">
 											<div class="h5 mb-0 font-weight-bold text-primary text-uppercase mb-3">
-												Contract Data</div>
+												계약 정보</div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800">
 												ID - <%= selectedContract.getContractId() %></div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800">
 												특약여부 - <%= selectedContract.isSpecial() %></div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800">
 												요금 - <%= selectedContract.getFee() %></div>
-											<div class="h6 mb-0 font-weight-bold text-gray-800">
-												실효기간 -<%= selectedContract.getUnpaidPeriod() %> </div>
 											</div>
 										<div class="col-auto"></div>
 									</div>

@@ -106,7 +106,7 @@
 					<!-- Page Heading -->
 					<div
 						class="d-sm-flex align-items-center justify-content-between mb-4">
-						<h1 class="h3 mb-0 text-gray-800">운전자 보험 보장 내역 설정하기</h1>
+						<h1 class="h3 mb-0 text-gray-800">화재 보험 보장 내역 설정하기</h1>
 					</div>
 					<!-- /.row -->
 					<!-- Content Row -->

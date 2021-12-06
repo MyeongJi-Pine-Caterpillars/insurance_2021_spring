@@ -68,6 +68,6 @@ public class UnderWriterController {
 	public String doLogout(HttpServletRequest request) {
 		HttpSession session = request.getSession(true);
 		session.removeAttribute("loginEmployee");
-		return "redirect:/loginEmployee";
+		return "redirect:/login";
 	}
 }

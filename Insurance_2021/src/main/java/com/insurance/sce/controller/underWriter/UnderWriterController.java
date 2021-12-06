@@ -53,6 +53,8 @@ public class UnderWriterController {
 	@RequestMapping(value="doApprove", method=RequestMethod.GET)
 	public String doApprove(Locale locale, Model model, HttpServletRequest request, String contractId) {
 		HttpSession session = request.getSession(true);
+		Employee uw = (Employee)session.getAttribute("loginEmployee");
+		model.addAttribute("employeeName", uw.getName());
 		underWriterService.approveContract(contractId);
 		model.addAttribute("mapList", underWriterService.getAllData());
 		return "underWriter/underWriter";
@@ -60,7 +62,10 @@ public class UnderWriterController {
 	
 	@RequestMapping(value="doDeny", method=RequestMethod.GET)
 	public String doDeny(Locale locale, Model model, HttpServletRequest request, String contractId) {
+		HttpSession session = request.getSession(true);
 		underWriterService.denyContract(contractId);
+		Employee uw = (Employee)session.getAttribute("loginEmployee");
+		model.addAttribute("employeeName", uw.getName());
 		model.addAttribute("mapList", underWriterService.getAllData());
 		return "underWriter/underWriterView";
 	}

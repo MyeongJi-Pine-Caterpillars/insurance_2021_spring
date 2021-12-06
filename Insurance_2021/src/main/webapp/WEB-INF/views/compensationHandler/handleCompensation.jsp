@@ -133,9 +133,9 @@
 											<div class="h6 mb-0 font-weight-bold text-gray-800">손해액</div>
 											<div class="h6 mb-0 font-weight-bold text-gray-800" id=><%=accident.getDamageCost() %>원
 											</div>
-											<input name="contractId" id="contractId" type="text" style="display: none" value=<%=accident.getContractId() %>>
-											<input name="accidentId" id="accidentId" type="text" style="display: none" value=<%=accident.getAccidentId() %>>
-											<input id="damageCost" type="text" style="display: none" name=<%=accident.getDamageCost() %>>
+											<input id="contractId" type="text" style="display: none" value=<%=accident.getContractId() %>>
+											<input id="accidentId" type="text" style="display: none" value=<%=accident.getAccidentId() %>>
+											<input id="damageCost" type="text" style="display: none" value=<%=accident.getDamageCost() %>>
 											</div>
 										</div>
 										<div class="col-auto"></div>
@@ -276,9 +276,9 @@
 			}
 		}
 		$('.col-xl-3').click(function(){
-			accidentId = $('#accidentId').attr('value');
-			contractId = $('#contractId').attr('value');
-			tmpCompensation = $('#damageCost').attr('name');
+			accidentId = $(this).attr('value');
+			contractId = $(this).find('#contractId').attr('value');
+			tmpCompensation = $(this).find('#damageCost').attr('value');
 			<%for(Contract contract: contractList){%>
 				if(contractId == <%=contract.getContractId() %>) {
 					fee = <%=contract.getFee() %>;

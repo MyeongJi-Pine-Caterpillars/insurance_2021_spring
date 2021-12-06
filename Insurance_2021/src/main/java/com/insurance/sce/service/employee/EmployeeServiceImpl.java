@@ -37,6 +37,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 				break;
 			case compensationHandler :employeeRole += "handleCompensation";
 				break;
+			case contractManager :employeeRole += "contractManage";
+				break;
 			default:
 				break;
 			}

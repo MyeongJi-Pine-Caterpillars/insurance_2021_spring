@@ -67,7 +67,7 @@ public class UnderWriterController {
 		Employee uw = (Employee)session.getAttribute("loginEmployee");
 		model.addAttribute("employeeName", uw.getName());
 		model.addAttribute("mapList", underWriterService.getAllData());
-		return "underWriter/underWriterView";
+		return "underWriter/underWriter";
 	}
 	@RequestMapping(value="doLogout")
 	public String doLogout(HttpServletRequest request) {

@@ -94,7 +94,7 @@
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false">
 								<button type="button"
-									onclick="location.href='loginEmployee.do'"
+									onclick="location.href='login.do'"
 									class="btn btn-outline-dark">로그아웃</button>
 						</a></li>
 

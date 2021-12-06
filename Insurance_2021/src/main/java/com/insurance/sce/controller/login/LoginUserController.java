@@ -44,6 +44,9 @@ public class LoginUserController {
 		// 서비스를 통해 로그인
 		Map<String, Object> map = employeeService.loginEmployee(id, password);
 		
+		if(map == null) {
+			return "login/login";
+		}
 		if(map.get("employee") != null) {
 			// 세션에 저장
 			HttpSession session = request.getSession(true);

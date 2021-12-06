@@ -17,7 +17,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	public Map<String, Object> loginEmployee(String id, String pw) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		// 해당 Id를 가진 Employee 불러오기
+		// �빐�떦 Id瑜� 媛�吏� Employee 遺덈윭�삤湲�
 		Employee tmp = new Employee();
 		tmp.setEmployeeId(id);
 		tmp.setPassword(pw);
@@ -34,6 +34,8 @@ public class EmployeeServiceImpl implements EmployeeService{
 			case underWriter: employeeRole += "underWriterView";
 				break;
 			case compensationHandler: employeeRole += "handleCompensation";
+				break;
+			case contractManager: employeeRole += "contractManage";
 				break;
 			default:
 				break;

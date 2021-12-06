@@ -8,7 +8,7 @@ import com.insurance.sce.dao.CustomerDAO;
 import com.insurance.sce.model.customer.Customer;
 
 @Service
-public class ContractManagerServiceImpl implements ContractManageService{
+public class SendingEmailServiceImpl implements ContractManageService{
 	@Autowired
 	CustomerDAO customerDAO;
 	ContractDAO contractDAO;

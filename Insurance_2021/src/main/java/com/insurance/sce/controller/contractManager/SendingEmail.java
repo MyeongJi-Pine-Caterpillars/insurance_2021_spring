@@ -22,11 +22,11 @@ import com.insurance.sce.service.ContractService;
  
 @Controller
 @RequestMapping(value = "/")
-public class ContractManage {
+public class SendingEmail {
 	@Autowired ContractManageService contractManager;
 	@Autowired ContractService contractService;
-	private static final Logger logger = LoggerFactory.getLogger(ContractManage.class);
-	@RequestMapping(value="contractManage", method=RequestMethod.GET)
+	private static final Logger logger = LoggerFactory.getLogger(SendingEmail.class);
+	@RequestMapping(value="sendingEmail", method=RequestMethod.GET)
 	public String response4(Locale locale, Model model, HttpServletRequest request) {
 		model.addAttribute("contractList",contractService.selectAllContract());
 		return "contractManager/contractManage";}

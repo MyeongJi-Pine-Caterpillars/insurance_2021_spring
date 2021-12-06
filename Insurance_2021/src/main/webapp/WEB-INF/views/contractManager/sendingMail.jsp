@@ -4,9 +4,9 @@
 <%@ page session="false"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.insurance.sce.model.contract.Contract"%>
-<%
-	List<Contract> contractList = (List<Contract>)request.getAttribute("contractList");
-%>
+<%@ page import="com.insurance.sce.model.customer.Insurant"%>
+<%List<Contract> contractList = (List<Contract>)request.getAttribute("contractList");%>
+<%List<Insurant> insurantList = (List<Insurant>)request.getAttribute("insurantList");%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -201,27 +201,23 @@
  
 
 
-  <li class="list-group-item col-1" >계약 아이디</li>
-  <li class="list-group-item col-1">보험 아이디</li>
-  <li class="list-group-item col-1">미납기간</li>
-  <li class="list-group-item col-1">잔여보험기간</li>
+  <li class="list-group-item col-1">보험가입자 아이디</li>
+  <li class="list-group-item col-1" >계약보험 아이디</li>
+  <li class="list-group-item col-1">계약자 성명</li>
+  <li class="list-group-item col-1">계약자 주소</li>
 </ul>
-<%for(Contract contract : contractList){ %>		
+<%for(Contract contract : contractList){ %>
+<%for(Insurant insurant : insurantList){ %>		
 <ul class="list-group list-group-horizontal-sm"   >
 
-  <li class="list-group-item col-1"><%=contract.getContractId() %></li>
   <li class="list-group-item col-1"><%=contract.getInsurantId()%></li>
-  <li class="list-group-item col-1"><%=contract.getUnpaidPeriod() %></li>
-  <li class="list-group-item col-1"><%=contract.getLifespan() %></li>
+  <li class="list-group-item col-1"><%=contract.getContractId() %></li>
+  <li class="list-group-item col-1"><%=insurant.getName() %></li>
+  <li class="list-group-item col-1"><%=insurant.getAddress() %></li>
 </ul>
 <%}; %>
+<%}; %>
 </div>
-<div class="mb-3">
-  <label for="formGroupExampleInput" class="form-label">메일 내용 입력</label>
-  <input type="text" class="form-control" id="formGroupExampleInput" placeholder="내용을 입력해주세요">
-</div>
-<input type="checkbox" class="btn-check" id="btn-check-2" checked autocomplete="off">
-<label class="btn btn-primary" for="btn-check-2">보내기</label>
                 <!-- /.container-fluid -->
 
             

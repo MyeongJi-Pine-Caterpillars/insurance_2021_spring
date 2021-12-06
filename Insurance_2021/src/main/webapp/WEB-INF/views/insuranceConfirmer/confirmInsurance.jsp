@@ -92,7 +92,7 @@
 							role="button" data-toggle="dropdown" aria-haspopup="true"
 							aria-expanded="false">
 								<button type="button"
-									onclick="location.href='loginEmployee.do'"
+									onclick="location.href='login.do'"
 									class="btn btn-outline-dark">로그아웃</button>
 						</a></li>
 
@@ -144,7 +144,7 @@
 						<h1 class="h2 mb-0 text-gray-800">확정할 보험이 존재하지 않습니다.</h1>
 					<%} %>
 					</div>
-					<form id="form-confirmerView" action="confirmerView/confirmInsurance" method="get">
+					<form id="form-confirmerView" action="confirmInsurance/confirm" method="get">
 						<input style="display:none" class="form-check-input" type="text"
 												name="confirmInsuranceId" id="confirmInsuranceId">
 					</form>

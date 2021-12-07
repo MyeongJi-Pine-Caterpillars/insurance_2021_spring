@@ -52,7 +52,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="cancerInsurance">
+                <a class="nav-link" href="contractManage">
                     <i class="fas fa-fw fa-list"></i>
                     <span>계약 리스트 확인하기</span></a>
             </li>
@@ -61,7 +61,7 @@
             
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href=#>
+                <a class="nav-link" href="sendingMail">
                     <i class="fas fa-fw fa-book"></i>
                     <span>우편물 발송하기</span></a>
             </li>
